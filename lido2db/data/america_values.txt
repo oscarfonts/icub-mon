@@ -1,0 +1,1049 @@
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventDate/lido:displayDate/text()
+  1; 1200 - 1400
+  6; 100 - 600
+  2; 300 - 900
+  1; 1700 - 1899
+  1; 100 - 500
+  2; 600 - 800
+  2; -500 / 750
+  3; segles II - VI
+  2; segles II - VII
+  1; 1200 - 1550
+  3; 800 - 1500
+  9; 1000 - 1550
+  1; segles III - XI
+  15; 900-1534
+  3; 600 - 1500
+  2; 800 - 1550
+  1; -500 / 1
+  1; 550 - 900
+  2; 800 - 1200
+  3; 1 - 500
+  1; segles IV - X
+  4; 600 - 900
+  4; 1440 - 1532
+  2; -1000 / -200
+  6; 300 - 700
+  30; -500 / 500
+  4; 1100 - 1450
+  1; segles X - XIII
+  3; 300 - 600
+  1; 950 - 1200
+  1; 300 / 500
+  1; 900-1200 dC
+  1; segles VII - XVI
+  9; 1200 - 1438
+  2; 1300 - 1521
+  3; 1000 - 1500
+  3; 100 - 900
+  3; 1200 - 1521
+  1; -1000 / -500
+  1; segles II - VIII
+  5; 100 - 700
+  2; 400 - 700
+  1; segles IV - IX
+  1; segles VII - X
+  1; 300 - 800
+  2; segle XVI
+  1; 1350 - 1550
+  1; segles III - VII
+  1; 800 - 1350
+  1; 400 - 950
+  1; -500 / 700
+  2; 1700 - 1800
+  1; segle I segle VI
+  1; 500
+  1; Finals s XIX
+  4; 200 - 1000
+  9; 900 - 1534
+  2; -300 / 500
+  1; 900 - 1530
+  2; 300 - 650
+  1; 900 - 1200
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectDescriptionWrap/lido:objectDescriptionSet/lido:descriptiveNoteValue/text()
+  17; 1
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventActor/lido:displayActorInRole/text()
+  1; cultura Diquís
+  9; cultura Chimú
+  1; cultura La Tolita
+  1; cultura Tlalpan
+  1; Cultura nazca B
+  1; cultura Muisca
+  4; cultura Chancay
+  1; cultura dels Andes Septentrionals
+  1; Cultura-Jama Coaque
+  3; cultura Quimbaya
+  3; cultura Tumbesina
+  1; cultura Chupícuaro
+  12; cultura Vessant Atlàntic -  Terres Altes Centrals de Costa Rica
+  19; cultura de Gran Nicoya
+  2; cultura de Teotihuacan
+  8; cultura Moche
+  4; cultura Rapanui
+  7; cultura Inca
+  27; cultura Bahía
+  23; cultura Maia
+  5; cultura Guerrero - Mezcala
+  2; no informat
+  23; cultura Manteña
+  1; cultura Olmeca
+  1; cultura Mixteca-Puebla
+  2; cultura Veraguas
+  1; Cultura Nayarit
+  2; cultura Centre de Veracruz
+  4; cultura Tumaco - Tolita
+  5; cultura de Gran Chiriquí
+  1; cultura Taina
+  5; cultura del Nazca
+  1; cultura Panzaleo
+  2; cultura Recuay
+  2; cultura Mexica-Asteca
+  1; cultures de l'Occident de Mèxic
+  1; cultures del Centre i Est d'El Salvador
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventDate/lido:date/lido:earliestDate/text()
+  3; 1700
+  7; 1
+  28; 900
+  1; 1350
+  2; 1300
+  11; 600
+  34; -500
+  6; 200
+  17; 300
+  1; 950
+  3; -1000
+  1; 550
+  14; 1200
+  2; -300
+  2; 1500
+  4; 1440
+  4; 1100
+  3; 400
+  18; 100
+  8; 800
+  12; 1000
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectMeasurementsWrap/lido:objectMeasurementsSet/lido:displayObjectMeasurements/text()
+  1; 13 x 4 x 2,8 cm.
+  1; 34 x 15 x 8 cm
+  1; 25,5 x 13 x 13,5 cm
+  1; 19,5 cm.
+  1; 18 x 20 x 26 cm
+  1; 41 x 21 cm
+  1; 20 x 15 cm
+  1; 12,5 x 17,3 cm
+  1; 6 x 5 x 1 cm
+  1; Diàmetre: 24 cm.
+  1; 19,2 x 12,4 x 6 cm
+  1; 20,5 x 17,5 x 18 cm
+  1; 31,5 x 24 x 25,5 cm
+  1; 30 x 14 cm
+  1; 1,8 x 1,6 cm
+  1; 22,5 x 18 x 3 cm
+  1; 4,5 x 1 cm
+  1; 11,4 x 5,1 x 1,6 cm.
+  1; 11 x 11 x 3 cm
+  1; 13 x 5 x 3,5 cm
+  1; diàmetre del cos. 17,3 cm.
+  1; 15,4 x 12 x 2,8 cm
+  1; 6,3 x 3,7 x 1,9 cm
+  1; 11 x 11 x 14 cm
+  1; 25 x 9,5 cm
+  1; 7,2 x 1,5 x 0,3 cm.
+  1; 42 x 38 x 55 cm
+  1; 6 x 5,5 cm
+  1; 29 x 34 cm
+  1; 21,8 cm.
+  1; 25,5 x 14,2 x 18,3 cm
+  1; 23,5 x 20 x 6 cm
+  1; 25 x 20 cm
+  1; diàmetre màxim: 14,5 cm.
+  1; 47 x 6 cm
+  1; 18,5 x 23,5 cm
+  1; 18,5 x 16 cm
+  1; 27 cm
+  1; 78 x 12,5 x 8 cm
+  1; 4 x 5 x 6,5 cm
+  1; diàm. 12,5 cm.
+  1; 32 x 16 x 17 cm
+  1; 21 x 15 x 12,5 cm
+  1; 31,8 cm. x 21 cm. x 11,2 cm.
+  1; 22,5 x 15 x 10,5 cm
+  1; 45 x 28,5 x 21,5 cm
+  1; 4,5 x 34 x 18,5 cm
+  2; 47,5 x 26 x 22 cm
+  1; 47 x 9,5 x 12 cm
+  1; 33 x 20 x 10 cm
+  1; 4,6 x 1,7 x 0,6 cm
+  1; 16 x 30,5 x 52 cm
+  1; 16,5 x 14,5 cm
+  2; 16 x 18 x 17 cm
+  1; 15 x 15 x 11 cm
+  1; 28,5 x 14 x 5,5 cm
+  1; 7,4 x 6 x 5,2 cm
+  1; 25,5 x 8,5 cm
+  1; 8,4 x 4,1 x 1 cm.
+  1; 12,5 x 5 x 2,5 cm
+  1; 11,7 x 11,8 cm
+  1; 17 x 5 x 4 cm
+  1; 27 x 65 x 43 cm
+  1; 7 cm.
+  1; 9,8 x 6,5 x 4,4 cm
+  1; 28 x 17 cm
+  1; 8,5 x 4,5 x 1,5 cm
+  1; 4,1 x 4,3 x 4,2 cm
+  1; 11,4 x 5,1 x 1,6 cm
+  1; 51 x 10 x 8 cm
+  1; 73 x 34 x 18 cm
+  1; 18,2 / 11,5 / 16 cm
+  1; 16 x 14,8 x 10 cm
+  1; 63 x 70 cm
+  1; 9,5 x 13,3 cm
+  1; 12 x 5 x 2,5 cm
+  1; 4,5 x 10 cm
+  1; 9 x 12,5 x 11 cm
+  1; 7,5 x 8,5 x 2,5 cm
+  1; 7 x 8,1 x 11,2 cm
+  1; 23,5 x 50 x 23 cm
+  1; 29,3 x 22,5 x 3,3 cm
+  1; 5 x 6,5 x 2 cm
+  1; 17 x 9 x 10 cm
+  1; alt: 9 cm.
+  1; 12 x 14 cm
+  1; 25,3 x 29 cm
+  1; 38,5 x 19 x 7 cm
+  1; 9,6 x 9,5 x 4,5 cm
+  1; diàm. 5,7 cm.
+  1; 19 x 43 x 45 cm
+  1; 23,5 x 21,4 x 4,1 cm
+  1; 40 x 61 cm
+  1; 2,3 x 7 cm
+  1; 3,7 x 2,3 x 30,7 cm
+  1; diàmetre: 17 cm.
+  1; 12 x 3,7 x 2,3 cm
+  1; diàm. 19 cm.
+  1; 12 x 25 cm
+  1; 10 x 30 x 45 cm
+  1; 6,5 x 3,2 x 1,3 cm.
+  1; 24 x 20 x 5 cm
+  1; 10 x 12 cm
+  1; diàmetre de la boca: 20 cm.
+  1; 5,5 x 5,5 cm
+  1; 13 x 35 x 40 cm
+  1; 43 x 27 cm
+  2; 12 x 5 x 4 cm
+  1; 14 x 8 x 6,5 cm
+  1; 48 cm
+  1; 12,7 x 21,1 cm
+  1; 8 cm.
+  1; 23,5 x 16,8 x 7,4 cm
+  1; 25 x 16 cm
+  1; 46,2 x 13 x 5,5 cm
+  1; Alt: 12,5 cm.
+  1; 18 x 5 x 4 cm
+  1; 13 x 10 x 22 cm
+  1; 55 x 72 x 20 cm
+  1; 21,2 x 44 x 19,6 cm
+  1; 7,2 x 3,6 cm
+  1; 15,5 x 7,5 cm
+  1; 1,7 x 1,7 cm
+  1; 22,4 x 34 cm.
+  1; 19 x 15,5 cm
+  1; 23,5 cm
+  1; 14,5 x 13,5 x 9 cm
+  1; 14 cm
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:inscriptionsWrap/lido:inscriptions/lido:inscriptionTranscription/text()
+  1; inscripció:  (inscripció ta'u)
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventMaterialsTech/lido:displayMaterialsTech/text()
+  1; Material / Tècnica: petxina
+  1; Material / Tècnica: ceràmica, modelat, brunyit, pintat
+  8; Material / Tècnica: pedra
+  1; Material / Tècnica: obsidiana, tallat, polit, abrasió
+  1; Material / Tècnica: ceràmica (pasta compacta; sorra desengreixant; modalada; cocció reductora i acabat llis i polit)
+  1; Material / Tècnica: ceràmica, pintat
+  3; Material / Tècnica: fusta
+  1; Material / Tècnica: ceràmica, modelat, allisat (cocció oxidant)
+  4; Material / Tècnica: coure
+  9; Material / Tècnica: or
+  1; Material / Tècnica: fusta, tallada (toromino)
+  1; Material / Tècnica: ceràmica, modelat, allisat
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (pasta: compacta, desgreixant: mica, acabat: allisat.)
+  2; Material / Tècnica: pedra (gris)
+  8; Material / Tècnica: roca volcànica
+  3; Material / Tècnica: tumbaga
+  7; Material / Tècnica: pedra (verda)
+  72; Material / Tècnica: ceràmica
+  1; Material / Tècnica: jaspi
+  1; Material / Tècnica: roca volcànica, esculpit
+  1; Material / Tècnica: fusta, tallada (de toromiro)
+  1; Material / Tècnica: ceràmica, a mà, engalbat, polcromat, brunyit, policromat (pasta compacta)
+  1; Material / Tècnica: ceràmica (pata compacta; acabat: allisat i polit)
+  1; Material / Tècnica: ceràmica, modelat (pintat)
+  1; Material / Tècnica: metall, banyat en or
+  1; Material / Tècnica: ceràmica, emmotllat, pintat
+  1; Material / Tècnica: ceràmica, emmotllat, allisat, polit (cocció reductora)
+  1; Material / Tècnica: llana (de camèlid)
+  2; Material / Tècnica: pedra, tallat
+  3; Material / Tècnica: cotó
+  1; Material / Tècnica: pedra (verda fosca)
+  2; Material / Tècnica: pedra (nefrita verda)
+  1; Material / Tècnica: ceràmica, a mà, engalbat, allisat, policromat (pasta compacta)
+  1; Material / Tècnica: turquesa
+  1; Material / Tècnica: ceràmica, emmotllat, allisat, pintat
+  5; Material / Tècnica: jadeïta
+  1; Material / Tècnica: ceràmica, modelat, allisat, polit (pasta compacta, desengreixant: mica, cocció reductora)
+  1; Material / Tècnica: àgata
+  1; Material / Tècnica: terra cuita, modelat
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (pasta: compacta, desgreixant: mica, acabat: allisat, engalbat i policromat.)
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (pasta: compacta, desgreixant: arena, acabat: allisat, polit i pintat.)
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (Pasta: compacta; Desgreixant: Arena; Cocció: Acabat: allisat, engalbat i policromat.)
+  2; Material / Tècnica: plata
+  1; Material / Tècnica: fusta, tallada (toromira)
+  1; Material / Tècnica: laca (negre)
+  1; Material / Tècnica: fusta, tallada (toromiro o makoi)
+  1; Material / Tècnica: ceràmica, a mà, engalbat, policromat (pasta compacta, desgreixant: arena i mica, cocció reductora)
+  1; Material / Tècnica: obsidiana (negre i esqual)
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (pasta: compacta, desgreixant. mica, cocció: oxidant, acabat: allisat i polit.)
+  1; Material / Tècnica: coure, fosa, llaminat
+  1; Material / Tècnica: ceràmica, modelat, policromat
+  1; Material / Tècnica: obsidiana
+  1; Material / Tècnica: CERÀMICS, a mà (T. Ceràm.) (pasta: compacta, desgreixant: arena, acabat: allisat, engalbat i policromat.)
+  3; Material / Tècnica: ceràmica, modelat, allisat, polit
+  1; Material / Tècnica: diorita (verda)
+  1; Material / Tècnica: ceràmica, pintada
+  17; Material / Tècnica: ceràmica, desconegut
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectRelationWrap/lido:relatedWorksWrap/lido:relatedWorkSet/lido:relatedWork/lido:object/lido:objectID/text()
+  1; semblant a: MEB 1b-233
+  1; semblant a: MEB 1b-234
+/lido:lidoWrap/lido:lido/lido:administrativeMetadata/lido:resourceWrap/lido:resourceSet/lido:resourceType/lido:term/text()
+  187; Imatge digitalitzada
+/lido:lidoWrap/lido:lido/lido:category/lido:term/text()
+  187; Objecte fet per l'Home
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:repositoryWrap/lido:repositorySet/lido:workID/text()
+  1; MEB 209-19
+  1; MEB 209-18
+  1; MEB CF 374
+  1; MEB 176-98
+  1; MEB CF 378
+  1; MEB 16-538
+  1; MEB 16-539
+  1; MEB CF 705
+  1; MEB 16-608
+  1; MEB 16-530
+  1; MEB 16-531
+  1; MEB 16-532
+  1; MEB 16-533
+  1; MEB 16-534
+  1; MEB 349-26
+  1; MEB 349-25
+  1; MEB 16-537
+  1; MEB 176-95
+  1; MEB CF 2330
+  1; MEB CF 2336
+  1; MEB CF 943
+  1; MEB CF 2335
+  1; MEB 176-62
+  1; MEB CF 2749
+  1; MEB 37-43
+  1; MEB CF 577
+  1; MEB CF 573
+  1; MEB CF 798
+  1; MEB 209-28
+  1; MEB 209-29
+  1; MEB 209-24
+  1; MEB 209-25
+  1; MEB 209-26
+  1; MEB 209-27
+  1; MEB 209-20
+  1; MEB 209-21
+  1; MEB 209-22
+  1; MEB 209-23
+  1; MEB CF 714
+  1; MEB 224-136
+  1; MEB 16-619
+  1; MEB 16-529
+  1; MEB 16-528
+  1; MEB 16-527
+  1; MEB 16-616
+  1; MEB CF 3928
+  1; MEB 225-153
+  1; MEB CF 382
+  1; MEB 10-13
+  1; MEB 10-10
+  1; MEB CF 381
+  1; MEB CF 1009
+  1; MEB CF 2342
+  1; MEB 176-743
+  1; MEB CF 2340
+  1; MEB 16-695
+  1; MEB CF 2221
+  1; MEB 16-693
+  1; MEB 276-1
+  1; MEB 56-10
+  1; MEB CF 2058
+  1; MEB 209-33
+  1; MEB 209-32
+  1; MEB 209-31
+  1; MEB 209-30
+  1; MEB 209-37
+  1; MEB 209-36
+  1; MEB 209-35
+  1; MEB 209-34
+  1; MEB CF 720
+  1; MEB CF 721
+  1; MEB 209-39
+  1; MEB 209-38
+  1; MEB CF 726
+  1; MEB 176-88
+  1; MEB CF 1012
+  1; MEB 37-176
+  1; MEB 176-86
+  1; MEB 176-753
+  1; MEB 176-756
+  1; MEB 176-757
+  1; MEB 176-754
+  1; MEB 176-755
+  1; MEB 10-23
+  1; MEB CF 394
+  1; MEB CF 397
+  1; MEB 16-535
+  1; MEB 349-8
+  1; MEB CF 799
+  1; MEB 16-536
+  1; MEB 138-607
+  1; MEB 176-291
+  1; MEB 264-3
+  1; MEB 209-40
+  1; MEB 209-41
+  1; MEB CF 3837
+  1; MEB 56-41
+  1; MEB CF 4416
+  1; MEB 56-9
+  1; MEB 56-3
+  1; MEB 138-842
+  1; MEB 224-77
+  1; MEB CF 5883
+  1; MEB CF 2209
+  1; MEB CF 5884
+  1; MEB CF 2395
+  1; MEB 16-541
+  1; MEB 16-540
+  1; MEB 16-543
+  1; MEB 16-542
+  1; MEB 16-544
+  1; MEB CF 2204
+  1; MEB 242-1
+  1; MEB 37-10
+  1; MEB 37-16
+  1; MEB 56-58
+  1; MEB CF 2207
+  1; MEB CF 621
+  1; MEB 138-632
+  1; MEB CF 623
+  1; MEB CF 622
+  1; MEB CF 584
+  1; MEB 56-32
+  1; MEB 264-40
+  1; MEB 105-10
+  1; MEB 105-12
+  1; MEB 105-13
+  1; MEB 16-645
+  1; MEB CF 4794
+  1; MEB CF 2274
+  1; MEB CF 4792
+  1; MEB CF 2378
+  1; MEB CF 4943
+  1; MEB CF 4942
+  1; MEB 138-406
+  1; MEB CF 941
+  1; MEB CF 578
+  1; MEB CF 346
+  1; MEB CF 614
+  1; MEB CF 615
+  1; MEB CF 617
+  1; MEB 16-711
+  1; MEB 207-1
+  1; MEB CF 5185
+  1; MEB CF 600
+  1; MEB 16-650
+  1; MEB 16-652
+  1; MEB CF 4110
+  1; MEB 16-654
+  1; MEB CF 939
+  1; MEB 176-762
+  1; MEB CF 572
+  1; MEB CF 359
+  1; MEB CF 358
+  1; MEB CF 355
+  1; MEB CF 606
+  1; MEB 287-1
+  1; MEB CF 2341
+  1; MEB CF 4076
+  1; MEB 1b-234
+  1; MEB CF 2205
+  1; MEB CF 803
+  1; MEB 1b-10
+  1; MEB 1b-12
+  1; MEB 1b-233
+  1; MEB 1b-237
+  1; MEB CF 1828
+  1; MEB 176-195
+  1; MEB CF 368
+  1; MEB CF 2208
+  1; MEB CF 1825
+  1; MEB CF 1824
+  1; MEB CF 3727
+  1; MEB CF 5407
+  1; MEB 105-3
+  1; MEB CF 384
+  1; MEB CF 3729
+  1; MEB 176-768
+  1; MEB 349-33
+  1; MEB CF 562
+  1; MEB 176-766
+  1; MEB 16-374
+  1; MEB 176-79
+  1; MEB CF 566
+  1; MEB CF 565
+  1; MEB 176-70
+  1; MEB CF 938
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectMeasurementsWrap/lido:objectMeasurementsSet/lido:objectMeasurements/lido:measurementsSet/lido:measurementUnit/text()
+  1; 19,2
+  1; 19,6
+  1; 1,8
+  1; 19,5
+  3; 1,6
+  3; 1,7
+  2; 1,5
+  1; 1,3
+  2; 7,5
+  1; 9,8
+  1; 38,5
+  2; 24
+  4; 25
+  1; 11,8
+  3; 27
+  7; 20
+  3; 21
+  3; 22
+  1; 23
+  2; 11,2
+  1; 3,5
+  1; 3,6
+  3; 3,7
+  1; 28
+  1; 11,7
+  2; 11,4
+  5; 5,5
+  6; 4
+  5; 8
+  1; 46,2
+  2; 2,8
+  1; 21,5
+  1; 21,4
+  2; 55
+  1; 15,4
+  2; 15,5
+  1; 51
+  1; 50
+  1; 52
+  1; 63
+  1; 30,5
+  1; 8,1
+  1; 30,7
+  1; 25,3
+  4; 25,5
+  2; 13,5
+  1; 31,8
+  1; 31,5
+  1; 6,3
+  5; 12,5
+  1; 12,4
+  1; 12,7
+  2; 3
+  1; 16,8
+  4; 7
+  1; 21,8
+  1; 16,5
+  3; 8,5
+  1; 8,4
+  1; 21,2
+  1; 21,1
+  1; 42
+  3; 26
+  2; 47
+  1; 1,9
+  1; 38
+  1; 33
+  1; 32
+  2; 30
+  1; 35
+  5; 34
+  1; 18,3
+  1; 5,2
+  3; 18,5
+  1; 0,6
+  2; 5,1
+  2; 29
+  1; 61
+  1; 13,3
+  1; 3,2
+  3; 2,5
+  1; 11,5
+  1; 3,3
+  3; 2,3
+  1; 4,3
+  1; 4,2
+  3; 4,1
+  1; 4,6
+  5; 4,5
+  1; 4,4
+  1; 20,5
+  1; 17,5
+  1; 2
+  2; 47,5
+  1; 17,3
+  6; 6
+  1; 29,3
+  6; 11
+  8; 10
+  6; 13
+  9; 12
+  6; 15
+  6; 14
+  6; 17
+  8; 16
+  3; 19
+  7; 18
+  6; 23,5
+  1; 9,6
+  4; 9,5
+  1; 48
+  1; 18,2
+  5; 6,5
+  2; 7,2
+  3; 45
+  2; 7,4
+  3; 43
+  2; 40
+  1; 41
+  3; 1
+  11; 5
+  3; 9
+  1; 10,5
+  2; 28,5
+  1; 73
+  1; 72
+  1; 70
+  1; 78
+  1; 65
+  1; 14,2
+  1; 22,4
+  3; 22,5
+  1; 14,8
+  2; 14,5
+  1; 44
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectMeasurementsWrap/lido:objectMeasurementsSet/lido:objectMeasurements/lido:measurementsSet/lido:measurementType/text()
+  121; Alçada
+  113; Amplada
+  77; Profunditat
+/lido:lidoWrap/lido:lido/lido:lidoRecID/text()
+  1; 498456
+  1; 498457
+  1; 498409
+  1; 498452
+  1; 498453
+  1; 498617
+  1; 498593
+  1; 498611
+  1; 498515
+  1; 498517
+  1; 336252
+  1; 498513
+  1; 485922
+  1; 540532
+  1; 330976
+  1; 485125
+  1; 334475
+  1; 336523
+  1; 332161
+  1; 507110
+  1; 542346
+  1; 486189
+  1; 486188
+  1; 484687
+  1; 486181
+  1; 486180
+  1; 486183
+  1; 486182
+  1; 486184
+  1; 486187
+  1; 486186
+  1; 332158
+  1; 500589
+  1; 498604
+  1; 498601
+  1; 498603
+  1; 498610
+  1; 498683
+  1; 334534
+  1; 484840
+  1; 483902
+  1; 483903
+  1; 483906
+  1; 486038
+  1; 483904
+  1; 562859
+  1; 540531
+  1; 486171
+  1; 548123
+  1; 542342
+  1; 500593
+  1; 500592
+  1; 500590
+  1; 331039
+  1; 498539
+  1; 335533
+  1; 498532
+  1; 498530
+  1; 483911
+  1; 507167
+  1; 483915
+  1; 483914
+  1; 336467
+  1; 483918
+  1; 498651
+  1; 329716
+  1; 500610
+  1; 485916
+  1; 485915
+  1; 483368
+  1; 507160
+  1; 486039
+  1; 564615
+  1; 498423
+  1; 498429
+  1; 547545
+  1; 500564
+  1; 500565
+  1; 500562
+  1; 500563
+  1; 542038
+  1; 542037
+  1; 500568
+  1; 334555
+  1; 499154
+  1; 540100
+  1; 485989
+  1; 500873
+  1; 500874
+  1; 495610
+  1; 498499
+  1; 498497
+  1; 498411
+  1; 498412
+  1; 498413
+  1; 498417
+  1; 548052
+  1; 542279
+  1; 334639
+  1; 334638
+  1; 500570
+  1; 542027
+  1; 334542
+  1; 542280
+  1; 499153
+  1; 548097
+  1; 498621
+  1; 498620
+  1; 498466
+  1; 498628
+  1; 498565
+  1; 331000
+  1; 483262
+  1; 511254
+  1; 564334
+  1; 334641
+  1; 334644
+  1; 498408
+  1; 498407
+  1; 498405
+  1; 498404
+  1; 498403
+  1; 486178
+  1; 486179
+  1; 498660
+  1; 486170
+  1; 331499
+  1; 486172
+  1; 486173
+  1; 486175
+  1; 486176
+  1; 486177
+  1; 498652
+  1; 507166
+  1; 498435
+  1; 332514
+  1; 498655
+  1; 547566
+  1; 548076
+  1; 540101
+  1; 548072
+  1; 498478
+  1; 498479
+  1; 486048
+  1; 486049
+  1; 422980
+  1; 486044
+  1; 486045
+  1; 486046
+  1; 486047
+  1; 486040
+  1; 486041
+  1; 486042
+  1; 486043
+  1; 332183
+  1; 500558
+  1; 483895
+  1; 483896
+  1; 498644
+  1; 483899
+  1; 498488
+  1; 334365
+  1; 498561
+  1; 548068
+  1; 498507
+  1; 498505
+  1; 498502
+  1; 498503
+  1; 498501
+  1; 486053
+  1; 486052
+  1; 486051
+  1; 486050
+  1; 498465
+  1; 498464
+  1; 486055
+  1; 486054
+  1; 500617
+  1; 498678
+  1; 498679
+  1; 486192
+  1; 486193
+  1; 486190
+  1; 486191
+  1; 500931
+  1; 486194
+  1; 486195
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectMeasurementsWrap/lido:objectMeasurementsSet/lido:objectMeasurements/lido:measurementsSet/lido:measurementValue/text()
+  311; cm
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap/lido:titleSet/lido:appellationValue/text()
+  1; Xocolatera
+  1; Bezote
+  1; Destral cerimonial
+  1; Recipient cefaloantropomorf
+  19; Recipient decorat
+  17; Figura antropomorfa
+  1; Segell cilíndric
+  1; Màscara antropomorfa
+  1; Cap de maça
+  1; Vasija zapato
+  2; Marcador de tomba
+  2; Sonall antropomorf
+  2; Pectoral
+  1; Penjoll zoomorf
+  1; bola de llaç amb boles
+  1; Figura antropomorfa sedent
+  1; Penjoll amb forma de destral
+  1; macana estelada
+  1; recipinet antropomorf
+  1; Cascavell
+  2; Orellera
+  1; Vas decorat. Déu Tlaloc, déu de la pluja
+  1; Ninot funerari amb vestit
+  1; Figura Awa
+  2; Camahuil
+  1; Escultura zoomorfa
+  1; escudella decorada
+  1; aríbal
+  2; Recipient amb decoració ornitomorfa
+  2; Figura femenina
+  1; Moai Papa
+  1; Penjoll collaret de jadeïta i cadena
+  1; Mirall
+  1; Amulet ninot penjoll sexual
+  1; Moai Kavakava
+  1; Copa
+  2; Penjoll amb forma de destral ornitomorfa
+  1; Segell pla amb espiga
+  2; Recipient antropomorf
+  1; Cap de maça cerimonial
+  1; Motlle
+  3; Penjoll amb forma de destral antropomorfa
+  1; Recipient amb decoració fitomorfa
+  1; Penjoll
+  1; Ocarina zoomorfa
+  2; Copa decorada
+  1; Recipient xiulet amb decoració ornitomorfa
+  1; Recipient cefalantropomòrfic
+  1; Bol decorat
+  2; Recipient trípode decorat
+  1; Coronament de bastó ornitomorf
+  2; Destral
+  1; Pedra fong
+  1; Pajcha (recipient per a libacions cerimonials)
+  5; Metate
+  1; Aríbal
+  1; Orejon
+  1; Bol
+  1; Moai Tangata
+  1; Paccha
+  1; Unku
+  2; Kero decorat
+  4; Recipient trípode
+  42; Fusaiola
+  1; Destral de joc de pilota
+  1; rei miro
+  1; Cercle monolític
+  2; Manyopla de joc de pilota
+  1; Figura antropomofa
+  4; Encenser
+  2; Penjoll ornitomorf
+  1; Cadira
+  1; Fragment de teixit
+  3; Màscara
+  1; Figura masculina amb nen
+  2; Nariguera
+  1; Vas trípode
+  2; Destral del joc de pilota
+  1; Vas zoomorf
+  1; Recipient amb decoració antropomorfa
+  1; Jou zoomorf
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectRelationWrap/lido:relatedWorksWrap/lido:relatedWorkSet/lido:relatedWork/lido:displayObject/text()
+  1; semblant a: MEB 1b-233
+  1; semblant a: MEB 1b-234
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventActor/lido:actorInRole/lido:actor/lido:nameActorSet/lido:appellationValue/text()
+  1; cultura Diquís
+  9; cultura Chimú
+  1; cultura La Tolita
+  1; cultura Tlalpan
+  1; Cultura nazca B
+  1; cultura Muisca
+  4; cultura Chancay
+  1; cultura dels Andes Septentrionals
+  1; Cultura-Jama Coaque
+  3; cultura Quimbaya
+  3; cultura Tumbesina
+  1; cultura Chupícuaro
+  12; cultura Vessant Atlàntic -  Terres Altes Centrals de Costa Rica
+  19; cultura de Gran Nicoya
+  2; cultura de Teotihuacan
+  8; cultura Moche
+  4; cultura Rapanui
+  7; cultura Inca
+  27; cultura Bahía
+  23; cultura Maia
+  5; cultura Guerrero - Mezcala
+  2; no informat
+  23; cultura Manteña
+  1; cultura Olmeca
+  1; cultura Mixteca-Puebla
+  2; cultura Veraguas
+  1; Cultura Nayarit
+  2; cultura Centre de Veracruz
+  4; cultura Tumaco - Tolita
+  5; cultura de Gran Chiriquí
+  1; cultura Taina
+  5; cultura del Nazca
+  1; cultura Panzaleo
+  2; cultura Recuay
+  2; cultura Mexica-Asteca
+  1; cultures de l'Occident de Mèxic
+  1; cultures del Centre i Est d'El Salvador
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventActor/lido:actorInRole/lido:actor/lido:actorID/text()
+  1; 48116
+  5; 48115
+  1; 48077
+  1; 42449
+  5; 42282
+  1; 42384
+  1; 46095
+  1; 49100
+  3; 42383
+  4; 42460
+  2; 48078
+  3; 48155
+  1; 42260
+  2; 42442
+  2; 42441
+  1; 42372
+  4; 42374
+  1; 42357
+  5; 42355
+  1; 42404
+  23; 42338
+  8; 46083
+  23; 46495
+  1; 42398
+  1; 49099
+  2; 49098
+  1; 42361
+  1; 49097
+  27; 42177
+  2; 25609
+  4; 42244
+  7; 42302
+  9; 46075
+  19; 42369
+  1; 42347
+  1; 46235
+  1; 48095
+  12; 42325
+/lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectClassificationWrap/lido:objectWorkTypeWrap/lido:objectWorkType/lido:term/text()
+  4; figura
+  2; sonall
+  4; encenser
+  1; cadira
+  4; màscara
+  4; destral
+  2; recipient antropomòrfic
+  1; teixit, fragment
+  1; gola
+  1; camisa
+  1; ocarina
+  1; ninot
+  2; destral cerimonial
+  23; recipient decorat
+  24; figura antropomorfa
+  2; arracada del nas
+  1; macana
+  2; pectoral
+  1; atuell
+  2; vas
+  1; cascavell
+  2; orellera
+  1; motlle
+  1; bola
+  2; segell
+  3; copa
+  1; jou
+  1; adorn dels llavis
+  1; vas, recipient zoomòrfic
+  11; penjoll
+  1; mirall
+  1; amulet
+  5; pedra de moldre
+  1; figura zoomorfa
+  1; maça
+  1; escultura
+  10; recipient
+  1; coronament
+  2; manyopla
+  1; escudella
+  1; figura, figura antropomorfa
+  187; General
+  1; maça, cap
+  2; bol
+  2; recipient cefalantropomorfic
+  2; figura antropozoomorfa
+  5; recipient trípode
+  42; fusaiola
