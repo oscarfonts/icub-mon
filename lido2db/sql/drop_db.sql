@@ -1,0 +1,2 @@
+DROP DATABASE mcm;
+DROP ROLE mcm;

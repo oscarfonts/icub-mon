@@ -1,4 +1,9 @@
 -- DROP DATABASE mcm;
+-- DROP ROLE mcm;
+
+-- User
+CREATE ROLE mcm LOGIN ENCRYPTED PASSWORD 'md5e2cb82178fe76945f9eaefe00e9f7edc'
+   VALID UNTIL 'infinity';
 
 -- Database
 CREATE DATABASE mcm
@@ -7,18 +12,13 @@ CREATE DATABASE mcm
        TEMPLATE=template_postgis
        CONNECTION LIMIT=-1;
 
+\connect mcm
+
 -- Schema
 CREATE SCHEMA data;
-ALTER DATABASE mcm SET search_path = data, public;
+ALTER DATABASE mcm SET search_path=data,public;
 
--- User
-CREATE ROLE mcm LOGIN ENCRYPTED PASSWORD 'md5e2cb82178fe76945f9eaefe00e9f7edc'
-   VALID UNTIL 'infinity';
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO mcm;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA data TO mcm;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO mcm;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA data TO mcm;
-
+\connect mcm
 
 -- Table Continent
 CREATE SEQUENCE continent_id_seq;
@@ -45,17 +45,17 @@ CREATE TABLE peca (
     id_lido text NOT NULL UNIQUE,
     id_cataleg text NOT NULL UNIQUE,
     cultura int, -- NOT NULL?
-    titol text NOT NULL,
+    titol text, -- NOT NULL?
     tipus text,
     material text,
     inscripcio text,
-    data_descr text NOT NULL,
+    data_descr text, -- NOT NULL?
     data_min date, -- NOT NULL?
     data_max date, -- NOT NULL?
     mida_descr text,
-    mida_alt smallint,
-    mida_ample smallint,
-    mida_profund smallint,
+    mida_alt NUMERIC(4, 1),
+    mida_ample NUMERIC(4, 1),
+    mida_profund NUMERIC(4, 1),
     relacionat text,
     FOREIGN KEY (cultura) REFERENCES cultura(id)
 );
@@ -72,8 +72,15 @@ CREATE TABLE lloc (
 	FOREIGN KEY (peca) REFERENCES peca(id)
 );
 ALTER SEQUENCE cultura_id_seq OWNED BY lloc.id;
-SELECT AddGeometryColumn('lloc', 'geom', 4326, 'GEOMETRY', 2);
+SELECT public.AddGeometryColumn('lloc', 'geom', 4326, 'GEOMETRY', 2);
 CREATE INDEX lloc_geom_gist ON lloc USING GIST (geom);
+
+-- Role privileges
+GRANT USAGE ON SCHEMA data TO mcm;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO mcm;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA data TO mcm;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO mcm;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA data TO mcm;
 
 -- Needed after restoring "data" schema:
 -- SELECT Populate_Geometry_Columns();
