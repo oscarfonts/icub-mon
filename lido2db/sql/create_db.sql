@@ -50,8 +50,8 @@ CREATE TABLE peca (
     material text,
     inscripcio text,
     data_descr text, -- NOT NULL?
-    data_min date, -- NOT NULL?
-    data_max date, -- NOT NULL?
+    data_min int, -- NOT NULL?
+    data_max int, -- NOT NULL?
     mida_descr text,
     mida_alt NUMERIC(4, 1),
     mida_ample NUMERIC(4, 1),

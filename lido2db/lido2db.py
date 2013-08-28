@@ -121,7 +121,7 @@ for x_peca in x_peces:
 
   # Insert peca
   try:
-    cur.execute("INSERT INTO peca (id_lido, id_cataleg, cultura, titol, tipus, material, inscripcio, data_descr, data_min, data_max, mida_descr, mida_alt, mida_ample, mida_profund, relacionat) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, to_date(%s, 'YYYY'), to_date(%s, 'YYYY'), %s, %s, %s, %s, %s);",
+    cur.execute("INSERT INTO peca (id_lido, id_cataleg, cultura, titol, tipus, material, inscripcio, data_descr, data_min, data_max, mida_descr, mida_alt, mida_ample, mida_profund, relacionat) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);",
   	  [peca.id_lido, peca.id_cataleg, peca.cultura, peca.titol, peca.tipus, peca.material, peca.inscripcio, peca.data_descr, peca.data_min, peca.data_max, peca.mida_descr, peca.mida_alt, peca.mida_ample, peca.mida_profund, peca.relacionat])
     conn.commit()
     #print "Inserted Peca", peca.id_cataleg
