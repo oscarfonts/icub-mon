@@ -25,7 +25,22 @@
 	 <![endif]-->
 
 	<style>
-		#map { height: 512px; }
+		#map {
+      height: 512px;
+    }
+
+    .info {
+      padding: 6px 8px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+    .info h4 {
+      margin: 0 0 5px;
+      color: #777;
+    }
 	</style>
 
   </head>
@@ -56,7 +71,7 @@
 
       <div class="starter-template">
         <h1>Museu de Cultures del Món</h1>
-        <p class="lead">There we are. Stuff a map here, or something.</p>
+        <!--p class="lead">There we are. Stuff a map here, or something.</p-->
         <div id="map"></div>
       </div>
 
@@ -72,31 +87,95 @@
     <script>
 		var map = L.map('map').setView([0, 0], 1);
 
+    var geojson;
+
 		// add an OpenStreetMap tile layer
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
     
+    var style = {
+        color: '#0000FF',
+        weight: 1,
+        opacity: 1,
+        fillColor: '#0000FF',
+        fillOpacity: 0.6
+    };
+
+    var hoverStyle = {
+      weight: 3,
+      color: '#FF0000',
+      fillColor: '#FF0000'
+    }    
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle(hoverStyle);
+
+      if (!L.Browser.ie && !L.Browser.opera) {
+          layer.bringToFront();
+      }
+
+      info.update(layer.feature.properties);
+    }
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+      if (feature.properties) {
+        var popupString = '<div class="popup">';
+        for (var k in feature.properties) {
+          var v = feature.properties[k];
+          popupString += k + ': ' + v + '<br />';
+        }
+        popupString += '</div>';
+        layer.bindPopup(popupString, {
+          maxHeight: 200
+        });
+      }
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+    }
+
     $.ajax({
       url: "static/data/continents.geojson",
       dataType: "json"
     }).done(function(continents) {
-      L.geoJson(continents, {
-        onEachFeature: function (feature, layer) {
-          if (feature.properties) {
-            var popupString = '<div class="popup">';
-            for (var k in feature.properties) {
-              var v = feature.properties[k];
-              popupString += k + ': ' + v + '<br />';
-            }
-            popupString += '</div>';
-            layer.bindPopup(popupString, {
-              maxHeight: 200
-            });
-          }
-        }
+      geojson = L.geoJson(continents, {
+        style: style,
+        onEachFeature: onEachFeature
       }).addTo(map);
     });
+
+    var info = L.control();
+
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+        this._div.innerHTML = '<h4>Continents</h4>' +  (props ?
+            '<b>' + props.CONTINENT + '</b>'
+            : '&nbsp;');
+    };
+
+    info.addTo(map);
+
+
 	</script>
   </body>
 </html>
