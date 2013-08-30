@@ -1,181 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
   <head>
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="static/bootstrap/assets/ico/favicon.png">
-
+    <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
     <title>Museu de Cultures del Món</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="static/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="static/bootstrap/examples/starter-template/starter-template.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <link rel="stylesheet" href="static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="static/css/leaflet.css"/>
+    <link rel="stylesheet" href="static/css/icub-mcm.css"/>
     <!--[if lt IE 9]>
-      <script src="static/bootstrap/assets/js/html5shiv.js"></script>
-      <script src="static/bootstrap/assets/js/respond.min.js"></script>
+      <link rel="stylesheet" href="static/css/leaflet.ie.css"/>
+      <script src="static/js/html5shiv.js"></script>
+      <script src="static/js/respond.min.js"></script>
     <![endif]-->
-
-    <link rel="stylesheet" href="static/leaflet-0.6.4/leaflet.css" />
-	<!--[if lte IE 8]>
-	    <link rel="stylesheet" href="static/leaflet-0.6.4/leaflet.ie.css" />
-	 <![endif]-->
-
-	<style>
-		#map {
-      height: 512px;
-    }
-
-    .info {
-      padding: 6px 8px;
-      font: 14px/16px Arial, Helvetica, sans-serif;
-      background: white;
-      background: rgba(255,255,255,0.8);
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-radius: 5px;
-    }
-    .info h4 {
-      margin: 0 0 5px;
-      color: #777;
-    }
-	</style>
-
   </head>
-
   <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="#">Museu de Cultures del Món</a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <div class="container">
+      <div id="map"></div>
+    </div>
 
-      <div class="starter-template">
-        <h1>Museu de Cultures del Món</h1>
-        <!--p class="lead">There we are. Stuff a map here, or something.</p-->
-        <div id="map"></div>
-      </div>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="static/bootstrap/assets/js/jquery.js"></script>
-    <script src="static/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="static/leaflet-0.6.4/leaflet-src.js"></script>
-    <script>
-		var map = L.map('map').setView([0, 0], 1);
-
-    var geojson;
-
-		// add an OpenStreetMap tile layer
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
-    
-    var style = {
-        color: '#0000FF',
-        weight: 1,
-        opacity: 1,
-        fillColor: '#0000FF',
-        fillOpacity: 0.6
-    };
-
-    var hoverStyle = {
-      weight: 3,
-      color: '#FF0000',
-      fillColor: '#FF0000'
-    }    
-
-    function highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle(hoverStyle);
-
-      if (!L.Browser.ie && !L.Browser.opera) {
-          layer.bringToFront();
-      }
-
-      info.update(layer.feature.properties);
-    }
-
-    function resetHighlight(e) {
-      geojson.resetStyle(e.target);
-      info.update();
-    }
-
-    function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
-    }
-
-    function onEachFeature(feature, layer) {
-      if (feature.properties) {
-        var popupString = '<div class="popup">';
-        for (var k in feature.properties) {
-          var v = feature.properties[k];
-          popupString += k + ': ' + v + '<br />';
-        }
-        popupString += '</div>';
-        layer.bindPopup(popupString, {
-          maxHeight: 200
-        });
-      }
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-    }
-
-    $.ajax({
-      url: "static/data/continents.geojson",
-      dataType: "json"
-    }).done(function(continents) {
-      geojson = L.geoJson(continents, {
-        style: style,
-        onEachFeature: onEachFeature
-      }).addTo(map);
-    });
-
-    var info = L.control();
-
-    info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-        this.update();
-        return this._div;
-    };
-
-    // method that we will use to update the control based on feature properties passed
-    info.update = function (props) {
-        this._div.innerHTML = '<h4>Continents</h4>' +  (props ?
-            '<b>' + props.CONTINENT + '</b>'
-            : '&nbsp;');
-    };
-
-    info.addTo(map);
-
-
-	</script>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/leaflet-src.js"></script>
+    <script src="static/js/icub-mcm.js"></script>
   </body>
 </html>
