@@ -14,9 +14,10 @@ CREATE DATABASE mcm
 
 \connect mcm
 
--- Schema
+-- Schemas
 CREATE SCHEMA data;
-ALTER DATABASE mcm SET search_path=data,public;
+CREATE SCHEMA geo;
+ALTER DATABASE mcm SET search_path=data,geo,public;
 
 \connect mcm
 
@@ -60,27 +61,43 @@ CREATE TABLE peca (
     FOREIGN KEY (cultura) REFERENCES cultura(id)
 );
 
--- Table Lloc
-CREATE SEQUENCE lloc_id_seq;
-CREATE TABLE lloc (
-	id int NOT NULL DEFAULT nextval('lloc_id_seq') PRIMARY KEY,
-	continent int,
-	cultura int,
-	peca int,
-	FOREIGN KEY (continent) REFERENCES continent(id),
-	FOREIGN KEY (cultura) REFERENCES cultura(id),
-	FOREIGN KEY (peca) REFERENCES peca(id)
+-- Table cultura_geometry
+CREATE TABLE geo.cultura_geometry (
+	id int NOT NULL PRIMARY KEY
 );
-ALTER SEQUENCE cultura_id_seq OWNED BY lloc.id;
-SELECT public.AddGeometryColumn('lloc', 'geom', 4326, 'GEOMETRY', 2);
-CREATE INDEX lloc_geom_gist ON lloc USING GIST (geom);
+SELECT AddGeometryColumn('cultura_geometry', 'geometry', 4326, 'GEOMETRY', 2);
+CREATE INDEX cultura_geometry_gist ON cultura_geometry USING GIST (geometry);
+
+-- INSERT INTO cultura_geometry(id, geometry) VALUES (42228, ST_GeomFromText('POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))', 4326));
+
+-- Table peca_geometry
+CREATE TABLE geo.peca_geometry (
+    id int NOT NULL PRIMARY KEY
+);
+SELECT AddGeometryColumn('peca_geometry', 'geometry', 4326, 'GEOMETRY', 2);
+CREATE INDEX peca_geometry_gist ON peca_geometry USING GIST (geometry);
+
+-- View cultura_feature
+CREATE OR REPLACE VIEW geo.cultura_feature AS 
+ SELECT cultura.*, cultura_geometry.geometry FROM cultura
+ LEFT OUTER JOIN cultura_geometry
+ ON (cultura.id = cultura_geometry.id);
+
+-- View peca_feature
+CREATE OR REPLACE VIEW geo.peca_feature AS 
+ SELECT peca.*, peca_geometry.geometry FROM peca
+ LEFT OUTER JOIN peca_geometry
+ ON (peca.id = peca_geometry.id);
 
 -- Role privileges
 GRANT USAGE ON SCHEMA data TO mcm;
+GRANT USAGE ON SCHEMA geo TO mcm;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO mcm;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA data TO mcm;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA geo TO mcm;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO mcm;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA data TO mcm;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA geo TO mcm;
 
 -- Needed after restoring "data" schema:
 -- SELECT Populate_Geometry_Columns();
