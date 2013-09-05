@@ -1,1 +1,4 @@
+icub_env/
+web/.project
+web/.pydevproject
 *.pyc

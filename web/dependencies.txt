@@ -1,0 +1,7 @@
+psycopg2>=2.5.1
+Flask>=0.10.1
+SQLAlchemy>=0.8.2
+GeoAlchemy2>=0.2.1
+Shapely>=1.2.18
+Flask-SQLAlchemy>=1.0
+Flask-Restless>=0.12.0

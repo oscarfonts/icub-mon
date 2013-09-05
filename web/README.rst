@@ -1,5 +1,8 @@
-Setup Virtualenv
-----------------
+Georreferenciació de col·leccions del Museu de Cultures del Món
+===============================================================
+
+Setup Python Virtualenv
+-----------------------
 
 ::
 
@@ -13,16 +16,22 @@ Install dependencies
 
  ::
 
- pip install simplejson
- pip install psycopg2
- pip install Flask
- pip install Flask-SQLAlchemy
- pip install Flask-Restless
+pip install -r dependencies.txt
 
 
-Run debug
----------
+Run in debug mode
+-----------------
 
  ::
 
- python icub-mcm.py
+ python app.py
+
+
+Code files
+..........
+
+* app.py: Entry point. Instantiates Flask, loads config, inits components.
+* config.py: Configuration params. To be overwritten in production.
+* database.py: Create Flask-SQLAlchemy handler.
+* model.py: Database Model.
+* api.py: Uses Flask-Restless to create the REST API endpoints.
