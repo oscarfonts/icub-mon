@@ -16,7 +16,13 @@ var hoverStyle = {
   weight: 3,
   color: '#FF0000',
   fillColor: '#FF0000'
-}    
+}
+
+var selectedStyle = {
+  weight: 3,
+  color: '#00FF00',
+  fillColor: '#00FF00'
+}
 
 var geojson;
 
@@ -36,23 +42,26 @@ function resetHighlight(e) {
   info.update();
 }
 
-function zoomToFeature(e) {
-  map.fitBounds(e.target.getBounds());
+function selectFeature(e) {
+  var layer = e.target;
+  map.fitBounds(layer.getBounds());
+  map.removeLayer(geojson);
+  loadCultures(layer.feature.properties.id);
 }
 
 function onEachFeature(feature, layer) {
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
-    click: zoomToFeature
+    click: selectFeature
   });
 }
 
 $.ajax({
   url: "static/data/continents.geojson",
   dataType: "json"
-}).done(function(continents) {
-  geojson = L.geoJson(continents, {
+}).done(function(data) {
+  geojson = L.geoJson(data, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map);
@@ -68,8 +77,20 @@ info.onAdd = function (map) {
 
 info.update = function (props) {
     this._div.innerHTML = props ?
-      '<h4>Continent</h4><b>'+props.continent+'</b>' :
+      '<h4>Continent</h4><b>'+props.nom+'</b>' :
       '<h4>Continents</h4>';
 };
 
 info.addTo(map);
+
+function loadCultures(continent) {
+  $.ajax({
+    url: "static/data/africa.geojson",
+    dataType: "json"
+  }).done(function(data) {
+    geojson = L.geoJson(data, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  });
+}
