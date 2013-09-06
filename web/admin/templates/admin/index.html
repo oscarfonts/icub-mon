@@ -1,0 +1,9 @@
+{% extends "admin/layout.html" %}
+{% block body %}
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  {% if session.logged_in %}
+    <h2>You are Logged In!</h2>
+  {% else %}
+    <h2>You need to Log in</h2>
+  {% endif %}
+{% endblock %}

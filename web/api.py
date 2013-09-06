@@ -1,5 +1,5 @@
 from flask.ext.restless import APIManager
-import geojson
+from utils import geojson
 from database import db
 import model
 
