@@ -1,27 +1,31 @@
 from flask import Flask, render_template
 from database import db
 import api
-from admin.app import admin
+from admin import app as admin
 
 app = Flask(__name__)
 
 # Load configuration
 app.config.from_object('config')
 
-# Init database (& model)
+# Tweak JSON output to work in UTF8
+app.config['JSON_AS_ASCII'] = False
+
+# Database
 db.init_app(app)
 
-# Init API
-api.init_rest(app)
+# REST API
+api.create_api(app)
 
-# Only index view
+# View
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Add admin subsite
-app.register_blueprint(admin, url_prefix='/admin')
+# Admin subsite
+app.register_blueprint(admin.admin, url_prefix='/admin')
+admin.create_api(app, url_prefix='/admin/api')
 
-# Start flask, with debug flags as needed
+# Start flask
 aptana = app.config.get('DEBUG_WITH_APTANA')
 app.run(debug=app.debug, use_debugger=not(aptana), use_reloader=not(aptana))

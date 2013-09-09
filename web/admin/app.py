@@ -1,8 +1,10 @@
 from flask import Blueprint, request, session, flash, redirect, render_template, url_for
 from flask import current_app as app
+import api
 
 admin = Blueprint('admin', __name__, static_folder='static', template_folder='templates')
 
+# Views
 @admin.route('/')
 def index():
     return render_template('admin/index.html')
@@ -26,3 +28,6 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('.index'))
+
+def create_api(app, url_prefix):
+    api.create_api(app, url_prefix)

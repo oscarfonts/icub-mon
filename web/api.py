@@ -1,9 +1,9 @@
 from flask.ext.restless import APIManager
-from utils import geojson
+from utils import rest
 from database import db
 import model
 
-def init_rest(app):
+def create_api(app):
 	manager = APIManager(app, flask_sqlalchemy_db=db)
 
 	# Tweak JSON output to work in UTF8
@@ -13,7 +13,7 @@ def init_rest(app):
 		methods=['GET'],
 		results_per_page = -1,
 		postprocessors = {
-			'GET_MANY': [pagination_remover]
+			'GET_MANY': [rest.removePagination]
 		}
 	)
 
@@ -21,7 +21,7 @@ def init_rest(app):
 		methods=['GET'],
 		results_per_page = -1,
 		postprocessors = {
-			'GET_MANY': [pagination_remover]
+			'GET_MANY': [rest.removePagination]
 		}
 	)
 	
@@ -29,35 +29,7 @@ def init_rest(app):
 		methods=['GET'],
 		results_per_page = -1,
 		postprocessors = {
-			'GET_MANY': [pagination_remover]
-		}
-	)
-
-	manager.create_api(model.Cultura_geometry,
-		methods=['GET','PUT','POST','DELETE'],
-		results_per_page = -1,
-		preprocessors = {
-			'PUT_SINGLE': [fromGeoJSON],
-			'POST':  [fromGeoJSON]
-		},
-		postprocessors = {
-			'GET_SINGLE': [toGeoJSON],
-			'GET_MANY': [toGeoJSON],
-			'POST': [toGeoJSON]
-		}
-	)
-
-	manager.create_api(model.Peca_geometry,
-		methods=['GET','PUT','POST','DELETE'],
-		results_per_page = -1,
-		preprocessors = {
-			'PUT_SINGLE': [fromGeoJSON],
-			'POST':  [fromGeoJSON]
-		},
-		postprocessors = {
-			'GET_SINGLE': [toGeoJSON],
-			'GET_MANY': [toGeoJSON],
-			'POST': [toGeoJSON]
+			'GET_MANY': [rest.removePagination]
 		}
 	)
 
@@ -65,8 +37,8 @@ def init_rest(app):
 		methods=['GET'],
 		results_per_page = -1,
 		postprocessors = {
-			'GET_SINGLE': [toGeoJSON],
-			'GET_MANY': [toGeoJSON]
+			'GET_SINGLE': [rest.toGeoJSON],
+			'GET_MANY': [rest.toGeoJSON]
 		}
 	)
 
@@ -74,23 +46,7 @@ def init_rest(app):
 		methods=['GET'],
 		results_per_page = -1,
 		postprocessors = {
-			'GET_SINGLE': [toGeoJSON],
-			'GET_MANY': [toGeoJSON]
+			'GET_SINGLE': [rest.toGeoJSON],
+			'GET_MANY': [rest.toGeoJSON]
 		}
 	)
-
-def pagination_remover(result=None, **kw):
-	if result:
-		result.pop("num_results", None)
-		result.pop("page", None)
-		result.pop("total_pages", None)
-
-def fromGeoJSON(instance_id=None, data=None, **kw):
-	row = geojson.loads(data, 4326)
-	data.clear()
-	data.update(row)
-
-def toGeoJSON(result=None, **kw):
-	doc = geojson.dumps(result)
-	result.clear()
-	result.update(doc)
