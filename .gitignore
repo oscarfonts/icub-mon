@@ -1,4 +1,5 @@
 icub_env/
 web/.project
+web/.settings/
 web/.pydevproject
 *.pyc

@@ -26,6 +26,7 @@ def index():
 app.register_blueprint(admin.admin, url_prefix='/admin')
 admin.create_api(app, url_prefix='/admin/api')
 
-# Start flask
-aptana = app.config.get('DEBUG_WITH_APTANA')
-app.run(debug=app.debug, use_debugger=not(aptana), use_reloader=not(aptana))
+# Start flask as standalone
+if __name__ == '__main__':
+    aptana = app.config.get('DEBUG_WITH_APTANA')
+    app.run(debug=app.debug, use_debugger=not(aptana), use_reloader=not(aptana))

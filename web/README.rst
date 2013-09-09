@@ -27,11 +27,34 @@ Run in debug mode
  python app.py
 
 
-Code files
-..........
+Run in production (Apache + mod_wsgi)
+-------------------------------------
 
-* app.py: Entry point. Instantiates Flask, loads config, inits components.
-* config.py: Configuration params. To be overwritten in production.
-* database.py: Create Flask-SQLAlchemy handler.
-* model.py: Database Model.
-* api.py: Uses Flask-Restless to create the REST API endpoints.
+Add the following directives to ``httpd.conf``::
+
+        Alias /icub/static/ /<path_to_app>/static/
+        <Directory /<path_to_app>/static/>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+        WSGIScriptAlias /icub /<path_to_app>/app.wsgi
+        <Directory /<path_to_app>/app.wsgi>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+        <Location "/icub">
+             Order deny,allow
+             Allow from all
+             RewriteEngine on
+             RewriteCond %{REQUEST_URI} ^/icub$
+             RewriteRule ^(.*)$ %{REQUEST_URI}/ [R=301,L]
+             #RewriteRule  !^.*/$  /icub/  [R]
+        </Location>
+
+        ErrorLog /<path_to_logs_dir>/py_errors.log
+        CustomLog /<path_to_logs_dir>/py_access.log combined
+        LogLevel debug  #debug, info, notice, warn, error, crit, alert, emerg
+
+**IMPORTANT:** Edit ``config.py``, switch debug mode to ``False``, and edit connection string and secret key.

@@ -1,4 +1,4 @@
-from flask.ext.restless import APIManager
+from flask_restless import APIManager
 from utils import rest
 from database import db
 import model

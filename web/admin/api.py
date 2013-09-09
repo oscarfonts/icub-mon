@@ -1,4 +1,4 @@
-from flask.ext.restless import APIManager, ProcessingException
+from flask_restless import APIManager, ProcessingException
 from flask import session
 from utils import rest
 from database import db
