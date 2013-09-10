@@ -6,6 +6,7 @@ Setup Python Virtualenv
 
 ::
 
+ sudo apt-get install python-pip
  sudo pip install virtualenv
  virtualenv icub_env
  source icub_env/bin/activate
@@ -30,7 +31,7 @@ Run in debug mode
 Run in production (Apache + mod_wsgi)
 -------------------------------------
 
-Add the following directives to ``httpd.conf``::
+#. Add the following directives to ``httpd.conf``::
 
         Alias /icub/static/ /<path_to_app>/static/
         <Directory /<path_to_app>/static/>
@@ -57,4 +58,6 @@ Add the following directives to ``httpd.conf``::
         CustomLog /<path_to_logs_dir>/py_access.log combined
         LogLevel debug  #debug, info, notice, warn, error, crit, alert, emerg
 
-**IMPORTANT:** Edit ``config.py``, switch debug mode to ``False``, and edit connection string and secret key.
+#. Edit ``app.wsgi`` and change the paths.
+
+#. Edit ``config.py``, switch debug mode to ``False``, and edit connection string and secret key.
