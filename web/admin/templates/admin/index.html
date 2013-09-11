@@ -2,8 +2,60 @@
 {% block body %}
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   {% if session.logged_in %}
-    <h2>You are Logged In!</h2>
+	<div class="row">
+	  <div class="col-sm-3">
+      	
+      	<ul class="nav contents">
+			<!--li class="active">
+				<a href="#1">Àfrica</a>
+				<ul class="nav">
+					<li class="active"><a href="#1/42228">Cultura Edo</a>
+						<ul class="nav">
+							<li class="active"><a href="#1/42228/1">Peça 1</a></li>
+							<li><a href="#1/42228/2">Peça 2</a></li>
+							<li><a href="#1/42228/3">Peça 3</a></li>
+						</ul>
+					</li>
+					<li><a href="#1/42228">Cultura 2</a></li>
+					<li><a href="#1/42228">Cultura 3</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#2">Amèrica</a>
+				<ul class="nav">
+					<li><a href="#1/42228">Cultura 4</a></li>
+					<li><a href="#1/42228">Cultura 5</a></li>
+					<li><a href="#1/42228">Cultura 6</a></li>
+				</ul>
+			</li>
+			<li>
+			<a href="#3">Àsia</a>
+				<ul class="nav">
+					<li><a href="#1/42228">Cultura 7</a></li>
+					<li><a href="#1/42228">Cultura 8</a></li>
+					<li><a href="#1/42228">Cultura 9</a></li>
+				</ul>
+			</li-->
+		</ul>
+	  </div>
+	  <div class="col-sm9">
+      	<div id="map"></div>
+	  </div>
+	</div>
   {% else %}
-    <h2>You need to Log in</h2>
+      <h2>You need to <a href="login">Log in</a></h2>
   {% endif %}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="../static/css/leaflet.css"/>
+    <link rel="stylesheet" href="static/admin.css"/>
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="../static/css/leaflet.ie.css"/>
+    <![endif]-->
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/leaflet-src.js"></script>
+    <script src="static/admin.js"></script>
 {% endblock %}

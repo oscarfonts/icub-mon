@@ -1,18 +1,49 @@
-body            { font-family: sans-serif; background: #eee; }
-a, h1, h2       { color: #377ba8; }
-h1, h2          { font-family: 'Georgia', serif; margin: 0; }
-h1              { border-bottom: 2px solid #eee; }
-h2              { font-size: 1.2em; }
+#map {
+  height: 480px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: 1px solid #bbb;
+}
 
-.page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
-                  padding: 0.8em; background: white; }
-.entries        { list-style: none; margin: 0; padding: 0; }
-.entries li     { margin: 0.8em 1.2em; }
-.entries li h2  { margin-left: -1em; }
-.add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
-.add-entry dl   { font-weight: bold; }
-.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
-                  margin-bottom: 1em; background: #fafafa; }
-.flash          { background: #cee5F5; padding: 0.5em;
-                  border: 1px solid #aacbe2; }
-.error          { background: #f0d6d6; padding: 0.5em; }
+.contents {
+    background-color: #F7F5FA;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 #FFFFFF;
+    margin-bottom: 15px;
+}
+.contents > li > a {
+    color: #716B7A;
+    display: block;
+    padding: 5px 20px;
+}
+.contents .nav > li > a {
+    color: #716B7A;
+    display: block;
+}
+.contents > li > a:hover, .contents > li > a:focus {
+    background-color: #E5E3E9;
+    border-right: 1px solid #DBD8E0;
+    text-decoration: none;
+}
+.contents .nav > .active > a, .contents > .active > a, .contents > .active:hover > a, .contents > .active:focus > a {
+    background-color: rgba(0, 0, 0, 0);
+    border-right: 1px solid #563D7C;
+    color: #563D7C;
+    font-weight: bold;
+}
+.contents .nav {
+    //display: none;
+    margin-bottom: 8px;
+}
+.contents .nav > li > a {
+    font-size: 90%;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    padding-top: 3px;
+}
+.contents .nav .nav > li > a {
+    font-size: 80%;
+    padding-bottom: 3px;
+    padding-left: 50px;
+    padding-top: 3px;
+}

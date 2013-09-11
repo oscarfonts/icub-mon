@@ -19,7 +19,6 @@ def login():
             error = 'Invalid password'
         else:
             session['logged_in'] = True
-            flash('You were logged in')
             return redirect(url_for('.index'))
     return render_template('admin/login.html', error=error)
 

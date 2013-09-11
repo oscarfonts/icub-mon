@@ -1,17 +1,45 @@
-<!doctype html>
-<title>Culture Mapper</title>
-<link rel=stylesheet type=text/css href="{{ url_for('.static', filename='admin.css') }}">
-<div class=page>
-  <h1>Culture Mapper</h1>
-  <div class=metanav>
-  {% if not session.logged_in %}
-    <a href="{{ url_for('.login') }}">log in</a>
-  {% else %}
-    <a href="{{ url_for('.logout') }}">log out</a>
-  {% endif %}
-  </div>
-  {% for message in get_flashed_messages() %}
-    <div class=flash>{{ message }}</div>
-  {% endfor %}
-  {% block body %}{% endblock %}
-</div>
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon"/>
+    <title>Editor del MCM</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+	{% block styles %}{% endblock %}
+    <!--[if lt IE 9]>
+      <script src="../static/js/html5shiv.js"></script>
+      <script src="../static/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+    	<div class="container">
+	        <div class="navbar-header">
+	          <a class="navbar-brand" href="#">Editor del MCM</a>
+	        </div>
+			<ul 	class="nav navbar-nav navbar-right">
+			{% if not session.logged_in %}
+			    <li><a href="{{ url_for('.login') }}">log in</a></li>
+			{% else %}
+			    <li><a href="{{ url_for('.logout') }}">log out</a></li>
+			{% endif %}
+			</ul>
+		</div>
+    </nav>
+
+	<div class="container">
+		{% for message in get_flashed_messages() %}
+		  <div class="alert alert-info">
+		  	{{ message }}
+		  </div>
+		{% endfor %}
+		{% block body %}{% endblock %}
+	</div>
+
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+	{% block scripts %}{% endblock %}
+  </body>
+</html>

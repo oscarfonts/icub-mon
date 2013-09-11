@@ -29,11 +29,6 @@ var styles = {
         weight: 3,
         color: '#FF0000',
         fillColor: '#FF0000'
-    },
-    selected: {
-        weight: 3,
-        color: '#00FF00',
-        fillColor: '#00FF00'
     }
 };
 
@@ -52,13 +47,20 @@ function loadData(type, id) {
                 if (mapData) map.removeLayer(mapData);
                 mapData = newData;
                 newData.addTo(map);
-                map.fitBounds(mapData.getBounds());
+                if (type == "CONTINENTS")
+                    map.setView([40, 0], 2);
+                else
+                    map.fitBounds(newData.getBounds());
                 mapStatus = {};
                 mapStatus[type] = id | true;
             } else {
                 // TODO
-                alert ("No s'hhi an trobat " + DATA_TYPES[type].name);
+                var hash = location.hash.substr(1).split("/");
+                hash.pop();
+                location.hash = hash.join("/");
+                alert ("No s'hi han trobat " + DATA_TYPES[type].name);
             }
+            info.update();
         });
     }
 }
@@ -116,26 +118,32 @@ function selectFeature(e) {
 }
 
 /* Info Control */
-var info = L.control();
-
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info');
-    this.update();
-    return this._div;
-};
-
-info.update = function (properties) {
-    var html = "";
-    if (!mapStatus || mapStatus.CONTINENTS) {
-        html += "<h4>" + DATA_TYPES["CONTINENTS"].name + "</h4>";
-    } else if (mapStatus.CULTURES) {
-        html += "<h4>" + DATA_TYPES["CULTURES"].name + "</h4>";
-    } else if (mapStatus.ITEMS) {
-        html += "<h4>" + DATA_TYPES["ITEMS"].name + "</h4>";
+L.Control.Info = L.Control.extend({
+    options: {
+        position: 'topright'
+    },
+    onAdd: function (map) {
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+    },
+    update: function (properties) {
+        var html = "";
+        if (!mapStatus || mapStatus.CONTINENTS) {
+            html += "<h4>" + DATA_TYPES["CONTINENTS"].name + "</h4>";
+        } else if (mapStatus.CULTURES) {
+            html += "<h4>" + DATA_TYPES["CULTURES"].name + "</h4>";
+        } else if (mapStatus.ITEMS) {
+            html += "<h4>" + DATA_TYPES["ITEMS"].name + "</h4>";
+        }
+        this._div.innerHTML = properties ?
+            html + '<b>'+properties.nom+'</b>' :
+            html;
     }
-    this._div.innerHTML = properties ?
-      html + '<b>'+properties.nom+'</b>' :
-      html;
+});
+
+L.control.info = function (options) {
+    return new L.Control.Info(options);
 };
 
 /* Instantiate map */
@@ -154,14 +162,14 @@ var map = L.map('map', {
     layers: [ride]
     });
 
+var info = L.control.info().addTo(map);
+
 L.control.layers({
     "Ride": ride,
     "Minimal": minimal,
     "Midnight": midnight,
     "Pale": pale,
     "Fresh": fresh
-}).addTo(map);
-
-info.addTo(map);
+},{},{position: 'topleft'}).addTo(map);
 
 readStatusFromHash();
