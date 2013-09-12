@@ -1,5 +1,3 @@
-var mapData = null;
-
 var WORLD     = 0,
     CONTINENT = 1,
     CULTURE   = 2,
@@ -11,6 +9,23 @@ var FEATURE_API = [
     'api/peca_feature?q={"filters":[{"name":"cultura","op":"==","val":%ID%}]}',
     'api/peca_feature/%ID%'
 ];
+
+var mapData = null;
+
+var styles = {
+    normal: {
+        color: '#AA8800',
+        weight: 2,
+        opacity: 1,
+        fillColor: '#AA8800',
+        fillOpacity: 0.6
+    },    
+    hover: {
+        weight: 2,
+        color: '#CCFF00',
+        fillColor: '#CCFF00'
+    }
+};
 
 var status = new function () {
     this.get = function() {
@@ -31,21 +46,6 @@ var status = new function () {
         ids.pop();
         location.hash = ids.join("/");
     };
-};
-
-var styles = {
-    normal: {
-        color: '#0000FF',
-        weight: 1,
-        opacity: 1,
-        fillColor: '#0000FF',
-        fillOpacity: 0.6
-    },    
-    hover: {
-        weight: 3,
-        color: '#FF0000',
-        fillColor: '#FF0000'
-    }
 };
 
 function loadData(level, id) {
@@ -246,28 +246,37 @@ L.control.info = function (options) {
 
 /* Instantiate map */
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/f9b48b21a87048bfb118148491d22ec5/{styleId}/256/{z}/{x}/{y}.png',
-cloudmadeAttribution = 'Map data &copy; OpenStreetMap contributors, imagery &copy; CloudMade';
-var ride = L.tileLayer(cloudmadeUrl, {styleId: 1714, attribution: cloudmadeAttribution});
-    minimal = L.tileLayer(cloudmadeUrl, {styleId: 22677, attribution: cloudmadeAttribution}),
+cloudmadeAttribution = 'OpenStreetMap | CloudMade';
+mapboxAttribution = 'OpenStreetMap | MapBox';
+var ride = L.tileLayer(cloudmadeUrl, {styleId: 1714, attribution: cloudmadeAttribution}),
+    //minimal = L.tileLayer(cloudmadeUrl, {styleId: 22677, attribution: cloudmadeAttribution}),
     midnight = L.tileLayer(cloudmadeUrl, {styleId: 999, attribution: cloudmadeAttribution}),
-    pale = L.tileLayer(cloudmadeUrl, {styleId: 998, attribution: cloudmadeAttribution}),
-    fresh = L.tileLayer(cloudmadeUrl, {styleId: 997, attribution: cloudmadeAttribution}); 
+    //pale = L.tileLayer(cloudmadeUrl, {styleId: 998, attribution: cloudmadeAttribution}),
+    //fresh = L.tileLayer(cloudmadeUrl, {styleId: 997, attribution: cloudmadeAttribution}),
+    mapbox = L.tileLayer('http://a.tiles.mapbox.com/v3/oscarfonts.map-1mujgtmu/{z}/{x}/{y}.png', {attribution: mapboxAttribution}),
+      //Aerial, AerialWithLabels, Birdseye, BirdseyeWithLabels, Road
+    bing_roads = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'Road', culture: 'es-ES'}),
+    bing_aerial = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'AerialWithLabels', culture: 'es-ES'}); 
 
 var map = L.map('map', {
-    center: [0, 0],
-    zoom: 0,
+    center: [40, 0],
+    zoom: 2,
+    maxZoom: 13,
     //maxBounds: [[-90, -180], [90, 180]],
-    layers: [ride]
+    layers: [mapbox]
     });
 
 var info = L.control.info().addTo(map);
 
 L.control.layers({
+    "MapBox": mapbox,
+    "Aerial": bing_aerial,
+    "Roads": bing_roads,
     "Ride": ride,
-    "Minimal": minimal,
-    "Midnight": midnight,
-    "Pale": pale,
-    "Fresh": fresh
+    "Midnight": midnight
+    //"Minimal": minimal,
+    //"Pale": pale,
+    //"Fresh": fresh
 },{},{position: 'bottomright', collapsed: false}).addTo(map);
 
 load();
