@@ -12,26 +12,14 @@ var FEATURE_API = [
     'api/peca_feature/%ID%'
 ];
 
-var LABEL_API = [
-    '',                                               // "world"
-    'http://127.0.0.1:5000/api/continent/%ID%',       // nom
-    'http://127.0.0.1:5000/api/cultura_feature/%ID%', // properties.nom
-    'http://127.0.0.1:5000/api/peca_feature/%ID%'     // properties.titol
-];
-
-var labels = [];
-
 var status = new function () {
-    // TODO labels still not working **AT ALL**
-    this.labels = ["Món"];
     this.get = function() {
         return location.hash.match(/(\d+)/g) || [];
     };
     this.level = function() {
         return this.get().length;
     };
-    this.push = function(id, label) {
-        this.labels.push(label);
+    this.push = function(id) {
         if (this.get().length == 0) {
             location.hash = id;
         } else if (this.get().length < 3) {
@@ -39,15 +27,9 @@ var status = new function () {
         }
     };
     this.pop = function() {
-        labels = this.labels;
-        labels.pop();
-        this.labels = labels;
         ids = this.get();
         ids.pop();
         location.hash = ids.join("/");
-    };
-    this.label = function(level) {
-        return this.labels[level];
     };
 };
 
@@ -103,16 +85,20 @@ function buildBreadcrumb() {
     ids = status.get();
     level = status.level();
     if (level > WORLD) {
-        html = '<li class="active">'+status.labels[level]+'</li>';
-        while (ids.length > 1) {
+        id = ids.pop();
+        html = '<li class="active">'+labels.data[level][id]+'</li>';
+        while (ids.length > 0) {
+            hash = ids.join("/");
+            level = ids.length;
             id = ids.pop();
-            html = '<li><a href="#'+ids.join("/")+'">'+status.labels[ids.length]+'</a></li>' + html;
+            html = '<li><a href="#'+hash+'">'+labels.data[level][id]+'</a></li>' + html;
         }
-        html = '<li class="head"><a href="#">'+status.labels[WORLD]+'</a></li>' + html;
+        html = '<li class="head"><a href="#">'+labels.data[WORLD]+'</a></li>' + html;
     } else {
-        html = '<li class="head">'+status.labels[WORLD]+'</li>';
+        html = '<li class="head">'+labels.data[WORLD]+'</li>';
     }
     $("#breadcrumb").html(html);
+    info.update();
 }
 
 $(window).bind('hashchange', function(e) {
@@ -121,7 +107,61 @@ $(window).bind('hashchange', function(e) {
 
 function load() {
     loadData(status.level(), status.get().pop());
-    buildBreadcrumb();
+    if (!labels.ready()) {
+        labels.load(buildBreadcrumb);
+    } else {
+        buildBreadcrumb();
+    }
+};
+
+var labels = new function() {
+    this.API = [
+        '',              // "world"
+        'api/continent', // nom
+        'api/cultura',   // properties.nom
+        'api/peca'       // properties.titol
+    ];
+    this.data = [];
+    this.loaded = 0;
+    this.ready = function() {
+        return this.loaded == 3;
+    };
+    this.load = function(callback) {
+        this.data[WORLD] = "Món";
+        $.ajax({
+            url: this.API[CONTINENT],
+            dataType: "json"
+        }).done(function(response) {
+            labels.data[CONTINENT] = [];
+            for (i in response.objects) {
+                labels.data[CONTINENT][response.objects[i].id] = response.objects[i].nom;
+            }
+            labels.loaded++;
+            if(labels.ready) {callback();};
+        });
+        $.ajax({
+            url: this.API[CULTURE],
+            dataType: "json"
+        }).done(function(response) {
+            labels.data[CULTURE] = [];
+            for (i in response.objects) {
+                labels.data[CULTURE][response.objects[i].id] = response.objects[i].nom;
+            }
+            labels.loaded++;
+            if(labels.ready) {callback();};
+        });
+        $.ajax({
+            url: this.API[ITEM],
+            dataType: "json"
+        }).done(function(response) {
+            labels.data[ITEM] = [];
+            for (i in response.objects) {
+                labels.data[ITEM][response.objects[i].id] = response.objects[i].titol;
+            }
+            labels.loaded++;
+            if(labels.ready) {callback();};
+        });
+    };
 };
 
 function bindFeatureEvents(feature, layer) {
@@ -151,19 +191,52 @@ function resetHighlight(e) {
 function selectFeature(e) {
     var feature = e.target.feature;
     var id = feature.id || feature.properties.id;
-    var name = feature.properties.nom || feature.properties.titol;
-    status.push(id, name);
+    status.push(id);
 }
 
 /* Info Control */
 L.Control.Info = L.Control.extend({
     onAdd: function (map) {
         this._div = L.DomUtil.create('div', 'info');
-        //this.update();
+        this.update();
         return this._div;
     },
     update: function (properties) {
-        // TODO destroy this or do something useful
+        var heading = "",
+            content = "";
+        switch(status.level()) {
+            case WORLD:
+                heading = "Continents del Món";
+                content = properties ? properties.nom : "";
+                break;
+            case CONTINENT:
+                if (labels.ready())
+                    heading = "Cultures d'" + labels.data[CONTINENT][status.get()[0]];
+                else
+                    heading = "Cultura";
+                content = properties ? properties.nom : "";
+                break;
+            case CULTURE:
+                if (labels.ready())
+                    heading = "Peces de la " + labels.data[CULTURE][status.get()[1]];
+                else
+                    heading = "Peça";
+                content = properties ? properties.titol : "";
+                break;
+            case ITEM:
+                heading = "Detalls de la peça";
+                if (mapData) {
+                    heading = labels.data[ITEM][status.get()[2]];
+                    properties = mapData.getLayers()[0].feature.properties;
+                    if (properties) {
+                        content = "";
+                        for (i in properties) {
+                            content += "<b>" + i + ":</b> " + properties[i] + "<br/>";
+                        }
+                    }
+                }
+        };
+        this._div.innerHTML = "<h4>" + heading + "</h4>" + content;
     }
 });
 
@@ -195,6 +268,6 @@ L.control.layers({
     "Midnight": midnight,
     "Pale": pale,
     "Fresh": fresh
-},{},{position: 'topleft'}).addTo(map);
+},{},{position: 'bottomright', collapsed: false}).addTo(map);
 
 load();
