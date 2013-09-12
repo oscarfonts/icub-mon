@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon"/>
-    <title>Museu de Cultures del Món</title>
+    <title>Museu de les Cultures del Món</title>
     <link rel="stylesheet" href="static/css/bootstrap.css"/>
     <link rel="stylesheet" href="static/css/leaflet.css"/>
     <link rel="stylesheet" href="static/css/icub-mcm.css"/>
@@ -16,16 +16,29 @@
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-inverse">
-      <div class="container">
+  	<div class="container">
+      <div class="navbar navbar-inverse">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Museu de Cultures del Món</a>
+          <a class="navbar-brand" href="#">
+          	<img src="http://barcelonacultura.bcn.cat/sites/all/themes/canalcultura/images/logo_bn.png"/>
+          	<span style="padding-left:10px;">Museu de les Cultures del Món</span>
+          	</a>
         </div>
       </div>
     </div>
-
+    
     <div class="container">
+
+      <ol id="breadcrumb" class="breadcrumb">
+	    <li class="head"><a href="#">Món</a></li>
+	    <li><a href="#1">Àfrica</a></li>
+	    <li><a href="#1/42228">cultura Edo, regne de Benín</a></li>
+	    <li class="active">Placa decorativa</li>
+	    <li class="next">Next...</li>
+	  </ol>
+
       <div id="map"></div>
+
     </div>
 
     <script src="static/js/jquery.js"></script>

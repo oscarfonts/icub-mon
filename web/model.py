@@ -4,13 +4,13 @@ from geoalchemy2 import Geometry
 class Continent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.Unicode)
-    cultures = db.relationship('Cultura')
+    #cultures = db.relationship('Cultura')
 
 class Cultura(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.Unicode)
     continent = db.Column(db.Integer, db.ForeignKey("continent.id"))
-    peces = db.relationship('Peca')
+    #peces = db.relationship('Peca')
 
 class Peca(db.Model):
     id = db.Column(db.Integer, primary_key=True)
