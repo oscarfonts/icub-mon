@@ -27,7 +27,8 @@ var styles = {
     }
 };
 
-var status = new function () {
+var viewStatus = new function() {
+    this.kk = "";
     this.get = function() {
         return location.hash.match(/(\d+)/g) || [];
     };
@@ -68,7 +69,7 @@ function loadData(level, id) {
                 else
                     map.fitBounds(newData.getBounds());
             } else {
-                status.pop();
+                viewStatus.pop();
                 alert ("No s'hi han trobat elements");
             }
             info.update();
@@ -82,8 +83,8 @@ function buildBreadcrumb() {
     // <li><a href="#1/42228">cultura Edo, regne de Benín</a></li>
     // <li class="active">Placa decorativa</li>
     // <li class="next">Next...</li>
-    ids = status.get();
-    level = status.level();
+    ids = viewStatus.get();
+    level = viewStatus.level();
     if (level > WORLD) {
         id = ids.pop();
         html = '<li class="active">'+labels.data[level][id]+'</li>';
@@ -106,7 +107,7 @@ $(window).bind('hashchange', function(e) {
 });
 
 function load() {
-    loadData(status.level(), status.get().pop());
+    loadData(viewStatus.level(), viewStatus.get().pop());
     if (!labels.ready()) {
         labels.load(buildBreadcrumb);
     } else {
@@ -137,7 +138,7 @@ var labels = new function() {
                 labels.data[CONTINENT][response.objects[i].id] = response.objects[i].nom;
             }
             labels.loaded++;
-            if(labels.ready) {callback();};
+            if(labels.ready()) {callback();};
         });
         $.ajax({
             url: this.API[CULTURE],
@@ -148,7 +149,7 @@ var labels = new function() {
                 labels.data[CULTURE][response.objects[i].id] = response.objects[i].nom;
             }
             labels.loaded++;
-            if(labels.ready) {callback();};
+            if(labels.ready()) {callback();};
         });
         $.ajax({
             url: this.API[ITEM],
@@ -159,7 +160,7 @@ var labels = new function() {
                 labels.data[ITEM][response.objects[i].id] = response.objects[i].titol;
             }
             labels.loaded++;
-            if(labels.ready) {callback();};
+            if(labels.ready()) {callback();};
         });
     };
 };
@@ -191,7 +192,7 @@ function resetHighlight(e) {
 function selectFeature(e) {
     var feature = e.target.feature;
     var id = feature.id || feature.properties.id;
-    status.push(id);
+    viewStatus.push(id);
 }
 
 /* Info Control */
@@ -204,21 +205,21 @@ L.Control.Info = L.Control.extend({
     update: function (properties) {
         var heading = "",
             content = "";
-        switch(status.level()) {
+        switch(viewStatus.level()) {
             case WORLD:
                 heading = "Continents del Món";
                 content = properties ? properties.nom : "";
                 break;
             case CONTINENT:
                 if (labels.ready())
-                    heading = "Cultures d'" + labels.data[CONTINENT][status.get()[0]];
+                    heading = "Cultures d'" + labels.data[CONTINENT][viewStatus.get()[0]];
                 else
                     heading = "Cultura";
                 content = properties ? properties.nom : "";
                 break;
             case CULTURE:
                 if (labels.ready())
-                    heading = "Peces de la " + labels.data[CULTURE][status.get()[1]];
+                    heading = "Peces de la " + labels.data[CULTURE][viewStatus.get()[1]];
                 else
                     heading = "Peça";
                 content = properties ? properties.titol : "";
@@ -226,15 +227,21 @@ L.Control.Info = L.Control.extend({
             case ITEM:
                 heading = "Detalls de la peça";
                 if (mapData) {
-                    heading = labels.data[ITEM][status.get()[2]];
+                    ids = viewStatus.get();
+                    heading = labels.data[ITEM][ids[2]];
                     properties = mapData.getLayers()[0].feature.properties;
+                    content = "";
                     if (properties) {
-                        content = "";
-                        for (i in properties) {
-                            content += "<b>" + i + ":</b> " + properties[i] + "<br/>";
+                        if (labels.ready()) {
+                            content += "<b>" + labels.data[CULTURE][ids[1]] + "</b> (" + labels.data[CONTINENT][ids[0]] + ")<br/><br/>";
                         }
+                        content += '<img class="thumbnail center" src="static/img/foto.png" alt="fotografia de la peça"/><br/>';
+                        content += "Data: " + properties.data_descr + "<br/>";
+                        content += properties.material + "<br/>";
+                        content += "Mides: " + properties.mida_descr + "<br/><br/>";
                     }
                 }
+                break;
         };
         this._div.innerHTML = "<h4>" + heading + "</h4>" + content;
     }

@@ -14,9 +14,9 @@ def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
-            error = 'Invalid username'
+            error = 'Usuari incorrecte'
         elif request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid password'
+            error = 'Password incorrecte'
         else:
             session['logged_in'] = True
             return redirect(url_for('.index'))
@@ -25,7 +25,7 @@ def login():
 @admin.route('/logout')
 def logout():
     session.pop('logged_in', None)
-    flash('You were logged out')
+    flash('Heu sortit')
     return redirect(url_for('.index'))
 
 def create_api(app, url_prefix):

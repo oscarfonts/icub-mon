@@ -21,9 +21,9 @@
 	        </div>
 			<ul 	class="nav navbar-nav navbar-right">
 			{% if not session.logged_in %}
-			    <li><a href="{{ url_for('.login') }}">log in</a></li>
+			    <li><a href="{{ url_for('.login') }}">entrar</a></li>
 			{% else %}
-			    <li><a href="{{ url_for('.logout') }}">log out</a></li>
+			    <li><a href="{{ url_for('.logout') }}">sortir</a></li>
 			{% endif %}
 			</ul>
 		</div>
