@@ -100,7 +100,7 @@ function updateTOC(type, id, features) {
         hash = el.attr("href");
         for (i in features) {
             feature = features[i];
-            nom = feature.properties.nom;
+            nom = feature.properties.nom + "(" + feature.id + ")";
             fid = feature.id | feature.properties.id;
             stuff += '<li><a href="'+hash+"/"+fid+'">'+nom+'</a></li>';
         }
@@ -116,7 +116,7 @@ function updateTOC(type, id, features) {
         hash = el.attr("href");
         for (i in features) {
             feature = features[i];
-            nom = feature.properties.titol;
+            nom = feature.properties.num_registre;
             fid = feature.id | feature.properties.id;
             stuff += '<li><a href="'+hash+"/"+fid+'">'+nom+'</a></li>';
         }
