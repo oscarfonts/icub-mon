@@ -14,21 +14,13 @@ class Cultura(db.Model):
 
 class Peca(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_lido = db.Column(db.Unicode, unique=True)
-    id_cataleg = db.Column(db.Unicode, unique=True)
+    num_registre = db.Column(db.Unicode, unique=True)
+    any_inici = db.Column(db.Integer)
+    any_final = db.Column(db.Integer)
+    datacio = db.Column(db.Unicode)
     cultura = db.Column(db.Integer, db.ForeignKey("cultura.id"))
-    titol = db.Column(db.Unicode)
-    tipus = db.Column(db.Unicode)
-    material = db.Column(db.Unicode)
-    inscripcio = db.Column(db.Unicode)
-    data_descr = db.Column(db.Unicode)
-    data_min = db.Column(db.Integer)
-    data_max = db.Column(db.Integer)
-    mida_descr = db.Column(db.Unicode)
-    mida_alt = db.Column(db.Numeric(4, 1))
-    mida_ample = db.Column(db.Numeric(4, 1))
-    mida_profund = db.Column(db.Numeric(4, 1))
-    relacionat = db.Column(db.Unicode)
+    procedencia = db.Column(db.Unicode)
+    precisions_procedencia = db.Column(db.Unicode)
 
 class Cultura_geometry(db.Model):
     id = db.Column(db.Integer, primary_key=True)

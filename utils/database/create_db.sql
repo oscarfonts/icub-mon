@@ -24,7 +24,7 @@ ALTER DATABASE mcm SET search_path=data,geo,public;
 -- Table Continent
 CREATE SEQUENCE continent_id_seq;
 CREATE TABLE continent (
-    id int NOT NULL DEFAULT nextval('continent_id_seq') PRIMARY KEY,
+    id integer NOT NULL DEFAULT nextval('continent_id_seq') PRIMARY KEY,
     nom text NOT NULL
 );
 ALTER SEQUENCE continent_id_seq OWNED BY continent.id;
@@ -32,38 +32,60 @@ ALTER SEQUENCE continent_id_seq OWNED BY continent.id;
 -- Table Cultura
 CREATE SEQUENCE cultura_id_seq;
 CREATE TABLE cultura (
-    id int NOT NULL DEFAULT nextval('cultura_id_seq') PRIMARY KEY,
-    continent int NOT NULL,
+    id integer NOT NULL PRIMARY KEY,
+    continent integer NOT NULL,
     nom text NOT NULL,
     FOREIGN KEY (continent) REFERENCES continent(id)
 );
-ALTER SEQUENCE cultura_id_seq OWNED BY cultura.id;
+
+-- Old Table Cultura (from LIDO imports - uses seq as id)
+--CREATE SEQUENCE cultura_id_seq;
+--CREATE TABLE cultura (
+--    id int NOT NULL DEFAULT nextval('cultura_id_seq') PRIMARY KEY,
+--    continent int NOT NULL,
+--    nom text NOT NULL,
+--    FOREIGN KEY (continent) REFERENCES continent(id)
+--);
+--ALTER SEQUENCE cultura_id_seq OWNED BY cultura.id;
 
 -- Table Peca
-CREATE SEQUENCE peca_id_seq;
 CREATE TABLE peca (
-	id int NOT NULL DEFAULT nextval('peca_id_seq') PRIMARY KEY,
-    id_lido text NOT NULL UNIQUE,
-    id_cataleg text NOT NULL UNIQUE,
-    cultura int, -- NOT NULL?
-    titol text, -- NOT NULL?
-    tipus text,
-    material text,
-    inscripcio text,
-    data_descr text, -- NOT NULL?
-    data_min int, -- NOT NULL?
-    data_max int, -- NOT NULL?
-    mida_descr text,
-    mida_alt NUMERIC(4, 1),
-    mida_ample NUMERIC(4, 1),
-    mida_profund NUMERIC(4, 1),
-    relacionat text,
+    id integer NOT NULL PRIMARY KEY,
+    num_registre text NOT NULL UNIQUE,
+    any_inici integer,
+    any_final integer,
+    datacio text,
+    cultura integer,
+    procedencia text,
+    precisions_procedencia text,
     FOREIGN KEY (cultura) REFERENCES cultura(id)
 );
 
+-- Old Table Peca (from LIDO imports)
+--CREATE SEQUENCE peca_id_seq;
+--CREATE TABLE peca (
+--	id int NOT NULL DEFAULT nextval('peca_id_seq') PRIMARY KEY,
+--    id_lido text NOT NULL UNIQUE,
+--    id_cataleg text NOT NULL UNIQUE,
+--    cultura int, -- NOT NULL?
+--    titol text, -- NOT NULL?
+--    tipus text,
+--    material text,
+--    inscripcio text,
+--    data_descr text, -- NOT NULL?
+--    data_min int, -- NOT NULL?
+--    data_max int, -- NOT NULL?
+--    mida_descr text,
+--    mida_alt NUMERIC(4, 1),
+--    mida_ample NUMERIC(4, 1),
+--    mida_profund NUMERIC(4, 1),
+--    relacionat text,
+--    FOREIGN KEY (cultura) REFERENCES cultura(id)
+--);
+
 -- Table cultura_geometry
 CREATE TABLE geo.cultura_geometry (
-	id int NOT NULL PRIMARY KEY
+	id integer NOT NULL PRIMARY KEY
 );
 SELECT AddGeometryColumn('cultura_geometry', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX cultura_geometry_gist ON cultura_geometry USING GIST (geometry);
@@ -72,7 +94,7 @@ CREATE INDEX cultura_geometry_gist ON cultura_geometry USING GIST (geometry);
 
 -- Table peca_geometry
 CREATE TABLE geo.peca_geometry (
-    id int NOT NULL PRIMARY KEY
+    id integer NOT NULL PRIMARY KEY
 );
 SELECT AddGeometryColumn('peca_geometry', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX peca_geometry_gist ON peca_geometry USING GIST (geometry);
