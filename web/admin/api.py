@@ -13,11 +13,11 @@ def create_api(app, url_prefix='/api'):
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
-            'GET_SINGLE': [auth],
-            'GET_MANY': [auth],
+			'GET_SINGLE': [auth],
+			'GET_MANY': [auth],
 			'PUT_SINGLE': [auth, rest.fromGeoJSON],
 			'POST':  [auth, rest.fromGeoJSON],
-            'DELETE': [auth]
+			'DELETE': [auth]
 		},
 		postprocessors = {
 			'GET_SINGLE': [rest.toGeoJSON],
@@ -31,11 +31,11 @@ def create_api(app, url_prefix='/api'):
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
-            'GET_SINGLE': [auth],
-            'GET_MANY': [auth],
+			'GET_SINGLE': [auth],
+			'GET_MANY': [auth],
 			'PUT_SINGLE': [auth, rest.fromGeoJSON],
 			'POST':  [auth, rest.fromGeoJSON],
-            'DELETE': [auth]
+			'DELETE': [auth]
 		},
 		postprocessors = {
 			'GET_SINGLE': [rest.toGeoJSON],
