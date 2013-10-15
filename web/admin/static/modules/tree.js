@@ -1,4 +1,4 @@
-define(["jquery", "eventbus", "data"], function($, events) {
+define(["eventbus", "jquery", "bootstrap", "data"], function(events, $) {
     events.listen(
         "data.loaded", renderContinents
     );
@@ -38,7 +38,7 @@ define(["jquery", "eventbus", "data"], function($, events) {
                         .attr('data-parent', '#continent'+continentId)
                         .attr('data-target', "#cultura"+cultura.id+" > ul")
                         .on('click', cultura, selectCultura)
-                        .append(cultura.nom)
+                        .append(cultura.nom + " (" + cultura.id + ")")
                     )
                 )
             );
@@ -74,6 +74,7 @@ define(["jquery", "eventbus", "data"], function($, events) {
         $("#tree .in").removeClass("in").addClass("collapse");
         $("#tree .active").removeClass("active");
         $("#continent"+continent.id+"").addClass("active");
+        events.send("tree.continentSelected", continent);
     }
     
     function selectCultura(event) {
@@ -81,12 +82,14 @@ define(["jquery", "eventbus", "data"], function($, events) {
         $("#tree > li > ul > li .in").removeClass("in").addClass("collapse");
         $("#tree .active").removeClass("active");
         $("#cultura"+cultura.id+"").addClass("active");
+        events.send("tree.culturaSelected", cultura);
     }
 
     function selectPeca(event) {
         var peca = event.data;
         $("#tree .active").removeClass("active");
         $("#peca"+peca.id+"").addClass("active");
+        events.send("tree.pecaSelected", peca);
     }
     
 });

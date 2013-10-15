@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ca">
+  <!--[if lt IE 7]>  <html class="ie lt-ie9 lt-ie8 lt-ie7" lang="ca"><![endif]-->
+  <!--[if IE 7]>  <html class="ie lt-ie9 lt-ie8" lang="ca"><![endif]-->
+  <!--[if IE 8]>  <html class="ie lt-ie9" lang="ca"><![endif]-->
+  <!--[if gt IE 8]><!-->  <html lang="ca"><!--<![endif]-->
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon"/>
     <title>Editor del MCM</title>
+    <link rel="stylesheet" href="static/admin.css"/>
     <link rel="stylesheet" href="../static/css/bootstrap.css"/>
 	{% block styles %}{% endblock %}
-    <!--[if lt IE 9]>
-      <script src="../static/js/html5shiv.js"></script>
-      <script src="../static/js/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -38,8 +38,6 @@
 		{% block body %}{% endblock %}
 	</div>
 
-    <script src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap.js"></script>
 	{% block scripts %}{% endblock %}
   </body>
 </html>

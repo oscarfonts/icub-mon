@@ -4,42 +4,12 @@
   {% if session.logged_in %}
 	<div class="row">
 	  <div class="col-sm-3">
-      	
       	<ul id="tree" class="nav contents">
-			<!--li class="active">
-				<a href="#1">Àfrica</a>
-				<ul class="nav">
-					<li class="active"><a href="#1/42228">Cultura Edo</a>
-						<ul class="nav">
-							<li class="active"><a href="#1/42228/1">Peça 1</a></li>
-							<li><a href="#1/42228/2">Peça 2</a></li>
-							<li><a href="#1/42228/3">Peça 3</a></li>
-						</ul>
-					</li>
-					<li><a href="#1/42228">Cultura 2</a></li>
-					<li><a href="#1/42228">Cultura 3</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#2">Amèrica</a>
-				<ul class="nav">
-					<li><a href="#1/42228">Cultura 4</a></li>
-					<li><a href="#1/42228">Cultura 5</a></li>
-					<li><a href="#1/42228">Cultura 6</a></li>
-				</ul>
-			</li>
-			<li>
-			<a href="#3">Àsia</a>
-				<ul class="nav">
-					<li><a href="#1/42228">Cultura 7</a></li>
-					<li><a href="#1/42228">Cultura 8</a></li>
-					<li><a href="#1/42228">Cultura 9</a></li>
-				</ul>
-			</li-->
-		</ul>
+      	</ul>
 	  </div>
 	  <div class="col-sm9">
-      	<div id="map"></div>
+      	<div id="map">
+      	</div>
 	  </div>
 	</div>
   {% else %}
@@ -48,18 +18,8 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="../static/css/leaflet.css"/>
-    <link rel="stylesheet" href="static/leaflet.draw.css"/>
-    <link rel="stylesheet" href="static/admin.css"/>
-    <!--[if lt IE 9]>
-      <link rel="stylesheet" href="../static/css/leaflet.ie.css"/>
-      <link rel="stylesheet" href="../static/css/leaflet.draw.ie.css"/>
-    <![endif]-->
 {% endblock %}
 
 {% block scripts %}
-    <!--script src="../static/js/leaflet-src.js"></script-->
-    <script src="static/lib/require.js" data-main="static/modules/main"></script>
-    <!--script src="static/leaflet.draw-src.js"></script-->
-    <!--script src="static/admin.js"></script-->
+    <script src="../static/js/require.js" data-main="static/admin"></script>
 {% endblock %}
