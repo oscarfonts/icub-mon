@@ -15,8 +15,14 @@ require.config({
         "bootstrap": {
             deps: ["jquery"]
         },
+        "draw": {
+            deps: ["leaflet"]
+        },
+        "bing": {
+            deps: ["leaflet"]
+        },
         "L.Control.DrawSingle": {
-            deps: ["leaflet", "draw"]
+            deps: ["draw"]
         }
     }
 });
