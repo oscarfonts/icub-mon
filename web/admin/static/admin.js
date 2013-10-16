@@ -10,6 +10,11 @@ require.config({
         "draw":          LIB_PATH + "leaflet.draw",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
         "ie8.respond":   LIB_PATH + "respond.min"
+    },
+    shim: {
+        "bootstrap": {
+            deps: ["jquery"]
+        }
     }
 });
 
