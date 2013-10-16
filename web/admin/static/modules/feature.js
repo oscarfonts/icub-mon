@@ -14,17 +14,14 @@ define(["eventbus"], function(events) {
 
     events.listen("editor.created", function(event, data) {
         create(data.type, data.id, data.feature);
-        retrieve(data.type, data.id);
     });
 
     events.listen("editor.edited", function(event, data) {
         update(data.type, data.id, data.feature);
-        retrieve(data.type, data.id);
     });
 
     events.listen("editor.deleted", function(event, data) {
         del(data.type, data.id);
-        retrieve(data.type, data.id);
     });
 
    
@@ -37,6 +34,7 @@ define(["eventbus"], function(events) {
             data: JSON.stringify(feature),
             success: function(responseData, textStatus, jqXHR) {
                 console.log("Feature " + id + " created successfully");
+                retrieve(type, id);
             },
             error: function (responseData, textStatus, errorThrown) {
                 console.log("Error creating feature " + id);
@@ -68,6 +66,7 @@ define(["eventbus"], function(events) {
             data: JSON.stringify(feature),
             success: function(responseData, textStatus, jqXHR) {
                 console.log("Feature " + id + " updated successfully");
+                retrieve(type, id);
             },
             error: function (responseData, textStatus, errorThrown) {
                 console.log("Error updating feature " + id);
@@ -82,6 +81,7 @@ define(["eventbus"], function(events) {
             dataType: "json",
             success: function(responseData, textStatus, jqXHR) {
                 console.log("Feature " + id + " deleted successfully");
+                retrieve(type, id);
             },
             error: function (responseData, textStatus, errorThrown) {
                 console.log("Error deleting feature " + id);
