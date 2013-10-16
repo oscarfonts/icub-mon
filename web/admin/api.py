@@ -22,6 +22,7 @@ def create_api(app, url_prefix='/api'):
 		postprocessors = {
 			'GET_SINGLE': [rest.toGeoJSON],
 			'GET_MANY': [rest.toGeoJSON],
+            'PUT_SINGLE': [rest.toGeoJSON],
 			'POST': [rest.toGeoJSON]
 		}
 	)
@@ -40,6 +41,7 @@ def create_api(app, url_prefix='/api'):
 		postprocessors = {
 			'GET_SINGLE': [rest.toGeoJSON],
 			'GET_MANY': [rest.toGeoJSON],
+            'PUT_SINGLE': [rest.toGeoJSON],
 			'POST': [rest.toGeoJSON]
 		}
 	)

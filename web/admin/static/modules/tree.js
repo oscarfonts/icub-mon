@@ -67,8 +67,6 @@ define(["eventbus", "jquery", "bootstrap", "data"], function(events, $) {
         }
     }
 
-    // TODO send messages => bind map feature editing!
-    
     function selectContinent(event) {
         var continent = event.data;
         $("#tree .in").removeClass("in").addClass("collapse");

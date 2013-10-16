@@ -78,11 +78,6 @@ function loadData(level, id) {
 }
 
 function buildBreadcrumb() {
-    // <li class="head"><a href="#">Món</a></li>
-    // <li><a href="#1">Àfrica</a></li>
-    // <li><a href="#1/42228">cultura Edo, regne de Benín</a></li>
-    // <li class="active">Placa decorativa</li>
-    // <li class="next">Next...</li>
     ids = viewStatus.get();
     level = viewStatus.level();
     if (level > WORLD) {
@@ -255,15 +250,11 @@ L.control.info = function (options) {
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/f9b48b21a87048bfb118148491d22ec5/{styleId}/256/{z}/{x}/{y}.png',
 cloudmadeAttribution = 'OpenStreetMap | CloudMade';
 mapboxAttribution = 'OpenStreetMap | MapBox';
-var ride = L.tileLayer(cloudmadeUrl, {styleId: 1714, attribution: cloudmadeAttribution}),
-    //minimal = L.tileLayer(cloudmadeUrl, {styleId: 22677, attribution: cloudmadeAttribution}),
-    midnight = L.tileLayer(cloudmadeUrl, {styleId: 999, attribution: cloudmadeAttribution}),
-    //pale = L.tileLayer(cloudmadeUrl, {styleId: 998, attribution: cloudmadeAttribution}),
-    //fresh = L.tileLayer(cloudmadeUrl, {styleId: 997, attribution: cloudmadeAttribution}),
-    mapbox = L.tileLayer('http://a.tiles.mapbox.com/v3/oscarfonts.map-1mujgtmu/{z}/{x}/{y}.png', {attribution: mapboxAttribution}),
-      //Aerial, AerialWithLabels, Birdseye, BirdseyeWithLabels, Road
-    bing_roads = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'Road', culture: 'es-ES'}),
+var mapbox = L.tileLayer('http://a.tiles.mapbox.com/v3/oscarfonts.map-1mujgtmu/{z}/{x}/{y}.png', {attribution: mapboxAttribution}),
+    //Aerial, AerialWithLabels, Birdseye, BirdseyeWithLabels, Road
     bing_aerial = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'AerialWithLabels', culture: 'es-ES'}); 
+    bing_roads = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'Road', culture: 'es-ES'}),
+    pale = L.tileLayer(cloudmadeUrl, {styleId: 998, attribution: cloudmadeAttribution});
 
 var map = L.map('map', {
     center: [40, 0],
@@ -279,11 +270,7 @@ L.control.layers({
     "MapBox": mapbox,
     "Aerial": bing_aerial,
     "Roads": bing_roads,
-    "Ride": ride,
-    "Midnight": midnight
-    //"Minimal": minimal,
-    //"Pale": pale,
-    //"Fresh": fresh
-},{},{position: 'bottomright', collapsed: false}).addTo(map);
+    "Pale": pale
+},{},{position: 'bottomright'}).addTo(map);
 
 load();
