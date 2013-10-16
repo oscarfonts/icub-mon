@@ -14,6 +14,9 @@ require.config({
     shim: {
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "L.Control.DrawSingle": {
+            deps: ["leaflet", "draw"]
         }
     }
 });
