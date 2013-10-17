@@ -1,3 +1,91 @@
+L.drawLocal = {
+    draw: {
+        toolbar: {
+            actions: {
+                title: 'Cancel·la el dibuix',
+                text: 'Cancel·la'
+            },
+            buttons: {
+                polyline: 'Afegeix una línia',
+                polygon: 'Afegeix un polígon',
+                rectangle: 'Afegeix un rectangle',
+                circle: 'Afegeix un cercle',
+                marker: 'Afegeix un punt'
+            }
+        },
+        handlers: {
+            circle: {
+                tooltip: {
+                    start: 'Feu clic i arrossegueu per dibuixar el cercle'
+                }
+            },
+            marker: {
+                tooltip: {
+                    start: 'Feu clic al mapa per situar el marcador'
+                }
+            },
+            polygon: {
+                tooltip: {
+                    start: 'Feu clic per començar a dibuixar el polígon',
+                    cont: 'Continueu fent clics per afegir més vèrtexs',
+                    end: 'Feu clic sobre el primer punt per tancar el polígon'
+                }
+            },
+            polyline: {
+                error: '<strong>Error:</strong> no està permès el creuament de línies!',
+                tooltip: {
+                    start: 'Feu clic per començar a dibuixar la línia',
+                    cont: 'Continueu fent clics per afegir més vèrtexs',
+                    end: 'Feu clic sobre el darrer punt per finalitzar el dibuix'
+                }
+            },
+            rectangle: {
+                tooltip: {
+                    start: 'Feu clic i arrossegueu per dibuixar el rectangle'
+                }
+            },
+            simpleshape: {
+                tooltip: {
+                    end: 'Deixeu anar el botó del ratolí per finalitzar el dibuix'
+                }
+            }
+        }
+    },
+    edit: {
+        toolbar: {
+            actions: {
+                save: {
+                    title: 'Desa els canvis',
+                    text: 'Desa'
+                },
+                cancel: {
+                    title: 'Cancel·la l\'edició i descarta els canvis',
+                    text: 'Cancel·la'
+                }
+            },
+            buttons: {
+                edit: 'Edita la geometria',
+                editDisabled: 'Edita la geometria',
+                remove: 'Esborra la geometria',
+                removeDisabled: 'Esborra la geometria'
+            }
+        },
+        handlers: {
+            edit: {
+                tooltip: {
+                    text: 'Arrossegueu els punts de control o el marcador',
+                    subtext: 'Feu clic a "Cancel·la" per desfer els canvis'
+                }
+            },
+            remove: {
+                tooltip: {
+                    text: 'Feu clic sobre una geometria per esborrar-la'
+                }
+            }
+        }
+    }
+};
+
 L.Control.DrawSingle = L.Control.Draw.extend({
     initialize: function (options) {
         L.Control.Draw.prototype.initialize.call(this, options);

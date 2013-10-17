@@ -1,13 +1,11 @@
-define(["eventbus", "leaflet", "baselayers"], function(events, L, baselayers) {
+define(["leaflet", "map.layers"], function(L, layers) {
 
-    // Map   
     var map = L.map('map', {
         center: [32, 0],
         zoom: 2
     });
     
-    // Base Layers
-    baselayers.create({
+    layers.create({
         "Pale":   { type: "cloudmade", id: 998 },
         "Aerial": { type: "bing",      id: "AerialWithLabels" },
         "Roads":  { type: "bing",      id: "Road" }

@@ -1,4 +1,4 @@
-define(["eventbus", "leaflet", "map", "feature", "draw", "L.Control.DrawSingle"], function(events, L, map) {
+define(["eventbus", "leaflet", "map", "draw", "L.Control.DrawSingle", "data.feature"], function(events, L, map) {
 
     var activeGeom = {};
 
@@ -15,14 +15,13 @@ define(["eventbus", "leaflet", "map", "feature", "draw", "L.Control.DrawSingle"]
         }
     }).addTo(map);
     
-    events.listen("feature.clear", function(event) {
+    events.listen("data.feature.none", function(event) {
         drawItems.clearLayers();
         activeGeom = {};
         drawControl.hide();
     });
            
-    events.listen("feature.load", function(event, data) {
-        //alert("Feature loaded: " + JSON.stringify(data));
+    events.listen("data.feature.read", function(event, data) {
         drawItems.clearLayers();
         activeGeom = data;
         var feature = L.geoJson(data.feature, {
@@ -33,8 +32,7 @@ define(["eventbus", "leaflet", "map", "feature", "draw", "L.Control.DrawSingle"]
         map.fitBounds(feature.getBounds());
      });
    
-    events.listen("feature.new", function(event, data) {
-        //alert("Feature not found: " + JSON.stringify(data));
+    events.listen("data.feature.notFound", function(event, data) {
         drawItems.clearLayers();
         activeGeom = data;
         drawControl.show();
@@ -43,17 +41,17 @@ define(["eventbus", "leaflet", "map", "feature", "draw", "L.Control.DrawSingle"]
     map.on('draw:created', function (e) {
         var feature = e.layer.toGeoJSON();
         feature.id = activeGeom.id;
-        events.send("editor.created", {type: activeGeom.type, id: activeGeom.id, feature: feature});
+        events.send("map.editor.featureCreated", {type: activeGeom.type, id: activeGeom.id, feature: feature});
     });
     
     map.on('draw:edited', function (e) {
         var feature = e.layers.getLayers()[0].toGeoJSON();
         feature.id = activeGeom.id;
-        events.send("editor.edited", {type: activeGeom.type, id: activeGeom.id, feature: feature});
+        events.send("map.editor.featureEdited", {type: activeGeom.type, id: activeGeom.id, feature: feature});
     });
     
     map.on('draw:deleted', function (e) {
-        events.send("editor.deleted", {type: activeGeom.type, id: activeGeom.id});
+        events.send("map.editor.featureDeleted", {type: activeGeom.type, id: activeGeom.id});
     });
     
 });

@@ -1,7 +1,7 @@
 define(["eventbus"], function(events) {
     
     events.listen("tree.continentSelected", function(event) {
-        events.send("feature.clear");
+        events.send("data.feature.none");
     });
     
     events.listen("tree.culturaSelected", function(event, cultura) {
@@ -12,18 +12,17 @@ define(["eventbus"], function(events) {
         retrieve("peca", peca.id);
     });
 
-    events.listen("editor.created", function(event, data) {
+    events.listen("map.editor.featureCreated", function(event, data) {
         create(data.type, data.id, data.feature);
     });
 
-    events.listen("editor.edited", function(event, data) {
+    events.listen("map.editor.featureEdited", function(event, data) {
         update(data.type, data.id, data.feature);
     });
 
-    events.listen("editor.deleted", function(event, data) {
+    events.listen("map.editor.featureDeleted", function(event, data) {
         del(data.type, data.id);
     });
-
    
     function create(type, id, feature) {
         $.ajax({
@@ -45,14 +44,16 @@ define(["eventbus"], function(events) {
     function retrieve(type, id) {
         $.ajax({
             url: "api/" + type + "_geometry/" + id,
-            dataType: "json"
-        }).done(function(response) {
-            events.send("feature.load", {type: type, id: id, feature: response});
-        }).fail(function(xhr) {
-            if (xhr.status == 404) {
-                events.send("feature.new", {type: type, id: id});
-            } else {
-                alert("Error carregant "+ type + " " + id + ". El servidor diu: " + xhr.statusText);
+            dataType: "json",
+            success: function(response) {
+                events.send("data.feature.read", {type: type, id: id, feature: response});
+            },
+            error: function(xhr) {
+                if (xhr.status == 404) {
+                    events.send("data.feature.notFound", {type: type, id: id});
+                } else {
+                    events.send("error", "Error reading feature " + id);
+                }
             }
         });
     }
@@ -64,12 +65,12 @@ define(["eventbus"], function(events) {
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(feature),
-            success: function(responseData, textStatus, jqXHR) {
-                console.log("Feature " + id + " updated successfully");
+            success: function() {
+                events.send("data.feature.updated", {type: type, id: id, feature: feature});
                 retrieve(type, id);
             },
-            error: function (responseData, textStatus, errorThrown) {
-                console.log("Error updating feature " + id);
+            error: function () {
+                events.send("error", "Error updating feature " + id);
             }
         });
     }
@@ -79,14 +80,31 @@ define(["eventbus"], function(events) {
             type: 'DELETE',
             url: "api/" + type + "_geometry/" + id,
             dataType: "json",
-            success: function(responseData, textStatus, jqXHR) {
-                console.log("Feature " + id + " deleted successfully");
+            success: function() {
+                events.send("data.feature.deleted", {type: type, id: id});
                 retrieve(type, id);
             },
-            error: function (responseData, textStatus, errorThrown) {
-                console.log("Error deleting feature " + id);
+            error: function () {
+                events.send("error", "Error deleting feature " + id);
             }
         });
     }
+    
+    function list(type) {
+        $.ajax({
+            url: "api/" + type + "_geometry",
+            dataType: "json",
+            success: function(response) {
+                events.send("data.feature.listed", {type: type, features: response});
+            },
+            error: function() {
+                events.send("error", "Error reading feature " + id);
+            }
+        });
+    }
+    
+    return {
+        list: list
+    };
 
 });

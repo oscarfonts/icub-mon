@@ -15,10 +15,10 @@ require.config({
         "bootstrap": {
             deps: ["jquery"]
         },
-        "draw": {
+        "bing": {
             deps: ["leaflet"]
         },
-        "bing": {
+        "draw": {
             deps: ["leaflet"]
         },
         "L.Control.DrawSingle": {
@@ -27,7 +27,7 @@ require.config({
     }
 });
 
-require(["tree", "editor"], function() {
+require(["tree", "map.editor", "description"], function() {
     if (document.getElementsByClassName("lt-ie9").length) {
         require(["ie8.html5shiv", "ie8.respond"]);
     }

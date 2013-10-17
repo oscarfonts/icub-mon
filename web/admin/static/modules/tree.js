@@ -1,7 +1,17 @@
-define(["eventbus", "jquery", "bootstrap", "data"], function(events, $) {
-    events.listen(
-        "data.loaded", renderContinents
-    );
+define(["eventbus", "jquery", "data.feature", "bootstrap", "data.contents"], function(events, $, features) {
+
+    events.listen("data.contents.loaded", renderContinents);
+    
+    events.listen("data.feature.listed",  markItemsWithGeometry);
+    
+    events.listen("map.editor.featureCreated", function(event, data) {
+        addIcon("#"+data.type+data.id, "glyphicon-map-marker");
+    });
+    
+    events.listen("map.editor.featureDeleted", function(event, data) {
+        removeIcon("#"+data.type+data.id);
+    });
+
     
     function renderContinents(event, data) {
         for (i in data.continents) {
@@ -19,6 +29,8 @@ define(["eventbus", "jquery", "bootstrap", "data"], function(events, $) {
             );
             renderCultures(continent.id, data);
         }
+        features.list("cultura");
+        features.list("peca");
     }
     
     function renderCultures(continentId, data) {
@@ -65,6 +77,23 @@ define(["eventbus", "jquery", "bootstrap", "data"], function(events, $) {
                 )
             );
         }
+
+    }
+    
+    function markItemsWithGeometry(event, data) {
+        var type = data.type;
+        for (i in data.features.features) {
+            var id = data.features.features[i].id;
+            addIcon("#"+type+id, "glyphicon-map-marker");
+        }
+    }
+    
+    function addIcon(elem, icon) {
+        $(elem).children().first().prepend(" ").prepend($("<span> ").addClass("glyphicon "+icon));
+    }
+    
+    function removeIcon(elem, icon) {
+        $(elem).children().first().children().first().detach();
     }
 
     function selectContinent(event) {

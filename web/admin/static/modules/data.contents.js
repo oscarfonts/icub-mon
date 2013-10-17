@@ -12,7 +12,7 @@ define(["eventbus"], function(events) {
         }).done(function(response) {
             target.push.apply(target, response.objects);
             if (data.continents.length && data.cultures.length && data.peces.length) {
-                events.send("data.loaded", data);
+                events.send("data.contents.loaded", data);
             }
         });  
     }
