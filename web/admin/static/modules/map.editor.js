@@ -27,9 +27,13 @@ define(["eventbus", "leaflet", "map", "draw", "L.Control.DrawSingle", "data.feat
         var feature = L.geoJson(data.feature, {
             onEachFeature: function (feature, layer) {
                 drawItems.addLayer(layer);
+                if (layer instanceof L.Marker) {
+                    map.setView(layer.getLatLng(), 6, {animate: true});
+                } else {
+                    map.fitBounds(layer.getBounds());
+                }
             }
         });
-        map.fitBounds(feature.getBounds());
      });
    
     events.listen("data.feature.notFound", function(event, data) {
