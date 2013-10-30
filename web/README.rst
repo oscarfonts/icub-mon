@@ -70,3 +70,4 @@ Run in production (Apache + mod_wsgi)
 #. Edit ``app.wsgi`` and change the paths.
 
 #. Edit ``config.py``, switch debug mode to ``False``, and edit connection string and secret key.
+sudo
