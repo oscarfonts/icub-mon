@@ -21,7 +21,7 @@ define(["eventbus", "jquery", "tree"], function(events) {
     function renderPeca(event, peca) {
        
         var html = 
-             '<div><table><tr><td><img src="../static/imatges/'+peca.id+'.JPG" alt="'+peca.num_registre+'"></td>' +
+             '<div><table><tr><td><img src="../static/img/peces/'+peca.id+'.JPG" alt="'+peca.num_registre+'"></td>' +
              '<td><ul><li><b>Procedència:</b> '+peca.procedencia+'</li>';
         if (peca.precisions_procedencia.length) {
              html +='<li><b>Precisions procedència:</b> '+peca.precisions_procedencia+'</li>';
