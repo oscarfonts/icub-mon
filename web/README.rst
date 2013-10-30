@@ -1,23 +1,32 @@
 Georreferenciació de col·leccions del Museu de Cultures del Món
 ===============================================================
 
-Setup Python Virtualenv
------------------------
+Setup environment with virtualenvwrapper
+----------------------------------------
 
-::
+Install virtualenvwrapper::
 
  sudo apt-get install python-pip
  sudo pip install virtualenv
- virtualenv icub_env
- source icub_env/bin/activate
+ sudo pip install virtualenvwrapper
+ mkdir -p ~/.virtualenvs
 
+Add virtualenvwrapper to your environment (eg to .bashrc)::
 
-Install dependencies
---------------------
+ export WORKON_HOME=~/.virtualenvs
+ source /usr/local/bin/virtualenvwrapper.sh
 
- ::
+Create virtualenv::
 
-pip install -r dependencies.txt
+  mkvirtualenv icub
+
+Activate it::
+
+  workon icub
+
+Install project packages::
+
+  pip install -r requirements.txt
 
 
 Run in debug mode
