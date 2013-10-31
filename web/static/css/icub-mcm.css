@@ -59,3 +59,16 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.mcm-marker-icon, .mcm-marker-cluster {
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
+
+.mcm-marker-cluster {
+	background-color: #ccc;
+	padding-left: 6px;
+	font-size: 14px;
+	font-weight: bold;
+}

@@ -8,11 +8,15 @@
     <title>Museu de les Cultures del Món</title>
     <link rel="stylesheet" href="static/css/bootstrap.css"/>
     <link rel="stylesheet" href="static/css/leaflet.css"/>
+    <link rel="stylesheet" href="static/css/tree.css"/>
     <link rel="stylesheet" href="static/css/icub-mcm.css"/>
+    <link rel="stylesheet" href="static/css/MarkerCluster.css"/>
+    <link rel="stylesheet" href="static/css/MarkerCluster.Default.css"/>
     <!--[if lt IE 9]>
       <link rel="stylesheet" href="static/css/leaflet.ie.css"/>
-      <script src="static/js/html5shiv.js"></script>
-      <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="static/css/MarkerCluster.Default.ie.css"/>
     <![endif]-->
   </head>
   <body>
@@ -25,11 +29,13 @@
           	</a>
         </div>
       </div>
-      <ol id="breadcrumb" class="breadcrumb"></ol>
+      <ol id="breadcrumb" class="breadcrumb">
+      </ol>
     </div>
     
     <div class="container">
-      <div id="map"></div>
+      <div id="map">
+      </div>
     </div>
 
     <script src="static/js/lib/require.js" data-main="static/js/icub-mcm"></script>

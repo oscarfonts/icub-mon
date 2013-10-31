@@ -1,4 +1,4 @@
-define(["eventbus"], function(events) {
+define(["eventbus", "module"], function(events, module) {
     var data = {
         continents: [],
         cultures: [],
@@ -17,8 +17,10 @@ define(["eventbus"], function(events) {
         });  
     }
     
-    download("../api/continent", data.continents);
-    download("../api/cultura",   data.cultures);
-    download("../api/peca",      data.peces);    
+    var api_url = module.config().api_url;
+    
+    download(api_url + "continent", data.continents);
+    download(api_url + "cultura", data.cultures);
+    download(api_url + "peca", data.peces);    
 
 });

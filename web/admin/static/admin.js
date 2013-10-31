@@ -25,6 +25,14 @@ require.config({
         "L.Control.DrawSingle": {
             deps: ["draw"]
         }
+    },
+    config: {
+        "data.contents": {
+            api_url: "../api/"
+        },
+        "data.feature": {
+            category: "geometry"
+        }
     }
 });
 

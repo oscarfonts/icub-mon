@@ -1,4 +1,6 @@
-define(["eventbus"], function(events) {
+define(["eventbus", "module"], function(events, module) {
+    
+    category = module.config().category;
     
     events.listen("tree.continentSelected", function(event) {
         events.send("data.feature.none");
@@ -27,7 +29,7 @@ define(["eventbus"], function(events) {
     function create(type, id, feature) {
         $.ajax({
             type: 'POST',
-            url: "api/" + type + "_geometry",
+            url: "api/" + type + "_" + category,
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(feature),
@@ -43,7 +45,7 @@ define(["eventbus"], function(events) {
     
     function retrieve(type, id) {
         $.ajax({
-            url: "api/" + type + "_geometry/" + id,
+            url: "api/" + type + "_" + category + "/" + id,
             dataType: "json",
             success: function(response) {
                 events.send("data.feature.read", {type: type, id: id, feature: response});
@@ -61,7 +63,7 @@ define(["eventbus"], function(events) {
     function update(type, id, feature) {
         $.ajax({
             type: 'PUT',
-            url: "api/" + type + "_geometry/" + id,
+            url: "api/" + type + "_" + category + "/" + id,
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(feature),
@@ -78,7 +80,7 @@ define(["eventbus"], function(events) {
     function del(type, id) {
         $.ajax({
             type: 'DELETE',
-            url: "api/" + type + "_geometry/" + id,
+            url: "api/" + type + "_" + category + "/" + id,
             dataType: "json",
             success: function() {
                 events.send("data.feature.deleted", {type: type, id: id});
@@ -92,7 +94,7 @@ define(["eventbus"], function(events) {
     
     function list(type) {
         $.ajax({
-            url: "api/" + type + "_geometry",
+            url: "api/" + type + "_" + category,
             dataType: "json",
             success: function(response) {
                 events.send("data.feature.listed", {type: type, features: response});

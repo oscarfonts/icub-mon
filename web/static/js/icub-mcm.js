@@ -10,6 +10,7 @@ require.config({
         "bing":          LIB_PATH + "Bing",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
         "ie8.respond":   LIB_PATH + "respond.min",
+        "markercluster": LIB_PATH + "leaflet.markercluster",
         "old":           JS_PATH + "icub-mcm-old"
     },
     shim: {
@@ -19,14 +20,19 @@ require.config({
         "bing": {
             deps: ["leaflet"]
         },
-        "draw": {
+        "markercluster": {
             deps: ["leaflet"]
-        },
-        "L.Control.DrawSingle": {
-            deps: ["draw"]
         },
         "old": {
             deps: ["bootstrap", "bing"]
+        }
+    },
+    config: {
+        "data.contents": {
+            api_url: "api/"
+        },
+        "data.feature": {
+            category: "feature"
         }
     }
 });

@@ -7,6 +7,7 @@ define(["leaflet", "map.layers"], function(L, layers) {
     
     layers.create({
         "Pale":   { type: "cloudmade", id: 998 },
+        "MapBox": { type: "mapbox",    id: "oscarfonts.map-1mujgtmu" },
         "Aerial": { type: "bing",      id: "AerialWithLabels" },
         "Roads":  { type: "bing",      id: "Road" }
     }).addTo(map);

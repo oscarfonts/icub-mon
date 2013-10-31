@@ -1,3 +1,5 @@
+define(["map"], function(map) {
+
 var WORLD     = 0,
     CONTINENT = 1,
     CULTURE   = 2,
@@ -72,7 +74,7 @@ function loadData(level, id) {
                 viewStatus.pop();
                 alert ("No s'hi han trobat elements");
             }
-            info.update();
+            /*info.update();*/
         });
     }
 }
@@ -94,7 +96,7 @@ function buildBreadcrumb() {
         html = '<li class="head">'+labels.data[WORLD]+'</li>';
     }
     $("#breadcrumb").html(html);
-    info.update();
+    /*info.update();*/
 }
 
 $(window).bind('hashchange', function(e) {
@@ -176,12 +178,12 @@ function highlightFeature(e) {
             layer.bringToFront();
         }
     }
-    info.update(layer.feature.properties);
+    /*info.update(layer.feature.properties);*/
 }
 
 function resetHighlight(e) {
     mapData.resetStyle(e.target);
-    info.update();
+    /*info.update();*/
 }
 
 function selectFeature(e) {
@@ -191,6 +193,7 @@ function selectFeature(e) {
 }
 
 /* Info Control */
+/*
 L.Control.Info = L.Control.extend({
     onAdd: function (map) {
         this._div = L.DomUtil.create('div', 'info');
@@ -246,31 +249,11 @@ L.control.info = function (options) {
     return new L.Control.Info(options);
 };
 
-/* Instantiate map */
-var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/f9b48b21a87048bfb118148491d22ec5/{styleId}/256/{z}/{x}/{y}.png',
-cloudmadeAttribution = 'OpenStreetMap | CloudMade';
-mapboxAttribution = 'OpenStreetMap | MapBox';
-var mapbox = L.tileLayer('http://a.tiles.mapbox.com/v3/oscarfonts.map-1mujgtmu/{z}/{x}/{y}.png', {attribution: mapboxAttribution}),
-    //Aerial, AerialWithLabels, Birdseye, BirdseyeWithLabels, Road
-    bing_aerial = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'AerialWithLabels', culture: 'es-ES'}); 
-    bing_roads = new L.BingLayer("Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM", {type: 'Road', culture: 'es-ES'}),
-    pale = L.tileLayer(cloudmadeUrl, {styleId: 998, attribution: cloudmadeAttribution});
+var info;*/
 
-var map = L.map('map', {
-    center: [40, 0],
-    zoom: 2,
-    maxZoom: 13,
-    //maxBounds: [[-90, -180], [90, 180]],
-    layers: [mapbox]
-    });
+$(function() {
+    load();
+    /*info = L.control.info().addTo(map);*/
+});
 
-var info = L.control.info().addTo(map);
-
-L.control.layers({
-    "MapBox": mapbox,
-    "Aerial": bing_aerial,
-    "Roads": bing_roads,
-    "Pale": pale
-},{},{position: 'bottomright'}).addTo(map);
-
-load();
+});
