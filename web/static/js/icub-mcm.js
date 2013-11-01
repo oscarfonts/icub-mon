@@ -1,8 +1,7 @@
-var JS_PATH = "../../../static/js/";
-var LIB_PATH = JS_PATH + "lib/";
+var LIB_PATH = "../lib/";
 
 require.config({
-    baseUrl : JS_PATH +"modules/",
+    baseUrl : "static/js/modules/",
     paths : {
         "jquery":        LIB_PATH + "jquery",
         "bootstrap":     LIB_PATH + "bootstrap",
@@ -10,8 +9,7 @@ require.config({
         "bing":          LIB_PATH + "Bing",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
         "ie8.respond":   LIB_PATH + "respond.min",
-        "markercluster": LIB_PATH + "leaflet.markercluster",
-        "old":           JS_PATH + "icub-mcm-old"
+        "markercluster": LIB_PATH + "leaflet.markercluster"
     },
     shim: {
         "bootstrap": {
@@ -22,9 +20,6 @@ require.config({
         },
         "markercluster": {
             deps: ["leaflet"]
-        },
-        "old": {
-            deps: ["bootstrap", "bing"]
         }
     },
     config: {

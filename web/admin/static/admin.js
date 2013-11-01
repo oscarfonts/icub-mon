@@ -1,8 +1,7 @@
-var JS_PATH = "../../../static/js/";
-var LIB_PATH = JS_PATH + "lib/";
+var LIB_PATH = "../lib/";
 
 require.config({
-    baseUrl : JS_PATH + "modules/",
+    baseUrl : "../static/js/modules/",
     paths : {
         "jquery":        LIB_PATH + "jquery",
         "bootstrap":     LIB_PATH + "bootstrap",
