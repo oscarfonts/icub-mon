@@ -1,16 +1,21 @@
-define(["eventbus", "data.contents"], function(events, data) {
+define(["eventbus", "data.contents", "timeline"], function(events, data, timeline) {
     events.listen("culturaSelected", renderCultura);
        
     function renderCultura(event, feature) {
         description(' \
-            <h1 class="page-header">'+feature.properties.nom+' <small>descripció de la cultura</small></h1> \
-            <p><i>Aquí hi va un text descriptiu d\'aquesta cultura, que s\'ha de veure d\'on treiem (gestor de continguts?)</i></p> \
+            <h1 class="page-header">'+feature.properties.nom+'</h1> \
+            <p><i>Aquí hi va un text descriptiu d\'aquesta cultura, que s\'ha de veure d\'on el treiem (gestor de continguts?)</i></p> \
+            <h1 class="page-header"><small>Cronograma de les peces</small></h1> \
+            <div id="timeline"></div> \
+            <h1 class="page-header"><small>Detall de les peces</small></h1> \
             <div id="items"></div>'
          );
         data.list("peca", {"filters":[{"name":"cultura","op":"==","val":feature.id}]}, renderPeces);
     };
 
     function renderPeces(peces) {
+        timeline.draw(peces);
+        
         var collection = [];
         for (i in peces) {
             var peca = peces[i];
@@ -38,6 +43,7 @@ define(["eventbus", "data.contents"], function(events, data) {
             
             collection.push('<div>'+html+'</div>');
         }
+        
         items(collection);
     }
     

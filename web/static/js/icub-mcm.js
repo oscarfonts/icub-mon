@@ -9,7 +9,8 @@ require.config({
         "bing":          LIB_PATH + "Bing",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
         "ie8.respond":   LIB_PATH + "respond.min",
-        "markercluster": LIB_PATH + "leaflet.markercluster"
+        "markercluster": LIB_PATH + "leaflet.markercluster",
+        "chap-timeline": LIB_PATH + "timeline"
     },
     shim: {
         "bootstrap": {
