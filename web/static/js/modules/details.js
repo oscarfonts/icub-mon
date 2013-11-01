@@ -14,7 +14,7 @@ define(["eventbus", "data.contents"], function(events, data) {
         var collection = [];
         for (i in peces) {
             var peca = peces[i];
-            var img_src = "../static/img/peces/"+peca.id+".JPG";
+            var img_src = "static/img/peces/"+peca.id+".JPG";
             
             var html = ' \
                 <div class="media"> \
