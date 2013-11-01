@@ -37,8 +37,11 @@ require.config({
     }
 });
 
-require(["map.navigator"], function() {
+require(["data.feature", "map.navigator"], function(features) {
     if (document.getElementsByClassName("lt-ie9").length) {
         require(["ie8.html5shiv", "ie8.respond"]);
     }
+    
+    features.list("cultura");
+    
 });

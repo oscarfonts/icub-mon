@@ -1,7 +1,5 @@
-define(["eventbus", "map", "data.feature", "markercluster"], function(events, map, features) {
-   
-    features.list("cultura");
-   
+define(["eventbus", "map", "markercluster", "nav-state"], function(events, map) {
+       
     events.listen("data.feature.listed", function(event, data) {
         var clustered = L.markerClusterGroup({
             showCoverageOnHover: false,
