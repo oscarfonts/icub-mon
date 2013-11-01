@@ -2,7 +2,8 @@ define(["leaflet", "map.layers"], function(L, layers) {
 
     var map = L.map('map', {
         center: [32, 0],
-        zoom: 2
+        zoom: 2,
+        minZoom: 1
     });
     
     layers.create({

@@ -1,4 +1,4 @@
-define(["eventbus", "leaflet", "map", "data.feature", "markercluster"], function(events, L, map, features) {
+define(["eventbus", "map", "data.feature", "markercluster"], function(events, map, features) {
    
     features.list("cultura");
    
