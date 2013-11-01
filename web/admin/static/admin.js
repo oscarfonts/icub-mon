@@ -36,7 +36,7 @@ require.config({
     }
 });
 
-require(["tree", "map.editor", "description"], function() {
+require(["tree", "map.editor", "admin.details"], function() {
     if (document.getElementsByClassName("lt-ie9").length) {
         require(["ie8.html5shiv", "ie8.respond"]);
     }
