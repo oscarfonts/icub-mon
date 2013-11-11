@@ -5,8 +5,10 @@ define(["jquery"], function($) {
         send: function(name, parameters) {
             $(bus).trigger(name, parameters);
         },
-        listen: function(name, callBack) {
-            $(bus).bind(name, callBack);
+        listen: function(name, callback, scope) {
+            $(bus).bind(name, function(event, data) {
+                callback.call(scope, event, data);
+            });
         }
     };
 });
