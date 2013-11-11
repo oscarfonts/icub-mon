@@ -1,16 +1,17 @@
 define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function(events, data, timeline) {
-    events.listen("culturaSelected", renderCultura);
-       
-    function renderCultura(event, feature) {
+    events.listen("state.featureChanged", renderCultura);
+    
+    function renderCultura(event, id) {
+        var cultura = data.get("cultures", id);
         description(' \
-            <h1 class="page-header">'+feature.properties.nom+'</h1> \
+            <h1 class="page-header">'+cultura.nom+'</h1> \
             <p><i>Aquí hi va un text descriptiu d\'aquesta cultura, que s\'ha de veure d\'on el treiem (gestor de continguts?)</i></p> \
             <h1 class="page-header"><small>Cronograma de les peces</small></h1> \
             <div id="timeline"></div> \
             <h1 class="page-header"><small>Detall de les peces</small></h1> \
             <div id="items"></div>'
          );
-        data.list("peca", {"filters":[{"name":"cultura","op":"==","val":feature.id}]}, renderPeces);
+        data.list("peca", {"filters":[{"name":"cultura","op":"==","val":cultura.id}]}, renderPeces);
         
         $('html, body').animate({
             scrollTop: $("#description").offset().top

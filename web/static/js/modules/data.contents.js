@@ -37,6 +37,16 @@ define(["eventbus", "module"], function(events, module) {
             });
     }
     
+    function get(type, id) {
+        for (i in data[type]) {
+            var item = data[type][i];
+            if (item.id == id) {
+                return item;
+            }
+        }
+        return {};
+    }
+    
     var api_url = module.config().api_url;
     
     download(api_url + "continent", data.continents);
@@ -44,7 +54,8 @@ define(["eventbus", "module"], function(events, module) {
     download(api_url + "peca", data.peces);
     
     return {
-        list: list
+        list: list,
+        get: get
     };
 
 });

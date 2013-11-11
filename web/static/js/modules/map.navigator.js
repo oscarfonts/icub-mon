@@ -1,4 +1,4 @@
-define(["eventbus", "map", "markercluster", "nav-state", "details"], function(events, map) {
+define(["eventbus", "map", "nav-state", "markercluster", "details"], function(events, map, state) {
     
     var active_culture = false;
     
@@ -31,9 +31,7 @@ define(["eventbus", "map", "markercluster", "nav-state", "details"], function(ev
                         }
                         active_culture = layer.feature.id;
                         $("#marker-cultura-"+layer.feature.id).removeClass("btn-primary").addClass("btn-success");
-                        
-                        events.send("culturaSelected", feature);                        
-                        
+                                               
                         if (layer instanceof L.Marker) {
                             var minZoomForMarkers = 6;
                             if (map.getZoom() < minZoomForMarkers) {
@@ -44,6 +42,8 @@ define(["eventbus", "map", "markercluster", "nav-state", "details"], function(ev
                         } else {
                             map.fitBounds(layer.getBounds(), {animate: true});
                         }
+                        
+                        events.send("map.navigator.markerSelected", feature);
                     });
                 }
 
@@ -52,6 +52,10 @@ define(["eventbus", "map", "markercluster", "nav-state", "details"], function(ev
         });
         
         map.addLayer(clustered);
+       
+        events.send("map.navigator.loaded", data);
+
         map.fitBounds(clustered.getBounds());
+
     });
 });
