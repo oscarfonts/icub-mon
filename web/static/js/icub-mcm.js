@@ -3,18 +3,22 @@ var LIB_PATH = "../lib/";
 require.config({
     baseUrl : "static/js/modules/",
     paths : {
-        "jquery":        LIB_PATH + "jquery",
-        "bootstrap":     LIB_PATH + "bootstrap",
-        "leaflet":       LIB_PATH + "leaflet-src",
-        "bing":          LIB_PATH + "Bing",
+        "jquery": LIB_PATH + "jquery",
+        "bootstrap": LIB_PATH + "bootstrap",
+        "bootstrap-lightbox": LIB_PATH + "bootstrap-lightbox",
+        "leaflet": LIB_PATH + "leaflet-src",
+        "bing": LIB_PATH + "Bing",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
-        "ie8.respond":   LIB_PATH + "respond.min",
+        "ie8.respond": LIB_PATH + "respond.min",
         "markercluster": LIB_PATH + "leaflet.markercluster",
         "chap-timeline": LIB_PATH + "timeline"
     },
     shim: {
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "bootstrap-lightbox": {
+            deps: ["bootstrap"]
         },
         "bing": {
             deps: ["leaflet"]

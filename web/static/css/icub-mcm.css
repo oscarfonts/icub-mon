@@ -34,7 +34,7 @@
 	text-align: left;
 }
 
-.description img {
+.description .img-thumbnail {
 	max-height: 140px;
 }
 

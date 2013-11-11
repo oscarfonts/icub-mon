@@ -1,4 +1,4 @@
-define(["eventbus", "data.contents", "timeline"], function(events, data, timeline) {
+define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function(events, data, timeline) {
     events.listen("culturaSelected", renderCultura);
        
     function renderCultura(event, feature) {
@@ -23,7 +23,7 @@ define(["eventbus", "data.contents", "timeline"], function(events, data, timelin
             
             var html = ' \
                 <div class="media"> \
-                    <a class="pull-left" href="#"> \
+                    <a class="pull-left" data-toggle="lightbox" data-target="#img_qwerqwer"> \
                         <img class="media-object img-thumbnail" src="'+img_src+'" alt="'+peca.num_registre+'"> \
                     </a> \
                     <div class="media-body"> \
@@ -39,7 +39,14 @@ define(["eventbus", "data.contents", "timeline"], function(events, data, timelin
                             <li><b>Any final:</b> '+peca.any_final+'</li> \
                         </ul> \
                     </div> \
-                </div>';           
+                </div> \
+                <div id="img_qwerqwer" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true"> \
+                    <div class="lightbox-dialog"> \
+                        <div class="lightbox-content"> \
+                            <img src="'+img_src+'" alt="'+peca.num_registre+'"> \
+                        </div> \
+                    </div> \
+                </div>';
             
             collection.push('<div>'+html+'</div>');
         }
