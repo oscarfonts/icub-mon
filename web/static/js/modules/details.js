@@ -11,6 +11,10 @@ define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function
             <div id="items"></div>'
          );
         data.list("peca", {"filters":[{"name":"cultura","op":"==","val":feature.id}]}, renderPeces);
+        
+        $('html, body').animate({
+            scrollTop: $("#description").offset().top
+        }, 1000);
     };
 
     function renderPeces(peces) {
