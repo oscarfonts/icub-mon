@@ -23,7 +23,7 @@ define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function
             
             var html = ' \
                 <div class="media"> \
-                    <a class="pull-left" data-toggle="lightbox" data-target="#img_'+peca.num_registre.replace(/ /g,"_")+'"> \
+                    <a class="pull-left" data-toggle="lightbox" href="#img_'+peca.num_registre.replace(/ /g,"_")+'"> \
                         <img class="media-object img-thumbnail" src="'+img_src+'" alt="'+peca.num_registre+'"> \
                     </a> \
                     <div class="media-body"> \
