@@ -23,7 +23,7 @@ define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function
             
             var html = ' \
                 <div class="media"> \
-                    <a class="pull-left" data-toggle="lightbox" data-target="#img_qwerqwer"> \
+                    <a class="pull-left" data-toggle="lightbox" data-target="#img_'+peca.num_registre.replace(/ /g,"_")+'"> \
                         <img class="media-object img-thumbnail" src="'+img_src+'" alt="'+peca.num_registre+'"> \
                     </a> \
                     <div class="media-body"> \
@@ -40,7 +40,7 @@ define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function
                         </ul> \
                     </div> \
                 </div> \
-                <div id="img_qwerqwer" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true"> \
+                <div id="img_'+peca.num_registre.replace(/ /g,"_")+'" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true"> \
                     <div class="lightbox-dialog"> \
                         <div class="lightbox-content"> \
                             <img src="'+img_src+'" alt="'+peca.num_registre+'"> \
