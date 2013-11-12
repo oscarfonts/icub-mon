@@ -10,7 +10,7 @@ h1, h4 {
     margin-top: 0;	
 }
 
-#details div {
+#details > div {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
@@ -37,10 +37,19 @@ h1, h4 {
     display: block;
 }
 
-#map, #details div {
+#map, .framed {
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #bbb;
+}
+
+.well-title {
+	position:absolute;
+	left:0;
+	right:0;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
 }
 
 .geometry {
