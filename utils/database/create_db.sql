@@ -85,7 +85,8 @@ CREATE TABLE peca (
 
 -- Table cultura_geometry
 CREATE TABLE geo.cultura_geometry (
-	id integer NOT NULL PRIMARY KEY
+	id integer NOT NULL PRIMARY KEY,
+  descripcio_html text NOT NULL
 );
 SELECT AddGeometryColumn('cultura_geometry', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX cultura_geometry_gist ON cultura_geometry USING GIST (geometry);

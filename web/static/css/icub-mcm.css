@@ -38,10 +38,14 @@
 	max-height: 140px;
 }
 
-.description ul {
+.description .media-body ul {
 	list-style-type: none;
 	padding: 0px;
 	margin: 12px;
+}
+
+#cultura-description {
+	text-align: left;
 }
 
 .navbar-brand {

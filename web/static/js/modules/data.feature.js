@@ -25,6 +25,10 @@ define(["eventbus", "module"], function(events, module) {
     events.listen("map.editor.featureDeleted", function(event, data) {
         del(data.type, data.id);
     });
+
+    events.listen("details.editor.featureSaved", function(event, data) {
+        update(data.type, data.id, data.feature);
+    });
    
     function create(type, id, feature) {
         $.ajax({
@@ -105,8 +109,20 @@ define(["eventbus", "module"], function(events, module) {
         });
     }
     
+    function get(type, id, callback) {
+        $.ajax({
+            url: "api/" + type + "_" + category  + "/" + id,
+            dataType: "json",
+            success: callback,
+            error: function() {
+                events.send("error", "Error reading feature " + id);
+            }
+        });
+    }
+    
     return {
-        list: list
+        list: list,
+        get: get
     };
 
 });

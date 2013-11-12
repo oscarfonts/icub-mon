@@ -24,6 +24,7 @@ class Peca(db.Model):
 
 class Cultura_geometry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    descripcio_html = db.Column(db.Unicode)
     geometry = db.Column(Geometry(geometry_type='GEOMETRY', srid=4326))
 
 class Peca_geometry(db.Model):
@@ -32,8 +33,9 @@ class Peca_geometry(db.Model):
 
 class Cultura_feature(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nom = db.Column(db.Unicode)
     continent = db.Column(db.Integer, db.ForeignKey("continent.id"))
+    nom = db.Column(db.Unicode)
+    descripcio_html = db.Column(db.Unicode)
     geometry = db.Column(Geometry(geometry_type='GEOMETRY', srid=4326))
 
 class Peca_feature(db.Model):

@@ -24,7 +24,7 @@ define(["eventbus", "data.contents", "chap-timeline"], function(events, data) {
 
             var options = {
               locale: "ca",
-              width: "65%",
+              width: "85%",
               cluster: "true",
               //min: new Date(any_min-10, 00, 01),
               //max: new Date(any_max+10, 11, 31),

@@ -1,21 +1,35 @@
-define(["eventbus", "data.contents", "timeline", "bootstrap-lightbox"], function(events, data, timeline) {
+define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-lightbox"], function(events, data, features, timeline) {
     events.listen("state.featureChanged", renderCultura);
     
     function renderCultura(event, id) {
         var cultura = data.get("cultures", id);
+        features.get("cultura", id, renderCulturaDescription);
         description(' \
             <h1 class="page-header">'+cultura.nom+'</h1> \
-            <p><i>Aquí hi va un text descriptiu d\'aquesta cultura, que s\'ha de veure d\'on el treiem (gestor de continguts?)</i></p> \
-            <h1 class="page-header"><small>Cronograma de les peces</small></h1> \
-            <div id="timeline"></div> \
-            <h1 class="page-header"><small>Detall de les peces</small></h1> \
-            <div id="items"></div>'
+            <div class="row"> \
+              <div class="col-sm-6"> \
+                <h1 class="page-header"><small>Descripció de la cultura</small></h1> \
+                <div class="well well-lg" id="cultura-description"><i>Sense descripció</i></div> \
+              </div> \
+              <div class="col-sm-6"> \
+                <h1 class="page-header"><small>Detall de les peces</small></h1> \
+                <div id="items"></div> \
+                <h1 class="page-header"><small>Cronologia de les peces</small></h1> \
+                <div id="timeline"></div> \
+              </div> \
+            </div>'
          );
         data.list("peca", {"filters":[{"name":"cultura","op":"==","val":cultura.id}]}, renderPeces);
         
         $('html, body').animate({
             scrollTop: $("#description").offset().top
         }, 1000);
+    };
+    
+    function renderCulturaDescription(feature) {
+        if (feature.properties.descripcio_html != null) {
+            $("#cultura-description").html(feature.properties.descripcio_html);    
+        }        
     };
 
     function renderPeces(peces) {
