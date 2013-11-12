@@ -1,5 +1,5 @@
 Mapa per al Museu de Cultures del Món
 =====================================
 
-Demo: http://fonts.cat/icub-mon/
+Demo: http://fonts.cat/icub/
 
