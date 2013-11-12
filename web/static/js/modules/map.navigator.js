@@ -1,20 +1,27 @@
-define(["eventbus", "map", "nav-state", "markercluster", "details"], function(events, map, state) {
+define(["eventbus", "map", "map.styler-kit", "nav-state", "markercluster", "details"], function(events, map, stylerkit, state) {
     
-    var active_culture = false;
+    var data = null;
     
-    events.listen("data.feature.listed", function(event, data) {
-        var clustered = L.markerClusterGroup({
-            showCoverageOnHover: false,
-            maxClusterRadius: 75,
-            spiderfyDistanceMultiplier: 3,
-            removeOutsideVisibleBounds: false,
-            iconCreateFunction: function (cluster) {
-               return L.divIcon({
-                    className: 'mcm-hide-marker',
-                    html: '<div class="btn btn-xs btn-danger"><b>'+cluster.getChildCount()+'</b> cultures</div>'
-                });
-            },
-        });
+    var clustered = null;
+    
+    events.listen("data.feature.listed", function(event, d) {
+        data = d;
+        draw();
+    }, this);
+    
+    events.listen("iconstyle.changed", function(event) {
+        draw();
+    }, this);
+    
+    function draw() {
+        var firstDraw = true;
+        if (clustered) {
+            clustered.clearLayers();
+            map.removeLayer(clustered);
+            clustered = null;
+            firstDraw = false;
+        }
+        clustered = L.markerClusterGroup(stylerkit.getStyler().clusterOptions());
         
         L.geoJson(data.features, {
             onEachFeature: function(feature, layer) {
@@ -22,15 +29,11 @@ define(["eventbus", "map", "nav-state", "markercluster", "details"], function(ev
                     layer.setIcon(
                         L.divIcon({
                             className: 'mcm-hide-marker',
-                            html: '<div class="btn btn-xs btn-primary" id="marker-cultura-'+feature.id+'">'+feature.properties.nom+'</div>'
+                            html: stylerkit.getStyler().contents(feature)
                         })
                     );
                     layer.on('click', function(e) {
-                        if (active_culture) {
-                            $("#marker-cultura-"+active_culture).removeClass("btn-success").addClass("btn-primary");
-                        }
-                        active_culture = layer.feature.id;
-                        $("#marker-cultura-"+layer.feature.id).removeClass("btn-primary").addClass("btn-success");
+                        stylerkit.getStyler().select(layer.feature.id);
                                                
                         if (layer instanceof L.Marker) {
                             var minZoomForMarkers = 6;
@@ -46,16 +49,18 @@ define(["eventbus", "map", "nav-state", "markercluster", "details"], function(ev
                         events.send("map.navigator.markerSelected", feature);
                     });
                 }
-
                 clustered.addLayer(layer);
             }
         });
         
         map.addLayer(clustered);
        
-        events.send("map.navigator.loaded", data);
+        events.send("map.navigator.loaded");
 
-        map.fitBounds(clustered.getBounds());
+        if (firstDraw) {
+            map.fitBounds(clustered.getBounds());
+            firstDraw = false;
+        }
 
-    });
+    };
 });
