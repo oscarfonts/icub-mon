@@ -1,6 +1,7 @@
 define(["chap-timeline"], function() {
     
     function draw(peces) {
+        var timelines = [];
 
         for (i in peces) {
             var peca = peces[i];
@@ -16,7 +17,8 @@ define(["chap-timeline"], function() {
 
             var options = {
                 locale: "ca",
-                //width: "85%",
+                animate: false,
+                animateZoom: false,
                 showCurrentTime: false,
                 showMajorLabels: false,
                 selectable: false,
@@ -24,9 +26,17 @@ define(["chap-timeline"], function() {
             };
         
             timeline.draw(data, options);
+            timelines.push(timeline);
         }
-    }
-    
+
+        window.onresize = function() {
+            for (i in timelines) {
+                timeline = timelines[i];
+                timeline.checkResize.call(timeline);
+            }
+        };
+    };
+      
     return {
         draw: draw
     };
