@@ -19,8 +19,8 @@
 }
 
 .description .media {
-    border-top: 1px solid #EEEEEE;
-    padding-top: 9px;
+    border-bottom: 1px solid #EEEEEE;
+    padding-bottom: 9px;
     margin: 20px;
 }
 

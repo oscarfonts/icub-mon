@@ -5,17 +5,14 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
         var cultura = data.get("cultures", id);
         features.get("cultura", id, renderCulturaDescription);
         description(' \
-            <h1 class="page-header">'+cultura.nom+'</h1> \
+            <h1 class="page-header">Cultura '+cultura.nom+'</h1> \
             <div class="row"> \
               <div class="col-sm-6"> \
-                <h1 class="page-header"><small>Descripció de la cultura</small></h1> \
-                <div class="well well-lg" id="cultura-description"><i>Sense descripció</i></div> \
+                <div class="well well-lg" id="cultura-description"> \
+                  <i>Sense descripció</i></div> \
               </div> \
               <div class="col-sm-6"> \
-                <h1 class="page-header"><small>Detall de les peces</small></h1> \
                 <div id="items"></div> \
-                <h1 class="page-header"><small>Cronologia de les peces</small></h1> \
-                <div id="timeline"></div> \
               </div> \
             </div>'
          );
@@ -33,7 +30,6 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
     };
 
     function renderPeces(peces) {
-        timeline.draw(peces);
         
         var collection = [];
         for (i in peces) {
@@ -47,16 +43,13 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
                     </a> \
                     <div class="media-body"> \
                         <h4 class="media-heading">'+peca.num_registre+'</h4> \
-                        <ul> \
-                            <li><b>Procedència:</b> '+peca.procedencia+'</li>';
+                        <div><b>Procedència:</b> '+peca.procedencia;
             if (peca.precisions_procedencia.length) {
-                 html +='<li><b>Precisions procedència:</b> '+peca.precisions_procedencia+'</li>';
+                 html +=', '+peca.precisions_procedencia;
             }
-            html += ' \
-                            <li><b>Datació:</b> '+peca.datacio+'</li> \
-                            <li><b>Any inicial:</b> '+peca.any_inici+'</li> \
-                            <li><b>Any final:</b> '+peca.any_final+'</li> \
-                        </ul> \
+            
+            html += '   </div> \
+                        <div id="timeline'+peca.id+'"></div> \
                     </div> \
                 </div> \
                 <div id="img_'+peca.num_registre.replace(/ /g,"_")+'" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true"> \
@@ -71,6 +64,7 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
         }
         
         items(collection);
+        timeline.draw(peces);
     }
     
     function description(text) {
