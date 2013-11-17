@@ -90,6 +90,36 @@
 img.tiny {
 	max-height: 32px;
 	border: 1px solid #666666;
+	border-radius: 3px;
+}
+
+.marker-out {
+    display: inline-block;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;	
+}
+
+.marker-out img {
+	margin: 3px;
+}
+
+.marker-out span {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;
+    -moz-user-select: none;
+    cursor: pointer;
+    background-color: #428BCA;
+    border: 1px solid #357EBD;
+    color: #FFFFFF;
+	border-radius: 3px;	
+}
+
+.cluster-out span {
+    background-color: #D9534F;
+    border-color: #D43F3A;
 }
 
 .marker {
@@ -114,7 +144,7 @@ img.tiny {
     border-color: #D43F3A;
 }
 
-.marker-selected {
+.marker.marker-selected, .marker-out.marker-selected span {
     background-color: #5CB85C;
     border-color: #4CAE4C;
 }

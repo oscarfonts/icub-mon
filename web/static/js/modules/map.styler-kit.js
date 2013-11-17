@@ -5,7 +5,75 @@ define(["eventbus"], function(events) {
         style: null,
         
         stylers: {
-            "Amb imatges": {
+            "Imatges a fora, només cultures": {
+                active_feature_id: false,
+                clusterOptions: function() {
+                    var self = this;
+                    return {
+                        showCoverageOnHover: false,
+                        maxClusterRadius: 75,
+                        spiderfyDistanceMultiplier: 3,
+                        removeOutsideVisibleBounds: false,
+                        iconCreateFunction: function (cluster) {
+                           return L.divIcon({
+                                className: 'mcm-hide-marker',
+                                html: self.cluster(cluster.getChildCount())
+                            });
+                        }
+                    };
+                },
+                cluster: function(count) {
+                    return '<div class="btn btn-xs btn-danger">'+count+'</b> cultures</div>';
+                },
+                contents: function(feature) {
+                    // TODO select image dynamically
+                    var img_src = "static/img/peces/481470.JPG";
+                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
+                },
+                select: function(id) {
+                    if (this.active_feature_id) {
+                        $("#marker-cultura-"+this.active_feature_id).removeClass("marker-selected"); //.addClass("btn-primary");
+                    }
+                    this.active_feature_id = id;
+                    $("#marker-cultura-"+id).removeClass("btn-primary").addClass("marker-selected");
+                }
+            },
+            "Imatges a fora, tots els markers": {
+                active_feature_id: false,
+                clusterOptions: function() {
+                    var self = this;
+                    return {
+                        showCoverageOnHover: false,
+                        maxClusterRadius: 95,
+                        spiderfyDistanceMultiplier: 3.5,
+                        removeOutsideVisibleBounds: false,
+                        iconCreateFunction: function (cluster) {
+                           return L.divIcon({
+                                className: 'mcm-hide-marker',
+                                html: self.cluster(cluster.getChildCount())
+                            });
+                        }
+                    };
+                },
+                cluster: function(count) {
+                    // TODO select image dynamically
+                    var img_src = "static/img/peces/481470.JPG";
+                    return '<div class="marker-out cluster-out"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;"><b>'+count+'</b> cultures</span></div>';
+                },
+                contents: function(feature) {
+                    // TODO select image dynamically
+                    var img_src = "static/img/peces/481470.JPG";
+                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
+                },
+                select: function(id) {
+                    if (this.active_feature_id) {
+                        $("#marker-cultura-"+this.active_feature_id).removeClass("marker-selected"); //.addClass("btn-primary");
+                    }
+                    this.active_feature_id = id;
+                    $("#marker-cultura-"+id).removeClass("btn-primary").addClass("marker-selected");
+                }
+            },
+            "Imatges a dins": {
                 active_feature_id: false,
                 clusterOptions: function() {
                     var self = this;
