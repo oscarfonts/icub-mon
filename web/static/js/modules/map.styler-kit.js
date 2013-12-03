@@ -1,4 +1,10 @@
-define(["eventbus"], function(events) {
+define(["eventbus", "data.contents"], function(events, data) {
+    
+    function getImageForCulture(cultura_id) {
+        var peca = data.getFirstPecaOfCulture(cultura_id);
+        var img_src = "static/img/peces/"+peca.id+".JPG";
+        return '<img class="tiny" src="'+img_src+'" alt="img"/>'; 
+    };
     
     var stylerkit = {
         
@@ -6,7 +12,8 @@ define(["eventbus"], function(events) {
         
         stylers: {
             "Imatges a fora, només cultures": {
-                active_feature_id: false,
+                active_feature_id: false,                
+                getImage: getImageForCulture,
                 clusterOptions: function() {
                     var self = this;
                     return {
@@ -26,9 +33,8 @@ define(["eventbus"], function(events) {
                     return '<div class="btn btn-xs btn-danger">'+count+'</b> cultures</div>';
                 },
                 contents: function(feature) {
-                    // TODO select image dynamically
-                    var img_src = "static/img/peces/481470.JPG";
-                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
+                    var img = this.getImage(feature.id);
+                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'">'+img+'<span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
                 },
                 select: function(id) {
                     if (this.active_feature_id) {
@@ -40,6 +46,7 @@ define(["eventbus"], function(events) {
             },
             "Imatges a fora, tots els markers": {
                 active_feature_id: false,
+                getImage: getImageForCulture,
                 clusterOptions: function() {
                     var self = this;
                     return {
@@ -50,20 +57,18 @@ define(["eventbus"], function(events) {
                         iconCreateFunction: function (cluster) {
                            return L.divIcon({
                                 className: 'mcm-hide-marker',
-                                html: self.cluster(cluster.getChildCount())
+                                html: self.cluster(cluster)
                             });
                         }
                     };
                 },
-                cluster: function(count) {
-                    // TODO select image dynamically
-                    var img_src = "static/img/peces/481470.JPG";
-                    return '<div class="marker-out cluster-out"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;"><b>'+count+'</b> cultures</span></div>';
+                cluster: function(cluster) {
+                    var img = this.getImage(cluster.getAllChildMarkers()[0].feature.id);
+                    return '<div class="marker-out cluster-out">'+img+'<span style="white-space:nowrap;"><b>'+cluster.getChildCount()+'</b> cultures</span></div>';
                 },
                 contents: function(feature) {
-                    // TODO select image dynamically
-                    var img_src = "static/img/peces/481470.JPG";
-                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
+                    var img = this.getImage(feature.id);
+                    return '<div class="marker-out" id="marker-cultura-'+feature.id+'">'+img+'<span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
                 },
                 select: function(id) {
                     if (this.active_feature_id) {
@@ -75,6 +80,7 @@ define(["eventbus"], function(events) {
             },
             "Imatges a dins": {
                 active_feature_id: false,
+                getImage: getImageForCulture,
                 clusterOptions: function() {
                     var self = this;
                     return {
@@ -83,22 +89,20 @@ define(["eventbus"], function(events) {
                         spiderfyDistanceMultiplier: 3.5,
                         removeOutsideVisibleBounds: false,
                         iconCreateFunction: function (cluster) {
-                           return L.divIcon({
+                            return L.divIcon({
                                 className: 'mcm-hide-marker',
-                                html: self.cluster(cluster.getChildCount())
+                                html: self.cluster(cluster)
                             });
                         }
                     };
                 },
-                cluster: function(count) {
-                    // TODO select image dynamically
-                    var img_src = "static/img/peces/481470.JPG";
-                    return '<div class="marker cluster"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;"><b>'+count+'</b> cultures</span></div>';
+                cluster: function(cluster) {
+                    var img = this.getImage(cluster.getAllChildMarkers()[0].feature.id);
+                    return '<div class="marker cluster">'+img+'<span style="white-space:nowrap;"><b>'+cluster.getChildCount()+'</b> cultures</span></div>';
                 },
                 contents: function(feature) {
-                    // TODO select image dynamically
-                    var img_src = "static/img/peces/481470.JPG";
-                    return '<div class="marker" id="marker-cultura-'+feature.id+'"><img class="tiny" src="'+img_src+'" alt="img"/><span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
+                    var img = this.getImage(feature.id);
+                    return '<div class="marker" id="marker-cultura-'+feature.id+'">'+img+'<span style="white-space:nowrap;">'+feature.properties.nom+'</span></div>';
                 },
                 select: function(id) {
                     if (this.active_feature_id) {
@@ -162,10 +166,11 @@ define(["eventbus"], function(events) {
                 events.send("error", "Icon Style '"+style+"' not found");
             }
         },
-        
+
         getStyler: function() {
             return this.stylers[this.style];
-        }
+        },
+        
     };
     
     stylerkit.setStyle(stylerkit.getStyles()[0]);

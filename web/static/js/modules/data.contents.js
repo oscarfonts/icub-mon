@@ -47,6 +47,15 @@ define(["eventbus", "module"], function(events, module) {
         return {};
     }
     
+    function getFirstPecaOfCulture(id) {
+        for (i in data.peces) {
+            if (data.peces[i].cultura == id) {
+                return data.peces[i];
+            }
+        }
+        return {};
+    }
+    
     var api_url = module.config().api_url;
     
     download(api_url + "continent", data.continents);
@@ -55,7 +64,8 @@ define(["eventbus", "module"], function(events, module) {
     
     return {
         list: list,
-        get: get
+        get: get,
+        getFirstPecaOfCulture: getFirstPecaOfCulture
     };
 
 });
