@@ -45,6 +45,16 @@ def create_api(app, url_prefix='/api'):
 			'POST': [rest.toGeoJSON]
 		}
 	)
+    
+    manager.create_api(model.Cultura,
+        url_prefix=url_prefix,
+        methods=['GET','PUT'],
+        results_per_page = -1,
+        preprocessors = {
+            'GET_SINGLE': [auth],
+            'PUT_SINGLE': [auth]
+        }
+    )
 
 def auth(**kw):
     if not session.get('logged_in'):

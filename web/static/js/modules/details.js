@@ -41,14 +41,19 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
                     <a class="pull-left" data-toggle="lightbox" href="#img_'+peca.num_registre.replace(/ /g,"_")+'"> \
                         <img class="media-object img-thumbnail" src="'+img_src+'" alt="'+peca.num_registre+'"> \
                     </a> \
+                    <h4 class="media-heading">'+peca.nom;
+                    if (peca.nom_vernacle) {
+                        html += ' ('+peca.nom_vernacle+')';
+                    }
+                    html += '</h4> \
                     <div class="media-body"> \
-                        <h4 class="media-heading">'+peca.num_registre+'</h4> \
                         <div><b>Procedència:</b> '+peca.procedencia;
-            if (peca.precisions_procedencia.length) {
-                 html +=', '+peca.precisions_procedencia;
-            }
-            
+                        if (peca.precisions_procedencia.length) {
+                             html +=', '+peca.precisions_procedencia;
+                        }
             html += '   </div> \
+                        <div><b>Material</b>: '+peca.precisions_material+'</div> \
+                        <div><b>Núm registre</b>: '+peca.num_registre+'</div> \
                         <div id="timeline'+peca.id+'"></div> \
                     </div> \
                 </div> \

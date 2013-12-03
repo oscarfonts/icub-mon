@@ -19,7 +19,7 @@ define(["eventbus", "leaflet", "map", "draw", "L.Control.DrawSingle", "data.feat
         drawItems.clearLayers();
         activeGeom = {};
         drawControl.hide();
-    });
+    }, this);
            
     events.listen("data.feature.read", function(event, data) {
         drawItems.clearLayers();
@@ -34,13 +34,13 @@ define(["eventbus", "leaflet", "map", "draw", "L.Control.DrawSingle", "data.feat
                 }
             }
         });
-     });
+     }, this);
    
     events.listen("data.feature.notFound", function(event, data) {
         drawItems.clearLayers();
         activeGeom = data;
         drawControl.show();
-    });
+    }, this);
     
     map.on('draw:created', function (e) {
         var feature = e.layer.toGeoJSON();

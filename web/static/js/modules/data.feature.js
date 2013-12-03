@@ -25,9 +25,13 @@ define(["eventbus", "module"], function(events, module) {
     events.listen("map.editor.featureDeleted", function(event, data) {
         del(data.type, data.id);
     });
+    
+    events.listen("details.getCultura", function(event, cultura_id) {
+        retrieveCultura(cultura_id);
+    });
 
-    events.listen("details.editor.featureSaved", function(event, data) {
-        update(data.type, data.id, data.feature);
+    events.listen("details.setCultura", function(event, cultura) {
+        updateCultura(cultura);
     });
    
     function create(type, id, feature) {
@@ -116,6 +120,40 @@ define(["eventbus", "module"], function(events, module) {
             success: callback,
             error: function() {
                 events.send("error", "Error reading feature " + id);
+            }
+        });
+    }
+    
+    function retrieveCultura(id) {
+        $.ajax({
+            url: "api/cultura/" + id,
+            dataType: "json",
+            success: function(response) {
+                events.send("data.culturaRead", response);
+            },
+            error: function(xhr) {
+                if (xhr.status == 404) {
+                    events.send("culturaNotFound", id);
+                } else {
+                    events.send("error", "Error reading cultura " + id);
+                }
+            }
+        });
+    }
+    
+    function updateCultura(cultura) {
+        $.ajax({
+            type: 'PUT',
+            url: "api/cultura/" + cultura.id,
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(cultura),
+            success: function() {
+                events.send("culturaUpdated", cultura);
+                retrieveCultura(cultura.id);
+            },
+            error: function () {
+                events.send("error", "Error updating cultura " + cultura.id);
             }
         });
     }
