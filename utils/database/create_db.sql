@@ -1,16 +1,13 @@
--- DROP DATABASE mcm;
--- DROP ROLE mcm;
-
 -- User
 CREATE ROLE mcm LOGIN ENCRYPTED PASSWORD 'md5e2cb82178fe76945f9eaefe00e9f7edc'
-   VALID UNTIL 'infinity';
+    VALID UNTIL 'infinity';
 
 -- Database
 CREATE DATABASE mcm
-  WITH ENCODING='UTF8'
-       OWNER=mcm
-       TEMPLATE=template_postgis
-       CONNECTION LIMIT=-1;
+    WITH ENCODING='UTF8'
+    OWNER=mcm
+    TEMPLATE=template_postgis
+    CONNECTION LIMIT=-1;
 
 \connect mcm
 
@@ -35,6 +32,7 @@ CREATE TABLE cultura (
     id integer NOT NULL PRIMARY KEY,
     continent integer NOT NULL,
     nom text NOT NULL,
+    descripcio_html text,
     FOREIGN KEY (continent) REFERENCES continent(id)
 );
 
@@ -58,13 +56,24 @@ CREATE TABLE peca (
     cultura integer,
     procedencia text,
     precisions_procedencia text,
+    -- Added columns for complete highlights
+    nom text,
+    nom_vernacle text,
+    dimensions text,
+    precisions_material text,
+    geografia_historica text,
+    precisions_ingres text,
+    historia_objecte text,
+    descripcio_sinopsi text,
+    context_utilitzacio text,
+    -- End of added columns
     FOREIGN KEY (cultura) REFERENCES cultura(id)
 );
 
 -- Old Table Peca (from LIDO imports)
 --CREATE SEQUENCE peca_id_seq;
 --CREATE TABLE peca (
---	id int NOT NULL DEFAULT nextval('peca_id_seq') PRIMARY KEY,
+--	  id int NOT NULL DEFAULT nextval('peca_id_seq') PRIMARY KEY,
 --    id_lido text NOT NULL UNIQUE,
 --    id_cataleg text NOT NULL UNIQUE,
 --    cultura int, -- NOT NULL?
@@ -85,13 +94,13 @@ CREATE TABLE peca (
 
 -- Table cultura_geometry
 CREATE TABLE geo.cultura_geometry (
-	id integer NOT NULL PRIMARY KEY,
-  descripcio_html text NOT NULL
+	  id integer NOT NULL PRIMARY KEY
 );
 SELECT AddGeometryColumn('cultura_geometry', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX cultura_geometry_gist ON cultura_geometry USING GIST (geometry);
 
--- INSERT INTO cultura_geometry(id, geometry) VALUES (42228, ST_GeomFromText('POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))', 4326));
+-- INSERT INTO cultura_geometry(id, geometry) VALUES (42228, ST_GeomFromText(
+--     'POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))', 4326));
 
 -- Table peca_geometry
 CREATE TABLE geo.peca_geometry (
@@ -102,15 +111,15 @@ CREATE INDEX peca_geometry_gist ON peca_geometry USING GIST (geometry);
 
 -- View cultura_feature
 CREATE OR REPLACE VIEW geo.cultura_feature AS 
- SELECT cultura.*, cultura_geometry.geometry FROM cultura
- LEFT OUTER JOIN cultura_geometry
- ON (cultura.id = cultura_geometry.id);
+    SELECT cultura.*, cultura_geometry.geometry FROM cultura
+    LEFT OUTER JOIN cultura_geometry
+    ON (cultura.id = cultura_geometry.id);
 
 -- View peca_feature
 CREATE OR REPLACE VIEW geo.peca_feature AS 
- SELECT peca.*, peca_geometry.geometry FROM peca
- LEFT OUTER JOIN peca_geometry
- ON (peca.id = peca_geometry.id);
+    SELECT peca.*, peca_geometry.geometry FROM peca
+    LEFT OUTER JOIN peca_geometry
+    ON (peca.id = peca_geometry.id);
 
 -- Role privileges
 GRANT USAGE ON SCHEMA data TO mcm;
