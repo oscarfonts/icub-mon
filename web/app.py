@@ -22,6 +22,10 @@ api.create_api(app)
 def index():
     return render_template('index.html')
 
+@app.route('/peca')
+def peca():
+    return render_template('peca.html')
+
 # Admin subsite
 app.register_blueprint(admin.admin, url_prefix='/admin')
 admin.create_api(app, url_prefix='/admin/api')

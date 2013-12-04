@@ -55,6 +55,7 @@ define(["eventbus", "data.contents", "data.feature", "timeline", "bootstrap-ligh
                         <div><b>Material</b>: '+peca.precisions_material+'</div> \
                         <div><b>Núm registre</b>: '+peca.num_registre+'</div> \
                         <div id="timeline'+peca.id+'"></div> \
+                        <div><a target="_blank" href="peca?id='+peca.id+'">Detall de la peça</a></div>\
                     </div> \
                 </div> \
                 <div id="img_'+peca.num_registre.replace(/ /g,"_")+'" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true"> \
