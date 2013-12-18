@@ -1,6 +1,7 @@
 var specs =
     [ 'sample.jasmine'
-    , 'messagebus.jasmine'
+    , 'messagebus.jasmine',
+    , 'celapi'
     ];
 
 var BASE_PATH = "../modules/",
@@ -12,16 +13,20 @@ require.config({
     paths: {
         'jquery': LIB_PATH + 'jquery',
         'jasmine': LIB_PATH + 'jasmine',
-        'jasmine-html': LIB_PATH + 'jasmine-html'
+        'jasmine-html': LIB_PATH + 'jasmine-html',
+        'jasmine-async': LIB_PATH + 'jasmine.async.min'
     },
     shim: {
         'jasmine-html': {
+            deps: ['jasmine']
+        },
+        'jasmine-async': {
             deps: ['jasmine']
         }
     }
 });
 
-require(['jasmine', 'jasmine-html'], function() {
+require(['jasmine', 'jasmine-html', 'jasmine-async'], function() {
 
     for (i in specs) {
         specs[i] = SPEC_PATH + specs[i] + '.spec'
@@ -29,8 +34,8 @@ require(['jasmine', 'jasmine-html'], function() {
 
     require(specs, function() {
         // Set Jasmine reporter
-        var env = jasmine.getEnv(),
-            reporter = new jasmine.HtmlReporter();
+        var env = jasmine.getEnv();
+        var reporter = new jasmine.HtmlReporter();
         env.addReporter(reporter);
 
         // Set filtering
