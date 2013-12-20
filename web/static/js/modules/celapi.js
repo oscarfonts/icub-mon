@@ -1,12 +1,11 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(['jquery'],function($) {
+define(['jquery'], function($) {
 
     var baseURL = "http://celapi.agilogy.net/api/1";
     
-    // This will act as a cache mechanism for any ajax request already made
-    var promises = {};
+    var promises = {}; // This acts as a cache for AJAX responses
     
     setBaseURL = function(url) {
         baseURL = url;
