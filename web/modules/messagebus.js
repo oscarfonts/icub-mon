@@ -1,15 +1,5 @@
 /**
- * Message Bus v.3
- * ---------------
- *
- * Changes from v.2:
- * 
- *  - Standalone vanilla js implementation, not depending on jQuery or others.
- *  - Public methods will return values:
- *    . "publish" returns the number of subscribers that received the message.
- *    . "subscribe" returns a unique identifier for the subscription.
- *  - "unsubscribe" using id, better than needing the callback function.
- *
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
 define(function() {
 

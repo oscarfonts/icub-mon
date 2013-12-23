@@ -7,7 +7,20 @@ define(["celapi"], function(celapi) {
     
     var async = new AsyncSpec(this);
     
-    describe("Celapi API", function() {
+    describe("Celapi", function() {
+        
+        var museum_id = "MCM",
+            collection_id = "Àfrica",
+            object_id = "329618";
+        
+        var error = function(response) {
+            jasmine.getEnv().currentSpec.fail(Error(JSON.stringify(response)));
+        };
+        
+        var notImplemented = function(param) {
+            jasmine.getEnv().currentSpec.fail(Error("Not implemented yet"));
+            return param;
+        };
         
         describe("Museums", function() {
             
@@ -37,30 +50,28 @@ define(["celapi"], function(celapi) {
                        
             var selectMuseumById = function(museums) {
                 var id = museums.pop().acronym;
-                return celapi.getMuseum(id);
+                return celapi.museum.get(id);
             };
 
             async.it("should list all Museums", function(done) {
-                celapi.getMuseums().then(checkMuseums).then(done, done, done);
+                celapi.museum.list().then(checkMuseums, error).then(done, done);
             });
 
             async.it("should retrieve a Museum by ID", function(done) {
-                celapi.getMuseums().then(selectMuseumById).then(checkMuseum).then(done, done, done);
+                celapi.museum.list().then(selectMuseumById).then(checkMuseum, error).then(done, done);
             });
 
             async.it("should retrieve the ALL virtual Museum", function(done) {
-                celapi.getMuseum().then(checkAllMuseum).then(done, done, done);
+                celapi.museum.get().then(checkAllMuseum, error).then(done, done);
             });            
             
         });
         
         describe("Collections", function() {
-            
-            var museum_id = "MCM";
 
             var checkCollections = function(museum) {
                 $.each(museum.collections, function(i, collection) {
-                    celapi.getCollection(museum.acronym, collection.name).then(checkCollection);
+                    celapi.collection.get(museum.acronym, collection.name).then(checkCollection);
                 });
             };
     
@@ -75,21 +86,17 @@ define(["celapi"], function(celapi) {
             };
             
             async.it("should retrieve a Collection by ID", function(done) {
-                celapi.getMuseum(museum_id).then(checkCollections).then(done, done, done);
+                celapi.museum.get(museum_id).then(checkCollections, error).then(done, done);
             });
 
             async.it("should retrieve the ALL virtual Collection", function(done) {
-                celapi.getCollection(museum_id).then(checkAllCollection).then(done, done, done);
+                celapi.collection.get(museum_id).then(checkAllCollection, error).then(done, done);
             });
     
         });
         
         describe("Objects", function() {
-
-            var museum_id = "MCM",
-                collection_id = "Àfrica",
-                object_id = "329618";
-            
+           
             var checkObjects = function(objects) {
                 expect(objects.objects instanceof Array).toBeTruthy();
                 expect(objects.objects.length).toBeGreaterThan(0);
@@ -98,36 +105,37 @@ define(["celapi"], function(celapi) {
             };
             
             var checkObject = function(object) {
-                expect(object._links).toBeDefined();
+                expect(object._links).toBeDefined("Object links not found");
             };
 
             var checkComplete = function(object) {
-                expect(object.identifiers instanceof Array).toBeTruthy();
+                expect(object.identifiers instanceof Array).toBeTruthy("Object identifiers not found");
             };
 
             async.it("should retrieve the Objects of a collection", function(done) {
-                celapi.getObjects(museum_id, collection_id).then(checkObjects).then(done, done, done);
+                celapi.object.list(museum_id, collection_id).then(checkObjects, error).then(done, done);
             });
 
             async.it("should retrieve an object", function(done) {
-                celapi.getObject(museum_id, collection_id, object_id).then(checkObject).then(done, done, done);                
+                celapi.object.get(museum_id, collection_id, object_id).then(checkObject, error).then(done, done);
             });
 
             async.it("should retrieve a complete object description", function(done) {
-                celapi.getComplete(museum_id, collection_id, object_id).then(checkComplete).then(done, done, done);
+                celapi.object.details(museum_id, collection_id, object_id).then(checkComplete, error).then(done, done);
             });
             
             xdescribe("Filters", function(done) {
                 async.it("should filter objects by different fields", function(done) {
-                    throw 'but it is not yet implemented';
+                    notImplemented();
+                    done();
                 });
-                
             });
 
             xdescribe("Pagination", function(done) {
                 
                 async.it("should return paginated results", function(done) {
-                    throw 'but it is not yet implemented';
+                    notImplemented();
+                    done();
                 });
                 
             });
@@ -135,7 +143,8 @@ define(["celapi"], function(celapi) {
             xdescribe("Sorting", function(done) {
                 
                 async.it("should sort objects by title, author or date in ascending or descending order", function(done) {
-                    throw 'but it is not yet implemented';
+                    notImplemented();
+                    done();
                 });
                 
             });
@@ -143,9 +152,6 @@ define(["celapi"], function(celapi) {
         });
 
         describe("Field list", function() {
-            
-            var museum_id = "MCM",
-                collection_id = "Àfrica";
 
             var checkFieldValues = function(fields) {
                 expect(fields instanceof Array).toBeTruthy();
@@ -162,9 +168,9 @@ define(["celapi"], function(celapi) {
             };
             
             async.it("should retrieve all the distinct field values in a collection", function(done) {
-                celapi.getFieldValues(museum_id, collection_id).then(checkFieldValues).then(done, done, done);
+                celapi.collection.fields(museum_id, collection_id).then(checkFieldValues, error).then(done, done);
             });
-                     
+
         });
 
     });

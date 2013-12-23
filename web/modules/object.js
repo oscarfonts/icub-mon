@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["celapi", "template"], function(celapi, template) {
 
     function renderObject(object) {
@@ -86,6 +89,6 @@ define(["celapi", "template"], function(celapi, template) {
         
     };
 
-    celapi.getComplete("MCM", "Àfrica", "481470").then(renderObject);
+    celapi.object.details("MCM", "africa", "481470").then(renderObject);
     
 });

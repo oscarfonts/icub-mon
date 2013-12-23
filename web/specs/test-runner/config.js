@@ -1,6 +1,7 @@
 var specs = [
     'messagebus',
-    'celapi'
+    'celapi',
+    'mcmapi'
 ];
 
 var BASE_PATH = "../../modules/",
