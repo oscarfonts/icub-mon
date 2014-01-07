@@ -2,4 +2,7 @@ icub_env/
 web/.project
 web/.settings/
 web/.pydevproject
+api/.project
+api/.settings/
+api/.pydevproject
 *.pyc
