@@ -1,5 +1,6 @@
 var specs = [
     'messagebus',
+    'http',
     'celapi',
     'mcmapi'
 ];
