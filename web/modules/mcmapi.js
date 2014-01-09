@@ -3,68 +3,72 @@
  */
 define(['http'], function(http) {
 
-    var baseURL = "/api";
+    var baseURL = "http://localhost:5000/api";
 
     return {
         setBaseURL: function(url) {
             baseURL = url;
         },
+        auth: {
+            set: http.auth.set,
+            clear: http.auth.clear
+        },
         continent: {
             list: function() {
-                return http.get(baseURL + "/continents");
+                return http.get(baseURL + "/continent");
             }
         },
         culture: { 
             list: function(continent_id) {
                 var params = continent_id ? { continent: continent_id } : "";
-                return http.get(baseURL + "/cultures", params);
+                return http.get(baseURL + "/culture", params);
             },
             get: function(id) {
-                return http.get(baseURL + "/cultures/" + id);
+                return http.get(baseURL + "/culture/" + id);
             },
             create: function(feature) {
-                return http.put(baseURL + "/cultures/", feature);
+                return http.post(baseURL + "/culture", feature);
             },
             update: function(feature) {
-                return http.post(baseURL + "/cultures/" + feature.id, feature);
+                return http.put(baseURL + "/culture/" + feature.id, feature);
             },
             del: function(id) {
-                return http.del(baseURL + "/cultures/" + id);
+                return http.del(baseURL + "/culture/" + id);
             }
         },
         object: {
             list: function(culture_id) {
                 var params = culture_id ? { culture: culture_id } : "";
-                return http.get(baseURL + "/objects", params);
+                return http.get(baseURL + "/object", params);
             },
             get: function(id) {
-                return http.get(baseURL + "/objects/" + id);
+                return http.get(baseURL + "/object/" + id);
             },
             create: function(feature) {
-                return http.put(baseURL + "/objects/", feature);
+                return http.post(baseURL + "/object", feature);
             },
             update: function(feature) {
-                return http.post(baseURL + "/objects/" + feature.id, feature);
+                return http.put(baseURL + "/object/" + feature.id, feature);
             },
             del: function(id) {
-                return http.del(baseURL + "/objects/" + id);
+                return http.del(baseURL + "/object/" + id);
             }
         },
         description: {
             list: function() {
-                return http.get(baseURL + "/descriptions");
+                return http.get(baseURL + "/description");
             },
             get: function(id) {
-                return http.get(baseURL + "/descriptions/" + id);
+                return http.get(baseURL + "/description/" + id);
             },
-            create: function(id, description) {
-                return http.put(baseURL + "/descriptions/" + id, description);
+            create: function(description) {
+                return http.post(baseURL + "/description", description);
             },
-            update: function(id, description) {
-                return http.post(baseURL + "/descriptions/" + id, description);
+            update: function(description) {
+                return http.put(baseURL + "/description/" + description.id, description);
             },
             del: function(id) {
-                return http.del(baseURL + "/descriptions/" + id);
+                return http.del(baseURL + "/description/" + id);
             }
         }
     };
