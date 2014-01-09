@@ -19,13 +19,10 @@ ALTER DATABASE mcm SET search_path=data,public;
 \connect mcm
 
 -- Table User
-CREATE SEQUENCE user_id_seq;
 CREATE TABLE "user" (
-    id integer NOT NULL DEFAULT nextval('user_id_seq') PRIMARY KEY,
-    username text NOT NULL,
+    username text NOT NULL PRIMARY KEY,
     password text NOT NULL
 );
-ALTER SEQUENCE user_id_seq OWNED BY "user".id;
 
 -- Table Culture
 CREATE TABLE culture (
@@ -42,7 +39,6 @@ CREATE INDEX culture_geometry_gist ON culture USING GIST (geometry);
 CREATE TABLE object (
     id integer NOT NULL PRIMARY KEY,
     culture text NOT NULL,
-    -- End of added columns
     FOREIGN KEY (culture) REFERENCES culture(id)
 );
 SELECT AddGeometryColumn('object', 'geometry', 4326, 'GEOMETRY', 2);
@@ -51,9 +47,7 @@ CREATE INDEX object_geometry_gist ON object USING GIST (geometry);
 -- Table Description
 CREATE TABLE description (
     id text NOT NULL PRIMARY KEY,
-    html_ca text,
-    html_es text,
-    html_en text
+    html text
 );
 
 -- Role privileges

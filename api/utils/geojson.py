@@ -20,7 +20,7 @@ def loads(feature, srid):
 
 def dumps_feature_collection(data):
     collection = {
-        "Type": "FeatureCollection",
+        "type": "FeatureCollection",
         "features": []
     }
     for item in data['objects']:
