@@ -10,7 +10,7 @@ define(["celapi"], function(celapi) {
     describe("Celapi", function() {
         
         var museum_id = "MCM",
-            collection_id = "Àfrica",
+            collection_id = "africa",
             object_id = "329618";
         
         var error = function(response) {
