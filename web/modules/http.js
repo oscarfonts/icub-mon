@@ -1,26 +1,61 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(['jquery'], function($) {
+define(['jquery', 'base64'], function($, base64) {
     
+    var auth = undefined;
+    var use_cache = true;
     var cache = {};
     
-    var clearFromCache = function(url) {
-        $.each(cache, function(key) {
-            // Every cached entry starting with the given url...
-            if (key.indexOf(url) == 0) {
-                // ...is deleted from the cache
-                delete cache[key];
-            }
-        });
+    var parseJson = function(string) {
+        if (string.length > 0) {
+            return JSON.parse(string);
+        } else {
+            return undefined;
+        }
     };
     
-    var onAjaxSuccess = function(response, status, xhr) {
+    var send = function(request) {
+        // Adds Authorization header
+        // WARNING: This sends a clear pw on the wire for every single AJAX request...
+        if (auth) {
+            request.beforeSend = function(xhr) {
+                xhr.setRequestHeader("Authorization",
+                    "Basic " + base64.encode(auth.username + ":" + auth.password));
+            };
+        }
+        
+        // Control which parsers will be used
+        request.converters = {
+            "* text": window.String,
+            "text html": true,
+            "text json": parseJson,
+            "text xml": jQuery.parseXML
+        };
+        
+        // Perform the actual AJAX call
+        return $.ajax(request).then(
+            onAjaxSuccess,
+            onAjaxError
+        );
+    };
+    
+    var onAjaxSuccess = function(response) {
         return response;
     };
     
     var onAjaxError = function(xhr, status, response) {
         return { error: response, code: xhr.status };
+    };
+
+    var clearFromCache = function(url) {
+        $.each(cache, function(key) {
+            // Any cached entry starting with the given url...
+            if (key.indexOf(url) == 0) {
+                // ...is deleted from the cache
+                delete cache[key];
+            }
+        });
     };
     
     var get = function(url, params) {
@@ -35,48 +70,83 @@ define(['jquery'], function($) {
         }
         var url_id = url + p;
         
+        // Ignore cached resource; force a new AJAX call
+        if (!use_cache && cache[url_id]) {
+            delete cache[url_id];
+        }
+        
         // Trigger an AJAX call, or return the cached promise
         if (!cache[url_id]) {
-            cache[url_id] = $.ajax({
+            cache[url_id] = send({
                 url: url,
                 data: params
-            }).then(onAjaxSuccess, onAjaxError);
+            });
         }
         return cache[url_id];
     };
    
     var put = function(url, data) {
         clearFromCache(url);
-        return $.ajax({
+        
+        return send({
             type: 'PUT',
             url: url,
             contentType: "application/json",
             data: JSON.stringify(data)
-        }).then(onAjaxSuccess, onAjaxError);
+        });
     };
     
     var post = function(url, data) {
         clearFromCache(url);
-        return $.ajax({
+        
+        return send({
             type: 'POST',
             url: url,
             contentType: "application/json",
             data: JSON.stringify(data)
-        }).then(onAjaxSuccess, onAjaxError);
+        });
     };
     
     var del = function(url) {
         clearFromCache(url);
-        return $.ajax({
+        
+        return send({
             type: 'DELETE',
             url: url
-        }).then(onAjaxSuccess, onAjaxError);
+        });
+    };
+    
+    var enableCache = function() {
+        use_cache = true;
+    };
+    
+    var disableCache = function() {
+        use_cache = false;
+    };
+    
+    var setAuthentication = function(user, password) {
+        auth = {
+            username: user,
+            password: password
+        };
+    };
+    
+    var clearAuthentication = function() {
+        auth = undefined;
     };
     
     return {
         get: get,
         put: put,
         post: post,
-        del: del
+        del: del,
+        cache: {
+            enable: enableCache,
+            disable: disableCache
+        },
+        auth: {
+            set: setAuthentication,
+            clear: clearAuthentication
+        }
     };
 });
