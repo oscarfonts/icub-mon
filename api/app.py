@@ -2,6 +2,7 @@ from flask import Flask
 from flask_compress import Compress
 from database import db
 from utils import cors
+from utils.auth import auth
 import api
 
 # Create app
@@ -22,6 +23,12 @@ Compress(app)
 
 # Enable Cross-Origin headers
 cors.enable(app)
+
+# Login endpoint
+@app.route('/login')
+def login():
+    if auth():
+        return '{"login": "OK"}'
 
 # Start flask as standalone
 if __name__ == '__main__':

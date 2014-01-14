@@ -26,6 +26,8 @@ def auth(**kw):
     credentials = request.authorization
     if not credentials or not user_exists(credentials):
         raise Challenge()
+    else:
+        return True
 
 def user_exists(credentials):
     username = credentials.username
