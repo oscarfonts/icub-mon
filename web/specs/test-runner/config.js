@@ -2,7 +2,7 @@ var specs = [
     'messagebus',
     'http',
     'celapi',
-    'mcmapi'
+    'mcm.api'
 ];
 
 var BASE_PATH = "../../modules/",

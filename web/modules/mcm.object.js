@@ -85,7 +85,7 @@ define(["celapi", "template"], function(celapi, template) {
             properties: properties
         };
         
-        template.render("object", data, "peca");
+        template.render("mcm.object", data, "peca");
         
     };
 

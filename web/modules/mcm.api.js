@@ -3,7 +3,7 @@
  */
 define(['http'], function(http) {
 
-    var baseURL = "http://localhost:5000/api";
+    var baseURL = "http://localhost:5000/api"; // TODO: Parametrize MCM API URL
 
     return {
         setBaseURL: function(url) {

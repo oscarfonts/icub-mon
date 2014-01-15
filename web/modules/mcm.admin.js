@@ -6,6 +6,7 @@ define(["login"/*, "mcm.tree", "leaflet.feature.editor", "mcm.object.details", "
     
     function render(username) {
         alert("Welcome " + username);
+        
     }
     
     function clear(username) {

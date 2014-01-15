@@ -3,7 +3,7 @@
  */
 
 // See API specification at http://docs.celapi.apiary.io/
-define(["mcmapi"], function(mcm) {
+define(["mcm.api"], function(mcm) {
     
     var async = new AsyncSpec(this);
     

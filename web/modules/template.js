@@ -8,7 +8,7 @@ define(["mustache", "jquery"], function(Mustache, $) {
         render: function(template_name, data, target_id) {
             var defer = $.Deferred();
 
-            var import_tag = "text!../templates/"+template_name+".template.html";
+            var import_tag = "text!../templates/"+template_name+".html";
             require([import_tag], function(template) {
                 var result = Mustache.render(template, data);
                 document.getElementById(target_id).innerHTML = result;
