@@ -1,10 +1,13 @@
 /* 
  * Javascript implementation of base64 encoding.
+ * Includes limited support for UTF-8 encoded strings.
  * 
  * Based on jquery.base64.js 0.0.3 - https://github.com/yckart/jquery.base64.js
  * Copyright (c) 2012 Yannick Albert (http://yckart.com)
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
  * 2013/02/10
+ * 
+ * Wrapped as AMD module by Oscar Fonts.
 **/
 define(function() {
     var utf8encode = true;
