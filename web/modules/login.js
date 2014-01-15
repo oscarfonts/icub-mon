@@ -56,12 +56,22 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
         }
     }
     
+    function focus() {
+        $("#username").focus();
+        $("#username").select();
+    }
+    
     // Add bootstrap dialog
     $("<div/>").attr("id", "login_dialog_container").appendTo("body");
-    template.render("login", {}, "login_dialog_container").then(function() {
+    var onReady = template.render("login", {}, "login_dialog_container");
+    onReady.then(function() {
         $("#login_dialog").modal();
+        $('#login_dialog').on('shown.bs.modal', focus);
         $('#login_dialog').on('hidden.bs.modal', clear);
-        $("#login_button").click(login);        
+        $('#login_form').submit(function(e){
+            e.preventDefault();
+        });
+        $("#login_button").click(login);               
     });
 
     return {
@@ -87,6 +97,11 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
         },
         onLogout: function(callback) {
             callbacks.logout = callback;
+        },
+        forceLogin: function(username, password) {
+            onReady.then(function() {
+                authenticate(username, password);                
+            });
         }
     };
 });
