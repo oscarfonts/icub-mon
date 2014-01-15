@@ -70,19 +70,25 @@ define(['jquery', 'base64'], function($, base64) {
         }
         var url_id = url + p;
         
-        // Ignore cached resource; force a new AJAX call
-        if (!use_cache && cache[url_id]) {
-            delete cache[url_id];
-        }
-        
-        // Trigger an AJAX call, or return the cached promise
-        if (!cache[url_id]) {
-            cache[url_id] = send({
+        // Get the promise
+        var promise;
+        if (!auth && use_cache && cache[url_id]) {
+            // from the local cache
+            promise = cache[url_id]; 
+        } else {
+            // or from the remote server
+            promise = send({
                 url: url,
                 data: params
             });
         }
-        return cache[url_id];
+        
+        if(!auth && use_cache && !cache[url_id]) {
+            // add this call to cache
+            cache[url_id] = promise;
+        }
+        
+        return promise;        
     };
    
     var put = function(url, data) {
