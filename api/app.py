@@ -27,8 +27,9 @@ cors.enable(app)
 # Login endpoint
 @app.route('/login')
 def login():
-    if auth():
-        return '{"login": "OK"}'
+    username = auth();
+    if username:
+        return '{"login": "%s" }' % (username)
 
 # Start flask as standalone
 if __name__ == '__main__':
