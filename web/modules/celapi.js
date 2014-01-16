@@ -3,7 +3,7 @@
  */
 define(['http'], function(http) {
 
-    var baseURL = "http://celapi.agilogy.net/api/1";
+    var baseURL = "http://celapi.agilogy.net/api/1"; // TODO: Parametrize CELAPI URL
 
     // if param is falsy, then return "all"
     function all(param) {
@@ -32,7 +32,14 @@ define(['http'], function(http) {
         },
         object: {
             list: function(museum_id, collection_id, filters) {
-                return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/objects", filters);
+                var args = Array.prototype.slice.call(arguments);
+                return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/objects", filters).then(
+                    function(data) {
+                        d = $.Deferred();
+                        args.unshift(data);
+                        d.resolveWith(this, args);
+                        return d;
+                    });
             },
             get: function(museum_id, collection_id, object_id) {
                 return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/objects/" + object_id);

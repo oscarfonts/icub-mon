@@ -1,0 +1,41 @@
+{{! Data Sample
+	[{
+	    "id": "africa",
+	    "name": "Àfrica",
+	    "items": [
+	        {
+	            "id": "Fang",
+	            "name": "Fang",
+	            "collection": "africa",
+	            "items": [
+	                {
+	                    "id": 123456,
+	                    "name": "Objecte"
+	                    "culture": "Fang"
+	                }
+	            ]
+	        }
+	    ]
+	}];
+}}
+<ul id="tree" class="nav contents">
+    {{#.}} {{! Collections }}
+	<li class="collection" id="{{id}}">
+		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul">{{name}}</a>
+		<ul class="nav collapse" style="height: auto;">
+			{{#items}} {{! Cultures }}
+			<li class="culture" id="{{id}}">
+				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"> {{!<span class="glyphicon glyphicon-map-marker"> </span>}} {{name}} </a>
+				<ul class="nav collapse">
+				    {{#items}} {{! Objects }}
+					<li class="object" id="{{id}}">
+						<a>{{name}}</a>
+					</li>
+					{{/items}}
+				</ul>
+			</li>
+			{{/items}}
+		</ul>
+	</li>
+	{{/.}}
+</ul>
