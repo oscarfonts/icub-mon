@@ -1,15 +1,19 @@
-define(["celapi", "template"], function(celapi, template) {
+define(["celapi", "template", "messagebus"], function(celapi, template, bus) {
 
     var div_id = "mcm-tree",
         museum_id = "MCM",
         data = [];
     
-    function render() {
+    function show() {
         $("#"+div_id).html('<div class="alert alert-info">Carregant continguts de ' + museum_id + '...</div>');
-        celapi.museum.get(museum_id).then(get_contents).then(apply_template);
+        if (!data.length) {
+            celapi.museum.get(museum_id).then(get_contents).then(apply_template);
+        } else {
+            apply_template();
+        }
     }
     
-    function clear() {
+    function hide() {
         document.getElementById(div_id).innerHTML = "";
     }
     
@@ -51,11 +55,12 @@ define(["celapi", "template"], function(celapi, template) {
             tree[culture_id].push({
                 id: object.id,
                 name: object.objectName[0] + " [" + object.recordNumber + "]",
-                culture: culture_id
+                culture: culture_id,
+                collection: collection_id
             });
         }
         
-        // Restructure culture collection in a mustache-friendly way
+        // Restructure cultures & objects in a mustache-friendly way
         var objects = [];
         $.each(tree, function(culture_id, items) {
             objects.push({
@@ -66,7 +71,7 @@ define(["celapi", "template"], function(celapi, template) {
             });
         });
         
-        // Add contents to the "global" data object
+        // Attach collection items to the "global" data object
         $.each(data, function(i, el) {
             if (el.id == collection_id) {
                 el["items"] = objects;
@@ -75,7 +80,6 @@ define(["celapi", "template"], function(celapi, template) {
     }
       
     function slug(text) {
-
         text = text.toLowerCase();
           
         // remove accents, swap ñ for n, etc
@@ -94,14 +98,29 @@ define(["celapi", "template"], function(celapi, template) {
         template.render("mcm.tree", data, div_id).then(add_interactivity);        
     };
     
+    function get_item_by_id(id, tree) {
+        if(!tree) {
+            tree = data;
+        }
+        for (key in tree) {
+            var el = tree[key];
+            if(el.id == id) {
+                return el;
+            } else if(el.items) {
+                var found = get_item_by_id(id, el.items);
+                if (found) return found;
+            }
+        };
+        return false;
+    }
+    
     function add_interactivity() {
         $("#tree a").click(function() {
             var id = $(this).parent().attr("id");
             var type = $(this).parent().attr("class");
+            var item;
             
-            if(type.indexOf(" active") == -1) {
-                console.log("Clicked on " + id + " " + type);
-                
+            if(type.indexOf(" active") == -1) {               
                 $("#tree .active").removeClass("active");
                 if (type == "collection") {
                     $("#tree .in").removeClass("in").addClass("collapse");
@@ -110,13 +129,23 @@ define(["celapi", "template"], function(celapi, template) {
                 }
                 $("#"+id).addClass("active");
                 
-                //bus.publish("mcm.tree.item_selected", {id: id, type: type});               
+                //console.log("Clicked on " + id + " " + type);
+                bus.publish("mcm.tree.item_selected", {
+                    type: type,
+                    item: get_item_by_id(id)
+                });               
             }
         });
     };
     
     return {
-        render: render,
-        clear: clear
+        show: show,
+        hide: hide,
+        getData: function() {
+            return data;
+        },
+        setDiv: function(div) {
+            div_id = div;
+        }
     };
 });

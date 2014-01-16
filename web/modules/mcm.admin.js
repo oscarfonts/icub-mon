@@ -1,17 +1,30 @@
-define(["login", "mcm.tree"/*, "leaflet.feature.editor", "mcm.object.details", "mcm.description.editor"*/], function(login, tree) {
+define(["messagebus", "login", "mcm.tree", "mcm.object", "mcm.description.editor" /*, "leaflet.feature.editor" */], function(bus, login, tree, object) {
 
     login.linkTo("login", "entrar", "sortir");
-    login.onLogin(render);
-    login.onLogout(clear);
+    tree.setDiv("tree");
+    object.setDiv("details");
+
+    login.onLogin(show);
+    login.onLogout(hide);   
     
     // TODO: Remove this
     login.forceLogin("test", "test");
+
+    bus.subscribe("mcm.tree.item_selected", function(selected) {
+        if (selected.type == "object") {
+            object.show(selected.item.collection, selected.item.id);
+        } else {
+            object.hide();
+        }
+    });
     
-    function render(username) {
-        tree.render();
+    function show(username) {
+        tree.show();
     }
     
-    function clear(username) {
-        tree.clear();
+    function hide(username) {
+        tree.hide();
+        object.hide();
     }
+    
 });

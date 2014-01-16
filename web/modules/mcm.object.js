@@ -3,37 +3,68 @@
  */
 define(["celapi", "template"], function(celapi, template) {
 
-    function renderObject(object) {
+    var div_id = "mcm-object",
+        museum_id = "MCM",
+        data = [];
+
+    function show(collection, object_id) {
+        get_contents(collection, object_id).then(parse_data).then(apply_template);
+    }
+
+    function hide() {
+        document.getElementById(div_id).innerHTML = "";
+    };
+
+    function get_contents(collection, object_id) {
+        return celapi.object.details("MCM", collection, object_id);
+    }
+    
+    function first(prop, arr) {
+        if(arr && arr.length && arr[0][prop]) {
+            return arr[0][prop];
+        } else {
+            return "";
+        }
+    }
+
+    function parse_data(object) {
         
         var id = object.idInLocalSource;
                    
-        var id_reg = $.grep(object.identifiers, function(e, i) {
-                    return e.type.value == "accessionNumber";
-                })[0].value;
+        var id_reg = first("value",
+            $.grep(object.identifiers, function(e, i) {
+                return e.type.value == "accessionNumber";
+            }));
         
-        var name = $.grep(object.objectTypes, function(e, i) {
-                    return e.originalType == "Nom de l'objecte";
-                })[0].value;
+        var name = first("value",
+            $.grep(object.objectTypes, function(e, i) {
+                return e.originalType == "Nom de l'objecte";
+            }));
 
-        var creation = $.grep(object.objectInEvents, function(e, i) {
+        var creation = first("event",
+            $.grep(object.objectInEvents, function(e, i) {
                 return (e["function"].value == "created" && e["event"].type.value == "creation");
-            })[0].event;
+            }));
             
-        var provenance = $.grep(object.objectInEvents, function(e, i) {
+        var provenance = first("event",
+            $.grep(object.objectInEvents, function(e, i) {
                 return (e["function"].value == "found" && e["event"].type.value == "provenance");
-            })[0].event;
+            }));
             
-        var history = $.grep(object.objectNotes, function(e, i) {
-                    return e.type.value == "history";
-                })[0].value;
+        var history = first("value",
+            $.grep(object.objectNotes, function(e, i) {
+                return e.type.value == "history";
+            }));
+    
+        var description = first("value",
+            $.grep(object.objectNotes, function(e, i) {
+                return e.type.value == "description";
+            }));
         
-        var description = $.grep(object.objectNotes, function(e, i) {
-                    return e.type.value == "description";
-                })[0].value;
-        
-        var usage = $.grep(object.classifications, function(e, i) {
-                    return e.type.value == "usage";
-                })[0].value;
+        var usage = first("value",
+            $.grep(object.classifications, function(e, i) {
+                return e.type.value == "usage";
+            }));
 
         var properties = [{
             key: "Núm. Registre",
@@ -49,22 +80,22 @@ define(["celapi", "template"], function(celapi, template) {
             value: null
         }*/,{
             key: "Cultura",
-            value: creation.culturesInEvent[0].value
+            value: first("value", creation.culturesInEvent)
         }/*,{
             key: "Estil",
             value: null
         }*/,{
             key: "Datació",
-            value: creation.timesInEvent[0].display
+            value: first("display", creation.timesInEvent)
         }/*,{
             key: "Dimensions",
             value: null
         }*/,{
             key: "Material/Tècnica",
-            value: creation.usedMaterialTechniques[0].remarks
+            value: first("remarks", creation.usedMaterialTechniques)
         },{
             key: "Lloc de procedència",
-            value: provenance.placesInEvent[0].value
+            value: first("value", provenance.placesInEvent)
         }/*,{
             key: "Ingrés",
             value: null
@@ -81,14 +112,24 @@ define(["celapi", "template"], function(celapi, template) {
         
         var data = {
             id: id,
-            img_src: "img/peces/" + id + ".JPG",
+            img_src: "../img/peces/" + id + ".JPG",
             properties: properties
         };
         
-        template.render("mcm.object", data, "peca");
+        return data;
         
     };
 
-    celapi.object.details("MCM", "africa", "481470").then(renderObject);
+    function apply_template(data) {
+        template.render("mcm.object", data, div_id);
+    }
+    
+    return {
+        show: show,
+        hide: hide,
+        setDiv: function(div) {
+            div_id = div;
+        }
+    };
     
 });
