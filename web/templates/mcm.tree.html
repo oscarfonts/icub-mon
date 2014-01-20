@@ -19,28 +19,18 @@
 	    ]
 	}];
 }}
-<!--ul class="nav nav-tabs nav-stacked main-menu">
-	<li>
-		<a class="dropmenu" href="index.html#"><i class="fa fa-eye"></i><span class="hidden-sm"> UI Features</span> <span class="label">3</span></a>
-		<ul>
-			<li><a class="submenu" href="ui-sliders-progress.html"><i class="fa fa-eye"></i><span class="hidden-sm"> Sliders & Progress</span></a></li>
-			<li><a class="submenu" href="ui-nestable-list.html"><i class="fa fa-eye"></i><span class="hidden-sm"> Nestable Lists</span></a></li>
-			<li><a class="submenu" href="ui-elements.html"><i class="fa fa-eye"></i><span class="hidden-sm"> Elements</span></a></li>
-		</ul>
-	</li>
-</ul-->
 <ul id="tree" class="nav contents">
     {{#.}} {{! Collections }}
 	<li class="collection" id="{{id}}">
-		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul">{{name}}</a>
+		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><i><img src="../img/icons/{{id}}-icon.png" width="24"/></i>&nbsp;&nbsp;{{name}}</a>
 		<ul class="nav collapse" style="height: auto;">
 			{{#items}} {{! Cultures }}
 			<li class="culture" id="{{id}}">
-				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"> {{!<span class="glyphicon glyphicon-map-marker"> </span>}} {{name}} </a>
+				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"><i class="fa fa-group"></i>&nbsp;&nbsp;{{name}}<span class="label">{{items.length}}</span></a>
 				<ul class="nav collapse">
 				    {{#items}} {{! Objects }}
 					<li class="object" id="{{id}}">
-						<a>{{name}}</a>
+						<a><i class="fa fa-trophy"></i>&nbsp;&nbsp;{{name}}</a>
 					</li>
 					{{/items}}
 				</ul>

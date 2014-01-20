@@ -5,7 +5,7 @@ define(["celapi", "template", "messagebus"], function(celapi, template, bus) {
         data = [];
     
     function show() {
-        $("#"+div_id).html('<div class="alert alert-info">Carregant continguts de ' + museum_id + '...</div>');
+        $("#"+div_id).html('<div class="alert alert-info">Descarregant continguts del catàleg de col.leccions en línia...</div>');
         if (!data.length) {
             celapi.museum.get(museum_id).then(get_contents).then(apply_template);
         } else {
@@ -151,6 +151,7 @@ define(["celapi", "template", "messagebus"], function(celapi, template, bus) {
         getData: function() {
             return data;
         },
+        getItem: get_item_by_id,
         setDiv: function(div) {
             div_id = div;
         }
