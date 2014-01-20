@@ -9,7 +9,11 @@ define(['jquery', 'base64'], function($, base64) {
     
     var parseJson = function(string) {
         if (string.length > 0) {
-            return JSON.parse(string);
+            try {
+                return JSON.parse(string);
+            } catch(e) {
+                return undefined;
+            }
         } else {
             return undefined;
         }
