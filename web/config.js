@@ -5,10 +5,10 @@ require.config({
         "text": LIB_PATH + "text-2.0.10",
         "jquery": LIB_PATH + "jquery-1.10.2",
         "mustache": LIB_PATH + "mustache-0.8.0",
-        "bootstrap": LIB_PATH + "bootstrap-3.0.3",/*
-        "leaflet": LIB_PATH + "leaflet-src",
-        "bing": LIB_PATH + "Bing",
-        "draw": LIB_PATH + "leaflet.draw",*/
+        "bootstrap": LIB_PATH + "bootstrap-3.0.3",
+        "leaflet": LIB_PATH + "leaflet-0.6.4",
+        "bing": LIB_PATH + "leaflet-bing",
+        "draw": LIB_PATH + "leaflet-draw-0.2.3",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
         "ie8.respond": LIB_PATH + "respond.min",
         "wysihtml5": LIB_PATH + "bootstrap3-wysihtml5",
@@ -21,7 +21,7 @@ require.config({
     shim: {
         "bootstrap": {
             deps: ["jquery"]
-        }/*,
+        },
         "bing": {
             deps: ["leaflet"]
         },
@@ -30,7 +30,7 @@ require.config({
         },
         "L.Control.DrawSingle": {
             deps: ["draw"]
-        }*/,
+        },
         "wysihtml5": {
             deps: ["bootstrap","wysihtml5-base"]
         },

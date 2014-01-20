@@ -1,4 +1,4 @@
-define(["messagebus", "login", "mcm.tree", "mcm.object", "mcm.description.editor" /*, "leaflet.feature.editor" */], function(bus, login, tree, object) {
+define(["messagebus", "login", "mcm.tree", "mcm.object", "mcm.description.editor", "map.editor"], function(bus, login, tree, object) {
 
     login.linkTo("login", "entrar", "sortir");
     tree.setDiv("tree");

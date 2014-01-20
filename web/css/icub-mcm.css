@@ -172,12 +172,14 @@ img.tiny {
     border-color: #4CAE4C;
 }
 
+/*
 .descripcio_peca {
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #bbb;
     padding: 24px;
 }
+*/
 
 .descripcio_peca dt {
 	margin-bottom: 6px;
