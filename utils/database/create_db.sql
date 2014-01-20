@@ -38,8 +38,7 @@ CREATE INDEX culture_geometry_gist ON culture USING GIST (geometry);
 -- Table Object
 CREATE TABLE object (
     id integer NOT NULL PRIMARY KEY,
-    culture text NOT NULL,
-    FOREIGN KEY (culture) REFERENCES culture(id)
+    culture text NOT NULL
 );
 SELECT AddGeometryColumn('object', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX object_geometry_gist ON object USING GIST (geometry);

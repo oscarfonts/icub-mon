@@ -8,7 +8,7 @@ class Culture(db.Model):
     #objects = db.relationship('Object')
 
 class Object(db.Model):
-    id = db.Column(db.Text, primary_key=True)
+    id = db.Column(db.Text)
     culture = db.Column(db.Text, db.ForeignKey('culture.id'))
     geometry = db.Column(Geometry(geometry_type='GEOMETRY', srid=4326))
 
