@@ -115,6 +115,13 @@ define(["celapi", "template", "messagebus"], function(celapi, template, bus) {
     }
     
     function add_interactivity() {
+        /*
+        $('.dropmenu').click(function(e){
+            e.preventDefault();
+            $(this).parent().find('ul').slideToggle();
+        });
+        */
+
         $("#tree a").click(function() {
             var id = $(this).parent().attr("id");
             var type = $(this).parent().attr("class");

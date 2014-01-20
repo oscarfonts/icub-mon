@@ -1,46 +1,33 @@
+.sidebar-nav > ul {
+    white-space: normal;
+}
+
 .contents {
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border: 1px solid #bbb;
-    background-color: #F7F5FA;
-    border-radius: 5px;
-    text-shadow: 0 1px 0 #FFFFFF;
-    margin-bottom: 15px;
+    background-color: #383E4B;
+    font-size: 14px;
 }
-.contents > li > a {
-    color: #716B7A;
+.contents > li > a, .contents .nav > li > a, .contents .nav .nav > li > a {
+    color: #FFFFFF;
     display: block;
-    padding: 3px 20px;
-    font-weight: bold;
-    border-top: 1px dashed #E5E3E9;
-}
-.contents .nav > li > a {
-    color: #716B7A;
-    display: block;
+    padding: 10px 15px;
 }
 .contents > li > a:hover, .contents > li > a:focus {
-    background-color: #E5E3E9;
-    border-right: 1px solid #DBD8E0;
-    text-decoration: none;
+    background-color: #2D323D;
+}
+.contents .nav > li > a:hover, .contents .nav > li > a:focus {
+    background-color: #2D323D;
+    color: #FFFFFF;
 }
 .contents .nav > .active > a, .contents > .active > a, .contents > .active:hover > a, .contents > .active:focus > a {
-    background-color: #E5E3E9;
-    border-right: 2px solid #563D7C;
-    color: #563D7C;
-    font-weight: bold;
+    background-color: #2D323D;
+    color: #FFFFFF;
 }
 .contents .nav {
     margin-bottom: 4px;
 }
 .contents .nav > li > a {
-    font-size: 95%;
-    padding-bottom: 1px;
-    padding-left: 30px;
-    padding-top: 1px;
+    padding: 10px 30px;
 }
 .contents .nav .nav > li > a {
-    font-size: 80%;
-    padding-bottom: 1px;
-    padding-left: 50px;
-    padding-top: 1px;
+    padding: 10px 50px;
 }

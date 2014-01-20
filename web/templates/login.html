@@ -1,29 +1,29 @@
 <!-- Modal -->
-<div class="modal fade" id="login_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="login_dialog" tabindex="-1" role="dialog" aria-labelledby="login-title" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Identifiqueu-vos</h4>
+				<h4 class="modal-title" id="login-title">Identifiqueu-vos</h4>
 			</div>
 			<form class="form-horizontal" role="form" id="login_form">
 				<div class="modal-body">
-					<div id="login_error"></div>
+					<div id="login_error"> </div>
 					<div class="form-group">
 						<label for="username" class="col-sm-3 control-label">Nom d'usuari</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="username" name="username" placeholder="User">
+							<input type="text" class="form-control" id="username" name="username" placeholder="Usuari">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="password" class="col-sm-3 control-label">Contrassenya</label>
 						<div class="col-sm-9">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Contrassenya">
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" id="login_button">Entra</button>
+					<button type="submit" class="btn btn-primary" id="login_button">Entrar</button>
 				</div>
 			</form>
 		</div><!-- /.modal-content -->

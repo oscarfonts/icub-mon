@@ -1,8 +1,31 @@
+.container #content {
+    width: 80%;
+}
+
+.container #sidebar-left {
+    width: 20%;
+}
+
+a.navbar-brand {
+    width: 20%;
+}
+
+a#main-menu-toggle {
+    margin-left: 20%;
+}
+
+#login_form input[type="text"], #login_form input[type="password"] {
+    background: none repeat scroll 0 0 #E4E6EB;
+    border: 0 none;
+    border-radius: 2px;
+    box-shadow: none;
+    height: 40px;
+    margin: 5px auto;
+    padding: 0 10px;
+}
+
 #map {
     height: 480px;
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border: 1px solid #bbb;
 }
 
 .page-header {

@@ -16,6 +16,19 @@ define(["mustache", "jquery"], function(Mustache, $) {
             });
 
             return defer.promise();
+        },
+        
+        asKeyValue: function(object) {
+            var array = [];
+            for (var property in object) {
+              if (object.hasOwnProperty(property)){
+                array.push({
+                  'key' : property,
+                  'value' : object[property]
+                 });
+              }
+            }
+            return array;
         }
     };
 });
