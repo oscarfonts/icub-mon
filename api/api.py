@@ -39,8 +39,34 @@ def create_api(app):
 			'POST': [rest.toGeoJSON]
 		}
 	)
+
+	manager.create_api(model.Description_ca,
+		methods=['GET','PUT','POST','DELETE'],
+		results_per_page = -1,
+		preprocessors = {
+			'PUT_SINGLE': [auth],
+			'POST':  [auth],
+			'DELETE': [auth]
+		},
+		postprocessors = {
+            'GET_MANY': [rest.removePagination]
+        }
+	)
+
+	manager.create_api(model.Description_es,
+		methods=['GET','PUT','POST','DELETE'],
+		results_per_page = -1,
+		preprocessors = {
+			'PUT_SINGLE': [auth],
+			'POST':  [auth],
+			'DELETE': [auth]
+		},
+		postprocessors = {
+            'GET_MANY': [rest.removePagination]
+        }
+	)
 	
-	manager.create_api(model.Description,
+	manager.create_api(model.Description_en,
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {

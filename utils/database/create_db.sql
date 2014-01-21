@@ -24,6 +24,10 @@ CREATE TABLE "user" (
     password text NOT NULL
 );
 
+-- Insert Test user
+-- INSERT INTO "user" (username, password)
+-- VALUES ('test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08');
+
 -- Table Culture
 CREATE TABLE culture (
     id text NOT NULL PRIMARY KEY,
@@ -37,14 +41,24 @@ CREATE INDEX culture_geometry_gist ON culture USING GIST (geometry);
 
 -- Table Object
 CREATE TABLE object (
-    id integer NOT NULL PRIMARY KEY,
+    id text NOT NULL PRIMARY KEY,
     culture text NOT NULL
 );
 SELECT AddGeometryColumn('object', 'geometry', 4326, 'GEOMETRY', 2);
 CREATE INDEX object_geometry_gist ON object USING GIST (geometry);
 
--- Table Description
-CREATE TABLE description (
+-- Description Tables
+CREATE TABLE description_ca (
+    id text NOT NULL PRIMARY KEY,
+    html text
+);
+
+CREATE TABLE description_es (
+    id text NOT NULL PRIMARY KEY,
+    html text
+);
+
+CREATE TABLE description_en (
     id text NOT NULL PRIMARY KEY,
     html text
 );

@@ -4,14 +4,22 @@
 define(['http'], function(http) {
 
     var baseURL = "http://localhost:5000/api"; // TODO: Parametrize MCM API URL
+    var default_lang = "ca";
 
     return {
-        setBaseURL: function(url) {
-            baseURL = url;
+        url: {
+            set: function(url) {
+                baseURL = url;
+            }
         },
         auth: {
             set: http.auth.set,
             clear: http.auth.clear
+        },
+        lang: {
+            set: function(lang) {
+                default_lang = lang;
+            }
         },
         continent: {
             list: function() {
@@ -55,20 +63,25 @@ define(['http'], function(http) {
             }
         },
         description: {
-            list: function() {
-                return http.get(baseURL + "/description");
+            list: function(lang) {
+                var l = lang ? lang : default_lang;
+                return http.get(baseURL + "/description_" + l);
             },
-            get: function(id) {
-                return http.get(baseURL + "/description/" + id);
+            get: function(id, lang) {
+                var l = lang ? lang : default_lang;
+                return http.get(baseURL + "/description_" + l + "/" + id);
             },
-            create: function(description) {
-                return http.post(baseURL + "/description", description);
+            create: function(description, lang) {
+                var l = lang ? lang : default_lang;
+                return http.post(baseURL + "/description_" + l, description);
             },
-            update: function(description) {
-                return http.put(baseURL + "/description/" + description.id, description);
+            update: function(description, lang) {
+                var l = lang ? lang : default_lang;
+                return http.put(baseURL + "/description_" + l + "/" + description.id, description);
             },
-            del: function(id) {
-                return http.del(baseURL + "/description/" + id);
+            del: function(id, lang) {
+                var l = lang ? lang : default_lang;
+                return http.del(baseURL + "/description_" + l + "/" + id);
             }
         }
     };

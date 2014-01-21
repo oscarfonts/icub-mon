@@ -5,13 +5,20 @@ class Culture(db.Model):
     id = db.Column(db.Text, primary_key=True)
     continent = db.Column(db.Text)
     geometry = db.Column(Geometry(geometry_type='GEOMETRY', srid=4326))
-    #objects = db.relationship('Object')
 
 class Object(db.Model):
-    id = db.Column(db.Text)
-    culture = db.Column(db.Text, db.ForeignKey('culture.id'))
+    id = db.Column(db.Text, primary_key=True)
+    culture = db.Column(db.Text)
     geometry = db.Column(Geometry(geometry_type='GEOMETRY', srid=4326))
 
-class Description(db.Model):
+class Description_ca(db.Model):
+    id = db.Column(db.Text, primary_key=True)
+    html = db.Column(db.Text)
+
+class Description_en(db.Model):
+    id = db.Column(db.Text, primary_key=True)
+    html = db.Column(db.Text)
+
+class Description_es(db.Model):
     id = db.Column(db.Text, primary_key=True)
     html = db.Column(db.Text)
