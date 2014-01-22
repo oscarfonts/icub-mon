@@ -69,7 +69,18 @@ define(['http'], function(http) {
             },
             get: function(id, lang) {
                 var l = lang ? lang : default_lang;
-                return http.get(baseURL + "/description_" + l + "/" + id);
+                return http.get(baseURL + "/description_" + l + "/" + id).then(
+                    function(description) {
+                        d = $.Deferred();
+                        d.resolveWith(this, [description, lang]);
+                        return d;
+                    },
+                    function(error) {
+                        d = $.Deferred();
+                        d.rejectWith(this, [error, lang]);
+                        return d;
+                    }
+                );
             },
             create: function(description, lang) {
                 var l = lang ? lang : default_lang;

@@ -38,6 +38,10 @@ define(["messagebus", "leaflet", "map", "draw", "L.Control.DrawSingle"], functio
         
         leafletDraw.show();
     }
+
+    function redraw() {
+        map.invalidateSize();
+    }
     
     function hide() {
         leafletItems.clearLayers();
@@ -63,6 +67,7 @@ define(["messagebus", "leaflet", "map", "draw", "L.Control.DrawSingle"], functio
     
     return {
         load: load,
+        redraw: redraw,
         hide: hide
     };
     

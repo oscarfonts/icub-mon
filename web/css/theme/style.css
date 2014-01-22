@@ -827,6 +827,7 @@ a#main-menu-toggle {
   margin-right: 0px;
   margin-left: 0px;
 }
+/*
 input[placeholder],
 [placeholder],
 *[placeholder] {
@@ -844,6 +845,7 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: white;
 }
+*/
 .add-on,
 textarea,
 input[type="text"],

@@ -1,9 +1,17 @@
+
+.container > .row {
+    overflow: hidden;
+}
+
 .container #content {
     width: 80%;
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
 }
 
 .container #sidebar-left {
     width: 20%;
+    min-height: 600px;
 }
 
 a.navbar-brand {

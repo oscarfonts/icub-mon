@@ -4,7 +4,7 @@
 (function($){
     $.fn.wysihtml5.locale["ca-CT"] = {
         font_styles: {
-              normal: "Normal",
+              normal: "Paràgraf",
               h1: "Títol 1",
               h2: "Títol 2",
               h3: "Títol 3",
@@ -14,8 +14,9 @@
         },
         emphasis: {
               bold: "N",
-              italic: "K",
-              underline: "S"
+              italic: "C",
+              underline: "S",
+              small: 'p'
         },
         lists: {
               unordered: "Llista desordenada",
@@ -25,7 +26,8 @@
         },
         link: {
               insert: "Afegir enllaç",
-              cancel: "Cancelar"
+              cancel: "Cancelar",
+              target: 'Obrir enllaç a una nova finestra'
         },
         image: {
               insert: "Afegir imatge",

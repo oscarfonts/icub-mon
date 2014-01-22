@@ -20,7 +20,7 @@
 		<!--link rel="stylesheet" href="../css/admin.css"/-->
 		<link rel="stylesheet" href="../css/leaflet.css"/>
 		<link rel="stylesheet" href="../css/leaflet.draw.css"/>
-		<!--link rel="stylesheet" href="../css/bootstrap-wysihtml5.css"/-->
+		<link rel="stylesheet" href="../css/bootstrap3-wysihtml5.css"/>
 		<!--[if lt IE 9]>
 		<link rel="stylesheet" href="../css/leaflet.ie.css"/>
 		<link rel="stylesheet" href="../css/leaflet.draw.ie.css"/>
@@ -37,7 +37,7 @@
 					<span class="icon-bar"> </span>
 				</button>
 				<a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"> </i></a>
-				<a class="navbar-brand col-lg-2 col-sm-1 col-xs-12" href="index.html"><span>GeoEditor - MCM</span></a>
+				<a class="navbar-brand col-lg-2 col-sm-1 col-xs-12"><span>GeoEditor - MCM</span></a>
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
 					<ul class="nav navbar-nav pull-right">
@@ -68,12 +68,12 @@
 
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="box">
+							<div class="box" style="display:none;">
 
 								<div class="box-header">
 									<h2><i class="fa fa-map-marker"> </i>Localització</h2>
 									<div class="box-icon">
-										<a href="ui-elements.html#" class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
 									</div>
 								</div>
 								<div class="box-content" id="map">
@@ -84,15 +84,57 @@
 
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="box">
+							<div class="box" style="display:none;">
 								<div class="box-header">
-									<h2><i class="fa fa-info"> </i>Detalls</h2>
+									<h2><i class="fa fa-info"> </i>Fitxa de la peça</h2>
 									<div class="box-icon">
-										<a href="ui-elements.html#" class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
 									</div>
 								</div>
 								<div class="box-content">
 									<div id="details"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="box" style="display:none;">
+								<div class="box-header">
+									<h2><i class="fa fa-edit"> </i>Descripció en català</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="description-ca"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="box" style="display:none;">
+								<div class="box-header">
+									<h2><i class="fa fa-edit"> </i>Descripción en castellano</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="description-es"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="box" style="display:none;">
+								<div class="box-header">
+									<h2><i class="fa fa-edit"> </i>English description</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="description-en"> </div>
 								</div>
 							</div>
 						</div>
@@ -109,8 +151,8 @@
 
 		<footer>
 			<p>
-				<span style="text-align:left;float:left"> </span>
-				<span class="hidden-phone" style="text-align:right;float:right">&copy; 2014 Institut de Cultura de Barcelona.</span>
+				<span style="text-align:left;float:left"></span>
+				<span class="hidden-phone" style="text-align:right;float:right">&copy; 2014 <a href="http://barcelonacultura.bcn.cat" target="_blank">Institut de Cultura de Barcelona</a><br/>Oscar Fonts, <a href="http://geomati.co" target="_blank">geomati.co</a></span>
 			</p>
 
 		</footer>
