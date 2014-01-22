@@ -40,7 +40,7 @@ require.config({
             deps: ["core"]
         },
         "core": {
-            deps: ["jquery-migrate"]
+            deps: ["jquery-migrate", "bootstrap"]
         },
         "jquery-migrate": {
             deps: ["jquery"]
