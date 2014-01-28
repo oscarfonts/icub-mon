@@ -1,7 +1,7 @@
 var specs = [
     'messagebus',
     'http',
-    'celapi',
+    'cel.api',
     'mcm.api'
 ];
 

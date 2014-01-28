@@ -3,7 +3,7 @@
  */
 
 // See API specification at http://docs.celapi.apiary.io/
-define(["celapi"], function(celapi) {
+define(["cel.api"], function(celapi) {
     
     var async = new AsyncSpec(this);
     

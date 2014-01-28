@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="../css/bootstrap.css"/>
 		<link rel="stylesheet" href="../css/theme/style.css"/>
 		<link rel="stylesheet" href="../css/theme/retina.css"/>
+		<link rel="stylesheet" href="../css/icub-mcm.css"/>
 		<link rel="stylesheet" href="../css/tree.css"/>
 	</head>
 
@@ -45,47 +46,7 @@
 
 				<!-- start: Main Menu -->
 				<div id="sidebar-left" class="col-lg-3 col-sm-2">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group">
-								<div class="controls">
-								    <div class="input-group">
-									    <input id="appendedInputButton" class="form-control" size="16" type="text">
-									    <span class="input-group-btn"><button class="btn btn-large" type="button">Cerca</button></span>
-								    </div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group">
-							    <div class="controls">
-								    <div class="input-group">
-									    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-									    <input class="form-control" id="daterange" value="01/01/0000 - 31/01/2014" type="text">
-								    </div>
-							    </div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="btn-group">
-								<button class="btn btn-large btn-primary">Classifica per</button>
-								<button class="btn btn-large dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#"><i class="fa fa-user"> </i> Autor</a></li>
-									<li><a href="#"><i class="fa fa-group"> </i> Cultura</a></li>
-									<li><a href="#"><i class="fa fa-glass"> </i> Material</a></li>
-									<li><a href="#"><i class="fa fa-tag"> </i> Nom de l'objecte</a></li>
-									<li><a href="#"><i class="fa fa-globe"> </i> Lloc d'origen</a></li>
-									<li><a href="#"><i class="fa fa-wrench"> </i> Tècnica</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div style="height:32px"></div>
+					<div id="fields"> </div>
 					<div id="tree" class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse"> </div>
 				</div>
 				
@@ -99,12 +60,12 @@
 							<div class="box">
 
 								<div class="box-header">
-									<h2><i class="fa fa-map-marker"> </i>Mapa</h2>
+									<h2><i class="fa fa-cel-museum"> </i>Museus</h2>
 									<div class="box-icon">
 										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
 									</div>
 								</div>
-								<div class="box-content" id="map">
+								<div class="box-content" id="museums">
 								</div>
 							</div>
 						</div>
@@ -114,13 +75,12 @@
 						<div class="col-lg-12">
 							<div class="box">
 								<div class="box-header">
-									<h2><i class="fa fa-group"> </i>Detalls de la cultura</h2>
+									<h2><i class="fa fa-cel-gallery"> </i>Galeria de peces</h2>
 									<div class="box-icon">
 										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
 									</div>
 								</div>
-								<div class="box-content">
-									<div id="culture"> </div>
+								<div class="box-content" id="gallery">
 								</div>
 							</div>
 						</div>
@@ -130,29 +90,12 @@
 						<div class="col-lg-12">
 							<div class="box">
 								<div class="box-header">
-									<h2><i class="fa fa-picture-o"> </i>Galeria de peces</h2>
+									<h2><i class="fa fa-cel-object"> </i>Detalls de la peça</h2>
 									<div class="box-icon">
 										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
 									</div>
 								</div>
-								<div class="box-content">
-									<div id="gallery"> </div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="box">
-								<div class="box-header">
-									<h2><i class="fa fa-trophy"> </i>Detalls de la peça</h2>
-									<div class="box-icon">
-										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
-									</div>
-								</div>
-								<div class="box-content">
-									<div id="piece"> </div>
+								<div class="box-content" id="piece">
 								</div>
 							</div>
 						</div>
@@ -169,13 +112,13 @@
 
 		<footer>
 			<p>
-				<span style="text-align:left;float:left"></span>
+				<span style="text-align:left;float:left"> </span>
 				<span class="hidden-phone" style="text-align:right;float:right">&copy; 2014 <a href="http://barcelonacultura.bcn.cat" target="_blank">Institut de Cultura de Barcelona</a><br/>Oscar Fonts, <a href="http://geomati.co" target="_blank">geomati.co</a></span>
 			</p>
 
 		</footer>
 
-		<script src="../lib/require-2.1.9.js" data-main="../modules/mcm.index.js"></script>
+		<script src="../lib/require-2.1.9.js" data-main="../modules/cel.index.js"> </script>
 		<script src="../config.js"></script>
 
 	</body>

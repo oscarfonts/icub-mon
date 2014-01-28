@@ -1,4 +1,8 @@
 
+.quick-button-small {
+    margin: 1px;
+}
+
 .container > .row {
     overflow: hidden;
 }
@@ -18,9 +22,44 @@ a.navbar-brand {
     width: 20%;
 }
 
-a#main-menu-toggle {
+#main-menu-toggle {
     margin-left: 20%;
 }
+
+.fa-cel-museum:before {
+  content: "\f015";
+}
+.fa-cel-collection:before {
+  content: "\f00a";
+}
+.fa-cel-none:before {
+  content: "\f05e";
+}
+.fa-cel-author:before {
+  content: "\f007";
+}
+.fa-cel-culture:before {
+  content: "\f0c0";
+}
+.fa-cel-material:before {
+  content: "\f000";
+}
+.fa-cel-objectName:before {
+  content: "\f02b";
+}
+.fa-cel-place:before {
+  content: "\f0ac";
+}
+.fa-cel-technique:before {
+  content: "\f0ad";
+}
+.fa-cel-gallery:before {
+  content: "\f03e";
+}
+.fa-cel-object:before {
+  content: "\f091";
+}
+
 
 #login_form input[type="text"], #login_form input[type="password"] {
     background: none repeat scroll 0 0 #E4E6EB;
@@ -36,74 +75,8 @@ a#main-menu-toggle {
     height: 480px;
 }
 
-.page-header {
-	font-weight: bold;
-}
-
-.description {
-    margin: 6px 0;
-    padding: 6px;
-    text-align: center;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.description .media {
-    border-bottom: 1px solid #EEEEEE;
-    padding-bottom: 9px;
-    margin: 20px;
-}
-
-.description .media-heading {
-	padding-top: 8px;
-	padding-left: 12px;
-	font-weight: bold;
-}
-
-.description .media-body {
-	text-align: left;
-}
-
-.description .img-thumbnail {
-	max-height: 180px;
-}
-
-.description .media-body ul {
-	list-style-type: none;
-	padding: 0px;
-	margin: 12px;
-}
-
-#cultura-description {
-	text-align: left;
-}
-
-.navbar-brand {
-	padding: 0;
-}
-
-.navbar-brand img {
-	margin-top: 3px;
-}
-
-
 .leaflet-top, .leaflet-bottom {
     z-index: 999;
-}
-
-.navbar-inverse {
-    background-color: #000000;
-    border-color: #080808;
-}
-
-.breadcrumb > .head {
-    font-weight: bold;
-}
-
-.breadcrumb > .next {
-    color: #999999;
-    font-style: italic;
 }
 
 .mcm-hide-marker {
@@ -178,24 +151,4 @@ img.tiny {
 .marker.marker-selected, .marker-out.marker-selected span {
     background-color: #5CB85C;
     border-color: #4CAE4C;
-}
-
-/*
-.descripcio_peca {
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border: 1px solid #bbb;
-    padding: 24px;
-}
-*/
-
-.descripcio_peca dt {
-	margin-bottom: 6px;
-}
-
-.descripcio_peca dd {
-	display: block;
-	padding-bottom: 24px;
-	margin-left: 24px;
-	text-align: justify;
 }

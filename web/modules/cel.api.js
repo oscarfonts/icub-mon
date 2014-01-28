@@ -9,6 +9,15 @@ define(['http'], function(http) {
     function all(param) {
         return param ? param : "all";
     };
+    
+    // Push input arguments into callback arguments
+    function deferWith(data, args) {
+        var new_args = Array.prototype.slice.call(args);
+        new_args.unshift(data);
+        d = $.Deferred();
+        d.resolveWith(this, new_args);
+        return d;
+    }
         
     return {
         setBaseURL: function(url) {
@@ -27,18 +36,20 @@ define(['http'], function(http) {
                 return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id));
             },
             fields: function(museum_id, collection_id, field) {
-                    return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/lists", field);
+                var args = arguments;
+                var param = field ? { name: field } : undefined;
+                return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/lists", field)
+                    .then(function(data) {
+                        return deferWith(data, args);
+                    });
             }
         },
         object: {
             list: function(museum_id, collection_id, filters) {
-                var args = Array.prototype.slice.call(arguments);
-                return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/objects", filters).then(
-                    function(data) {
-                        d = $.Deferred();
-                        args.unshift(data);
-                        d.resolveWith(this, args);
-                        return d;
+                var args = arguments;
+                return http.get(baseURL + "/" + all(museum_id) + "/" + all(collection_id) + "/objects", filters)
+                    .then(function(data) {
+                        return deferWith(data, args);
                     });
             },
             get: function(museum_id, collection_id, object_id) {

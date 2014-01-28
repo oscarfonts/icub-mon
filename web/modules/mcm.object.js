@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["celapi", "template"], function(celapi, template) {
+define(["cel.api", "template"], function(celapi, template) {
 
     var div_id = "mcm-object",
         museum_id = "MCM",

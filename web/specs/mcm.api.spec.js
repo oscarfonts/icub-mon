@@ -316,7 +316,7 @@ define(["mcm.api"], function(mcm) {
                 expect(objects.type).toEqual("FeatureCollection");
                 expect(objects.features instanceof Array).toBeTruthy();
                 $.each(objects.features, function(index, feature) {
-                    expect(feature.properties.culture).toEqual(cculture_id);
+                    expect(feature.properties.culture).toEqual(culture_id);
                 });
             };
 

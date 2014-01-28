@@ -1,0 +1,41 @@
+{{! Data Sample
+	[{
+		"museum": {
+			"acronym": "MCM",
+			"name": "Museu de les cultures del món"
+		},
+	    "id": "africa",
+	    "name": "Àfrica",
+	    "json": "...",
+	    "fields": [
+	        {
+	            "museum": {
+					"acronym": "MCM",
+					"name": "Museu de les cultures del món"
+				},
+	            "collection": {
+	            	"id": "africa",
+	            	"name": "Àfrica"
+	            },
+	            "count": 59,
+	            "name": "culture",
+	            "value": "Cultura Fang",
+	            "json": "..."
+	        }
+	    ]
+	}];
+}}
+<ul id="tree" class="nav contents">
+    {{#.}} {{! Collections }}
+	<li class="collection" id="{{id}}" data-tree='{{json}}'>
+		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><i class="fa fa-cel-collection"> <!--img src="../img/icons/{{id}}-icon.png" width="24"/--> </i>&nbsp;&nbsp; {{name}}</a>
+		<ul class="nav collapse" style="height: auto;">
+			{{#fields}} {{! Field Values }}
+			<li class="{{name}}" data-tree='{{json}}'>
+				<a><i class="fa fa-cel-{{field}}"></i>&nbsp;&nbsp;{{value}}<span class="label">{{count}}</span></a>
+			</li>
+			{{/fields}}
+		</ul>
+	</li>
+	{{/.}}
+</ul>

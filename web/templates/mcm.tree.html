@@ -26,11 +26,11 @@
 		<ul class="nav collapse" style="height: auto;">
 			{{#items}} {{! Cultures }}
 			<li class="culture" id="{{id}}">
-				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"><i class="fa fa-group"></i>&nbsp;&nbsp;{{name}}<span class="label">{{items.length}}</span></a>
+				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"><i class="fa fa-cel-culture"></i>&nbsp;&nbsp;{{name}}<span class="label">{{items.length}}</span></a>
 				<ul class="nav collapse">
 				    {{#items}} {{! Objects }}
 					<li class="object" id="{{id}}">
-						<a><i class="fa fa-trophy"></i>&nbsp;&nbsp;{{name}}</a>
+						<a><i class="fa fa-cel-object"></i>&nbsp;&nbsp;{{name}}</a>
 					</li>
 					{{/items}}
 				</ul>

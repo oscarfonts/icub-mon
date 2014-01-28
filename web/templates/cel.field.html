@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-lg-12">
+		<span class="white">Agrupa col·leccions per </span>
+		<div class="btn-group" id="field-menu">
+			<button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown">
+				<span class="selected"> </span>
+				<span class="caret"> </span>
+			</button>
+			<ul class="dropdown-menu">
+				{{#.}}
+				<li><a href="#" data-field='{"id": "{{id}}", "name": "{{name}}"}'><i class="fa fa-cel-{{id}}"> </i> {{name}} </a></li>
+				{{/.}}
+			</ul>
+		</div>
+	</div>
+</div>
+<div style="height:32px"> </div>
