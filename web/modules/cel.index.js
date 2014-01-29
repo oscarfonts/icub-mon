@@ -1,7 +1,7 @@
 define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
         function(bus, museum, tree, gallery, detail) {
 
-    hideBox("gallery");
+    //hideBox("gallery");
     hideBox("detail");
             
     bus.subscribe("cel.museum.selected", function(museum) {

@@ -15,7 +15,8 @@ require.config({
         "wysihtml5-ca": LIB_PATH + "bootstrap-wysihtml5.ca-CT",
         "custom": LIB_PATH + "custom",
         "core": LIB_PATH + "core",
-        "jquery-migrate": LIB_PATH + "jquery-migrate-1.2.1.min"
+        "jquery-migrate": LIB_PATH + "jquery-migrate-1.2.1.min",
+        "jquery-maskedinput": LIB_PATH + "jquery-maskedinput-1.3.1"
     },
     shim: {
         "bootstrap": {
@@ -43,6 +44,9 @@ require.config({
             deps: ["jquery-migrate", "bootstrap"]
         },
         "jquery-migrate": {
+            deps: ["jquery"]
+        },
+        "jquery-maskedinput": {
             deps: ["jquery"]
         }
     }

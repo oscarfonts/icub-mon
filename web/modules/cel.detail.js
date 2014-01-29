@@ -3,6 +3,7 @@ define(["cel.api", "template"], function(celapi, template) {
     var div_id = "detail";
 
     function show(museum, collection, object) {
+        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant detalls de la peça ' + object.id + '...</div>';
         return celapi.object.details(museum.acronym, collection.id, object.id).then(parse_data).then(apply_template);
     }
 
