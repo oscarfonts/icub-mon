@@ -16,14 +16,14 @@ define(["messagebus", "cel.api", "template"], function(bus, api, template) {
    }
    
    function add_interactivity() {
-       for (var i in museums) {
-           var museum = museums[i];
-           $("#museum_" + museum.acronym).on("click", museum, function(e) {
-               museum = e.data;
-               bus.publish("cel.museum.selected", museum);
-           });
-       }
-   }
+        var links = $("#museum-menu > ul > li > a");
+       
+        links.click(function(e) {
+            $("#museum-menu .selected").html(this.innerHTML);
+            museum = $(this).data("museum");
+            bus.publish("cel.museum.selected", museum);
+        });
+    }
    
    return {
        get: function() {

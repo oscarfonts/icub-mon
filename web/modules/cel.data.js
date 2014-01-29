@@ -24,7 +24,7 @@ define(["cel.api", "jquery"], function(api, $) {
             for (var i in museum.collections) {
                 var collection = museum.collections[i];
                 delete collection._links;
-                delete collection.items;
+                delete collection.fields;
                 collection.museum = {acronym: museum.acronym, name: museum.name};
                 collection.json = function() {
                     return JSON.stringify({
@@ -51,7 +51,6 @@ define(["cel.api", "jquery"], function(api, $) {
             for(var key in collections) {
                 data.push(collections[key]);
             }
-            console.log(data);
             return data;
         }
         
@@ -61,14 +60,14 @@ define(["cel.api", "jquery"], function(api, $) {
             }
             var field = fields[0];
             var collection = collections[collection_id];
-            for(var i in field.values) {
+            for (var i in field.values) {
                 var value = field.values[i];
                 value.museum = museum;
                 value.collection = {id: collection.id, name: collection.name, museum: collection.museum};
                 value.name = field.name;
                 value.json = function() {
                     var x = {
-                        museum: {id: this.museum.id, acronym: this.museum.acronym},
+                        museum: {acronym: this.museum.acronym, name: this.museum.name},
                         collection: {id: this.collection.id, name: this.collection.name},
                         name: this.name,
                         value: this.value
@@ -79,7 +78,7 @@ define(["cel.api", "jquery"], function(api, $) {
             collection.fields = field.values;
         }
 
-        return $.Deferred().resolve(museum).then(getFieldValues);
+        return api.museum.get(museum.acronym).then(getFieldValues);
     }
     
     return {

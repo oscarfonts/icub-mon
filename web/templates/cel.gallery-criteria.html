@@ -1,0 +1,16 @@
+<tbody>
+	<tr>
+		<th style="width:180px;"><i class="fa fa-cel-museum"> </i> Museu</th>
+		<td>{{museum.name}}</td>
+	</tr>
+	<tr>
+		<th><i class="fa fa-cel-collection"> </i> Col·lecció</th>
+		<td>{{collection.name}}</td>
+	</tr>
+	{{#field}}
+	<tr>
+		<th><i class="fa fa-cel-{{name}}"> </i> {{title}}</th>
+		<td>{{value}}</td>
+	</tr>
+	{{/field}}
+</tbody>

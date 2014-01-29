@@ -1,0 +1,44 @@
+{{#paging}}
+<div class="row">
+	<div class="col-lg-12">
+		<ul class="pager well well-sm" data-criteria='{{criteria}}'>
+			<li class="previous {{^prev}}disabled{{/prev}}"><a href="#">&larr; Anteriors</a></li>
+			<li>Mostrant peces {{from}} a {{to}} d'un total de {{total}}</li>
+			<li class="next {{^next}}disabled{{/next}}"><a href="#">Següents &rarr;</a></li>
+		</ul>
+	</div>
+</div>
+{{/paging}}
+<div class="row">
+	{{#objects}}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="panel panel-info" data-object='{{json}}' style="cursor: pointer;">
+			<div class="panel-heading">
+		        <h3 class="panel-title">{{objectName}} ({{recordNumber}})</h3>
+		    </div>
+		    <div class="panel-body">
+				<!--img style="max-height:64px;max-width:100%;float:right;margin:5px;" src="../img/peces/{{img}}.JPG" alt="{foto peça}"-->
+	        	{{#author}}
+		        	<p><strong>Autor(s): </strong>{{.}}</p>
+	        	{{/author}}
+	        	{{#culture}}
+		        	<p><strong>Cultura: </strong>{{.}}</p>
+        		{{/culture}}
+        		{{#provenance}}
+		        	<p><strong>Procedència: </strong>{{.}}</p>
+        		{{/provenance}}
+	        	{{#creationDate}}
+		        	<p><strong>Datació: </strong>{{.}}</p>
+	        	{{/creationDate}}
+		    </div>
+		</div>
+	</div>
+	{{/objects}}
+	{{^objects}}
+	<div class="col-lg-12">
+		<div class="well well-lg">
+			<p style="text-align:center;">No s'ha trobat cap peça amb aquests criteris de sel·lecció</p>
+		</div>
+	</div>
+	{{/objects}}
+</div>

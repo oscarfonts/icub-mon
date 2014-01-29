@@ -1,18 +1,19 @@
-define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "mcm.object"],
-        function(bus, museum, tree, gallery, object) {
+define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
+        function(bus, museum, tree, gallery, detail) {
 
-    object.setDiv("piece");
-    
+    hideBox("gallery");
+    hideBox("detail");
+            
     bus.subscribe("cel.museum.selected", function(museum) {
         hideBox("gallery");
-        hideBox("piece");
+        hideBox("detail");
         tree.show(museum);
     });
 
     // Handle tree element selection
     bus.subscribe("cel.tree.selected", function(selected) {
         showBox("gallery");
-        hideBox("piece");
+        hideBox("detail");
 
         var value = selected.value;
         var museum = value.museum;
@@ -32,13 +33,25 @@ define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "mcm.object"],
         
         gallery.show(museum, collection, field);
     });
-        
+    
+    bus.subscribe("cel.gallery.selected", function(object) {
+        showBox("detail");
+        detail.show(object.museum, object.collection, object);
+        scrollToBox("detail");
+    });
+    
     function showBox(id) {
         $("#"+id).closest(".box").show();
     }
     
     function hideBox(id) {
         $("#"+id).closest(".box").hide();
+    }
+    
+    function scrollToBox(id) {
+        $('html, body').animate({
+            scrollTop: $("#"+id).closest(".box").offset().top - 25
+        }, 500);
     }
 
 });

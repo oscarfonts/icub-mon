@@ -1,10 +1,20 @@
 <div class="row">
-	{{#.}}
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-		<a id="museum_{{acronym}}" class="quick-button-small">
-			<i class="fa fa-cel-museum"></i>
-			<p>{{name}}</p>
-		</a>
+	<div class="col-lg-12">
+		<span class="white">Sel·leccioneu un museu: </span>
 	</div>
-	{{/.}}
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="btn-group" id="museum-menu" style="margin:10px;margin-bottom:16px;">
+			<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				<span class="selected"><i class="fa fa-cel-none"> </i> (cap museu sel·leccionat) </span>
+				<span class="caret"> </span>
+			</button>
+			<ul class="dropdown-menu">
+				{{#.}}
+				<li><a href="#" data-museum='{"acronym": "{{acronym}}", "name": "{{name}}"}'><i class="fa fa-cel-museum"> </i> {{name}} </a></li>
+				{{/.}}
+			</ul>
+		</div>
+	</div>
 </div>

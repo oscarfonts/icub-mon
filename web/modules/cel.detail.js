@@ -1,23 +1,14 @@
-/**
- * @author Oscar Fonts <oscar.fonts@geomati.co>
- */
 define(["cel.api", "template"], function(celapi, template) {
 
-    var div_id = "mcm-object",
-        museum_id = "MCM",
-        data = [];
+    var div_id = "detail";
 
-    function show(collection, object_id) {
-        get_contents(collection, object_id).then(parse_data).then(apply_template);
+    function show(museum, collection, object) {
+        return celapi.object.details(museum.acronym, collection.id, object.id).then(parse_data).then(apply_template);
     }
 
     function hide() {
         document.getElementById(div_id).innerHTML = "";
     };
-
-    function get_contents(collection, object_id) {
-        return celapi.object.details("MCM", collection, object_id);
-    }
     
     function first(prop, arr) {
         if(arr && arr.length && arr[0][prop]) {
@@ -27,42 +18,44 @@ define(["cel.api", "template"], function(celapi, template) {
         }
     }
 
-    function parse_data(object) {
+    function parse_data(detail) {
         
-        var id = object.idInLocalSource;
+        var plain = [];
+        
+        var id = detail.idInLocalSource;
                    
         var id_reg = first("value",
-            $.grep(object.identifiers, function(e, i) {
+            $.grep(detail.identifiers, function(e, i) {
                 return e.type.value == "accessionNumber";
             }));
         
         var name = first("value",
-            $.grep(object.objectTypes, function(e, i) {
+            $.grep(detail.objectTypes, function(e, i) {
                 return e.originalType == "Nom de l'objecte";
             }));
 
         var creation = first("event",
-            $.grep(object.objectInEvents, function(e, i) {
+            $.grep(detail.objectInEvents, function(e, i) {
                 return (e["function"].value == "created" && e["event"].type.value == "creation");
             }));
             
         var provenance = first("event",
-            $.grep(object.objectInEvents, function(e, i) {
+            $.grep(detail.objectInEvents, function(e, i) {
                 return (e["function"].value == "found" && e["event"].type.value == "provenance");
             }));
             
         var history = first("value",
-            $.grep(object.objectNotes, function(e, i) {
+            $.grep(detail.objectNotes, function(e, i) {
                 return e.type.value == "history";
             }));
     
         var description = first("value",
-            $.grep(object.objectNotes, function(e, i) {
+            $.grep(detail.objectNotes, function(e, i) {
                 return e.type.value == "description";
             }));
         
         var usage = first("value",
-            $.grep(object.classifications, function(e, i) {
+            $.grep(detail.classifications, function(e, i) {
                 return e.type.value == "usage";
             }));
 
@@ -110,18 +103,18 @@ define(["cel.api", "template"], function(celapi, template) {
             value: usage
         }];
         
-        var data = {
+        var plain = {
             id: id,
             img_src: "../img/peces/" + id + ".JPG",
             properties: properties
         };
         
-        return data;
+        return plain;
         
     };
 
-    function apply_template(data) {
-        template.render("cel.detail", data, div_id);
+    function apply_template(plain) {
+        template.render("cel.detail", plain, div_id);
     }
     
     return {

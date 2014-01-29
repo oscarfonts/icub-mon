@@ -152,3 +152,19 @@ img.tiny {
     background-color: #5CB85C;
     border-color: #4CAE4C;
 }
+
+.descripcio_peca {
+    padding: 24px;
+}
+
+.descripcio_peca dt {
+	margin-bottom: 6px;
+}
+
+.descripcio_peca dd {
+	display: block;
+	padding-bottom: 24px;
+	margin-left: 24px;
+	text-align: justify;
+}
+
