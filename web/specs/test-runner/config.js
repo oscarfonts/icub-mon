@@ -31,9 +31,6 @@ require.config({
         },
         "mcm.api": {
             url: "http://localhost:5000/api"
-        },
-        "bootstrap.login": {
-            url: "http://localhost:5000/api/login"
         }
     }
 });

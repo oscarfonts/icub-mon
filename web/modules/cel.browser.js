@@ -4,7 +4,7 @@
 define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
         function(bus, museum, tree, gallery, detail) {
 
-    //hideBox("gallery");
+    hideBox("gallery");
     hideBox("detail");
             
     bus.subscribe("cel.museum.selected", function(museum) {
@@ -39,7 +39,7 @@ define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
     
     bus.subscribe("cel.gallery.selected", function(object) {
         showBox("detail");
-        detail.show(object.museum, object.collection, object);
+        detail.show(object.museum.acronym, object.collection.id, object.id);
         scrollToBox("detail");
     });
     

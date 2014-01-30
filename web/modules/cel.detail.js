@@ -5,9 +5,9 @@ define(["cel.api", "template"], function(celapi, template) {
 
     var div_id = "detail";
 
-    function show(museum, collection, object) {
-        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant detalls de la peça ' + object.id + '...</div>';
-        return celapi.object.details(museum.acronym, collection.id, object.id).then(parse_data).then(apply_template);
+    function show(museum_id, collection_id, object_id) {
+        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant detalls de la peça ' + object_id + '...</div>';
+        return celapi.object.details(museum_id, collection_id, object_id).then(parse_data).then(apply_template);
     }
 
     function hide() {
@@ -109,7 +109,7 @@ define(["cel.api", "template"], function(celapi, template) {
         
         var plain = {
             id: id,
-            img_src: "../img/peces/" + id + ".JPG",
+            img_src: "../img/peces/" + id.substr(1) + ".JPG",
             properties: properties
         };
         

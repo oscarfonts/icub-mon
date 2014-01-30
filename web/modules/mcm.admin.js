@@ -1,15 +1,15 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "mcm.api", "mcm.tree", "mcm.object"],
-    function(bus, login, htmleditor, mapeditor, mcm, tree, object) {
+define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "mcm.api", "mcm.tree", "cel.detail"],
+    function(bus, login, htmleditor, mapeditor, mcm, tree, detail) {
 
     // Setup login module
     login.linkTo("login", "entrar", "sortir");
     login.onLogin(on_login);
     login.onLogout(on_logout);   
-    // TODO: Remove this
-    login.forceLogin("test", "test");
+    
+    login.forceLogin("test", "test"); // TODO: Remove this in production
     
     // Create html editors
     var editors = {};
@@ -67,11 +67,11 @@ define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "
         }
         
         if (type == "object") {
-            showBox("details");
-            object.show(selected.item.collection, id);
+            showBox("detail");
+            detail.show("MCM", selected.item.collection, id);
         } else {
-            hideBox("details");
-            object.hide();
+            hideBox("detail");
+            detail.hide();
         }
     });
     
@@ -122,8 +122,8 @@ define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "
         tree.hide();
         hideBox("map");
         mapeditor.hide();
-        hideBox("details");
-        object.hide();
+        hideBox("detail");
+        detail.hide();
         for (var lang in editors) {
             hideBox("description-"+lang);
             editors[lang].hide();

@@ -58,7 +58,7 @@ require.config({
             url: "http://localhost:5000/api"
         },
         "bootstrap.login": {
-            url: "http://localhost:5000/api/login"
+            url: "http://localhost:5000/login"
         }
     }
 });
