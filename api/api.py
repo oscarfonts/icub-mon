@@ -9,6 +9,7 @@ def create_api(app):
 	manager = APIManager(app, flask_sqlalchemy_db=db)
 
 	manager.create_api(model.Culture,
+		url_prefix='',
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
@@ -25,6 +26,7 @@ def create_api(app):
 	)
 
 	manager.create_api(model.Object,
+		url_prefix='',
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
@@ -41,6 +43,7 @@ def create_api(app):
 	)
 
 	manager.create_api(model.Description_ca,
+		url_prefix='',
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
@@ -54,6 +57,7 @@ def create_api(app):
 	)
 
 	manager.create_api(model.Description_es,
+		url_prefix='',
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
@@ -67,6 +71,7 @@ def create_api(app):
 	)
 	
 	manager.create_api(model.Description_en,
+		url_prefix='',
 		methods=['GET','PUT','POST','DELETE'],
 		results_per_page = -1,
 		preprocessors = {
@@ -80,15 +85,17 @@ def create_api(app):
 	)
 	
 	# Root view
-	@app.route('/api')
+	@app.route('/')
 	def api():
 		base = url_for("api", _external=True)
-		return jsonify(continent = base + "/continent",
-	                   culture = base + "/culture",
-	                   object = base + "/object",
-	                   description = base + "/description")
+		return jsonify(continent = base + "continent",
+	                   culture = base + "culture",
+	                   object = base + "object",
+	                   description_ca = base + "description_ca",
+	                   description_es = base + "description_es",
+	                   description_en = base + "description_en")
 	
 	# Static "continent" view
-	@app.route('/api/continent')
+	@app.route('/continent')
 	def continent():
 		return send_file("data/continents.geojson", mimetype="application/json; charset=utf-8")
