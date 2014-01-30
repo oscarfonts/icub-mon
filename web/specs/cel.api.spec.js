@@ -71,7 +71,7 @@ define(["cel.api"], function(celapi) {
 
             var checkCollections = function(museum) {
                 $.each(museum.collections, function(i, collection) {
-                    celapi.collection.get(museum.acronym, collection.name).then(checkCollection);
+                    celapi.collection.get(museum.acronym, collection.id).then(checkCollection);
                 });
             };
     

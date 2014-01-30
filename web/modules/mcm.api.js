@@ -5,6 +5,22 @@ define(["module", "http"], function(module, http) {
 
     var baseURL = module.config().url ? module.config().url : "http://fonts.cat/icub/api";
     var default_lang = "ca";
+    
+    function filter(field, value) {
+        if (value) {
+            return {
+                q: JSON.stringify({
+                    filters: [{
+                        name: field,
+                        op: "equals",
+                        val: value
+                    }]
+                })
+            };
+        } else {
+            return undefined;
+        }
+    }
 
     return {
         url: function(url) {
@@ -29,8 +45,7 @@ define(["module", "http"], function(module, http) {
         },
         culture: { 
             list: function(continent_id) {
-                var params = continent_id ? { continent: continent_id } : "";
-                return http.get(baseURL + "/culture", params);
+                return http.get(baseURL + "/culture", filter("continent", continent_id));
             },
             get: function(id) {
                 return http.get(baseURL + "/culture/" + id);
@@ -47,8 +62,7 @@ define(["module", "http"], function(module, http) {
         },
         object: {
             list: function(culture_id) {
-                var params = culture_id ? { culture: culture_id } : "";
-                return http.get(baseURL + "/object", params);
+                return http.get(baseURL + "/object", filter("culture", culture_id));
             },
             get: function(id) {
                 return http.get(baseURL + "/object/" + id);
