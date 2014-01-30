@@ -4,6 +4,7 @@
 define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, field, data, template) {
 
     var div_id = "tree";
+    var templ = "cel.tree";
     var selected = {
             museum: undefined,
             field: undefined
@@ -27,7 +28,7 @@ define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, f
     }
     
     function apply_template(contents) {
-        return template.render("cel.tree", contents, div_id).then(add_interactivity);        
+        return template.render(templ, contents, div_id).then(add_interactivity);        
     }
     
     function add_interactivity() {
@@ -56,6 +57,21 @@ define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, f
     return {
         show: show,
         hide: hide,
+        showFieldSelector: function() {
+            field.show();
+        },
+        setField: function(field_id) {
+            selected.field = {
+                id: field_id,
+                name: field.getFieldName(field_id)
+            };
+        },
+        template: function(template) {
+            if (template) {
+                templ = template;
+            }
+            return templ;
+        },
         div: function(div) {
             if (div) {
                 div_id = div;

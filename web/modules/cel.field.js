@@ -27,8 +27,6 @@ define(["messagebus", "template", "jquery"], function(bus, template, $) {
         id: "technique",
         name: "Tècnica"
     }];
-
-    apply_template().then(add_interactivity);
     
     function apply_template() {
         return template.render("cel.field", fields, "fields");        
@@ -47,6 +45,9 @@ define(["messagebus", "template", "jquery"], function(bus, template, $) {
     }
     
     return {
+        show: function() {
+            return apply_template().then(add_interactivity);
+        },
         get: function() {
             return field;
         },

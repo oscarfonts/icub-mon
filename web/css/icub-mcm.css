@@ -10,6 +10,14 @@
   }
   .container #sidebar-left {
     width: 25%;
+    min-height: 600px;
+  }
+  .container #content {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+  }
+  .container > .row {
+    overflow: hidden;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -24,6 +32,14 @@
   }
   .container #sidebar-left {
     width: 25%;
+    min-height: 600px;
+  }
+  .container #content {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+  }
+  .container > .row {
+    overflow: hidden;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -38,34 +54,34 @@
   }
   .container #sidebar-left {
     width: 25% !important;
+    min-height: 600px;
   }
   .nav {
     padding-left: 10px;
   }
+  .container #content {
+    padding-bottom: 99999px;   
+    margin-bottom: -99999px;
+  }
+  .container > .row {
+    overflow: hidden;
+  }
+
 }
 @media only screen and (max-width: 767px) {
   .navbar {
     background: none;
   }
+  .navbar-collapse {
+    max-height: 320px;
+  }
+  .container > .row > #content {
+    overflow: hidden;
+  }
 }
 
-.navbar-collapse {
-    max-height: 512px;
-}
 .navbar-toggle {
     top: -3px;
-}
-.container #content {
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
-}
-
-.container > .row {
-    overflow: hidden;
-}
-
-.container #sidebar-left {
-    min-height: 600px;
 }
 
 #museums .btn, #fields .btn {

@@ -1,41 +1,40 @@
 {{! Data Sample
 	[{
+		"museum": {
+			"acronym": "MCM",
+			"name": "Museu de les cultures del món"
+		},
 	    "id": "africa",
 	    "name": "Àfrica",
-	    "items": [
+	    "json": "...",
+	    "fields": [
 	        {
-	            "id": "cultura-fang",
-	            "name": "Cultura Fang",
-	            "collection": "africa",
-	            "items": [
-	                {
-	                    "id": 123456,
-	                    "name": "Objecte"
-	                    "collection": "africa",
-	                    "culture": "cultura-fang"
-	                }
-	            ]
+	            "museum": {
+					"acronym": "MCM",
+					"name": "Museu de les cultures del món"
+				},
+	            "collection": {
+	            	"id": "africa",
+	            	"name": "Àfrica"
+	            },
+	            "count": 59,
+	            "name": "culture",
+	            "value": "Cultura Fang",
+	            "json": "..."
 	        }
 	    ]
 	}];
 }}
 <ul id="tree" class="nav contents">
     {{#.}} {{! Collections }}
-	<li class="collection" id="{{id}}">
-		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><i><img src="../img/icons/{{id}}-icon.png" width="24"/></i>&nbsp;&nbsp;{{name}}</a>
+	<li class="collection" id="{{id}}" data-tree='{{json}}'>
+		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><img src="../img/collections/{{id}}-white-icon.png" width="24"/>&nbsp;&nbsp; {{name}}</a>
 		<ul class="nav collapse" style="height: auto;">
-			{{#items}} {{! Cultures }}
-			<li class="culture" id="{{id}}">
-				<a data-toggle="collapse" data-parent="#{{collection}}" data-target="#{{id}} > ul"><i class="fa fa-cel-culture"></i>&nbsp;&nbsp;{{name}}<span class="label">{{items.length}}</span></a>
-				<ul class="nav collapse">
-				    {{#items}} {{! Objects }}
-					<li class="object" id="{{id}}">
-						<a><i class="fa fa-cel-object"></i>&nbsp;&nbsp;{{name}}</a>
-					</li>
-					{{/items}}
-				</ul>
+			{{#fields}} {{! Field Values }}
+			<li class="{{name}}" data-tree='{{json}}'>
+				<a><i class="fa fa-cel-{{name}}"> </i>&nbsp;&nbsp;{{value}}<span class="label">{{count}}</span></a>
 			</li>
-			{{/items}}
+			{{/fields}}
 		</ul>
 	</li>
 	{{/.}}

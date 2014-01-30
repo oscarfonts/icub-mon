@@ -98,7 +98,7 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
     
     function apply_template() {
         //console.log(data);
-        template.render("mcm.tree", data, div_id).then(add_interactivity);        
+        template.render("mcm.admin.tree", data, div_id).then(add_interactivity);        
     };
     
     function get_item_by_id(id, tree) {
@@ -133,7 +133,7 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
                 $("#"+id).addClass("active");
                 
                 //console.log("Clicked on " + id + " " + type);
-                bus.publish("mcm.tree.selected", {
+                bus.publish("mcm.admin.tree.selected", {
                     type: type,
                     item: get_item_by_id(id)
                 });               

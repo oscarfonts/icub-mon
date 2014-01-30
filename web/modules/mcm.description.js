@@ -6,7 +6,7 @@ define(["mcm.api"], function(mcm) {
     var div_id = "description";
 
     function show(id, lang) {
-        mcm.description.get(id, lang).then(render);
+        return mcm.description.get(id, lang).then(render);
     }
 
     function render(description) {

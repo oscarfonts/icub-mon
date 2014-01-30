@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "mcm.api", "mcm.tree", "cel.detail"],
+define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "mcm.api", "mcm.admin.tree", "cel.detail"],
     function(bus, login, htmleditor, mapeditor, mcm, tree, detail) {
 
     // Setup login module
@@ -20,7 +20,7 @@ define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "
     }
 
     // Handle tree element selection
-    bus.subscribe("mcm.tree.selected", function(selected) {
+    bus.subscribe("mcm.admin.tree.selected", function(selected) {
         var type = selected.type;
         var id = selected.item.id;
         

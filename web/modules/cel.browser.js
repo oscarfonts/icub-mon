@@ -3,9 +3,8 @@
  */
 define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
         function(bus, museum, tree, gallery, detail) {
-
-    hideBox("gallery");
-    hideBox("detail");
+            
+    tree.showFieldSelector();
             
     bus.subscribe("cel.museum.selected", function(museum) {
         hideBox("gallery");

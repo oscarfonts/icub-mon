@@ -3,6 +3,11 @@
  */
 define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(bus, template, fields, api, $) {
     
+    var templates = {
+        criteria: "cel.gallery-criteria",
+        objects: "cel.gallery-objects"
+    };
+    
     $("#dateFrom").mask("9999");
     $("#dateTo").mask("9999");
     $("#search-enabled").change(function() {
@@ -23,7 +28,8 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
     $("#dateTo").keyup(function(){
         $("#refine-action").show();
     });
-    $("#refine-action").click(function() {
+    $("#refine-action").click(function(e) {
+        e.preventDefault();
         var criteria = $("#gallery-criteria-data").data("criteria");
         if (criteria) {
             show(criteria.museum, criteria.collection, criteria.field);
@@ -47,7 +53,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
     }
 
     function show_criteria(criteria) {
-        template.render("cel.gallery-criteria", criteria, "gallery-criteria");
+        template.render(templates.criteria, criteria, "gallery-criteria");
     }
     
     function get_objects(criteria) {
@@ -92,7 +98,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
                 data.objects.push(plain);
             }
                        
-            return template.render("cel.gallery-objects", data, "gallery-objects").then(add_interactivity);
+            return template.render(templates.objects, data, "gallery-objects").then(add_interactivity);
         }
         
         var filters = {
@@ -180,6 +186,15 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
     }
     
     return {
-        show: show
+        show: show,
+        templates: function(criteria, objects) {
+            if (criteria) {
+                templates.criteria = criteria;
+            }
+            if (objects) {
+                templates.objects = objects;
+            }
+            return templates;
+        }
     };
 });

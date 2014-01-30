@@ -1,10 +1,11 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "leaflet", "leaflet.map", "draw", "L.Control.DrawSingle"], function(bus, L, map) {
+define(["messagebus", "leaflet", "leaflet.map", "draw", "L.Control.DrawSingle"], function(bus, L, leafletmap) {
     
-    // Initialize editor
     var loaded = {};
+
+    var map = leafletmap.create();
     
     var leafletItems = L.featureGroup().addTo(map);
     
