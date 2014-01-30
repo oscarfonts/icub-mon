@@ -353,7 +353,7 @@ a.navbar-brand:hover {
   text-shadow: none !important;
   padding: 8px 15px 11px 15px !important;
 }
-/*
+/* oscar
 .header-nav a.btn.account {
   padding: 6px 10px 5px 0px !important;
 }
@@ -622,11 +622,13 @@ a#main-menu-toggle {
   font-size: 14px;
   white-space: nowrap;
 }
+/* oscar
 .sidebar-nav > ul > li > ul {
-  //list-style: none;
-  //display: none;
-  //margin: 0px 0px;
+  list-style: none;
+  display: none;
+  margin: 0px 0px;
 }
+*/
 .nav-tabs.nav-stacked > li > a {
   margin: 0px;
 }
@@ -827,7 +829,7 @@ a#main-menu-toggle {
   margin-right: 0px;
   margin-left: 0px;
 }
-/*
+/* oscar
 input[placeholder],
 [placeholder],
 *[placeholder] {
@@ -4758,6 +4760,7 @@ ul.messagesList li span.date {
     margin-left: 0px !important;
     width: 8.334% !important;
   }
+  /*
   .sidebar-nav ul {
     text-align: center;
     width: 100% !important;
@@ -4779,6 +4782,7 @@ ul.messagesList li span.date {
   .sidebar-nav .nav-tabs.nav-stacked > li > ul > li > a > i {
     margin-right: 0px;
   }
+  */
   .noMargin {
     margin-left: 0px !important;
   }
@@ -4791,10 +4795,12 @@ ul.messagesList li span.date {
     overflow: visible !important;
     margin-left: -20px !important;
   }
+  /*
   .sidebar-nav {
     padding: 0;
     margin-bottom: 0;
   }
+  */
   .stats-date .range {
     font-size: 16px;
     font-weight: 300;

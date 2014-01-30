@@ -108,9 +108,9 @@ define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "
         };
         
         if (data.create) {
-            mcm.description.create(description, data.lang); // TODO notify via .then(); 
+            mcm.description.create(description, data.lang); // TODO notify on success or error
         } else {
-            mcm.description.update(description, data.lang); // TODO notify via .then();
+            mcm.description.update(description, data.lang); // TODO notify on success or error
         }
     };
     

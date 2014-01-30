@@ -1,29 +1,75 @@
+@media (min-width: 1200px) {
+  a#main-menu-toggle {
+    margin-left: 25%;
+  }
+  a.navbar-brand {
+    width: 25%;
+  }
+  .container #content {
+    width: 75%;
+  }
+  .container #sidebar-left {
+    width: 25%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  a#main-menu-toggle {
+    margin-left: 25%;
+  }
+  a.navbar-brand {
+    width: 25%;
+  }
+  .container #content {
+    width: 75%;
+  }
+  .container #sidebar-left {
+    width: 25%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  a#main-menu-toggle {
+    margin-left: 25%;
+  }
+  a.navbar-brand {
+    width: 25%;
+  }
+  .container #content {
+  	width: 75%;
+  }
+  .container #sidebar-left {
+    width: 25% !important;
+  }
+  .nav {
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .navbar {
+    background: none;
+  }
+}
 
-.quick-button-small {
-    margin: 1px;
+.navbar-collapse {
+    max-height: 512px;
+}
+.navbar-toggle {
+    top: -3px;
+}
+.container #content {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
 }
 
 .container > .row {
     overflow: hidden;
 }
 
-.container #content {
-    width: 80%;
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
-}
-
 .container #sidebar-left {
-    width: 20%;
     min-height: 600px;
 }
 
-a.navbar-brand {
-    width: 20%;
-}
-
-#main-menu-toggle {
-    margin-left: 20%;
+#museums .btn, #fields .btn {
+	white-space: normal;
 }
 
 .fa-cel-museum:before {
@@ -59,7 +105,6 @@ a.navbar-brand {
 .fa-cel-object:before {
   content: "\f091";
 }
-
 
 #login_form input[type="text"], #login_form input[type="password"] {
     background: none repeat scroll 0 0 #E4E6EB;
@@ -167,4 +212,3 @@ img.tiny {
 	margin-left: 24px;
 	text-align: justify;
 }
-

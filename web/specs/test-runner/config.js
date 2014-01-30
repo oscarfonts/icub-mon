@@ -30,7 +30,10 @@ require.config({
             url: "http://celapi.agilogy.net/api/1"
         },
         "mcm.api": {
-            url: "http://localhost:5000/api"
+            url: "http://localhost:5000"
+        },
+        "../specs/http.spec": {
+            url: "http://localhost:5000"
         }
     }
 });

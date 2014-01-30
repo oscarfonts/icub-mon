@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie lt-ie9 lt-ie8 lt-ie7" lang="ca"><![endif]-->
+<!--[if IE 7]><html class="ie lt-ie9 lt-ie8" lang="ca"><![endif]-->
+<!--[if IE 8]><html class="ie lt-ie9" lang="ca"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ca">
+	<!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"/>
+		<title>Col·leccions en línia</title>
+
+		<link rel="stylesheet" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" href="../css/theme/style.css"/>
+		<link rel="stylesheet" href="../css/theme/retina.css"/>
+		<link rel="stylesheet" href="../css/tree.css"/>
+	</head>
+
+	<body>
+		<!-- start: Header -->
+		<header class="navbar">
+			<div class="container">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"> </i></a>
+				<a class="navbar-brand col-lg-2 col-sm-1 col-xs-12"><span>Col·leccions en línia</span></a>
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav navbar-nav pull-right">
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+
+			</div>
+		</header>
+		<!-- end: Header -->
+
+		<div class="container">
+			<div class="row">
+
+				<!-- start: Main Menu -->
+				<div id="sidebar-left" class="col-lg-3 col-sm-2">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<div class="controls">
+								    <div class="input-group">
+									    <input id="appendedInputButton" class="form-control" size="16" type="text">
+									    <span class="input-group-btn"><button class="btn btn-large" type="button">Cerca</button></span>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+							    <div class="controls">
+								    <div class="input-group">
+									    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+									    <input class="form-control" id="daterange" value="01/01/0000 - 31/01/2014" type="text">
+								    </div>
+							    </div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="btn-group">
+								<button class="btn btn-large btn-primary">Classifica per</button>
+								<button class="btn btn-large dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#"><i class="fa fa-user"> </i> Autor</a></li>
+									<li><a href="#"><i class="fa fa-group"> </i> Cultura</a></li>
+									<li><a href="#"><i class="fa fa-glass"> </i> Material</a></li>
+									<li><a href="#"><i class="fa fa-tag"> </i> Nom de l'objecte</a></li>
+									<li><a href="#"><i class="fa fa-globe"> </i> Lloc d'origen</a></li>
+									<li><a href="#"><i class="fa fa-wrench"> </i> Tècnica</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div style="height:32px"></div>
+					<div id="tree" class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse"> </div>
+				</div>
+				
+				<!-- end: Main Menu -->
+
+				<!-- start: Content -->
+				<div id="content" class="col-lg-8 col-sm-10">
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="box">
+
+								<div class="box-header">
+									<h2><i class="fa fa-map-marker"> </i>Mapa</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
+									</div>
+								</div>
+								<div class="box-content" id="map">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="box">
+								<div class="box-header">
+									<h2><i class="fa fa-group"> </i>Detalls de la cultura</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="culture"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="box">
+								<div class="box-header">
+									<h2><i class="fa fa-picture-o"> </i>Galeria de peces</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="gallery"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="box">
+								<div class="box-header">
+									<h2><i class="fa fa-trophy"> </i>Detalls de la peça</h2>
+									<div class="box-icon">
+										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+									</div>
+								</div>
+								<div class="box-content">
+									<div id="piece"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- end: Content -->
+
+			</div><!--/row-->
+
+		</div><!--/container-->
+
+		<div class="clearfix"> </div>
+
+		<footer>
+			<p>
+				<span style="text-align:left;float:left"></span>
+				<span class="hidden-phone" style="text-align:right;float:right">&copy; 2014 <a href="http://barcelonacultura.bcn.cat" target="_blank">Institut de Cultura de Barcelona</a><br/>Oscar Fonts, <a href="http://geomati.co" target="_blank">geomati.co</a></span>
+			</p>
+
+		</footer>
+
+		<script src="../lib/require-2.1.9.js" data-main="../modules/mcm.index.js"></script>
+		<script src="../config.js"></script>
+
+	</body>
+</html>

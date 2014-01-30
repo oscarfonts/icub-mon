@@ -174,7 +174,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         });
         
         panels.click(function(e) {
-            var object = $(this).data("object"); // TODO
+            var object = $(this).data("object");
             bus.publish("cel.gallery.selected", object);
         });
     }
