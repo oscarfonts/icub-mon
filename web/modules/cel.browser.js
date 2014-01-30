@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["messagebus", "cel.museum", "cel.tree", "cel.gallery", "cel.detail"],
         function(bus, museum, tree, gallery, detail) {
 

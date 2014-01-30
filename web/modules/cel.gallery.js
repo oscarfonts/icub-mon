@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(bus, template, fields, api, $) {
     
     $("#dateFrom").mask("9999");

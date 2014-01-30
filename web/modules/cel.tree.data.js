@@ -1,22 +1,9 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["cel.api", "jquery"], function(api, $) {
     
-    var filters = {
-            pageSize: 10
-        };
-
-    function setSearchFilter(text) {
-        filters.text = text;
-    }
-    
-    function setDateFromFilter(date) {
-        filters.dateFrom = date;
-    }
-    
-    function setDateToFilter(date) {
-        filters.dateTo = date;
-    }
-
-    function getMuseumContents(museum, field) {
+    function getContents(museum, field) {
         var collections = {};
         var calls = [];
                
@@ -82,12 +69,7 @@ define(["cel.api", "jquery"], function(api, $) {
     }
     
     return {
-        getMuseumContents: getMuseumContents,
-        setFilter: {
-            search: setSearchFilter,
-            dateFrom: setDateFromFilter,
-            dateTo: setDateToFilter,
-        }
+        getContents: getContents
     };
 
 });

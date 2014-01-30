@@ -1,6 +1,9 @@
-define(["http", "template", "jquery", "bootstrap"], function(http, template, $) {
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
+define(["module", "http", "template", "jquery", "bootstrap"], function(module, http, template, $) {
     
-    var url = "http://127.0.0.1:5000/login"; // TODO: Parametrize login URL
+    var login_url = module.config().url ? module.config().url : "http://fonts.cat/icub/api/login";
     var logged_in = false;
     var link = undefined;
     var callbacks = {
@@ -16,7 +19,7 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
     
     function authenticate(username, password) {
         http.auth.set(username, password);
-        http.get(url).then(ok, ko);
+        http.get(login_url).then(ok, ko);
     }
 
     function ok(message) {
@@ -63,7 +66,7 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
     
     // Add bootstrap dialog
     $("<div/>").attr("id", "login_dialog_container").appendTo("body");
-    var onReady = template.render("login", {}, "login_dialog_container");
+    var onReady = template.render("bootstrap.login", {}, "login_dialog_container");
     onReady.then(function() {
         $("#login_dialog").modal();
         $('#login_dialog').on('shown.bs.modal', focus);
@@ -71,7 +74,7 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
         $('#login_form').submit(function(e){
             e.preventDefault();
         });
-        $("#login_button").click(login);               
+        $("#login_button").click(login);
     });
 
     return {
@@ -102,6 +105,12 @@ define(["http", "template", "jquery", "bootstrap"], function(http, template, $) 
             onReady.then(function() {
                 authenticate(username, password);                
             });
+        },
+        url: function(url) {
+            if (url) {
+                login_url = url;
+            }
+            return login_url;
         }
     };
 });

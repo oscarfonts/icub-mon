@@ -20,8 +20,11 @@ define(["mcm.api"], function(mcm) {
     return {
         show: show,
         hide: hide,
-        setDiv: function(div) {
-            div_id = div;
+        div: function(div) {
+            if (div) {
+                div_id = div;
+            }
+            return div_id;
         }
     };
     

@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["wysihtml5-ca"], function() {
     
     function editor(div, onSave) {

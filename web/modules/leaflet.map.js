@@ -1,4 +1,7 @@
-define(["leaflet", "map.layers", "jquery"], function(L, layers) {
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
+define(["leaflet", "leaflet.layers", "jquery"], function(L, layers) {
 
     var map = L.map('map', {
         center: [32, 0],

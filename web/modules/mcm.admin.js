@@ -1,5 +1,8 @@
-define(["messagebus", "login", "mcm.api", "map.editor", "mcm.tree", "mcm.object", "html.editor"],
-    function(bus, login, mcm, mapeditor, tree, object, htmleditor) {
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
+define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "mcm.api", "mcm.tree", "mcm.object"],
+    function(bus, login, htmleditor, mapeditor, mcm, tree, object) {
 
     // Setup login module
     login.linkTo("login", "entrar", "sortir");
@@ -7,10 +10,6 @@ define(["messagebus", "login", "mcm.api", "map.editor", "mcm.tree", "mcm.object"
     login.onLogout(on_logout);   
     // TODO: Remove this
     login.forceLogin("test", "test");
-
-    // Set tree and object divs
-    tree.setDiv("tree");
-    object.setDiv("details");
     
     // Create html editors
     var editors = {};
@@ -21,7 +20,7 @@ define(["messagebus", "login", "mcm.api", "map.editor", "mcm.tree", "mcm.object"
     }
 
     // Handle tree element selection
-    bus.subscribe("mcm.tree.item_selected", function(selected) {
+    bus.subscribe("mcm.tree.selected", function(selected) {
         var type = selected.type;
         var id = selected.item.id;
         
@@ -76,7 +75,7 @@ define(["messagebus", "login", "mcm.api", "map.editor", "mcm.tree", "mcm.object"
         }
     });
     
-    bus.subscribe("map.editor.featureCreated", function(data) {
+    bus.subscribe("leaflet.editor.featureCreated", function(data) {
         // Add alphanumeric feature properties
         var item = tree.getItem(data.feature.id);
         if (item.hasOwnProperty("culture")) {
@@ -90,13 +89,13 @@ define(["messagebus", "login", "mcm.api", "map.editor", "mcm.tree", "mcm.object"
         });
     });
 
-    bus.subscribe("map.editor.featureEdited", function(data) {
+    bus.subscribe("leaflet.editor.featureEdited", function(data) {
         mcm[data.type].update(data.feature).then(function(feature) {
             mapeditor.load(data.type, feature.id, feature);
         });
     });
 
-    bus.subscribe("map.editor.featureDeleted", function(data) {
+    bus.subscribe("leaflet.editor.featureDeleted", function(data) {
         mcm[data.type].del(data.id).then(function() {
             mapeditor.load(data.type, data.id);
         });

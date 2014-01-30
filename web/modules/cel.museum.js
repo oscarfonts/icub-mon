@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["messagebus", "cel.api", "template"], function(bus, api, template) {
   
    api.museum.list().then(apply_template).then(add_interactivity);

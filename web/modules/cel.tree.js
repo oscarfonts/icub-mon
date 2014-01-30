@@ -1,4 +1,7 @@
-define(["messagebus", "cel.field", "cel.data", "template"], function(bus, field, data, template) {
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
+define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, field, data, template) {
 
     var div_id = "tree";
     var selected = {
@@ -16,7 +19,7 @@ define(["messagebus", "cel.field", "cel.data", "template"], function(bus, field,
     function show(museum) {
         selected.museum = museum;
         document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant continguts del ' + selected.museum.name + '...</div>';
-        return data.getMuseumContents(selected.museum, selected.field).then(apply_template);
+        return data.getContents(selected.museum, selected.field).then(apply_template);
     }
     
     function hide() {
@@ -53,8 +56,11 @@ define(["messagebus", "cel.field", "cel.data", "template"], function(bus, field,
     return {
         show: show,
         hide: hide,
-        setDiv: function(div) {
-            div_id = div;
+        div: function(div) {
+            if (div) {
+                div_id = div;
+            }
+            return div_id;
         }
     };
 });

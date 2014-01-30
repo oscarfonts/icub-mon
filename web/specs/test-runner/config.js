@@ -24,6 +24,17 @@ require.config({
         'jasmine-async': {
             deps: ['jasmine']
         }
+    },
+    config: {
+        "cel.api": {
+            url: "http://celapi.agilogy.net/api/1"
+        },
+        "mcm.api": {
+            url: "http://localhost:5000/api"
+        },
+        "bootstrap.login": {
+            url: "http://localhost:5000/api/login"
+        }
     }
 });
 

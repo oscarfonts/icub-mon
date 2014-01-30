@@ -1,16 +1,17 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(['http'], function(http) {
+define(["module", "http"], function(module, http) {
 
-    var baseURL = "http://localhost:5000/api"; // TODO: Parametrize MCM API URL
+    var baseURL = module.config().url ? module.config().url : "http://fonts.cat/icub/api";
     var default_lang = "ca";
 
     return {
-        url: {
-            set: function(url) {
+        url: function(url) {
+            if (url) {
                 baseURL = url;
             }
+            return baseURL;
         },
         auth: {
             set: http.auth.set,

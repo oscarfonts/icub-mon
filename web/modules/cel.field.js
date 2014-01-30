@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["messagebus", "template", "jquery"], function(bus, template, $) {
 
     var field = undefined;

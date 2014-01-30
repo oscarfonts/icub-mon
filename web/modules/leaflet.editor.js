@@ -1,4 +1,7 @@
-define(["messagebus", "leaflet", "map", "draw", "L.Control.DrawSingle"], function(bus, L, map) {
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
+define(["messagebus", "leaflet", "leaflet.map", "draw", "L.Control.DrawSingle"], function(bus, L, map) {
     
     // Initialize editor
     var loaded = {};
@@ -52,17 +55,17 @@ define(["messagebus", "leaflet", "map", "draw", "L.Control.DrawSingle"], functio
     map.on('draw:created', function (e) {
         var feature = e.layer.toGeoJSON();
         feature.id = loaded.id;
-        bus.publish("map.editor.featureCreated", {type: loaded.type, id: loaded.id, feature: feature});
+        bus.publish("leaflet.editor.featureCreated", {type: loaded.type, id: loaded.id, feature: feature});
     });
     
     map.on('draw:edited', function (e) {
         var feature = e.layers.getLayers()[0].toGeoJSON();
         feature.id = loaded.id;
-        bus.publish("map.editor.featureEdited", {type: loaded.type, id: loaded.id, feature: feature});
+        bus.publish("leaflet.editor.featureEdited", {type: loaded.type, id: loaded.id, feature: feature});
     });
     
     map.on('draw:deleted', function (e) {
-        bus.publish("map.editor.featureDeleted", {type: loaded.type, id: loaded.id});
+        bus.publish("leaflet.editor.featureDeleted", {type: loaded.type, id: loaded.id});
     });
     
     return {

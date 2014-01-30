@@ -1,6 +1,9 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
 
-    var div_id = "mcm-tree",
+    var div_id = "tree",
         museum_id = "MCM",
         data = [];
     
@@ -130,7 +133,7 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
                 $("#"+id).addClass("active");
                 
                 //console.log("Clicked on " + id + " " + type);
-                bus.publish("mcm.tree.item_selected", {
+                bus.publish("mcm.tree.selected", {
                     type: type,
                     item: get_item_by_id(id)
                 });               
@@ -145,8 +148,11 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
             return data;
         },
         getItem: get_item_by_id,
-        setDiv: function(div) {
-            div_id = div;
+        div: function(div) {
+            if (div) {
+                div_id = div;
+            }
+            return div_id;
         }
     };
 });

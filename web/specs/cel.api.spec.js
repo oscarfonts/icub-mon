@@ -11,7 +11,7 @@ define(["cel.api"], function(celapi) {
         
         var museum_id = "MCM",
             collection_id = "africa",
-            object_id = "329618";
+            object_id = "H329618";
         
         var error = function(response) {
             jasmine.getEnv().currentSpec.fail(Error(JSON.stringify(response)));

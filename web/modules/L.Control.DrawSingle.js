@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 L.drawLocal = {
     draw: {
         toolbar: {

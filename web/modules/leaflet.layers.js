@@ -1,3 +1,6 @@
+/**
+ * @author Oscar Fonts <oscar.fonts@geomati.co>
+ */
 define(["leaflet", "bing"], function(L) {
 
     var urls = {

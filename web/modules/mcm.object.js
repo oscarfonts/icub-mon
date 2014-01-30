@@ -127,8 +127,11 @@ define(["cel.api", "template"], function(celapi, template) {
     return {
         show: show,
         hide: hide,
-        setDiv: function(div) {
-            div_id = div;
+        div: function(div) {
+            if (div) {
+                div_id = div;
+            }
+            return div_id;
         }
     };
     
