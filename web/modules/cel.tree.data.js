@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["cel.api", "jquery"], function(api, $) {
+define(["cel.api", "jquery", "slug"], function(api, $, slug) {
     
     function getContents(museum, field) {
         var collections = {};
@@ -52,6 +52,7 @@ define(["cel.api", "jquery"], function(api, $) {
                 value.museum = museum;
                 value.collection = {id: collection.id, name: collection.name, museum: collection.museum};
                 value.name = field.name;
+                value.slug = slug(value.value);
                 value.json = function() {
                     var x = {
                         museum: {acronym: this.museum.acronym, name: this.museum.name},

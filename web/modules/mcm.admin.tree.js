@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
+define(["cel.api", "template", "messagebus", "slug"], function(celapi, template, bus, slug) {
 
     var div_id = "tree",
         museum_id = "MCM",
@@ -82,20 +82,6 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
         });
     }
       
-    function slug(text) {
-        text = text.toLowerCase();
-          
-        // remove accents, swap ñ for n, etc
-        var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç";
-        var to   = "aaaaaeeeeeiiiiooooouuuunc";
-        for (var i=0, l=from.length ; i<l ; i++) {
-            text = text.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-        }
-        
-        return text.replace(/[^\w ]+/g,'') // remove anything not alphanumeric or spaces
-                   .replace(/ +/g,'-');    // replace consecutive spaces with an hyphen
-    }
-    
     function apply_template() {
         //console.log(data);
         template.render("mcm.admin.tree", data, div_id).then(add_interactivity);        

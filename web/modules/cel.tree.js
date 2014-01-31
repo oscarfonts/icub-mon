@@ -54,6 +54,10 @@ define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, f
         });
     };
     
+    function select_item(item) {
+        var data = $("#"+item.id+" > a").click();
+    }
+    
     return {
         show: show,
         hide: hide,
@@ -77,6 +81,7 @@ define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, f
                 div_id = div;
             }
             return div_id;
-        }
+        },
+        selectItem: select_item
     };
 });

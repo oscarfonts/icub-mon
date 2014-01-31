@@ -31,7 +31,7 @@
 		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><img src="../img/collections/{{id}}-white-icon.png" width="24"/>&nbsp;&nbsp; {{name}}</a>
 		<ul class="nav collapse" style="height: auto;">
 			{{#fields}} {{! Field Values }}
-			<li class="{{name}}" data-tree='{{json}}'>
+			<li class="{{name}}" id="{{slug}}" data-tree='{{json}}'>
 				<a><i class="fa fa-cel-{{name}}"> </i>&nbsp;&nbsp;{{value}}<span class="label">{{count}}</span></a>
 			</li>
 			{{/fields}}

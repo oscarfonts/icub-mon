@@ -1,8 +1,8 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "cel.detail"],
-        function(bus, tree, mcmmap, description, gallery, detail) {
+define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "cel.detail", "slug"],
+        function(bus, tree, mcmmap, description, gallery, detail, slug) {
     
     var map = new mcmmap('map');
     map.showContinents();
@@ -31,6 +31,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
             collection.name = value.name;
             description.hide();
             map.showCultures(collection.id);
+            $(".subtitle").html("- " + collection.name);
         } else { // Culture           
             collection = value.collection;
             field = {
@@ -43,9 +44,23 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
                 showBox("description");            
             });
             map.showCulture(field.slug);
+            $(".subtitle").html("- " + field.value);
         }
         
         gallery.show(museum, collection, field);
+    });
+    
+    bus.subscribe("mcm.map.selected", function(item) {
+        console.log("Selected map item " + JSON.stringify(item));
+        tree.selectItem(item); // Superfluo cuando clico en una cultura y ya estoy en la cultura (!).
+    });
+
+    bus.subscribe("mcm.map.hovered", function(item) {
+        console.log("Hovered map item " + JSON.stringify(item));
+    });
+    
+    bus.subscribe("mcm.map.unhovered", function(item) {
+        console.log("Unhovered map item " + JSON.stringify(item));
     });
     
     bus.subscribe("cel.gallery.selected", function(object) {
@@ -54,6 +69,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
         scrollToBox("detail");
     });
     
+        
     function showBox(id) {
         $("#"+id).closest(".box").show();
     }
@@ -66,20 +82,6 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
         $('html, body').animate({
             scrollTop: $("#"+id).closest(".box").offset().top - 25
         }, 500);
-    }
-    
-    function slug(text) {
-        text = text.toLowerCase();
-          
-        // remove accents, swap ñ for n, etc
-        var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç";
-        var to   = "aaaaaeeeeeiiiiooooouuuunc";
-        for (var i=0, l=from.length ; i<l ; i++) {
-            text = text.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-        }
-        
-        return text.replace(/[^\w ]+/g,'') // remove anything not alphanumeric or spaces
-                   .replace(/ +/g,'-');    // replace consecutive spaces with an hyphen
     }
 
 });
