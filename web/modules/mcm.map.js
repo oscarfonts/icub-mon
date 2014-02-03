@@ -69,7 +69,7 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             var that = this;
             return api.continent.list().then(
                 function(data) {
-                    that.loadFeatures.call(that, [data]);
+                    that.loadFeatures.call(that, data, "continents");
                 }, function(error) {
                     that.clearMap.call(that);
                     that.map.fitWorld();
@@ -81,7 +81,7 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             var that = this;
             return api.culture.list(continent_id).then(
                 function(data) {
-                    that.loadFeatures.call(that, [data]);
+                    that.loadFeatures.call(that, data, "cultures");
                 }, function(error) {
                     that.clearMap.call(that);
                     that.map.fitWorld();
@@ -93,7 +93,7 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             var that = this;
             return api.culture.get(culture_id).then(
                 function(data) {
-                    that.loadFeatures.call(that, [data]);
+                    that.loadFeatures.call(that, data, "culture");
                 }, function(error) {
                     that.clearMap.call(that);
                     that.map.fitWorld();
@@ -105,7 +105,7 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             var that = this;
             return api.object.list(culture_id).then(
                 function(data) {
-                    that.loadFeatures.call(that, [data]);
+                    that.loadFeatures.call(that, data, "objects");
                 }, function(error) {
                     that.clearMap.call(that);
                     that.map.fitWorld();
@@ -117,7 +117,7 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             var that = this;
             return api.object.get(object_id).then(
                 function(data) {
-                    that.loadFeatures.call(that, [data]);
+                    that.loadFeatures.call(that, data, "object");
                 }, function(error) {
                     that.clearMap.call(that);
                     that.map.fitWorld();
@@ -125,23 +125,55 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
             );
         };
         
-        this.loadFeatures = function(features) {
+        this.loadFeatures = function(features, type) {
+            var geojsonMarkerOptions = {
+                radius: 8,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+
             this.clearMap();
             var that = this;
+            var group = L.featureGroup();
             this.layer = L.geoJson(features, {
                 style: styles["default"],
                 onEachFeature: function(feature, layer) {
+                    if (type == "cultures") {
+                        if (!(layer instanceof L.Marker)) {
+                            layer = L.marker(layer.getBounds().getCenter());
+                            layer.feature = feature;
+                        }
+                        var data = $("#"+feature.id).data("tree");
+                        var label = data ? data.value : feature.id;
+                        layer.setIcon(
+                            L.divIcon({
+                                className: 'mcm-hide-marker',
+                                html: '<div class="btn btn-xs btn-primary" id="marker-cultura-'+feature.id+'">'+label+'</div>'
+                            })
+                        );
+                    }
+                    
                     layer.on({
-                    mouseover: highlightFeature,
-                    mouseout: resetHighlight,
-                    click: selectFeature
-                },undefined,that); }
-            }).addTo(this.map);
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: selectFeature
+                    },undefined,that);
+                    group.addLayer(layer);
+                    return layer;
+                }
+            });
+            this.layer = group;
+            group.addTo(this.map);
+                        
+            // Set zoom
             this.map.fitBounds(this.layer.getBounds());
             if (this.map.getBoundsZoom(this.layer.getBounds()) > 8) {
                 this.map.setView(this.layer.getBounds().getCenter(), 6, {animate: true});
             } else if (this.map.getBoundsZoom(this.layer.getBounds()) < 2) {
-                this.map.setView(this.layer.getBounds().getCenter(), 2, {animate: true});
+                this.map.setView(this.layer.getBounds().getCenter(), 3, {animate: true});
             } else {
                 this.map.fitBounds(this.layer.getBounds());
             }
