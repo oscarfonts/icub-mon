@@ -9,8 +9,6 @@ define(["messagebus", "bootstrap.login", "bootstrap.editor", "leaflet.editor", "
     login.onLogin(on_login);
     login.onLogout(on_logout);   
     
-    login.forceLogin("test", "test"); // TODO: Remove this in production
-    
     // Create html editors
     var editors = {};
     var langs = ["ca", "es", "en"];

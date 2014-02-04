@@ -55,10 +55,10 @@ require.config({
             url: "http://celapi.agilogy.net/api/1"
         },
         "mcm.api": {
-            url: "http://localhost:5000"
+            url: "http://fonts.cat/mcmapi"
         },
         "bootstrap.login": {
-            url: "http://localhost:5000/login"
+            url: "http://fonts.cat/mcmapi/login"
         }
     }
 });
