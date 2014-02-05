@@ -31,7 +31,10 @@ define(["cel.api", "template", "messagebus", "slug"], function(celapi, template,
                     name: collection.name
                 });
                 // Get collection contents and process them
-                calls.push(celapi.object.list(museum.acronym, collection.id).then(parse_objects));
+                var filters = {
+                    pageSize: 9999
+                };
+                calls.push(celapi.object.list(museum.acronym, collection.id, filters).then(parse_objects));
             }
         }
         // Wait until all collection contents are fetched and parsed
