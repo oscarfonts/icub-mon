@@ -15,7 +15,8 @@ require.config({
         'jquery': LIB_PATH + 'jquery-1.10.2',
         'jasmine': LIB_PATH + 'jasmine-1.3.1',
         'jasmine-html': LIB_PATH + 'jasmine-html-1.3.1',
-        'jasmine-async': LIB_PATH + 'jasmine-async-0.1.0'
+        'jasmine-async': LIB_PATH + 'jasmine-async-0.1.0',
+        'jquery-xdomainrequest': LIB_PATH + 'jquery-xdomainrequest-1.0.1.min'
     },
     shim: {
         'jasmine-html': {
@@ -23,17 +24,20 @@ require.config({
         },
         'jasmine-async': {
             deps: ['jasmine']
-        }
+        },
+        'jquery-xdomainrequest': {
+            deps: ['jquery']
+        },
     },
     config: {
         "cel.api": {
             url: "http://celapi.agilogy.net/api/1"
         },
         "mcm.api": {
-            url: "http://localhost:5000"
+            url: "http://www.fonts.cat/mcmapi"
         },
         "../specs/http.spec": {
-            url: "http://localhost:5000"
+            url: "http://www.fonts.cat/mcmapi"
         }
     }
 });

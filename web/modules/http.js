@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(['jquery', 'base64'], function($, base64) {
+define(['base64', 'jquery', 'jquery-xdomainrequest'], function(base64, $) {
     
     var auth = undefined;
     var use_cache = true;

@@ -16,7 +16,8 @@ require.config({
         "custom": LIB_PATH + "custom",
         "core": LIB_PATH + "core",
         "jquery-migrate": LIB_PATH + "jquery-migrate-1.2.1.min",
-        "jquery-maskedinput": LIB_PATH + "jquery-maskedinput-1.3.1"
+        "jquery-maskedinput": LIB_PATH + "jquery-maskedinput-1.3.1",
+        "jquery-xdomainrequest": LIB_PATH + "jquery-xdomainrequest-1.0.1.min"
     },
     shim: {
         "bootstrap": {
@@ -43,6 +44,9 @@ require.config({
         "core": {
             deps: ["jquery-migrate", "bootstrap"]
         },
+        "jquery-xdomainrequest": {
+            deps: ["jquery"]
+        },
         "jquery-migrate": {
             deps: ["jquery"]
         },
@@ -64,7 +68,7 @@ require.config({
 });
 
 require(["custom"], function() {
-    if (document.getElementsByClassName("lt-ie9").length) {
+    if(document.querySelector(".lt-ie9")) {
         require(["ie8.html5shiv", "ie8.respond"]);
     }
 });
