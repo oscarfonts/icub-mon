@@ -17,7 +17,8 @@ require.config({
         "core": LIB_PATH + "core",
         "jquery-migrate": LIB_PATH + "jquery-migrate-1.2.1.min",
         "jquery-maskedinput": LIB_PATH + "jquery-maskedinput-1.3.1",
-        "jquery-xdomainrequest": LIB_PATH + "jquery-xdomainrequest-1.0.1.min"
+        "jquery-xdomainrequest": LIB_PATH + "jquery-xdomainrequest-1.0.1.min",
+        "tinycolor": LIB_PATH + "tinycolor-0.9.17.min"
     },
     shim: {
         "bootstrap": {
