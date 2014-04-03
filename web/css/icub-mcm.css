@@ -228,3 +228,10 @@ img.tiny {
 	margin-left: 24px;
 	text-align: justify;
 }
+.leaflet-clickable {
+  filter: url(blur.svg#blur);
+  /* ^ for Firefox */
+  -webkit-filter: blur(7px);  
+  /* ^ Webkit browsers */
+  filter: blur(7px);  
+}

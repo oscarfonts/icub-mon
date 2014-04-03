@@ -7,16 +7,16 @@ define(["leaflet.map", "mcm.api", "messagebus"], function(leaflet, api, bus) {
     
         var styles = {
             "default": {
+                //stroke: false,
                 color: '#AA8800',
-                weight: 2,
-                opacity: 1,
-                fillColor: '#AA8800',
-                fillOpacity: 0.6
+                opacity: 0.4,
+                weight: 10,
+                fillCcolor: '#AA8800',
+                fillOpacity: 0.8,
             },    
             hover: {
-                weight: 2,
                 color: '#CCFF00',
-                fillColor: '#CCFF00'
+                fillCcolor: '#CCFF00'
             }
         };
         
