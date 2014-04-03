@@ -1,5 +1,10 @@
-Georreferenciació de col·leccions del Museu de Cultures del Món
-===============================================================
+MCMAPI - Extended API for the *Museu de Cultures del Món*
+=========================================================
+
+Python Flask application exposing a REST API to manipulate MCM specific data, namely culture and object geometries, and culture descriptions in multiple languages.
+
+Uses PostGIS as backend, and serializes geospatial features as GeoJSON for better integration with web mapping applications.
+
 
 Setup environment with virtualenvwrapper
 ----------------------------------------
@@ -70,4 +75,4 @@ Run in production (Apache + mod_wsgi)
 #. Edit ``app.wsgi`` and change the paths.
 
 #. Edit ``config.py``, switch debug mode to ``False``, and edit connection string and secret key.
-sudo
+
