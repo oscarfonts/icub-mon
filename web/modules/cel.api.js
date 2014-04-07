@@ -3,7 +3,7 @@
  */
 define(["http", "module"], function(http, module) {
 
-    var baseURL = module.config().url ? module.config().url : "http://celapi.agilogy.net/api/1";
+    var baseURL = module.config().url ? module.config().url : "http://vps41774.ovh.net/api/1";
 
     // if param is falsy, then return "all"
     function all(param) {

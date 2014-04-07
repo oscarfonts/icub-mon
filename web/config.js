@@ -65,7 +65,7 @@ require.config({
     },
     config: {
         "cel.api": {
-            url: "http://celapi.agilogy.net/api/1"
+            url: "http://vps41774.ovh.net/api/1"
         },
         "mcm.api": {
             url: "http://fonts.cat/mcmapi"
