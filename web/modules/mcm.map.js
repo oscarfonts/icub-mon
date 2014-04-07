@@ -8,13 +8,13 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
         var styles = {
             "default": {
                 color: '#AA8800',
-                weight: 2,
+                weight: 1,
                 opacity: 1,
                 fillColor: '#AA8800',
                 fillOpacity: 0.6
             },
             hover: {
-                weight: 2,
+                weight: 1,
                 color: '#CCFF00',
                 fillColor: '#CCFF00'
             }
@@ -185,19 +185,14 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             this.layer = group;
             group.addTo(this.map);
 
-            // Set zoom
-            this.map.fitBounds(this.layer.getBounds());
-            if (this.map.getBoundsZoom(this.layer.getBounds()) > 8) {
-                this.map.setView(this.layer.getBounds().getCenter(), 6, {
-                    animate: true
+            // Set zoom to fit bounds
+            this.map.options.maxZoom = 18;
+            if (type == "culture") {
+                this.map.addOneTimeEventListener("zoomend", function() {
+                    this.options.maxZoom = this.getZoom();
                 });
-            } else if (this.map.getBoundsZoom(this.layer.getBounds()) < 2) {
-                this.map.setView(this.layer.getBounds().getCenter(), 3, {
-                    animate: true
-                });
-            } else {
-                this.map.fitBounds(this.layer.getBounds());
             }
+            this.map.fitBounds(this.layer.getBounds());
 
         };
 
