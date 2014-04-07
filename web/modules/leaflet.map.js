@@ -1,7 +1,10 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["leaflet", "leaflet.layers"], function(L, layers) {
+define(["leaflet", "leaflet.layers", "leaflet-minimap"], function(L, layers) {
+    
+    var mapbox_bright = "oscarfonts.map-1mujgtmu";
+    var mapbox_pale = "oscarfonts.hnmjhnd6";
 
     function create(id) {
         var div = id ? id : 'map';
@@ -15,11 +18,18 @@ define(["leaflet", "leaflet.layers"], function(L, layers) {
         });
         
         layers.create({
-            "Pale":   { type: "cloudmade", id: 998 },
-            "Aerial": { type: "bing",      id: "AerialWithLabels" },
-            "Roads":  { type: "bing",      id: "Road" },
-            "MapBox": { type: "mapbox",    id: "oscarfonts.map-1mujgtmu" }
+            //"Aerial": { type: "bing",      id: "AerialWithLabels" },
+            //"Roads":  { type: "bing",      id: "Road" },
+            "MapBox Pale": { type: "mapbox", id: mapbox_pale},
+            "MapBox Bright": { type: "mapbox", id: mapbox_bright}
         }).addTo(map);
+
+        var layer = L.tileLayer("http://{s}.tiles.mapbox.com/v3/" + mapbox_pale + "/{z}/{x}/{y}.png");
+        L.extend(L.Control.MiniMap.prototype, {
+            hideText: 'Oculta',
+            showText: 'Mostra'
+        });
+        var minimap = new L.Control.MiniMap(layer, {toggleDisplay: true}).addTo(map);
        
         return map;
     }
