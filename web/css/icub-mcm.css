@@ -228,3 +228,13 @@ img.tiny {
 	margin-left: 24px;
 	text-align: justify;
 }
+
+.circle {
+    width: 15px;
+    height: 15px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid rgb(170, 136, 0);
+    background-color: rgba(170, 136, 0, 0.5);
+}

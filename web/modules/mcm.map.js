@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["leaflet.map", "mcm.api", "messagebus", "tinycolor"], function(leaflet, api, bus, color) {
+define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], function(leaflet, api, bus, color) {
 
     function map(div) {
 
@@ -78,7 +78,6 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor"], function(leaflet, 
                 type: type
             };
         }
-
 
         this.map = leaflet.create(div);
         this.layer = undefined;
@@ -158,16 +157,20 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor"], function(leaflet, 
                 },
                 onEachFeature: function(feature, layer) {
                     if (type == "cultures") {
+                        var data = $("#" + feature.id).data("tree");
+                        var label = data ? data.value : feature.id;
                         if (!( layer instanceof L.Marker)) {
                             layer = L.marker(layer.getBounds().getCenter());
                             layer.feature = feature;
                         }
-                        var data = $("#" + feature.id).data("tree");
-                        var label = data ? data.value : feature.id;
+                        var border = color(colors[feature.properties.continent]);
+                        var background = color(colors[feature.properties.continent]);
+                        background.setAlpha(0.6);
                         layer.setIcon(L.divIcon({
                             className: 'mcm-hide-marker',
-                            html: '<div class="btn btn-xs btn-primary" id="marker-cultura-' + feature.id + '">' + label + '</div>'
+                            html: '<div class="circle" style="background-color: ' + background.toRgbString() + ';border-color: ' + border.toRgbString() + '" id="marker-cultura-' + feature.id + '"></div>'
                         }));
+                        layer.bindLabel(label);
                     }
 
                     layer.on({

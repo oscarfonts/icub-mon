@@ -7,6 +7,7 @@ require.config({
         "mustache": LIB_PATH + "mustache-0.8.0",
         "bootstrap": LIB_PATH + "bootstrap-3.0.3",
         "leaflet": LIB_PATH + "leaflet-0.6.4",
+        "leaflet-label": LIB_PATH + "leaflet-label-0.2.2",        
         "bing": LIB_PATH + "leaflet-bing",
         "draw": LIB_PATH + "leaflet-draw-0.2.3",
         "ie8.html5shiv": LIB_PATH + "html5shiv",
@@ -53,7 +54,10 @@ require.config({
         },
         "jquery-maskedinput": {
             deps: ["jquery"]
-        }
+        },
+        "leaflet-label": {
+            deps: ["leaflet"]
+        },
     },
     config: {
         "cel.api": {
