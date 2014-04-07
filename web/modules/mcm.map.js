@@ -79,7 +79,7 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             };
         }
 
-        this.map = leaflet.create(div);
+        this.map = leaflet.create(div, true);
         this.layer = undefined;
 
         this.showContinents = function() {
