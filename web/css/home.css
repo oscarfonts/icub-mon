@@ -1,0 +1,363 @@
+#home{
+	position:relative;
+	/*height:1278px;*/
+}
+.hot-spot1{
+	position:absolute;
+	top:56px;
+	left:0px;
+	width:535px;
+	height:377px;
+	border:#F00 0px solid;	
+}
+.hot-spot1 .img-hot-spot1{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:535px;
+	height:377px;
+}
+.hot-spot1 .titol-hot-spot1{
+	position:absolute;
+	top:186px;
+	left:0px;
+	padding:15px 30px 15px 30px;
+	font-size:28px;
+	color:#cc6633;
+	background:#FFF;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+
+.hot-spot1 .text-hot-spot1{
+	position:absolute;
+	top:236px;
+	left:0px;
+	width:415px;
+	height:71px;
+	padding:15px 20px 15px 30px;
+	font-size:20px;
+	line-height:24px;
+	
+	background:#FFF;
+	color:#333;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+
+.hot-spot1 .more-hot-spot1{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	padding:10px 80px 10px 30px;
+	font-size:16px;
+	background:#FFF;
+}
+
+.hot-spot1 .more-hot-spot1 a{
+	color:#cc6633;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-decoration:none;
+}
+
+
+
+.hot-spot2{
+	position:absolute;
+	top:-36px;
+	right:0px;
+	width:318px;
+	height:474px;
+	background:#fff;
+	padding:30px 0 0 30px;
+	z-index:1;
+}
+.hot-spot2 .img-hot-spot2{
+	
+	float:left;
+	width:348px;
+	margin:5px 0 0 -30px;
+}
+.hot-spot2 .titol-hot-spot2{
+	float:left;
+	width:295px;
+	margin-bottom:10px;
+	font-size:28px;
+	color:#289548;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+.hot-spot2 .text1-hot-spot2{
+	float:left;
+	width:295px;
+	margin-bottom:10px;
+	font-size:32px;
+	color:#333;
+	font-family:'Lato', Arial, Helvetica, sans-serif;
+	font-weight:300;
+	
+}
+.hot-spot2 .text2-hot-spot2{
+	float:left;
+	width:295px;
+	font-size:20px;
+	line-height:24px;
+	color:#333333;
+	font-family:'Lato', Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+.hot-spot2 .text2-hot-spot2 .lite{
+	font-size:16px;
+	font-style:italic;
+}
+.hot-spot2 .more-hot-spot2{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	padding:0px 0px 14px 30px;
+	
+	
+}
+
+.hot-spot2 .more-hot-spot2 a{
+	font-size:16px;
+	color:#289548;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-decoration:none;
+}
+
+
+.hot-spot3{
+	position:absolute;
+	top:469px;
+	left:0px;
+	width:269px;
+	height:599px;
+	padding:0 0 0 28px;
+	background:#fff;
+	-webkit-box-shadow: 13px 18px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 13px 18px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 13px 18px 0px rgba(0, 0, 0, 0.2);
+	z-index:100;
+}
+.hot-spot3 .imatge-hot-spot3{
+	float:left;
+	width:262px;
+	height:262px;
+}
+.hot-spot3 .imatge-hot-spot3 img{
+	margin:22px 0 0 27px;
+}
+.hot-spot3 .titol-hot-spot3{
+	float:left;
+	width:240px;
+	margin-bottom:10px;
+	font-size:28px;
+	color:#0099cc;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+.hot-spot3 .subtitol-hot-spot3{
+	float:left;
+	width:240px;
+	margin-bottom:10px;
+	font-size:24px;
+	color:#363636;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+.hot-spot3 .text-hot-spot3{
+	float:left;
+	width:240px;
+	margin-bottom:10px;
+	font-size:20px;
+	line-height:24px;
+	color:#333;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+
+.hot-spot3 .more-hot-spot3{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	padding:10px 30px 10px 30px;
+	
+	
+}
+
+.hot-spot3 .more-hot-spot3 a{
+	font-size:16px;
+	color:#0099cc;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-decoration:none;
+}
+
+
+.hot-spot4{
+	position:absolute;
+	top:469px;
+	right:0px;
+	width:574px;
+	height:390px;
+}
+.hot-spot4 .imatge-hot-spot4{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:574px;
+	height:390px;
+}
+
+.hot-spot4 .content-hot-spot4{
+	position:absolute;
+	top:26px;
+	left:37px;
+	width:472px;
+	height:300px;
+	padding:34px 0 0 30px;
+	background:#FFF;
+}
+.hot-spot4 .titol-hot-spot4{
+	float:left;
+	width:400px;
+	margin-bottom:10px;
+	font-size:28px;
+	color:#996600;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+.hot-spot4 .text-hot-spot4{
+	float:left;
+	width:445px;
+	margin-bottom:10px;
+	font-size:20px;
+	line-height:24px;
+	color:#333;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+
+.hot-spot4 .more-hot-spot4{
+	position:absolute;
+	bottom:10px;
+	left:0px;
+	padding:10px 30px;
+	
+	
+}
+
+.hot-spot4 .more-hot-spot4 a{
+	font-size:16px;
+	color:#996600;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-decoration:none;
+}
+
+
+
+.hot-spot5{
+	position:absolute;
+	top:905px;
+	left:56px;
+	width:644px;
+	height:394px;
+	background:#FFF;
+}
+.hot-spot5 .imatge-hot-spot5{
+	float:left;
+	width:295px;
+	height:394px;
+	margin-right:25px;
+}
+.hot-spot5 .titol-hot-spot5{
+	float:left;
+	width:215px;
+	margin:30px 0 15px 0;
+	font-size:28px;
+	color:#990066;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+.hot-spot5 .text-hot-spot5{
+	float:left;
+	width:306px;
+	margin-bottom:10px;
+	font-size:20px;
+	line-height:26px;
+	color:#333;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+}
+.hot-spot5 .more-hot-spot5{
+	position:absolute;
+	bottom:10px;
+	left:293px;
+	padding:10px 30px;
+	
+	
+	
+}
+
+.hot-spot5 .more-hot-spot5 a{
+	font-size:16px;
+	color:#990066;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-decoration:none;
+}
+
+.hot-spot6{
+	position:absolute;
+	top:961px;
+	right:0px;
+	width:180px;
+	/*height:128px;*/
+	padding:0 0 15px 26px;
+	background:#FFF;
+}
+.hot-spot6 .titol-hot-spot6{
+	float:left;
+	width:180px;
+	margin:30px 0 10px 0;
+	font-size:28px;
+	color:#db0000;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	text-transform:uppercase;
+}
+.hot-spot6 .more-hot-spot6{
+	float:left;
+	width:160px;
+	
+	
+}
+
+.hot-spot6 .more-hot-spot6 a{
+	font-size:16px;
+	color:#db0000;
+	font-family:'Lato',Arial, Helvetica, sans-serif;
+	font-weight:300;
+	
+	text-decoration:none;
+}
+
+
+
+
+
+
+
+
+
+
+

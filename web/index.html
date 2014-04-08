@@ -2,7 +2,7 @@
 <!--[if lt IE 7]><html class="ie lt-ie9 lt-ie8 lt-ie7" lang="ca"><![endif]-->
 <!--[if IE 7]><html class="ie lt-ie9 lt-ie8" lang="ca"><![endif]-->
 <!--[if IE 8]><html class="ie lt-ie9" lang="ca"><![endif]-->
-	<!--[if IE 8]><html class="ie lt-ie9" lang="ca"><![endif]-->
+<!--[if IE 8]><html class="ie lt-ie9" lang="ca"><![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="ca">
 	<!--<![endif]-->
@@ -10,206 +10,382 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
-		<title>Museu Cultures del Món</title>
+		<title>Museu de Cultures del Món</title>
+		<link rel="stylesheet" href="http://www.bcn.cat/assets/core/stylesheets/core.css" />
+		<script type='text/javascript' src='http://www.bcn.cat/assets/core/2.1.0/javascripts/core.js'></script>
 
 		<link rel="stylesheet" href="css/bootstrap.css"/>
 		<link rel="stylesheet" href="css/theme/style.css"/>
 		<link rel="stylesheet" href="css/theme/retina.css"/>
-	    <link rel="stylesheet" href="css/leaflet.css"/>
-	    <link rel="stylesheet" href="css/leaflet.label.css"/>
-	    <link rel="stylesheet" href="css/leaflet-minimap.css"/>
-    	<link rel="stylesheet" href="css/MarkerCluster.css"/>
-      	<link rel="stylesheet" href="css/MarkerCluster.Default.css"/>
+		<link rel="stylesheet" href="css/leaflet.css"/>
+		<link rel="stylesheet" href="css/leaflet.label.css"/>
+		<link rel="stylesheet" href="css/leaflet-minimap.css"/>
+		<link rel="stylesheet" href="css/MarkerCluster.css"/>
+		<link rel="stylesheet" href="css/MarkerCluster.Default.css"/>
 		<link rel="stylesheet" href="css/icub-mcm.css"/>
 		<link rel="stylesheet" href="css/tree.css"/>
-	    <!--[if lt IE 9]>
-	    	<link rel="stylesheet" href="css/leaflet.ie.css"/>
-	    <![endif]-->
-	    <!--[if lt IE 8]>
-	    	<link rel="stylesheet" href="css/MarkerCluster.Default.ie.css"/>
-	    <![endif]-->
+		<!--[if lt IE 9]>
+		<link rel="stylesheet" href="css/leaflet.ie.css"/>
+		<![endif]-->
+		<!--[if lt IE 8]>
+		<link rel="stylesheet" href="css/MarkerCluster.Default.ie.css"/>
+		<![endif]-->
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,300,700' />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/home.css" />
 
+		<!--script type='text/javascript'>
+		bcn.statistics({
+		keys: ['UA-42826028-10']
+		});
+		</script-->
 	</head>
-
 	<body>
-		<!-- start: Header -->
-		<header class="navbar">
-			<div class="container">
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
-					<span class="icon-bar"> </span>
-					<span class="icon-bar"> </span>
-					<span class="icon-bar"> </span>
-				</button>
-				<a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"> </i></a>
-				<a class="navbar-brand col-lg-4 col-sm-1 col-xs-12"><span>Museu Cultures del Món</span></a>
-				<!-- start: Header Menu -->
-				<div class="nav-no-collapse header-nav">
-					<ul class="nav navbar-nav pull-right">
-					</ul>
-				</div>
-				<!-- end: Header Menu -->
-
-			</div>
-		</header>
-		<!-- end: Header -->
-
-		<div class="container">
-			<div class="row">
-
-				<!-- start: Main Menu -->
-				<div id="sidebar-left" class="col-lg-4 col-sm-1">
-					<div class="row">
-						<div class="col-sm-12 col-xs-6">
-							<div id="museums"> </div>
-						</div>
-						<div class="col-sm-12 col-xs-6">
-							<div id="fields"> </div>
-						</div>
+		<div id="brand" class="v2013 collapsed">
+			<div class="brand-wrapper">
+				<div class="main" style="background-position: -270px 0px;">
+					<div class="logotype">
+						<a href="http://www.bcn.cat/"><img src="http://www.bcn.cat/assets/images/brand/banner/2013/logo.png" alt="Logotip de l'Ajuntament de Barcelona. Enllaç a la pà gina principal del web de Barcelona" /></a>
 					</div>
-					<div id="tree" class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse"> </div>
-				</div>
-				
-				<!-- end: Main Menu -->
-
-				<!-- start: Content -->
-				<div id="content" class="col-lg-8 col-sm-11">
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="box">
-
-								<div class="box-header">
-									<h2><i class="fa fa-map-marker"> </i>Mapa <span class="subtitle"> </span></h2>
-									<div class="box-icon">
-										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
-									</div>
-								</div>
-								<div class="box-content" id="map">
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="box" style="display:none;">
-								<div class="box-header">
-									<h2><i class="fa fa-group"> </i>Descripció <span class="subtitle"> </span></h2>
-									<div class="box-icon">
-										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
-									</div>
-								</div>
-								<div class="box-content">
-									<div id="description"> </div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="box" style="display:none;">
-								<div class="box-header">
-									<h2><i class="fa fa-cel-gallery"> </i>Galeria de peces <span class="subtitle"> </span></h2>
-									<div class="box-icon">
-										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
-									</div>
-								</div>
-								<div class="box-content" id="gallery">
-									<div class="container">
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-												<div class="panel panel-success">
-													<div class="panel-heading"><h3 class="panel-title">Criteris de sel·lecció</h3></div>
-													<div id="gallery-criteria"> </div>
-												</div>
+					<div class="navigation">
+						<ul class="options">
+							<li>
+								<a href="http://www.bcn.cat/catala/laciutat/">La Ciutat</a>
+							</li>
+							<li>
+								<a href="http://www.bcn.cat/ajuntament/">L'Ajuntament</a>
+							</li>
+							<li>
+								<a href="http://www.bcn.cat/turisme/">Turisme</a>
+							</li>
+							<li>
+								<a href="http://www.bcn.cat/negocis/">Negocis</a>
+							</li>
+							<li>
+								<a href="http://www.bcn.cat/tramits/">Tràmits</a>
+							</li>
+							<li class="last more">
+								<a href="#">Més</a>
+								<ul>
+									<li>
+										<a href="http://www.bcn.cat/guia/">Plànol BCN</a>
+									</li>
+									<li>
+										<a href="http://www.bcn.cat/comanar/">Com s'hi va</a>
+									</li>
+									<li>
+										<a href="http://www.bcn.cat/guiabarcelona/">Guia BCN</a>
+									</li>
+									<li>
+										<a href="http://www.bcn.cat/mobil/">Serveis al móbil</a>
+									</li>
+									<li>
+										<a href="http://www.bcn.cat/ca/webs_bcn.html">Webs BCN</a>
+									</li>
+									<li>
+										<a href="http://www.bcn.cat/transit/">Estat del trànsit</a>
+									</li>
+									<li class="search">
+										<form method="post" action="http://w10.bcn.cat/APPS/cercagsa/search.do?idioma=ca">
+											<div>
+												<label for="brand-search">Cerca</label>
+												<input type="text" id="brand-search" name="q" value="" />
+												<input type="image" class="send" src="http://www.bcn.cat/assets/images/brand/banner/2013/lens.png" value="" alt="Cerca del web de l'Ajuntament de Barcelona" />
 											</div>
-											<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-												<div class="panel panel-danger">
-													<div class="panel-heading"><h3 class="panel-title">Refina la cerca</h3></div>
-														<form class="form-horizontal" id="refine">
-															<div class="row form-group" style="margin-top:10px;">
-																<div class="col-sm-4">
-																    <label class="switch switch-danger" style="float:right;">
-																        <input type="checkbox" id="search-enabled" class="switch-input form-control">
-																        <span class="switch-label" data-on="Sí" data-off="No"></span>
-																        <span class="switch-handle"></span>
-																    </label>
-																	<label style="float:right;">Per text: </label>
-															    </div>
-															    <div class="col-sm-8">
-																    <input type="text" id="search" class="form-control" placeholder="Cerca per text..." disabled>
-															    </div>
-														    </div>
-														    <div class="row form-group">
-														    	<div class="col-sm-4">
-																	<label class="switch switch-danger" style="float:right;">
-																        <input type="checkbox" id="daterange-enabled" class="switch-input form-control">
-																        <span class="switch-label" data-on="Sí" data-off="No"></span>
-																        <span class="switch-handle"></span>
-																    </label>
-															    	<label style="float:right;">Per dates: </label>
-																</div>
-																<div class="col-sm-8">
-																	<div class="input-group">
-																		<span class="input-group-addon"><i class="fa fa-calendar"></i>&nbsp;&nbsp;des del</span>
-																		<input type="text" class="form-control" id="dateFrom" value="0000" disabled>
-																		<span class="input-group-addon"><i class="fa fa-calendar"></i>&nbsp;&nbsp;fins el</span>
-																		<input type="text" class="form-control" id="dateTo" value="9999" disabled>
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="social">
+							<li>
+								<a href="http://www.facebook.com/bcn.cat" title="Barcelona.cat"><img src="http://www.bcn.cat/assets/images/brand/banner/2013/social-facebook-bw.png" alt="Icona del Facebook. Enllaç al Facebook oficial de l'Ajuntament de Barcelona" /></a>
+							</li>
+							<li>
+								<a href="http://twitter.com/barcelona_cat" title="@barcelona_cat"><img src="http://www.bcn.cat/assets/images/brand/banner/2013/social-twitter-bw.png" alt="Icona del Twitter. Enllaç al Twitter oficial de l'Ajuntament de Barcelona" /></a>
+							</li>
+							<li class="last">
+								<a href="http://www.youtube.com/wwwbcncat" title="Barcelona.cat"><img src="http://www.bcn.cat/assets/images/brand/banner/2013/social-youtube-bw.png" alt="Icona del Youtube. Enllaç al Youtube oficial de l'Ajuntament de Barcelona" /></a>
+							</li>
+						</ul>
+						<ul class="language-selector">
+							<li class="active">
+								<span>CAT</span>
+							</li>
+							<li>
+								<a href="/es/" title="Castellano" hreflang="es" lang="es" xml:lang="es">CAS</a>
+							</li>
+							<li>
+								<a href="/en/" title="English" hreflang="en" lang="en" xml:lang="en">ENG</a>
+							</li>
+							<li class="last">
+								<a href="/fr/" title="Français" hreflang="fr" lang="fr" xml:lang="fr">FR</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header headerhome">
+			<div id="bcn-cultura">
+				<a href="http://barcelonacultura.bcn.cat/" target="_blank"> <img src="http://www.bcn.cat/assets/images/brand/banner/2012/cultura/black-logo.png" alt="Barcelona Cultura" /> </a>
+			</div>
+			<div class="content-header" id="header-home">
+				<div class="twitter">
+					<a href="https://twitter.com/mculturesmon" target="_blank"><img src="/img/icono_twitter.png"></a>
+				</div>
+				<div class="nom">
+					<a href="/ca/home/"><img src="/img/museu-de-cultures-del-mon.png"></a>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+
+		<div id="content-exterior">
+			<div class="content-interior" id="home">
+				<!--div class="hot-spot1">
+				<div class="titol-hot-spot1">
+				Viatges i Expedicions
+				</div>
+				<div class="text-hot-spot1">
+				<p>Les expedicions etnogràfiques i els viatges arreu del món van permetre recollir obres i objectes de diferents cultures.</p>
+				</div>
+				<div class="more-hot-spot1">
+				<a href="http://museuculturesmon.bcn.cat/ca/lesexpedicions/">Més informació</a>
+				</div>
+				</div-->
+
+				<div class="container">
+					<div class="row">
+
+						<!-- start: Main Menu -->
+						<div id="sidebar-left" class="col-lg-4 col-sm-1">
+							<div class="row">
+								<div class="col-sm-12 col-xs-6">
+									<div id="museums"></div>
+								</div>
+								<div class="col-sm-12 col-xs-6">
+									<div id="fields"></div>
+								</div>
+							</div>
+							<div id="tree" class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse"></div>
+						</div>
+
+						<!-- end: Main Menu -->
+
+						<!-- start: Content -->
+						<div id="content" class="col-lg-8 col-sm-11">
+
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="box">
+
+										<div class="box-header">
+											<h2><i class="fa fa-map-marker"> </i>Mapa <span class="subtitle"> </span></h2>
+											<div class="box-icon">
+												<a class="btn-minimize"><i class="fa fa-chevron-up"> </i></a>
+											</div>
+										</div>
+										<div class="box-content" id="map"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="box" style="display:none;">
+										<div class="box-header">
+											<h2><i class="fa fa-group"> </i>Descripció <span class="subtitle"> </span></h2>
+											<div class="box-icon">
+												<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+											</div>
+										</div>
+										<div class="box-content">
+											<div id="description"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="box" style="display:none;">
+										<div class="box-header">
+											<h2><i class="fa fa-cel-gallery"> </i>Galeria de peces <span class="subtitle"> </span></h2>
+											<div class="box-icon">
+												<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+											</div>
+										</div>
+										<div class="box-content" id="gallery">
+											<div class="container">
+												<div class="row">
+													<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+														<div class="panel panel-success">
+															<div class="panel-heading">
+																<h3 class="panel-title">Criteris de sel·lecció</h3>
+															</div>
+															<div id="gallery-criteria"></div>
+														</div>
+													</div>
+													<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+														<div class="panel panel-danger">
+															<div class="panel-heading">
+																<h3 class="panel-title">Refina la cerca</h3>
+															</div>
+															<form class="form-horizontal" id="refine">
+																<div class="row form-group" style="margin-top:10px;">
+																	<div class="col-sm-4">
+																		<label class="switch switch-danger" style="float:right;">
+																			<input type="checkbox" id="search-enabled" class="switch-input form-control">
+																			<span class="switch-label" data-on="Sí" data-off="No"></span> <span class="switch-handle"></span> </label>
+																		<label style="float:right;">Per text: </label>
+																	</div>
+																	<div class="col-sm-8">
+																		<input type="text" id="search" class="form-control" placeholder="Cerca per text..." disabled>
 																	</div>
 																</div>
-															</div>
-															<div class="row form-group">
-																<div class="col-sm-12">
-																	<button id="refine-action" class="btn btn-danger pull-right" style="display:none;">Aplica els canvis</button>
+																<div class="row form-group">
+																	<div class="col-sm-4">
+																		<label class="switch switch-danger" style="float:right;">
+																			<input type="checkbox" id="daterange-enabled" class="switch-input form-control">
+																			<span class="switch-label" data-on="Sí" data-off="No"></span> <span class="switch-handle"></span> </label>
+																		<label style="float:right;">Per dates: </label>
+																	</div>
+																	<div class="col-sm-8">
+																		<div class="input-group">
+																			<span class="input-group-addon"><i class="fa fa-calendar"></i>&nbsp;&nbsp;des del</span>
+																			<input type="text" class="form-control" id="dateFrom" value="0000" disabled>
+																			<span class="input-group-addon"><i class="fa fa-calendar"></i>&nbsp;&nbsp;fins el</span>
+																			<input type="text" class="form-control" id="dateTo" value="9999" disabled>
+																		</div>
+																	</div>
 																</div>
-															</div>
-														</form>
+																<div class="row form-group">
+																	<div class="col-sm-12">
+																		<button id="refine-action" class="btn btn-danger pull-right" style="display:none;">
+																			Aplica els canvis
+																		</button>
+																	</div>
+																</div>
+															</form>
+														</div>
 													</div>
 												</div>
+												<div id="gallery-objects"></div>
 											</div>
-										<div id="gallery-objects"> </div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="box" style="display:none;">
-								<div class="box-header">
-									<h2><i class="fa fa-cel-object"> </i>Detalls de la peça</h2>
-									<div class="box-icon">
-										<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="box" style="display:none;">
+										<div class="box-header">
+											<h2><i class="fa fa-cel-object"> </i>Detalls de la peça</h2>
+											<div class="box-icon">
+												<a class="btn-minimize"><i class="fa fa-chevron-up"> </i> </a>
+											</div>
+										</div>
+										<div class="box-content" id="detail"></div>
 									</div>
 								</div>
-								<div class="box-content" id="detail">
-								</div>
 							</div>
-						</div>
-					</div>
+						</div><!-- end: Content -->
+					</div><!--/row-->
+				</div><!--/container-->
 
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="map-bottom">
+			<div id="block-map-footer">
+				<div class="menu-footer" >
+					<ul>
+						<li class="footer-list">
+							<a href="#">Museu</a>
+							<ul>
+								<li class="footer-sublist">
+									<a href="/ca/missioiprojecte/">Missió i projecte</a>
+								</li>
+								<li class="footer-sublist">
+									<a href="/ca/programa/">Programa</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="footer-list">
+							<a href="#">Col·lecció</a>
+							<ul>
+								<li class="footer-sublist">
+									<a href="/ca/origen/">Origen</a>
+								</li>
+								<li class="footer-sublist">
+									<a href="/ca/lesexpedicions/">Les expedicions</a>
+								</li>
+								<li class="footer-sublist">
+									<a href="/ca/persones/">Les persones</a>
+								</li>
+
+								<li>
+									<a href="/ca/persones/1/Albert Folch i Rusiñol/" class="submenu active"> Albert Folch i Rusiñol </a>
+								</li>
+								<li>
+									<a href="/ca/persones/3/August Panyella i Gómez/" class="submenu active"> August Panyella i Gómez </a>
+								</li>
+								<li>
+									<a href="/ca/persones/4/Eudald Serra i Güell/" class="submenu active"> Eudald Serra i Güell </a>
+								</li>
+								<li>
+									<a class="submenu" href="/ca/elscollaboradors/">Els col·laboradors</a>
+								</li>
+								<li class="footer-sublist">
+									<a href="/ca/obres-destacades/">Obres destacades</a>
+								</li>
+							</ul>
+						</li>
+						<li class="footer-list">
+							<a href="/ca/edificis/">Edificis</a>
+							<ul>
+								<li class="footer-sublist">
+									<a href="/ca/carrermontcada/">El carrer Montcada</a>
+								</li>
+								<li class="footer-sublist footer-sublist2">
+									<a href="/ca/palaunadal/">El Palau Nadal</a>
+								</li>
+								<li class="footer-sublist footer-sublist2">
+									<a href="/ca/palaumarquesdelio/">El Palau Marquès de Llió</a>
+								</li>
+							</ul>
+						</li>
+						<li class="footer-list">
+							<a href="/ca/actualitat/">Actualitat</a>
+						</li>
+						<li class="footer-list">
+							<a href="/ca/contacte/">Contacte</a>
+						</li>
+					</ul>
 				</div>
-				<!-- end: Content -->
+				<div class="clearfix"></div>
+			</div><!-- /.block -->
+		</div>
 
-			</div><!--/row-->
+		<div id="peu">
+			<div class="content-interior">
+				<div class="creative-commons">
+					Els continguts d'aquest web estan subjectes a una llicència de <a href="http://creativecommons.org/licenses/by-nc-nd/2.5/es/deed.ca" target="_blank">Creative Commons</a> si no s'indica el contrari
+				</div>
+				<div class="accesimapa">
+					<a href="#" >Accesibilitat</a> | <a href="#" >Mapa web</a>
+				</div>
+				<div class="finalpeu">
+					<a href="http://www.bcn.cat/" target="_blank" >Ajuntament de Barcelona</a> | <a href="http://barcelonacultura.bcn.cat" target="_blank" >Institut de Cultura de Barcelona</a>
+				</div>
+			</div>
+		</div>
 
-		</div><!--/container-->
-
-		<div class="clearfix"> </div>
-
-		<footer>
-			<p>
-				<span style="text-align:left;float:left"> </span>
-				<span class="hidden-phone" style="text-align:right;float:right">&copy; 2014 <a href="http://barcelonacultura.bcn.cat" target="_blank">Institut de Cultura de Barcelona</a><br/>Oscar Fonts, <a href="http://geomati.co" target="_blank">geomati.co</a></span>
-			</p>
-
-		</footer>
-
-		<script src="lib/require-2.1.9.js" data-main="modules/mcm.browser.js"> </script>
+		<script src="lib/require-2.1.9.js" data-main="modules/mcm.browser.js">
+		</script>
 		<script src="config.js"></script>
-
 	</body>
 </html>
