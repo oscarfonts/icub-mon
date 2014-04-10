@@ -1,0 +1,12 @@
+Install node.js and requirejs to compact/minify
+===============================================
+
+1. Install node.js into your operative system, e.g. see this `doc`_.
+2. Install requirejs library, following `this`_.
+3. Execute::
+
+	r.js -o build/build.js
+
+.. _doc: http://howtonode.org/how-to-install-nodejs
+.. _this: http://requirejs.org/docs/optimization.html#download
+
