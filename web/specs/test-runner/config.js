@@ -2,7 +2,8 @@ var specs = [
     'messagebus',
     'http',
     'cel.api',
-    'mcm.api'
+    'mcm.api',
+    'mcm.i18n'
 ];
 
 var BASE_PATH = "../../modules/",
@@ -16,7 +17,8 @@ require.config({
         'jasmine': LIB_PATH + 'jasmine-1.3.1',
         'jasmine-html': LIB_PATH + 'jasmine-html-1.3.1',
         'jasmine-async': LIB_PATH + 'jasmine-async-0.1.0',
-        'jquery-xdomainrequest': LIB_PATH + 'jquery-xdomainrequest-1.0.1.min'
+        'jquery-xdomainrequest': LIB_PATH + 'jquery-xdomainrequest-1.0.1.min',
+        'jquery-i18n': LIB_PATH + 'jquery.i18n.properties-1.0.9.min'
     },
     shim: {
         'jasmine-html': {
@@ -27,6 +29,9 @@ require.config({
         },
         'jquery-xdomainrequest': {
             deps: ['jquery']
+        },
+        'jquery-i18n': {
+            deps: ["jquery"]
         },
     },
     config: {

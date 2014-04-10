@@ -7,7 +7,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
     var map = new mcmmap('map');
     map.showContinents();
     
-    i18n.init();
+    i18n.setLang('ca');
     
     tree.setField("culture");
     tree.template("mcm.tree");
