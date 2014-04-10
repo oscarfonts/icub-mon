@@ -109,6 +109,8 @@ define(["cel.api", "template"], function(celapi, template) {
         
         var plain = {
             id: id,
+            title: name,
+            collection: detail.collection,
             img_src: "../img/peces/" + id.substr(1) + ".JPG",
             properties: properties
         };

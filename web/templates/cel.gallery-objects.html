@@ -1,8 +1,9 @@
-<div id="gallery-criteria-data" data-criteria='{{criteria}}'> </div>
+<div id="gallery-criteria-data" data-criteria='{{criteria_json}}'> </div>
+<h2 class="{{criteria.collection.id}}">{{criteria.collection.name}} - {{criteria.field.value}}</h2>
 {{#paging}}
 <div class="row">
 	<div class="col-lg-12">
-		<ul class="pager well well-sm">
+		<ul class="pager">
 			<li class="previous {{^prev}}disabled{{/prev}}"><a href="#">&larr; Anteriors</a></li>
 			<li>Mostrant peces {{from}} a {{to}} d'un total de {{total}}</li>
 			<li class="next {{^next}}disabled{{/next}}"><a href="#">Següents &rarr;</a></li>
@@ -12,13 +13,12 @@
 {{/paging}}
 <div class="row">
 	{{#objects}}
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-		<div class="panel panel-info" data-object='{{json}}' style="cursor: pointer;">
-			<div class="panel-heading">
-		        <h3 class="panel-title">{{objectName}} ({{recordNumber}})</h3>
-		    </div>
-		    <div class="panel-body">
-				<!--img style="max-height:64px;max-width:100%;float:right;margin:5px;" src="../img/peces/{{img}}.JPG" alt="{foto peça}"-->
+	<div class="col-xs-4">
+		<div class="thumbnail" data-object='{{json}}'>
+			<img src="http://placehold.it/300x200">
+			<!--img src="../img/peces/{{img}}.JPG" alt="{{objectName}}"-->
+			<div class="caption">
+		        <h3>{{objectName}}</h3>
 	        	{{#author}}
 		        	<p><strong>Autor(s): </strong>{{.}}</p>
 	        	{{/author}}
@@ -43,3 +43,14 @@
 	</div>
 	{{/objects}}
 </div>
+{{#paging}}
+<div class="row">
+	<div class="col-lg-12">
+		<ul class="pager">
+			<li class="previous {{^prev}}disabled{{/prev}}"><a href="#">&larr; Anteriors</a></li>
+			<li>Mostrant peces {{from}} a {{to}} d'un total de {{total}}</li>
+			<li class="next {{^next}}disabled{{/next}}"><a href="#">Següents &rarr;</a></li>
+		</ul>
+	</div>
+</div>
+{{/paging}}

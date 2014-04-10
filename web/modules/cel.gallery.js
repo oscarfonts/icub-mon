@@ -62,7 +62,8 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             // The data structure to be sent to the gallery-objects template
             var data = {};
 
-            data.criteria = JSON.stringify(criteria);
+            data.criteria = criteria;
+            data.criteria_json = JSON.stringify(criteria);
 
             // Add pagination control
             if (list.page.total / list.page.size > 1) {
@@ -164,7 +165,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         }
         
         // Items
-        var panels = $("#gallery-objects .panel");
+        var panels = $("#gallery-objects .thumbnail");
         
         var maxHeight = Math.max.apply(
             Math, panels.map(function() {
@@ -174,11 +175,11 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         panels.height(maxHeight);
         
         panels.hover(function(e) {
-            $(this).removeClass("panel-info").addClass("panel-primary");
+            $(this).removeClass("gallery-item-hover");
         }, function(e) {
-            $(this).removeClass("panel-primary").addClass("panel-info");
+            $(this).removeClass("gallery-item-hover");
         });
-        
+       
         panels.click(function(e) {
             var object = $(this).data("object");
             bus.publish("cel.gallery.selected", object);
