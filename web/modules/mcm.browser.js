@@ -31,6 +31,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
             collection.name = value.name;
             description.hide();
             map.showCultures(collection.id);
+            hideBox("gallery");
             //$(".subtitle").html("- " + collection.name);
         } else { // Culture           
             collection = value.collection;
@@ -44,15 +45,14 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
                 showBox("description");            
             });
             map.showCulture(field.slug);
+            gallery.show(museum, collection, field);
             //$(".subtitle").html("- " + field.value);
         }
-        
-        gallery.show(museum, collection, field);
     });
     
     bus.subscribe("mcm.map.selected", function(item) {
         console.log("Selected map item " + JSON.stringify(item));
-        tree.selectItem(item); // Superfluo cuando clico en una cultura y ya estoy en la cultura (!).
+        tree.selectItem(item);
     });
 
     bus.subscribe("mcm.map.hovered", function(item) {
