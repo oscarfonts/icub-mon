@@ -1,3 +1,9 @@
+#brand.v2013, .creative-commons, .accesimapa, .finalpeu, .options, .social, .language-selector, #brand.v2013 .brand-wrapper .navigation ul.options .more ul {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
 html, body, p {
     font-family: 'AvenirNext','Lato',Arial,Helvetica,sans-serif;
 }
@@ -58,14 +64,39 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	float: left;
 }
 
-.box {
-	background: #FFFFFF;
+#map {
     margin-top: 52px;
+}
+
+#description, #gallery, #detail {
+    margin-top: 25px;
+	padding: 20px;
+	background: #FFFFFF;
 }
 
 .container, .navbar-collapse {
     padding-left: 0;
     padding-right: 0;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+.africa {
+	color: rgb(235, 98, 9);
+}
+
+.america {
+	color: rgb(102, 61, 0);
+}
+
+.asia {
+	color: rgb(230, 0, 126);
+}
+
+.oceania {
+	color: rgb(183, 173, 159);
 }
 
 @media (min-width: 1200px) {
