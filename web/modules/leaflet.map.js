@@ -10,16 +10,19 @@ define(["leaflet", "leaflet.layers", "leaflet-minimap"], function(L, layers) {
         var div = id ? id : 'map';
 
         var map = L.map(div, {
-            center: [32, 0],
-            maxBounds: [[-85, -500], [85, 500]],
-            zoom: 2,
             minZoom: 1,
-            scrollWheelZoom: false
+            maxZoom: 16,
+            maxBounds: [[-85, -500], [85, 500]],
+            scrollWheelZoom: false,
+            center: [10.5, 0],
+            zoom: 1
         });
         
         layers.create({
-            //"Aerial": { type: "bing",      id: "AerialWithLabels" },
-            //"Roads":  { type: "bing",      id: "Road" },
+            //"Aerial": { type: "bing", id: "AerialWithLabels"},
+            //"Roads":  { type: "bing", id: "Road" },
+            "Watercolor": { type: "stamen", id: "watercolor"},
+            "Toner": { type: "stamen", id: "toner"},
             "MapBox Pale": { type: "mapbox", id: mapbox_pale},
             "MapBox Bright": { type: "mapbox", id: mapbox_bright}
         }).addTo(map);

@@ -25,14 +25,14 @@
 	    ]
 	}];
 }}
-<ul id="tree" class="nav contents">
+<ul class="nav nav-pills nav-stacked">
     {{#.}} {{! Collections }}
 	<li class="collection" id="{{id}}" data-tree='{{json}}'>
-		<a data-toggle="collapse" data-parent="#tree" data-target="#{{id}} > ul"><img src="img/collections/{{id}}-white-icon.png" width="24"/>&nbsp;&nbsp; {{name}}</a>
-		<ul class="nav collapse" style="height: auto;">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="img/collections/{{id}}-black-icon.png" width="24"/>&nbsp;&nbsp; {{name}}</a>
+		<ul class="dropdown-menu right-menu">
 			{{#fields}} {{! Field Values }}
-			<li class="{{name}}" id="{{slug}}" data-tree='{{json}}'>
-				<a><i class="fa fa-cel-{{name}}"> </i>&nbsp;&nbsp;{{value}}<span class="label">{{count}}</span></a>
+			<li class="three-column {{name}}" id="{{slug}}" data-tree='{{json}}'>
+				<a><span class="badge pull-right">{{count}}</span>{{value}}</a>
 			</li>
 			{{/fields}}
 		</ul>

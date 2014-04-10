@@ -5,12 +5,14 @@ define(["leaflet", "bing"], function(L) {
 
     var urls = {
         "mapbox":    "http://{s}.tiles.mapbox.com/v3/{styleId}/{z}/{x}/{y}.png",
+        "stamen":     "http://{s}.tile.stamen.com/{styleId}/{z}/{x}/{y}.png",
         // Bing types: Aerial, AerialWithLabels, Birdseye, BirdseyeWithLabels, Road
         "bing":      "Au0fzRXOjOMS6KE0Z5ZOLjVIt57V1OvnUamDKKs6CaC1-Cx-0_oSFl3J9aIwUgSM"
     };
     
     var attributions = {
-        "mapbox": 'Map data &copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap contributors</a>, imagery &copy; <a href="http://mapbox.com" target="_blank">MapBox</a>'
+        "mapbox": 'Map data &copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap contributors</a>, imagery &copy; <a href="http://mapbox.com" target="_blank">MapBox</a>',
+        "stamen": 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
     };
     
     return {

@@ -185,11 +185,11 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             group.addTo(this.map);
 
             // Set zoom to fit bounds
-            this.map.options.maxZoom = 18;
+            this.map.options.maxZoom = 16;
             if (type == "culture") {
                 L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
                 this.map.addOneTimeEventListener("zoomend", function() {
-                    this.options.maxZoom = this.getZoom();
+                    this.options.maxZoom = Math.min(this.getZoom(), 16);
                 });
             } else {
                 L.DomUtil.removeClass(this.map._panes.overlayPane, "blur");

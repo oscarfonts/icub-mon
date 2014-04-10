@@ -1,4 +1,72 @@
+html, body, p {
+    font-family: 'AvenirNext','Lato',Arial,Helvetica,sans-serif;
+}
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'AvenirNext','Lato',Arial,Helvetica,sans-serif;
+}
+
+.container {
+  width: 100% !important;
+}
+
+#autors_i_adreces_comunes {
+	display: none;
+}
+
+#tree {
+	padding-top: 52px;
+    font-size: 20px;
+}
+
+#tree a {
+	color: #707070;	
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #CCCCCC;
+    color: #707070;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #DDDDDD;
+  color: #707070;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+.right-menu {
+	left: 100%;
+	top: -2px;
+	width: 700px;
+	border-radius: 0;
+	box-shadow: 0;
+	padding: 10px;
+}
+
+.two-column {
+	width: 50%;
+	float: left;
+}
+
+.three-column {
+	width: 33.3%;
+	float: left;
+}
+
+.box {
+	background: #FFFFFF;
+    margin-top: 52px;
+}
+
+.container, .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 @media (min-width: 1200px) {
   a#main-menu-toggle {
