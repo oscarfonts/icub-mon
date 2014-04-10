@@ -31,7 +31,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
             collection.name = value.name;
             description.hide();
             map.showCultures(collection.id);
-            $(".subtitle").html("- " + collection.name);
+            //$(".subtitle").html("- " + collection.name);
         } else { // Culture           
             collection = value.collection;
             field = {
@@ -44,7 +44,7 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
                 showBox("description");            
             });
             map.showCulture(field.slug);
-            $(".subtitle").html("- " + field.value);
+            //$(".subtitle").html("- " + field.value);
         }
         
         gallery.show(museum, collection, field);
