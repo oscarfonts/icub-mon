@@ -1,11 +1,13 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "cel.detail", "slug"],
-        function(bus, tree, mcmmap, description, gallery, detail, slug) {
+define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "cel.detail", "slug", "mcm.i18n"],
+        function(bus, tree, mcmmap, description, gallery, detail, slug, i18n) {
     
     var map = new mcmmap('map');
     map.showContinents();
+    
+    i18n.init();
     
     tree.setField("culture");
     tree.template("mcm.tree");
