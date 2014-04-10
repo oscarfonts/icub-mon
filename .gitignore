@@ -6,3 +6,4 @@ api/.project
 api/.settings/
 api/.pydevproject
 *.pyc
+.metadata/*
