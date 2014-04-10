@@ -16,6 +16,46 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 #tree {
 	padding-top: 52px;
+    font-size: 20px;
+}
+
+#tree a {
+	color: #707070;	
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #CCCCCC;
+    color: #707070;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #DDDDDD;
+  color: #707070;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+.right-menu {
+	left: 100%;
+	top: -2px;
+	width: 700px;
+	border-radius: 0;
+	box-shadow: 0;
+	padding: 10px;
+}
+
+.two-column {
+	width: 50%;
+	float: left;
+}
+
+.three-column {
+	width: 33.3%;
+	float: left;
 }
 
 .box {
