@@ -10,12 +10,12 @@ define(["leaflet", "leaflet.layers", "leaflet-minimap"], function(L, layers) {
         var div = id ? id : 'map';
 
         var map = L.map(div, {
-            center: [32, 0],
-            maxBounds: [[-85, -500], [85, 500]],
-            zoom: 2,
             minZoom: 1,
             maxZoom: 16,
-            scrollWheelZoom: false
+            maxBounds: [[-85, -500], [85, 500]],
+            scrollWheelZoom: false,
+            center: [10.5, 0],
+            zoom: 1
         });
         
         layers.create({
@@ -28,7 +28,7 @@ define(["leaflet", "leaflet.layers", "leaflet-minimap"], function(L, layers) {
         }).addTo(map);
 
         if (minimap) {
-            var layer = L.tileLayer("http://{s}.tiles.mapbox.com/v3/" + mapbox_bright + "/{z}/{x}/{y}.png");
+            var layer = L.tileLayer("http://{s}.tiles.mapbox.com/v3/" + mapbox_pale + "/{z}/{x}/{y}.png");
             L.extend(L.Control.MiniMap.prototype, {
                 hideText: 'Oculta',
                 showText: 'Mostra'
