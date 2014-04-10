@@ -1,26 +1,24 @@
-var LIB_PATH = "../lib/";
-
 require.config({
     paths : {
-        "text": LIB_PATH + "text-2.0.10",
-        "jquery": LIB_PATH + "jquery-1.10.2",
-        "mustache": LIB_PATH + "mustache-0.8.0",
-        "bootstrap": LIB_PATH + "bootstrap-3.0.3",
-        "leaflet": LIB_PATH + "leaflet-0.6.4",
-        "leaflet-label": LIB_PATH + "leaflet-label-0.2.2",
-        "leaflet-minimap": LIB_PATH + "leaflet-minimap",
-        "bing": LIB_PATH + "leaflet-bing",
-        "draw": LIB_PATH + "leaflet-draw-0.2.3",
-        "ie8.html5shiv": LIB_PATH + "html5shiv",
-        "ie8.respond": LIB_PATH + "respond.min",
-        "wysihtml5": LIB_PATH + "bootstrap3-wysihtml5-0.2.7.min",
-        "wysihtml5-ca": LIB_PATH + "bootstrap-wysihtml5.ca-CT",
-        "custom": LIB_PATH + "custom",
-        "core": LIB_PATH + "core",
-        "jquery-migrate": LIB_PATH + "jquery-migrate-1.2.1.min",
-        "jquery-maskedinput": LIB_PATH + "jquery-maskedinput-1.3.1",
-        "jquery-xdomainrequest": LIB_PATH + "jquery-xdomainrequest-1.0.1.min",
-        "tinycolor": LIB_PATH + "tinycolor-0.9.17.min"
+        "text": "../lib/text-2.0.10",
+        "jquery": "../lib/jquery-1.10.2",
+        "mustache": "../lib/mustache-0.8.0",
+        "bootstrap": "../lib/bootstrap-3.0.3",
+        "leaflet": "../lib/leaflet-0.6.4",
+        "leaflet-label": "../lib/leaflet-label-0.2.2",
+        "leaflet-minimap": "../lib/leaflet-minimap",
+        "bing": "../lib/leaflet-bing",
+        "draw": "../lib/leaflet-draw-0.2.3",
+        "ie8.html5shiv": "../lib/html5shiv",
+        "ie8.respond": "../lib/respond.min",
+        "wysihtml5": "../lib/bootstrap3-wysihtml5-0.2.7.min",
+        "wysihtml5-ca": "../lib/bootstrap-wysihtml5.ca-CT",
+        "custom": "../lib/custom",
+        "core": "../lib/core",
+        "jquery-migrate": "../lib/jquery-migrate-1.2.1.min",
+        "jquery-maskedinput": "../lib/jquery-maskedinput-1.3.1",
+        "jquery-xdomainrequest": "../lib/jquery-xdomainrequest-1.0.1.min",
+        "tinycolor": "../lib/tinycolor-0.9.17.min"
     },
     shim: {
         "bootstrap": {
