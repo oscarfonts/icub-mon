@@ -7,3 +7,4 @@ api/.settings/
 api/.pydevproject
 *.pyc
 .metadata/*
+web/dist/*
