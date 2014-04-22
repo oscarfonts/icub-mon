@@ -1,22 +1,24 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "cel.detail", "slug"],
-        function(bus, tree, mcmmap, description, gallery, detail, slug) {
+define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "mcm.gallery", "cel.detail", "slug"],
+        function(bus, tree, search, mcmmap, description, gallery, detail, slug) {
     
     var map = new mcmmap('map');
     map.showContinents();
+
+    var museum = {
+        acronym: "MCM",
+        name: "Museu Cultures del Món"
+    };
     
     tree.setField("culture");
     tree.template("mcm.tree");
-    gallery.templates("mcm.gallery-criteria");
-    tree.show({
-        acronym: "MCM",
-        name: "Museu Cultures del Món"
-    });
+    tree.show(museum);
 
     // Handle tree element selection
     bus.subscribe("cel.tree.selected", function(selected) {
+        showBox("map");
         hideBox("description");
         showBox("gallery");
         hideBox("detail");
@@ -69,6 +71,15 @@ define(["messagebus", "cel.tree", "mcm.map", "mcm.description", "cel.gallery", "
         scrollToBox("detail");
     });
     
+    bus.subscribe("mcm.search.text", function(text) {
+        hideBox("map");
+        showBox("gallery");
+
+        var collection = {id: "all"};
+        var field;
+        var filters = { search: text };
+        gallery.show(museum, collection, field, filters);
+    });
         
     function showBox(id) {
         $("#"+id).closest(".box").show();
