@@ -69,6 +69,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         }
         
         var filters = {
+            sort: "date+ASC",
             pageNumber: criteria.page,
             pageSize: 12
         };
