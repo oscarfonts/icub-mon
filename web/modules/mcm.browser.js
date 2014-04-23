@@ -11,7 +11,7 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
         acronym: "MCM",
         name: "Museu Cultures del Món"
     };
-    
+
     tree.setField("culture");
     tree.template("mcm.tree");
     tree.show(museum);
@@ -71,6 +71,10 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
         scrollToBox("detail");
     });
     
+    // Simple & advanced search forms
+    search.show();
+    $(".show-advanced-search").click(search.toggle);
+
     bus.subscribe("mcm.search.text", function(text) {
         hideBox("map");
         showBox("gallery");
@@ -80,7 +84,34 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
         var filters = { search: text };
         gallery.show(museum, collection, field, filters);
     });
-        
+
+    bus.subscribe("mcm.search.advanced", function(filters) {
+        hideBox("map");
+        showBox("gallery");
+
+        var field;
+        var collectionId = filters.collectionId || "all";
+        delete filters.collectionId;
+        gallery.show(museum, {id: collectionId}, field, filters);
+    });
+
+    bus.subscribe("mcm.search.toggle", function(shown) {
+        hideBox("gallery");
+        // TODO: Reset map status
+        var link = $(".show-advanced-search");
+        if (shown) {
+            link.html("Cerca avançada <");
+            $("#simple-search").hide();
+            $("#tree").hide();
+            hideBox("map");
+        } else {
+            link.html("Cerca avançada >");
+            $("#simple-search").show();
+            $("#tree").show();
+            showBox("map");
+        }
+    });
+
     function showBox(id) {
         $("#"+id).closest(".box").show();
     }

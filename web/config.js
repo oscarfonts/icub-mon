@@ -18,11 +18,15 @@ require.config({
         "jquery-migrate": "../lib/jquery-migrate-1.2.1.min",
         "jquery-maskedinput": "../lib/jquery-maskedinput-1.3.1",
         "jquery-xdomainrequest": "../lib/jquery-xdomainrequest-1.0.1.min",
-        "tinycolor": "../lib/tinycolor-0.9.17.min"
+        "tinycolor": "../lib/tinycolor-0.9.17.min",
+        "bootstrap-select": "../lib/bootstrap-select.min"
     },
     shim: {
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "bootstrap-select": {
+            deps: ["bootstrap"]
         },
         "bing": {
             deps: ["leaflet"]

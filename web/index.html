@@ -15,6 +15,7 @@
 		<script type='text/javascript' src='http://www.bcn.cat/assets/core/2.1.0/javascripts/core.js'></script>
 
 		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/bootstrap-select.min.css"/>
 		<link rel="stylesheet" href="css/font-awesome.min.css"/>
 		<!--link rel="stylesheet" href="css/theme/style.css"/-->
 		<!--link rel="stylesheet" href="css/theme/retina.css"/-->
@@ -158,10 +159,9 @@
 
 				<div class="container">
 					<div class="row">
-
 						<!-- start: Main Menu -->
 						<div id="sidebar-left" class="col-xs-4">
-							<form id="search">
+							<form id="simple-search">
 								<div class="input-group">
 									<input id="search-text" type="search" class="form-control" placeholder="Cerca...">
 									<div class="input-group-btn">
@@ -169,6 +169,7 @@
 									</div>
 								</div>
 							</form>
+							<div class="pull-right"><a href="#" class="show-advanced-search">Cerca avançada ></a></div>
 							<div id="tree"></div>
 						</div>
 
@@ -176,11 +177,20 @@
 
 						<!-- start: Content -->
 						<div id="content" class="col-lg-8 col-sm-11">
-
+							<div class="row margin"> </div>
+							
+							<div class="row">
+								<!-- advanced search form -->
+								<div class="col-lg-12">
+									<div id="advanced-search-container" class="box">
+									</div>
+								</div>
+							</div>
+	
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="box">
-										<div class="box-content" id="map"></div>
+										<div class="box-content" id="map" aria-hidden="true"></div>
 									</div>
 								</div>
 							</div>

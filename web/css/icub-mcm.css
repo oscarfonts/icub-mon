@@ -20,8 +20,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	display: none;
 }
 
-#sidebar-left {
-	padding-top: 52px;
+#sidebar-left, .row.margin {
+	padding-top: 24px;
 }
 
 #tree {
@@ -72,14 +72,18 @@ button {
 	float: left;
 }
 
-#map {
-    margin-top: 52px;
-}
-
-#description, #gallery, #detail {
-    margin-top: 25px;
+#description, #gallery, #detail, #advanced-search-container {
+	margin-bottom: 24px;
 	padding: 20px;
 	background: #FFFFFF;
+}
+
+#map {
+    margin-bottom: 24px;
+}
+
+#advanced-search-container {
+	display: none;		
 }
 
 .container, .navbar-collapse {
@@ -121,13 +125,6 @@ h2 {
     width: 25%;
     min-height: 600px;
   }
-  .container #content {
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
-  }
-  .container > .row {
-    overflow: hidden;
-  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   a#main-menu-toggle {
@@ -142,13 +139,6 @@ h2 {
   .container #sidebar-left {
     width: 25%;
     min-height: 600px;
-  }
-  .container #content {
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
-  }
-  .container > .row {
-    overflow: hidden;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -168,14 +158,6 @@ h2 {
   .nav {
     padding-left: 10px;
   }
-  .container #content {
-    padding-bottom: 99999px;   
-    margin-bottom: -99999px;
-  }
-  .container > .row {
-    overflow: hidden;
-  }
-
 }
 @media only screen and (max-width: 767px) {
   .navbar {
