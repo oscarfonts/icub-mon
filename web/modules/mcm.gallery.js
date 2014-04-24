@@ -4,40 +4,10 @@
 define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(bus, template, fields, api, $) {
     
     var templates = {
-        criteria: "cel.gallery-criteria",
         objects: "cel.gallery-objects"
     };
-    
-    $("#dateFrom").mask("9999");
-    $("#dateTo").mask("9999");
-    $("#search-enabled").change(function() {
-        $("#search").prop("disabled", !this.checked);
-        $("#refine-action").show();
-    });
-    $("#daterange-enabled").change(function() {
-        $("#dateFrom").prop("disabled", !this.checked);
-        $("#dateTo").prop("disabled", !this.checked);
-        $("#refine-action").show();
-    });
-    $("#search").keyup(function(){
-        $("#refine-action").show();
-    });
-    $("#dateFrom").keyup(function(){
-        $("#refine-action").show();
-    });
-    $("#dateTo").keyup(function(){
-        $("#refine-action").show();
-    });
-    $("#refine-action").click(function(e) {
-        e.preventDefault();
-        var criteria = $("#gallery-criteria-data").data("criteria");
-        if (criteria) {
-            show(criteria.museum, criteria.collection, criteria.field);
-            $("#refine-action").hide();
-        }
-    });
    
-    function show(museum, collection, field) {
+    function show(museum, collection, field, filters) {
         if(field) {
             field.title = fields.getFieldName(field.name);
         }
@@ -45,22 +15,23 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             museum: museum,
             collection: collection,
             field: field,
+            filters: filters,
             page: 1
         };
-        
-        show_criteria(criteria);
-        get_objects(criteria);
-    }
 
-    function show_criteria(criteria) {
-        template.render(templates.criteria, criteria, "gallery-criteria");
+        get_objects(criteria);
     }
     
     function get_objects(criteria) {
         
         function show_objects(list) {
             // The data structure to be sent to the gallery-objects template
+            var count = 0;
             var data = {};
+            
+            data["row"] = function() {
+                return !(++count % 4);
+            };
 
             data.criteria = criteria;
             data.criteria_json = JSON.stringify(criteria);
@@ -92,9 +63,9 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
                 plain.objectName = object.objectName.join("; ");
                 plain.provenance = all("value", object.provenance).join("; ");
                 plain.recordNumber = object.recordNumber.join("; ");
-                plain.img = object.id.substr(1);
+                plain.img = object.relatedMedia || false;
                 plain.museum = criteria.museum;
-                plain.collection = criteria.collection;
+                plain.collection = {id: object._links.self.href.split("/").reverse()[2]}; // TODO, CELAPI should provide an easier way to get an object's collection
                 plain.json = JSON.stringify(plain);
                 data.objects.push(plain);
             }
@@ -103,24 +74,19 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         }
         
         var filters = {
+            sort: "date+ASC",
             pageNumber: criteria.page,
             pageSize: 12
         };
         
-        if ($("#search:enabled").length && $("#search").val()) {
-            filters.search = $("#search").val();
-        }
-        
-        if ($("#dateFrom:enabled").length && $("#dateFrom").val().length) {
-            filters.dateFrom = $("#dateFrom").val();
-        }
-        
-        if ($("#dateTo:enabled").length && $("#dateTo").val().length) {
-            filters.dateTo = $("#dateTo").val();
-        }
-
         if (criteria.field) {
             filters[criteria.field.name] = criteria.field.value;
+        }
+
+        for (var k in criteria.filters) {
+            if (criteria.filters[k]) {
+                filters[k] = criteria.filters[k];
+            }
         }
         
         document.getElementById("gallery-objects").innerHTML = '<div class="alert alert-info">Cercant peces a les col·leccions en línia...</div>';
@@ -164,38 +130,14 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             });
         }
         
-        // Items
-        var panels = $("#gallery-objects .thumbnail");
-        
-        var maxHeight = Math.max.apply(
-            Math, panels.map(function() {
-                return $(this).height();
-            }).get());
-        
-        panels.height(maxHeight);
-        
-        panels.hover(function(e) {
-            $(this).removeClass("gallery-item-hover");
-        }, function(e) {
-            $(this).removeClass("gallery-item-hover");
-        });
-       
-        panels.click(function(e) {
+        // Object selection
+        $(".gallery .item").click(function(e) {
             var object = $(this).data("object");
             bus.publish("cel.gallery.selected", object);
         });
     }
     
     return {
-        show: show,
-        templates: function(criteria, objects) {
-            if (criteria) {
-                templates.criteria = criteria;
-            }
-            if (objects) {
-                templates.objects = objects;
-            }
-            return templates;
-        }
+        show: show
     };
 });
