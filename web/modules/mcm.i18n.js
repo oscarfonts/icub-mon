@@ -4,6 +4,10 @@
 define(['jquery', 'jquery-i18n'], function($) {
 
 	return {
+		
+		init : function() {
+			console.log(window.location);
+		},
 
 		setLang : function(lang) {
 			$.i18n.properties({
@@ -18,7 +22,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 			});
 		},
 		
-		trans : function() {
+		translate : function() {
 			
 			var key = (arguments.length > 0) ? arguments[0] : null;
 			
