@@ -26,7 +26,12 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         
         function show_objects(list) {
             // The data structure to be sent to the gallery-objects template
+            var count = 0;
             var data = {};
+            
+            data["row"] = function() {
+                return !(++count % 4);
+            };
 
             data.criteria = criteria;
             data.criteria_json = JSON.stringify(criteria);
@@ -58,7 +63,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
                 plain.objectName = object.objectName.join("; ");
                 plain.provenance = all("value", object.provenance).join("; ");
                 plain.recordNumber = object.recordNumber.join("; ");
-                plain.img = object.id.substr(1);
+                plain.img = object.relatedMedia || false;
                 plain.museum = criteria.museum;
                 plain.collection = {id: object._links.self.href.split("/").reverse()[2]}; // TODO, CELAPI should provide an easier way to get an object's collection
                 plain.json = JSON.stringify(plain);
@@ -125,23 +130,8 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             });
         }
         
-        // Items
-        var panels = $("#gallery-objects .thumbnail");
-        
-        var maxHeight = Math.max.apply(
-            Math, panels.map(function() {
-                return $(this).height();
-            }).get());
-        
-        panels.height(maxHeight);
-        
-        panels.hover(function(e) {
-            $(this).removeClass("gallery-item-hover");
-        }, function(e) {
-            $(this).removeClass("gallery-item-hover");
-        });
-       
-        panels.click(function(e) {
+        // Object selection
+        $(".gallery .item").click(function(e) {
             var object = $(this).data("object");
             bus.publish("cel.gallery.selected", object);
         });

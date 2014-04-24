@@ -11,29 +11,34 @@
 	</div>
 </div>
 {{/paging}}
-<div class="row">
+<div class="row gallery">
 	{{#objects}}
-	<div class="col-xs-4">
-		<div class="thumbnail" data-object='{{json}}'>
-			<img src="http://placehold.it/300x200">
-			<!--img src="../img/peces/{{img}}.JPG" alt="{{objectName}}"-->
-			<div class="caption">
-		        <h3>{{objectName}}</h3>
-	        	{{#author}}
-		        	<p><strong>Autor(s): </strong>{{.}}</p>
-	        	{{/author}}
-	        	{{#culture}}
-		        	<p><strong>Cultura: </strong>{{.}}</p>
-        		{{/culture}}
-        		{{#provenance}}
-		        	<p><strong>Procedència: </strong>{{.}}</p>
-        		{{/provenance}}
-	        	{{#creationDate}}
-		        	<p><strong>Datació: </strong>{{.}}</p>
-	        	{{/creationDate}}
-		    </div>
+	<div class="col-xs-3">
+		<div class="item" data-object='{{json}}'>
+			{{#img}}
+			<img src="{{.}}" alt="objectName">
+			{{/img}}
+	        {{#objectName}}
+	        <h4>{{.}}</h4>
+	        {{/objectName}}
+        	{{#author}}
+	        	<div><strong>{{.}}</strong></div>
+        	{{/author}}
+        	{{#creationDate}}
+	        	<div>{{.}}</div>
+        	{{/creationDate}}
+        	{{#culture}}
+	        	<div>{{.}}</div>
+    		{{/culture}}
+    		{{#provenance}}
+	        	<div>{{.}}</div>
+    		{{/provenance}}
 		</div>
 	</div>
+	{{#row}}
+	</div>
+	<div class="row gallery">	
+	{{/row}}
 	{{/objects}}
 	{{^objects}}
 	<div class="col-lg-12">
