@@ -14,6 +14,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 
 		init : function() {
 			var language = replaceAll(window.location.pathname, '/', '');
+			language = (language == '') ? 'ca' : language;
 			this.setLang(language);
 		},
 
