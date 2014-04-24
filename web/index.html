@@ -24,7 +24,6 @@
 		<link rel="stylesheet" href="css/leaflet-minimap.css"/>
 		<link rel="stylesheet" href="css/MarkerCluster.css"/>
 		<link rel="stylesheet" href="css/MarkerCluster.Default.css"/>
-		<link rel="stylesheet" href="css/icub-mcm.css"/>
 		<link rel="stylesheet" href="css/tree.css"/>
 		<!--[if lt IE 9]>
 		<link rel="stylesheet" href="css/leaflet.ie.css"/>
@@ -35,7 +34,8 @@
 		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,300,700' />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/home.css" />
-
+		<link rel="stylesheet" href="css/icub-mcm.css"/>
+		
 		<!--script type='text/javascript'>
 		bcn.statistics({
 		keys: ['UA-42826028-10']
@@ -161,15 +161,17 @@
 					<div class="row">
 						<!-- start: Main Menu -->
 						<div id="sidebar-left" class="col-xs-4">
-							<form id="simple-search">
-								<div class="input-group">
-									<input id="search-text" type="search" class="form-control" placeholder="Cerca...">
-									<div class="input-group-btn">
-							        	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+							<div id="simple-search-container">
+								<form id="simple-search">
+									<div class="input-group">
+										<input id="search-text" type="search" class="form-control" placeholder="Cerca...">
+										<div class="input-group-btn">
+								        	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+										</div>
 									</div>
-								</div>
-							</form>
-							<div class="pull-right"><a href="#" class="show-advanced-search">Cerca avançada ></a></div>
+								</form>
+								<div class="pull-right"><a href="#" class="show-advanced-search">Cerca avançada ></a></div>
+							</div>
 							<div id="tree"></div>
 						</div>
 

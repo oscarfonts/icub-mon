@@ -68,7 +68,6 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
     bus.subscribe("cel.gallery.selected", function(object) {
         showBox("detail");
         detail.show(object.museum.acronym, object.collection.id, object.id);
-        scrollToBox("detail");
     });
     
     // Simple & advanced search forms
@@ -112,8 +111,29 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
         }
     });
 
+    bus.subscribe("cel.detail.toggle", function(shown) {
+        if (shown) {
+            hideBox("gallery");
+            hideBox("map");
+            $("#tree").hide();
+            $("#simple-search-container").hide();
+            showBox("detail");
+            scrollToBox("detail");
+        } else {
+            hideBox("detail");
+            $("#simple-search-container").show();
+            $("#tree").show();
+            showBox("map");
+            showBox("gallery");
+            scrollToBox("gallery");
+        }
+    });
+
     function showBox(id) {
         $("#"+id).closest(".box").show();
+        if (id == "map") {
+            map.redraw();
+        }
     }
     
     function hideBox(id) {
@@ -123,7 +143,7 @@ define(["messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.description", "m
     function scrollToBox(id) {
         $('html, body').animate({
             scrollTop: $("#"+id).closest(".box").offset().top - 25
-        }, 500);
+        }, 0);
     }
 
 });

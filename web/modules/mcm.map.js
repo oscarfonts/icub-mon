@@ -203,6 +203,11 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
                 this.map.removeLayer(this.layer);
             }
         };
+        
+        this.redraw = function() {
+            this.map.invalidateSize(false);
+        };
+        
     }
 
     return map;

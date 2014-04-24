@@ -57,6 +57,38 @@ a:focus {
     margin-left: auto;
 }
 
+#detail button.close {
+	padding: 12px;
+}
+
+.content-peca {
+	width: 100%;
+}
+
+.content-peca .content-pecagran {
+	width: 50%;
+	margin: 0;
+}
+
+.content-peca .content-infopeca {
+    float: left;
+    padding-left: 24px;
+    width: 50%;
+}
+
+.content-peca .titoldescpeca, .content-peca .descpeca {
+	width: inherit;
+}
+
+.content-peca .descpeca {
+	padding: 24px;
+}
+
+.img-detail {
+	max-width: 100%;
+	max-height: 100%;
+}
+
 .container {
   width: 100% !important;
 }
@@ -109,17 +141,27 @@ button {
 	box-shadow: none;
 }
 
-.two-column {
+.two-column-menu {
 	width: 50%;
 	float: left;
 }
 
-.three-column {
+.three-column-menu {
 	width: 33.3%;
 	float: left;
 }
 
-#description, #gallery, #detail, #advanced-search-container {
+.two-column-paragraph {
+	column-count: 2;
+	column-gap: 48px;
+	-moz-column-count: 2;
+	-moz-column-gap: 48px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 48px;
+	text-align: justify;
+}
+
+#description, #gallery, #advanced-search-container {
 	margin-bottom: 24px;
 	padding: 20px;
 	background: #FFFFFF;
