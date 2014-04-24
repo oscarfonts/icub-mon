@@ -19,11 +19,15 @@ require.config({
         "jquery-maskedinput": "../lib/jquery-maskedinput-1.3.1",
         "jquery-xdomainrequest": "../lib/jquery-xdomainrequest-1.0.1.min",
         "jquery-i18n": "../lib/jquery.i18n.properties-1.0.9.min",
-        "tinycolor": "../lib/tinycolor-0.9.17.min"
+        "tinycolor": "../lib/tinycolor-0.9.17.min",
+        "bootstrap-select": "../lib/bootstrap-select.min"
     },
     shim: {
         "bootstrap": {
             deps: ["jquery"]
+        },
+        "bootstrap-select": {
+            deps: ["bootstrap"]
         },
         "bing": {
             deps: ["leaflet"]
