@@ -23,8 +23,8 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
         var colors = {
             africa: color({r: 235, g: 98, b: 9}),
             america: color({r: 102, g: 61, b: 0}),
-            asia: color({r: 230, g: 0, b: 126}),
-            oceania: color({r: 183, g: 173, b: 159})
+            asia: color({r: 161, g: 29, b: 33}),
+            oceania: color({r: 0, g: 155, b: 162})
         };
 
         for (var c in colors) {
