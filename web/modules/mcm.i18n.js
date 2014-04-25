@@ -18,6 +18,11 @@ define(['jquery', 'jquery-i18n'], function($) {
 			return $.getUrlVars()[name];
 		}
 	});
+	
+	function setLanguageInControl(language) {
+		$('.language-selector .active').removeClass('active');
+		$('a:lang(' + language + ')').parent().addClass('active');		
+	};
 
 	return {
 
@@ -35,6 +40,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 				cache : false, //set true in production
 				callback : function() {
 					console.log('setting language: ' + this.language);
+					setLanguageInControl(this.language);
 				}
 			});
 		},
