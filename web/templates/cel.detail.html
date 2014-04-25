@@ -1,21 +1,60 @@
 <div class="content-peca">
-	<button type="button" class="close">&times;</button>
-	{{#image}}
 	<div class="content-pecagran">
-		<img class="img-detail" src="{{.}}">
-    </div>
-    {{/image}}
+		{{#has_images}}
+		<div id="carousel-detail" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				{{#main_image}}
+					<li data-target="#carousel-detail" data-slide-to="{{counter}}" class="active"></li>
+				{{/main_image}}
+				{{#other_images}}
+					<li data-target="#carousel-detail" data-slide-to="{{counter}}"></li>
+				{{/other_images}}
+			</ol>
+			{{reset_counter}}
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				{{#main_image}}
+				<div class="item active">
+					<img class="img-detail" src="{{.}}" alt="Imatge principal"> <!-- {{counter}} -->
+				</div>
+				{{/main_image}}
+				{{#other_images}}
+				<div class="item">
+					<img class="img-detail" src="{{.}}" alt="Imatge complementària {{counter}}">
+				</div>
+				{{/other_images}}
+			</div>
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-detail" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+			<a class="right carousel-control" href="#carousel-detail" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+		</div>
+		{{/has_images}}
+	</div>
 	<div class="content-infopeca">
-		<div class="titolpeca {{collection.id}}">{{title}}</div>
+		<button type="button" class="close pull-right">
+			&times;
+		</button>
+		<div class="titolpeca {{collection.id}}">
+			{{title}}
+		</div>
 		{{#short_fields}}
-			<div class="campinfopeca">{{key}}:</div>
-			<div class="valueinfo">{{value}}</div>
-    	{{/short_fields}}			
+		<div class="campinfopeca">
+			{{key}}:
+		</div>
+		<div class="valueinfo">
+			{{value}}
+		</div>
+		{{/short_fields}}
 	</div>
 	{{#long_fields}}
-	<div class="titoldescpeca">{{key}}</div>
+	<div class="titoldescpeca">
+		{{key}}
+	</div>
 	<div class="descpeca">
-		<div class="two-column-paragraph">{{value}}</div>
+		<div class="two-column-paragraph">
+			{{value}}
+		</div>
 	</div>
 	{{/long_fields}}
 </div>

@@ -89,7 +89,16 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
                 return e.type.value == "citation";
             }));
 
-        var image = first("URL", detail.relatedMedia); // TODO: Get all images
+        var main_image;
+        var other_images = [];
+        for (var i in detail.relatedMedia) {
+            var media = detail.relatedMedia[i];
+            if (media.preferred && media.preferred.value == "preferred") {
+                main_image = media.URL;
+            } else {
+                other_images.push(media.URL);
+            }
+        }
 
         var short_fields = [{
             key: "Núm. Registre",
@@ -155,13 +164,19 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
             value: null
         }*/];
         
+        var count = 0;
+        
         var plain = {
             id: id,
             title: name,
             collection: detail.collection,
-            image: image,
+            main_image: main_image,
+            other_images: other_images,
+            has_images: function() {return(main_image);},
             short_fields: strip_voids(short_fields),
-            long_fields: strip_voids(long_fields)
+            long_fields: strip_voids(long_fields),
+            counter: function() {return count++;},
+            reset_counter: function() {count=0;}
         };
         
         return plain;
@@ -177,6 +192,11 @@ define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
         $("#"+div_id+" button.close").click(function() {
             bus.publish("cel.detail.toggle", false);
         });
+        /* Uncomment to disable auto-sliding or to set a custom slide time 
+        $('#carousel-detail').carousel({
+            interval: false // milliseconds
+        });
+        */
     }
     
     return {
