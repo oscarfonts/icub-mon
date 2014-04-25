@@ -3,18 +3,31 @@
  */
 define(['jquery', 'jquery-i18n'], function($) {
 
-	function replaceAll(text, search, subs) {
-		while (text.toString().indexOf(search) != -1) {
-			text = text.toString().replace(search, subs);	
+	$.extend({
+		getUrlVars : function() {
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for (var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+		},
+		getUrlVar : function(name) {
+			return $.getUrlVars()[name];
 		}
-		return text;
+	});
+	
+	function setLanguageInControl(language) {
+		$('.language-selector .active').removeClass('active');
+		$('a:lang(' + language + ')').parent().addClass('active');		
 	};
 
 	return {
 
 		init : function() {
-			var language = replaceAll(window.location.pathname, '/', '');
-			language = (language == '') ? 'ca' : language;
+			var language = $.getUrlVar('lang');
 			this.setLang(language);
 		},
 
@@ -27,6 +40,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 				cache : false, //set true in production
 				callback : function() {
 					console.log('setting language: ' + this.language);
+					setLanguageInControl(this.language);
 				}
 			});
 		},

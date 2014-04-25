@@ -1751,3 +1751,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', end
 	text-decoration:none;
 	
 }
+#brand.v2013 .brand-wrapper .navigation ul.language-selector li.active a {
+	font-weight: bold;
+}
