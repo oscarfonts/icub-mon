@@ -1,10 +1,61 @@
-<h2 class="{{collection.id}}">{{title}}</h2>
-<dl class='descripcio_peca'>
-	<div class="pull-right">
-    	<img class="media-object img-thumbnail" src="{{img_src}}" alt="[imatge {{id}}]">
-    </div>
-    {{#properties}}
-		<dt>{{key}}: </dt>
-		<dd>{{value}}</dd>
-    {{/properties}}
-</dl>
+<div class="content-peca">
+	<div class="content-pecagran">
+		{{#has_images}}
+		<div id="carousel-detail" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				{{#main_image}}
+					<li data-target="#carousel-detail" data-slide-to="{{counter}}" class="active"></li>
+				{{/main_image}}
+				{{#other_images}}
+					<li data-target="#carousel-detail" data-slide-to="{{counter}}"></li>
+				{{/other_images}}
+			</ol>
+			{{reset_counter}}
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				{{#main_image}}
+				<div class="item active">
+					<img class="img-detail" src="{{.}}" alt="Imatge principal"> <!-- {{counter}} -->
+				</div>
+				{{/main_image}}
+				{{#other_images}}
+				<div class="item">
+					<img class="img-detail" src="{{.}}" alt="Imatge complementària {{counter}}">
+				</div>
+				{{/other_images}}
+			</div>
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-detail" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+			<a class="right carousel-control" href="#carousel-detail" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+		</div>
+		{{/has_images}}
+	</div>
+	<div class="content-infopeca">
+		<button type="button" class="close pull-right">
+			&times;
+		</button>
+		<div class="titolpeca {{collection.id}}">
+			{{title}}
+		</div>
+		{{#short_fields}}
+		<div class="campinfopeca">
+			{{key}}:
+		</div>
+		<div class="valueinfo">
+			{{value}}
+		</div>
+		{{/short_fields}}
+	</div>
+	{{#long_fields}}
+	<div class="titoldescpeca">
+		{{key}}
+	</div>
+	<div class="descpeca">
+		<div class="two-column-paragraph">
+			{{value}}
+		</div>
+	</div>
+	{{/long_fields}}
+</div>
+<div style="clear:both"></div>
