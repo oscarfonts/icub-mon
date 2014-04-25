@@ -2,12 +2,8 @@
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
 define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(bus, template, fields, api, $) {
-    
-    var templates = {
-        objects: "cel.gallery-objects"
-    };
    
-    function show(museum, collection, field, filters) {
+    function show(museum, collection, field, filters, title) {
         if(field) {
             field.title = fields.getFieldName(field.name);
         }
@@ -18,11 +14,16 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             filters: filters,
             page: 1
         };
+        
+        // If not defined, set continent & culture as title
+        if (!title && criteria.collection.name && criteria.field.value) {
+            title = criteria.collection.name + " - " + criteria.field.value;
+        }
 
-        get_objects(criteria);
+        get_objects(criteria, title);
     }
     
-    function get_objects(criteria) {
+    function get_objects(criteria, title) {
         
         function show_objects(list) {
             // The data structure to be sent to the gallery-objects template
@@ -33,6 +34,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
                 return !(++count % 4);
             };
 
+            data.title = title;
             data.criteria = criteria;
             data.criteria_json = JSON.stringify(criteria);
 
@@ -70,7 +72,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
                 data.objects.push(plain);
             }
                        
-            return template.render(templates.objects, data, "gallery-objects").then(add_interactivity);
+            return template.render("mcm.gallery", data, "gallery-objects").then(add_interactivity);
         }
         
         var filters = {
@@ -116,19 +118,27 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         // Paging
         var criteria = $("#gallery-criteria-data").data("criteria");
         if (criteria) {
+            var title = $("#gallery-objects h2").html();
             var previous = $("#gallery-objects .previous:not(.disabled)");
             var next = $("#gallery-objects .next:not(.disabled)");
             
             previous.click(function(e) {
                 criteria.page = criteria.page - 1;
-                get_objects(criteria);
+                get_objects(criteria, title);
             });
             
             next.click(function(e) {
                 criteria.page = criteria.page + 1;
-                get_objects(criteria);
+                get_objects(criteria, title);
             });
         }
+
+        // Scroll to gallery
+        var y = $("#gallery-objects").offset().top - 25;
+        console.log(y);
+        $('html, body').animate({
+            scrollTop: y
+        }, 1);
         
         // Object selection
         $(".gallery .item").click(function(e) {
