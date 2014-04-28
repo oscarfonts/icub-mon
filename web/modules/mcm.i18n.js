@@ -41,8 +41,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 				encoding : 'UTF-8',
 				language : lang,
 				cache : false, //set true in production,
-				callback : function() {
-					console.log('mierda');					
+				callback : function() {				
 				}
 			});
 		},
@@ -53,8 +52,7 @@ define(['jquery', 'jquery-i18n'], function($) {
 				throw 'Not key to translate';
 			if (arguments[1] != undefined) {
 				return $.i18n.prop(key, arguments[1]);
-			}	
-			console.log(key, $.i18n.map);
+			}
 			return $.i18n.prop(key);
 		}
 	};

@@ -28,14 +28,17 @@
 <ul class="nav nav-pills nav-stacked">
     {{#.}} {{! Collections }}
 	<li class="collection" id="{{id}}" data-tree='{{json}}'>
-		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="img/collections/{{id}}-black-icon.png" width="24"/>&nbsp;&nbsp; {{name}}</a>
-		<ul class="dropdown-menu right-menu">
-			{{#fields}} {{! Field Values }}
-			<li class="three-column-menu {{name}}" id="{{slug}}" data-tree='{{json}}'>
-				<a><span class="badge pull-right">{{count}}</span>{{value}}</a>
-			</li>
-			{{/fields}}
-		</ul>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default toggle continent"><img src="img/collections/{{id}}-black-icon.png" width="24" data-toggle="button"/>&nbsp;&nbsp; {{name}}</button>
+			<button type="button" class="btn btn-default dropdown dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+			<ul class="dropdown-menu right-menu" role="menu">
+				{{#fields}} {{! Field Values }}
+				<li class="three-column-menu {{name}}" id="{{slug}}" data-tree='{{json}}'>
+					<a><span class="badge pull-right">{{count}}</span>{{value}}</a>
+				</li>
+				{{/fields}}
+			</ul>
+		</div>
 	</li>
 	{{/.}}
 </ul>

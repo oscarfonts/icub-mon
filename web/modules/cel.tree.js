@@ -32,19 +32,20 @@ define(["messagebus", "cel.field", "cel.tree.data", "template", "mcm.i18n"], fun
     }
     
     function add_interactivity() {
-        $("#tree a").click(function() {
-            var li = $(this).parent();
+        $("#tree a, #tree button.continent").click(function() {
+            var li = $(this).closest("li");
             var type = li.attr("class");
             var value = li.data("tree");
             
             if(type.indexOf(" active") == -1) {               
                 $("#tree .active").removeClass("active");
                 if (type == "collection") {
-                    $("#tree .in").removeClass("in").addClass("collapse");
-                } else {
-                    $("#tree > li > ul > li .in").removeClass("in").addClass("collapse");
+                    li.find("button").addClass("active");
+                } else {                    
+                    li.addClass("active");
+                    li.closest(".btn-group").find("button").addClass("active");
                 }
-                li.addClass("active");
+                
 
                 bus.publish("cel.tree.selected", {
                     type: type,
@@ -55,7 +56,7 @@ define(["messagebus", "cel.field", "cel.tree.data", "template", "mcm.i18n"], fun
     };
     
     function select_item(item) {
-        var data = $("#"+item.id+" > a").click();
+        var data = $("#"+item.id+" button.continent, #"+item.id+" > a").click();
     }
     
     return {

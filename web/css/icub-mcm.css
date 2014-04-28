@@ -126,33 +126,83 @@ a:focus {
 	padding-top: 24px;
 }
 
+button {
+	font-family: Arial,Helvetica,sans-serif;
+}
+
 #tree {
 	padding-top: 24px;
     font-size: 20px;
 }
 
-#tree a {
-	color: #707070;	
+#tree button {
+	font-family: 'AvenirNext','Lato',Arial,Helvetica,sans-serif;
+	color: #707070;
+	border-radius: 0;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
 }
 
-button {
-	font-family: Arial,Helvetica,sans-serif;
+#tree .btn-group:hover {
+	background-color: #DDDDDD;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+#tree button.active,
+#tree .open button {
+	background-color: #FFFFFF;
+}
+
+#tree button.continent {
+	width: 179px;
+	text-align: left;
+	font-size: 18px;
+	padding: 10px;
+}
+
+#tree button.dropdown {
+	font-size: 18px;
+	padding: 10px;
+}
+
+.nav-pills > li.active > button, .nav-pills > li.active > button:hover, .nav-pills > li.active > button:focus {
     background-color: #FFFFFF;
     color: #707070;
 }
 
-.nav > li > a:hover,
-.nav > li > a:focus {
+.nav > li > button:hover,
+.nav > li > button:focus {
   text-decoration: none;
   background-color: #DDDDDD;
   color: #707070;
 }
 
-.nav-pills > li > a {
+.nav-pills > li > button {
     border-radius: 0;
+}
+
+/* right-arrow */
+#tree .btn-group:not(.open) > button > .caret {
+    border-top: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid rgba(0, 0, 0, 0);
+    border-left: 4px solid;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+}
+
+/* left-arrow */
+#tree .btn-group.open > button > .caret {
+    border-top: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
 }
 
 .right-menu {
@@ -218,11 +268,11 @@ h2 {
 }
 
 .asia {
-	color: rgb(230, 0, 126);
+	color: rgb(161, 29, 33);
 }
 
 .oceania {
-	color: rgb(183, 173, 159);
+	color: rgb(0, 155, 162);
 }
 
 @media (min-width: 1200px) {
