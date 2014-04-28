@@ -1,12 +1,12 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["cel.api", "template", "messagebus"], function(celapi, template, bus) {
+define(["mcm.i18n", "cel.api", "template", "messagebus"], function( i18n, celapi, template, bus) {
 
     var div_id = "detail";
 
     function show(museum_id, collection_id, object_id) {
-        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant detalls de la peça ' + object_id + '...</div>';
+        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">' + i18n.translate('download_details_piece', ' ') + object_id + '...</div>';
         return celapi.object.details(museum_id, collection_id, object_id).then(parse_data).then(apply_template);
     }
 

@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(bus, template, fields, api, $) {
+define(["mcm.i18n", "messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-maskedinput"], function(i18n, bus, template, fields, api, $) {
     
     var templates = {
         objects: "cel.gallery-objects"
@@ -89,7 +89,7 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             }
         }
         
-        document.getElementById("gallery-objects").innerHTML = '<div class="alert alert-info">Cercant peces a les col·leccions en línia...</div>';
+        document.getElementById("gallery-objects").innerHTML = '<div class="alert alert-info">' + i18n.translate('searching_pieces_catalog_online') + '</div>';
         
         return api.object.list(criteria.museum.acronym, criteria.collection.id, filters).then(show_objects);
     }

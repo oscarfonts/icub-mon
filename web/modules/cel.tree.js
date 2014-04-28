@@ -1,7 +1,7 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, field, data, template) {
+define(["messagebus", "cel.field", "cel.tree.data", "template", "mcm.i18n"], function(bus, field, data, template, i18n) {
 
     var div_id = "tree";
     var templ = "cel.tree";
@@ -19,7 +19,7 @@ define(["messagebus", "cel.field", "cel.tree.data", "template"], function(bus, f
     
     function show(museum) {
         selected.museum = museum;
-        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">Descarregant continguts del ' + selected.museum.name + '...</div>';
+        document.getElementById(div_id).innerHTML = '<div class="alert alert-info">' + i18n.translate('download_contents', ' ') + selected.museum.name + '...</div>';
         return data.getContents(selected.museum, selected.field).then(apply_template);
     }
     

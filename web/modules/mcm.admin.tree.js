@@ -1,14 +1,14 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["cel.api", "template", "messagebus", "slug"], function(celapi, template, bus, slug) {
+define(["mcm.i18n", "cel.api", "template", "messagebus", "slug", ], function(celapi, template, bus, slug, i18n) {
 
     var div_id = "tree",
         museum_id = "MCM",
         data = [];
     
     function show() {
-        $("#"+div_id).html('<div class="alert alert-info">Descarregant continguts del catàleg de col.leccions en línia...</div>');
+        $("#"+div_id).html('<div class="alert alert-info">' + i18n.translate('download_contents_catalog_online', ' ') + '</div>');
         if (!data.length) {
             celapi.museum.get(museum_id).then(get_contents).then(apply_template);
         } else {

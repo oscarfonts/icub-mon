@@ -2,6 +2,8 @@
  * @author Micho García <micho.garcia@geomati.co>
  */
 define(['jquery', 'jquery-i18n'], function($) {
+	
+	"use strict";
 
 	$.extend({
 		getUrlVars : function() {
@@ -21,14 +23,14 @@ define(['jquery', 'jquery-i18n'], function($) {
 	
 	function setLanguageInControl(language) {
 		$('.language-selector .active').removeClass('active');
-		$('a:lang(' + language + ')').parent().addClass('active');		
+		$('a:lang(' + language + ')').parent().addClass('active');	
 	};
 
 	return {
 
 		init : function() {
 			var language = $.getUrlVar('lang');
-			this.setLang(language);
+			this.setLang((language != undefined) ? language : 'ca');
 		},
 
 		setLang : function(lang) {
@@ -36,20 +38,23 @@ define(['jquery', 'jquery-i18n'], function($) {
 				name : 'messages',
 				path : 'bundle/',
 				mode : 'both',
+				encoding : 'UTF-8',
 				language : lang,
-				cache : false, //set true in production
+				cache : false, //set true in production,
 				callback : function() {
-					console.log('setting language: ' + this.language);
-					setLanguageInControl(this.language);
+					console.log('mierda');					
 				}
 			});
 		},
 
 		translate : function() {
-			var key = (arguments.length > 0) ? arguments[0] : null;
-			if (arguments.length = 2)
+			var key = (arguments.length > 0) ? arguments[0] : undefined;
+			if (key == undefined)
+				throw 'Not key to translate';
+			if (arguments[1] != undefined) {
 				return $.i18n.prop(key, arguments[1]);
-
+			}	
+			console.log(key, $.i18n.map);
 			return $.i18n.prop(key);
 		}
 	};
