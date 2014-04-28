@@ -113,6 +113,13 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
         return ret;
     }
     
+    function scroll() {
+        // Scroll to gallery
+        $('html, body').animate({
+            scrollTop: $("#gallery-objects").offset().top - 25
+        }, 1);
+    }
+    
     function add_interactivity() {
         
         // Paging
@@ -124,21 +131,14 @@ define(["messagebus", "template", "cel.field", "cel.api", "jquery", "jquery-mask
             
             previous.click(function(e) {
                 criteria.page = criteria.page - 1;
-                get_objects(criteria, title);
+                get_objects(criteria, title).then(scroll);
             });
             
             next.click(function(e) {
                 criteria.page = criteria.page + 1;
-                get_objects(criteria, title);
+                get_objects(criteria, title).then(scroll);
             });
         }
-
-        // Scroll to gallery
-        var y = $("#gallery-objects").offset().top - 25;
-        console.log(y);
-        $('html, body').animate({
-            scrollTop: y
-        }, 1);
         
         // Object selection
         $(".gallery .item").click(function(e) {
