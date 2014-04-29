@@ -151,7 +151,8 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
                     if (type == "continents") {
                         style = styles[feature.id]; 
                     } else if (type == "culture") {
-                        style = styles[feature.properties.continent];
+                        style = JSON.parse(JSON.stringify(styles[feature.properties.continent]));
+                        style.weight = 0; // No border for single culture
                     }
                     return style;
                 },
@@ -160,7 +161,7 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
                         var data = $("#" + feature.id).data("tree");
                         var label = data ? data.value : feature.id;
                         if (!( layer instanceof L.Marker)) {
-                            layer = L.marker(layer.getBounds().getCenter());
+                            layer = L.marker(layer.getBounds().getCenter(), {riseOnHover: true});
                             layer.feature = feature;
                         }
                         var border = color(colors[feature.properties.continent]);
@@ -187,7 +188,10 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             // Set zoom to fit bounds
             this.map.options.maxZoom = 16;
             if (type == "culture") {
-                L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
+                if (!document.querySelector("html.lt-ie10")) {
+                    // Prevent blur on < IE10, won't show polygon
+                    L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
+                }
                 this.map.addOneTimeEventListener("zoomend", function() {
                     this.options.maxZoom = Math.min(this.getZoom(), 16);
                 });

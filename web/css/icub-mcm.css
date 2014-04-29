@@ -492,7 +492,10 @@ img.tiny {
 }
 
 .blur {
-	filter: url(blur.svg#blur); /* Firefox */
-	-webkit-filter: blur(5px);  /* Webkit */
-	filter: blur(5px);          /* Standard */
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px); 
+	-ms-filter: blur(2px);
+	filter: url(blur.svg#blur);
 }

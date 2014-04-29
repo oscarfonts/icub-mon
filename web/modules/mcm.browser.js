@@ -5,6 +5,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
         function(i18n, bus, tree, search, mcmmap, description, gallery, detail, slug) {
     
     var map = new mcmmap('map');
+    var advanced = false;
     map.showContinents();
     
     i18n.init();
@@ -98,7 +99,6 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
 
     bus.subscribe("mcm.search.toggle", function(shown) {
         hideBox("gallery");
-        // TODO: Reset map status
         var link = $(".show-advanced-search");
         if (shown) {
             link.html(i18n.translate('advanced_search', '<'));
@@ -111,6 +111,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
             $("#tree").show();
             showBox("map");
         }
+        advanced = shown;
     });
 
     bus.subscribe("cel.detail.toggle", function(shown) {
@@ -124,8 +125,10 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
         } else {
             hideBox("detail");
             $("#simple-search-container").show();
-            $("#tree").show();
-            showBox("map");
+            if (!advanced) {
+                $("#tree").show();
+                showBox("map");
+            }
             showBox("gallery");
             scrollToBox("gallery");
         }
