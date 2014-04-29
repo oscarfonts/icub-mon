@@ -41,7 +41,8 @@ define(['jquery', 'jquery-i18n'], function($) {
 				encoding : 'UTF-8',
 				language : lang,
 				cache : false, //set true in production,
-				callback : function() {				
+				callback : function() {
+					setLanguageInControl(lang);
 				}
 			});
 		},
