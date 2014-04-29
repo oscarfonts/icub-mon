@@ -492,11 +492,10 @@ img.tiny {
 }
 
 .blur {
-	filter: blur(3px); /* Standard */
-	-webkit-filter: blur(3px); /* Webkit */
-	-moz-filter: blur(3px);
-	-o-filter: blur(3px); 
-	-ms-filter: blur(3px);
-	filter: url(blur.svg#blur); /* Firefox */
-	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3'); /* < IE9 */
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px); 
+	-ms-filter: blur(2px);
+	filter: url(blur.svg#blur);
 }

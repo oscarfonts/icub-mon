@@ -188,7 +188,10 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             // Set zoom to fit bounds
             this.map.options.maxZoom = 16;
             if (type == "culture") {
-                L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
+                if (!document.querySelector("html.lt-ie10")) {
+                    // Prevent blur on < IE10, won't show polygon
+                    L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
+                }
                 this.map.addOneTimeEventListener("zoomend", function() {
                     this.options.maxZoom = Math.min(this.getZoom(), 16);
                 });
