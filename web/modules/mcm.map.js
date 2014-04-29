@@ -151,7 +151,8 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
                     if (type == "continents") {
                         style = styles[feature.id]; 
                     } else if (type == "culture") {
-                        style = styles[feature.properties.continent];
+                        style = JSON.parse(JSON.stringify(styles[feature.properties.continent]));
+                        style.weight = 0; // No border for single culture
                     }
                     return style;
                 },
