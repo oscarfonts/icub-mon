@@ -160,7 +160,7 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
                         var data = $("#" + feature.id).data("tree");
                         var label = data ? data.value : feature.id;
                         if (!( layer instanceof L.Marker)) {
-                            layer = L.marker(layer.getBounds().getCenter());
+                            layer = L.marker(layer.getBounds().getCenter(), {riseOnHover: true});
                             layer.feature = feature;
                         }
                         var border = color(colors[feature.properties.continent]);
