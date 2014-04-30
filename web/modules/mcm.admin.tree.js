@@ -8,7 +8,7 @@ define(["mcm.i18n", "cel.api", "template", "messagebus", "slug", ], function(cel
         data = [];
     
     function show() {
-        $("#"+div_id).html('<div class="alert alert-info">' + i18n.translate('download_contents_catalog_online', ' ') + '</div>');
+        $("#"+div_id).html('<div class="alert alert-info">' + i18n.translate('download_contents_catalog_online') + ' </div>');
         if (!data.length) {
             celapi.museum.get(museum_id).then(get_contents).then(apply_template);
         } else {

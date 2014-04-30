@@ -4,9 +4,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ul class="pager">
-			<li class="previous {{^prev}}disabled{{/prev}}"><a>&larr; Anteriors</a></li>
-			<li>Mostrant peces {{from}} a {{to}} d'un total de {{total}}</li>
-			<li class="next {{^next}}disabled{{/next}}"><a>Següents &rarr;</a></li>
+			<li class="previous {{^prev}}disabled{{/prev}}"><a>&larr; {{#translate}}previous{{/translate}}</a></li>
+			<li>{{#translate}}showing_pieces{{/translate}} {{from}} {{#translate}}to{{/translate}} {{to}} {{#translate}}totaling{{/translate}} {{total}}</li>
+			<li class="next {{^next}}disabled{{/next}}"><a>{{#translate}}next{{/translate}} &rarr;</a></li>
 		</ul>
 	</div>
 </div>
@@ -43,7 +43,7 @@
 	{{^objects}}
 	<div class="col-lg-12">
 		<div class="well well-lg">
-			<p style="text-align:center;">No s'ha trobat cap peça amb aquests criteris de sel·lecció</p>
+			<p style="text-align:center;">{{#translate}}no_pieces_found{{/translate}}</p>
 		</div>
 	</div>
 	{{/objects}}
@@ -52,9 +52,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ul class="pager">
-			<li class="previous {{^prev}}disabled{{/prev}}"><a>&larr; Anteriors</a></li>
-			<li>Mostrant peces {{from}} a {{to}} d'un total de {{total}}</li>
-			<li class="next {{^next}}disabled{{/next}}"><a>Següents &rarr;</a></li>
+			<li class="previous {{^prev}}disabled{{/prev}}"><a>&larr; {{#translate}}previous{{/translate}}</a></li>
+			<li>{{#translate}}showing_pieces{{/translate}} {{from}} {{#translate}}to{{/translate}} {{to}} {{#translate}}totaling{{/translate}} {{total}}</li>
+			<li class="next {{^next}}disabled{{/next}}"><a>{{#translate}}next{{/translate}} &rarr;</a></li>
 		</ul>
 	</div>
 </div>

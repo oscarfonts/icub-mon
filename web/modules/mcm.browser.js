@@ -87,7 +87,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
         var collection = {id: "all"};
         var field;
         var filters = { search: text };
-        gallery.show(museum, collection, field, filters, "Resultats de la cerca");
+        gallery.show(museum, collection, field, filters, i18n.translate("search_results"));
     });
 
     bus.subscribe("mcm.search.advanced", function(filters) {
@@ -97,7 +97,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
         var field;
         var collectionId = filters.collectionId || "all";
         delete filters.collectionId;
-        gallery.show(museum, {id: collectionId}, field, filters, "Resultats de la cerca");
+        gallery.show(museum, {id: collectionId}, field, filters, i18n.translate("search_results"));
     });
 
     bus.subscribe("mcm.search.toggle", function(shown) {
