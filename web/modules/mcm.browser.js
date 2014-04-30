@@ -10,6 +10,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
     
     i18n.init().done(function(a) {
     	$('.show-advanced-search').text(i18n.translate('advanced_search', '>'));
+    	$('#search-text').attr('placeholder', i18n.translate('search'));
     });
 
     var museum = {
