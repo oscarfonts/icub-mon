@@ -8,7 +8,9 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
     var advanced = false;
     map.showContinents();
     
-    i18n.init();
+    i18n.init().done(function(a) {
+    	$('.show-advanced-search').text(i18n.translate('advanced_search', '>'));
+    });
 
     var museum = {
         acronym: "MCM",

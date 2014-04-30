@@ -20,20 +20,25 @@ define(['jquery', 'jquery-i18n'], function($) {
 			return $.getUrlVars()[name];
 		}
 	});
-	
-	function setLanguageInControl(language) {
-		$('.language-selector .active').removeClass('active');
-		$('a:lang(' + language + ')').parent().addClass('active');	
-	};
 
 	return {
+		
+		language : 'ca',
 
+		setLanguageInControl : function(language) {
+			$('.language-selector .active').removeClass('active');
+			$('a:lang(' + language + ')').parent().addClass('active');
+		},
+		
 		init : function() {
 			var language = $.getUrlVar('lang');
-			this.setLang((language != undefined) ? language : 'ca');
+			this.language = (language != undefined) ? language : this.language;
+			this.setLanguageInControl(this.language);
+			return this.setLang(this.language);
 		},
 
 		setLang : function(lang) {
+			var defer = $.Deferred();
 			$.i18n.properties({
 				name : 'messages',
 				path : 'bundle/',
@@ -42,9 +47,10 @@ define(['jquery', 'jquery-i18n'], function($) {
 				language : lang,
 				cache : false, //set true in production,
 				callback : function() {
-					setLanguageInControl(lang);
+					defer.resolve();
 				}
 			});
+			return defer.promise();
 		},
 
 		translate : function() {
