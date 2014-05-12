@@ -32,4 +32,4 @@
     modules: [{
         name: 'mcm.browser'
     }]
-});
+})
