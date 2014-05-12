@@ -74,10 +74,10 @@ require.config({
             url: "http://vps41774.ovh.net/api/1" // "http://celapi.agilogy.net/api/1"
         },
         "mcm.api": {
-            url: "http://fonts.cat/mcmapi"
+            url: "http://mcm.fonts.cat/api"
         },
         "bootstrap.login": {
-            url: "http://fonts.cat/mcmapi/login"
+            url: "http://mcm.fonts.cat/api/login"
         }
     }
 });
