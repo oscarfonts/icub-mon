@@ -8,3 +8,5 @@ api/.pydevproject
 *.pyc
 .metadata/*
 web/dist/*
+logs/*
+virtualenv/*
