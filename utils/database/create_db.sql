@@ -7,10 +7,12 @@ CREATE ROLE mcm
 CREATE DATABASE mcm
     WITH ENCODING='UTF8'
     OWNER=mcm
-    TEMPLATE=template_postgis
     CONNECTION LIMIT=-1;
 
 \connect mcm
+
+-- Enable PostGIS (2.x)
+create extension postgis;
 
 -- Schema creation
 CREATE SCHEMA data;
