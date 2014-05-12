@@ -1,12 +1,9 @@
-Install node.js and requirejs to compact/minify
-===============================================
+Run static server from command-line
+===================================
 
-1. Install node.js into your operative system, e.g. see this `doc`_.
-2. Install requirejs library, following `this`_.
-3. Execute::
+Install nodejs, npm and http-server::
 
-	r.js -o build/build.js
+  sudo apt-get install nodejs nodejs-legacy npm
+  sudo npm install http-server -g
 
-.. _doc: http://howtonode.org/how-to-install-nodejs
-.. _this: http://requirejs.org/docs/optimization.html#download
-
+Go to the "web" application and run http-server.
