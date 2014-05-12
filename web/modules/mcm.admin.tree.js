@@ -1,14 +1,14 @@
 /**
  * @author Oscar Fonts <oscar.fonts@geomati.co>
  */
-define(["mcm.i18n", "cel.api", "template", "messagebus", "slug", ], function(celapi, template, bus, slug, i18n) {
+define(["cel.api", "template", "messagebus", "slug"], function(celapi, template, bus, slug) {
 
     var div_id = "tree",
         museum_id = "MCM",
         data = [];
     
     function show() {
-        $("#"+div_id).html('<div class="alert alert-info">' + i18n.translate('download_contents_catalog_online') + ' </div>');
+        $("#"+div_id).html('<div class="alert alert-info">Construïnt arbre de continguts a partir de les APIs...</div>');
         if (!data.length) {
             celapi.museum.get(museum_id).then(get_contents).then(apply_template);
         } else {

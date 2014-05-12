@@ -1,0 +1,11 @@
+.sidebar-nav > ul {
+	margin: 0
+}
+
+#tree {
+    font-size: 14px;
+}
+
+.contents .nav > li > a {
+    padding: 6px 30px;
+}
