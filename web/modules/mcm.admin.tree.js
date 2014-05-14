@@ -86,7 +86,6 @@ define(["cel.api", "template", "messagebus", "slug"], function(celapi, template,
     }
       
     function apply_template() {
-        //console.log(data);
         template.render("mcm.admin.tree", data, div_id).then(add_interactivity);        
     };
     
@@ -121,7 +120,6 @@ define(["cel.api", "template", "messagebus", "slug"], function(celapi, template,
                 }
                 $("#"+id).addClass("active");
                 
-                //console.log("Clicked on " + id + " " + type);
                 bus.publish("mcm.admin.tree.selected", {
                     type: type,
                     item: get_item_by_id(id)

@@ -16,7 +16,9 @@ define(function() {
 
         var subscribers = channels[channel],
             n = subscribers ? subscribers.length : 0;
-        
+
+        console.log("Sending '" + channel + "' message to " + n + " subscribers: " + JSON.stringify(message));
+
         for (var i = 0; i < n; i++) {
             var subscription = subscribers[i];
             subscription.callback.apply(subscription.context, [message]);

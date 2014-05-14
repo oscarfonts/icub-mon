@@ -59,16 +59,7 @@ define(["mcm.i18n", "messagebus", "cel.tree", "mcm.search", "mcm.map", "mcm.desc
     });
     
     bus.subscribe("mcm.map.selected", function(item) {
-        console.log("Selected map item " + JSON.stringify(item));
         tree.selectItem(item);
-    });
-
-    bus.subscribe("mcm.map.hovered", function(item) {
-        console.log("Hovered map item " + JSON.stringify(item));
-    });
-    
-    bus.subscribe("mcm.map.unhovered", function(item) {
-        console.log("Unhovered map item " + JSON.stringify(item));
     });
     
     bus.subscribe("cel.gallery.selected", function(object) {
