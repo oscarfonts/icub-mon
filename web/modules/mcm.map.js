@@ -143,6 +143,24 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             };
 
             this.clearMap();
+
+            // Blur culture polygons, except for IE < 10)
+            if (!document.querySelector("html.lt-ie10")) {
+                if (type == "culture") {
+                    if (!L.DomUtil.hasClass(this.map._panes.overlayPane, "blur")) {
+                        L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
+                        // In webkit browsers, hide and show map, to force blurred rendering (bug!)
+                        if ($.browser.webkit) {
+                            $("#map").hide();
+                            window.setTimeout(function() {
+                                $("#map").show();
+                            }, 5);
+                        }
+                    }
+                } else {
+                    L.DomUtil.removeClass(this.map._panes.overlayPane, "blur");
+                }
+            }
             var that = this;
             var group = L.featureGroup();
             this.layer = L.geoJson(features, {
@@ -188,15 +206,9 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             // Set zoom to fit bounds
             this.map.options.maxZoom = 16;
             if (type == "culture") {
-                if (!document.querySelector("html.lt-ie10")) {
-                    // Prevent blur on < IE10, won't show polygon
-                    L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
-                }
                 this.map.addOneTimeEventListener("zoomend", function() {
                     this.options.maxZoom = Math.min(this.getZoom(), 16);
                 });
-            } else {
-                L.DomUtil.removeClass(this.map._panes.overlayPane, "blur");
             }
             this.map.fitBounds(this.layer.getBounds());
 
