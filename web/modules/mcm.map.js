@@ -79,10 +79,10 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             };
         }
 
-        this.map = leaflet.create(div, true);
         this.layer = undefined;
 
         this.showContinents = function() {
+            this.createMap(div);
             var that = this;
             return api.continent.list().then(function(data) {
                 that.loadFeatures.call(that, data, "continents");
@@ -148,14 +148,11 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             if (!document.querySelector("html.lt-ie10")) {
                 if (type == "culture") {
                     if (!L.DomUtil.hasClass(this.map._panes.overlayPane, "blur")) {
-                        L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
-                        // In webkit browsers, hide and show map, to force blurred rendering (bug!)
                         if ($.browser.webkit) {
-                            $("#map").hide();
-                            window.setTimeout(function() {
-                                $("#map").show();
-                            }, 5);
+                            // In webkit browsers, recreate the entire map, to apply blur filter correctly (bug!)
+                            this.createMap(div);
                         }
+                        L.DomUtil.addClass(this.map._panes.overlayPane, "blur");
                     }
                 } else {
                     L.DomUtil.removeClass(this.map._panes.overlayPane, "blur");
@@ -218,6 +215,15 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             if (this.layer) {
                 this.map.removeLayer(this.layer);
             }
+        };
+
+        this.createMap = function(div) {
+            var box = $("#"+div).parent();
+            box.html("");
+            jQuery('<div/>', {
+                id: div
+            }).appendTo(box);
+            this.map = leaflet.create(div, true);
         };
         
         this.redraw = function() {
