@@ -23,8 +23,8 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
         var colors = {
             africa: color({r: 235, g: 98, b: 9}),
             america: color({r: 102, g: 61, b: 0}),
-            asia: color({r: 161, g: 29, b: 33}),
-            oceania: color({r: 0, g: 155, b: 162})
+            asia: color({r: 185, g: 56, b: 40}),
+            oceania: color({r: 211, g: 157, b: 34})
         };
 
         for (var c in colors) {
@@ -38,7 +38,7 @@ define(["leaflet.map", "mcm.api", "messagebus", "tinycolor", "leaflet-label"], f
             var style = styles[layer.feature.id];
             if (layer.setStyle && style) {
                 var style = JSON.parse(JSON.stringify(style)); // Clone style object
-                style.color = style.fillColor = color.saturate(color.lighten(style.color, 25), 100).toHexString();
+                style.color = style.fillColor = color.lighten(style.color, 25).toHexString();
                 layer.setStyle(style);
                 if (!L.Browser.ie && !L.Browser.opera) {
                     layer.bringToFront();
